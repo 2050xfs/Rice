@@ -4,12 +4,12 @@ import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import Link from 'next/link';
-import { useBookingWidget } from '@/context/BookingWidgetContext'; // Updated import
+import { useBookingModal } from '@/context/BookingModalContext'; // Updated import
 import { djServicesPageContent } from '@/content/dj-services-page-content';
 
 
 export default function DjServicesPage() {
-  const { openWidget } = useBookingWidget(); // Updated hook usage
+  const { openModal } = useBookingModal(); // Updated hook usage
   const { hero, packages, vibo, equipmentAndDjs, cta } = djServicesPageContent;
   const EquipmentPointIcon = equipmentAndDjs.equipment.pointIcon;
 
@@ -36,7 +36,7 @@ export default function DjServicesPage() {
             {hero.description}
           </p>
           <div className="mt-10">
-            <Button onClick={openWidget} size="lg" className="button-primary-styles"> {/* Use openWidget */}
+            <Button onClick={openModal} size="lg" className="button-primary-styles"> {/* Use openModal */}
               {hero.ctaButtonText}
             </Button>
           </div>
@@ -75,7 +75,7 @@ export default function DjServicesPage() {
                       </li>
                     ))}
                   </ul>
-                   <Button onClick={openWidget} className="button-primary-styles w-full mt-auto"> {/* Use openWidget */}
+                   <Button onClick={openModal} className="button-primary-styles w-full mt-auto"> {/* Use openModal */}
                     {packages.ctaButtonText}
                   </Button>
                 </CardContent>
@@ -124,7 +124,7 @@ export default function DjServicesPage() {
           </div>
         </div>
       </div>
-      
+
       {/* Equipment & DJ Profiles Section */}
       <div className="py-24 sm:py-32">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
@@ -174,7 +174,7 @@ export default function DjServicesPage() {
             {cta.description}
           </p>
           <div className="mt-10">
-             <Button onClick={openWidget} size="lg" className="button-primary-styles"> {/* Use openWidget */}
+             <Button onClick={openModal} size="lg" className="button-primary-styles"> {/* Use openModal */}
               {cta.buttonText}
             </Button>
           </div>

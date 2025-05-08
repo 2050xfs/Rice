@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { cn } from '@/lib/utils';
-import { useBookingWidget } from '@/context/BookingWidgetContext'; // Updated import
+import { useBookingModal } from '@/context/BookingModalContext'; // Updated import
 import { testimonialsPageContent, type TestimonialPageItem } from '@/content/testimonials-page-content';
 
 
@@ -23,7 +23,7 @@ export default function TestimonialsPage() {
   const [filterService, setFilterService] = useState('All');
   const [filterEventType, setFilterEventType] = useState('All');
   const [filteredTestimonials, setFilteredTestimonials] = useState<TestimonialPageItem[]>(testimonialsPageContent.testimonials);
-  const { openWidget } = useBookingWidget(); // Updated hook usage
+  const { openModal } = useBookingModal(); // Updated hook usage
 
   useEffect(() => {
     let testimonials = testimonialsPageContent.testimonials;
@@ -94,12 +94,12 @@ export default function TestimonialsPage() {
               </div>
             </div>
           </div>
-          
+
           {filteredTestimonials.length > 0 ? (
             <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
               {filteredTestimonials.map((testimonial) => (
                 <Card key={testimonial.id} className={cn(
-                  "card-testimonial-styles flex flex-col overflow-hidden", 
+                  "card-testimonial-styles flex flex-col overflow-hidden",
                   testimonial.isFeatured ? "bg-gradient-to-br from-indigo-700 to-indigo-600 dark:from-indigo-600 dark:to-indigo-500 shadow-2xl ring-2 ring-indigo-300 dark:ring-indigo-500" : "bg-gray-800 dark:bg-gray-800 shadow-xl"
                 )}>
                   <CardHeader className="p-6">
@@ -158,7 +158,7 @@ export default function TestimonialsPage() {
           )}
         </div>
       </div>
-      
+
       {/* CTA to share experience or book */}
       <div className="bg-gray-100 dark:bg-gray-900 py-16 sm:py-24">
         <div className="max-w-4xl mx-auto text-center px-6 lg:px-8">
@@ -169,7 +169,7 @@ export default function TestimonialsPage() {
             {cta.description}
           </p>
           <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-             <Button onClick={openWidget} size="lg" className="button-primary-styles"> {/* Use openWidget */}
+             <Button onClick={openModal} size="lg" className="button-primary-styles"> {/* Use openModal */}
               {cta.button1Text}
             </Button>
             <Button size="lg" variant="outline" className="button-secondary-styles" hasShimmer>

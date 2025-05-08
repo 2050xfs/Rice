@@ -4,7 +4,7 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useForm, SubmitHandler } from 'react-hook-form';
+import { useForm, SubmitHandler, Controller } from 'react-hook-form'; // Import Controller
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { format } from 'date-fns';
@@ -18,9 +18,10 @@ import { Calendar } from "@/components/ui/calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { useToast } from "@/hooks/use-toast";
 import { cn } from "@/lib/utils";
-import { useBookingWidget } from '@/context/BookingWidgetContext';
-import { submitBookingRequest, redirectUrl } from '@/services/bookingService';
+import { useBookingModal } from '@/context/BookingModalContext'; // Updated context hook
+import { submitBookingRequest, getRedirectUrl } from '@/services/bookingService'; // Keep this import
 import { CalendarIcon, CheckCircle, AlertCircle, X, Loader2 } from 'lucide-react';
+
 
 // Define Zod schema for form validation
 const bookingSchema = z.object({
@@ -36,9 +37,10 @@ type BookingFormInput = z.infer<typeof bookingSchema>;
 type ViewState = 'form' | 'submitting' | 'success' | 'error';
 
 export default function BookingFormWidget() {
-  const { isOpen, closeWidget } = useBookingWidget();
+  const { isOpen, closeModal } = useBookingModal(); // Use updated hook and method names
   const [viewState, setViewState] = useState<ViewState>('form');
   const [submissionError, setSubmissionError] = useState<string | null>(null);
+  const [redirectUrl, setRedirectUrl] = useState<string | null>(null); // State to hold redirect URL
   const router = useRouter();
   const { toast } = useToast();
 
@@ -52,9 +54,10 @@ export default function BookingFormWidget() {
     },
   });
 
-  // Reset form when widget closes or opens
-  useEffect(() => {
+  // Fetch the redirect URL when the component mounts or isOpen changes
+   useEffect(() => {
     if (isOpen) {
+      getRedirectUrl().then(url => setRedirectUrl(url));
       setViewState('form');
       setSubmissionError(null);
       reset(); // Reset form fields and errors
@@ -82,6 +85,10 @@ export default function BookingFormWidget() {
       setTimeout(() => {
         if (redirectUrl) {
             window.location.href = redirectUrl; // Use window.location for external redirects
+        } else {
+            console.warn("Redirect URL not available, cannot redirect.");
+             // Maybe show a message to the user here?
+             closeModal(); // Close the modal if redirect fails
         }
       }, 2000); // 2-second delay
     } catch (error: any) {
@@ -105,6 +112,10 @@ export default function BookingFormWidget() {
   const handleCompleteBooking = () => {
      if (redirectUrl) {
          window.location.href = redirectUrl; // Redirect immediately
+     } else {
+        console.warn("Redirect URL not available for immediate redirect.");
+        // Fallback behavior? Maybe just close the modal.
+        closeModal();
      }
   };
 
@@ -140,7 +151,7 @@ export default function BookingFormWidget() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             className="fixed inset-0 bg-black/50 backdrop-blur-sm"
-            onClick={closeWidget}
+            onClick={closeModal} // Use updated method name
           />
 
           {/* Widget Panel */}
@@ -156,7 +167,7 @@ export default function BookingFormWidget() {
                 {viewState === 'success' && 'Date Available!'}
                 {viewState === 'error' && 'Date Unavailable'}
               </h2>
-              <Button variant="ghost" size="icon" onClick={closeWidget} aria-label="Close booking widget">
+              <Button variant="ghost" size="icon" onClick={closeModal} aria-label="Close booking widget"> // Use updated method name
                 <X className="h-5 w-5 text-gray-500 dark:text-gray-400" />
               </Button>
             </div>

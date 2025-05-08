@@ -4,11 +4,11 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { viboAppHighlightContent } from '@/content/vibo-app-highlight-content';
-import { useBookingWidget } from '@/context/BookingWidgetContext'; // Updated import
+import { useBookingModal } from '@/context/BookingModalContext'; // Updated import
 
 
 export default function ViboAppHighlight() {
-  const { openWidget } = useBookingWidget(); // Updated hook usage
+  const { openModal } = useBookingModal(); // Updated hook usage
   return (
     <div className="bg-gradient-to-b from-gray-50 to-white dark:from-gray-950 dark:to-gray-900 py-24 sm:py-32">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
@@ -43,7 +43,7 @@ export default function ViboAppHighlight() {
           </div>
           <div className="mt-12 lg:mt-0 relative group flex justify-center">
             {/* Adjusted image container for better centering/sizing */}
-            <div className="relative w-full max-w-md lg:max-w-lg"> 
+            <div className="relative w-full max-w-md lg:max-w-lg">
               <Image
                 src={viboAppHighlightContent.imageSrc}
                 alt={viboAppHighlightContent.imageAlt}

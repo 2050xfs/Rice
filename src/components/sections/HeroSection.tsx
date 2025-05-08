@@ -2,11 +2,11 @@
 "use client";
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
-import { useBookingWidget } from '@/context/BookingWidgetContext'; // Updated import
+import { useBookingModal } from '@/context/BookingModalContext'; // Updated import
 import { heroSectionContent } from '@/content/hero-section-content';
 
 export default function HeroSection() {
-  const { openWidget } = useBookingWidget(); // Updated hook usage
+  const { openModal } = useBookingModal(); // Updated hook usage
   return (
     <div className="relative isolate overflow-hidden pt-14 min-h-[calc(100vh-5rem)] flex items-center justify-center">
       <Image
@@ -21,7 +21,7 @@ export default function HeroSection() {
       <div className="absolute inset-0 -z-10 hero-overlay-gradient" />
       {/* Secondary Overlay: From Left to Right */}
       <div className="absolute inset-0 -z-10 secondary-hero-overlay" />
-      
+
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-24 sm:py-32 text-center relative z-0"> {/* Added z-0 to ensure content is above -z-10 elements */}
         <div className="max-w-3xl mx-auto"> {/* Increased max-width slightly for longer title */}
           <h1 className="h1-style text-white">
@@ -33,7 +33,7 @@ export default function HeroSection() {
             {heroSectionContent.subtitle}
           </p>
           <div className="mt-10 flex items-center justify-center gap-x-6">
-            <Button onClick={openWidget} size="lg" className="button-primary-styles"> {/* Use openWidget */}
+            <Button onClick={openModal} size="lg" className="button-primary-styles"> {/* Use openModal */}
               {heroSectionContent.ctaButton1Text}
             </Button>
             <Button variant="transparent" size="lg" className="button-transparent-styles" hasShimmer>

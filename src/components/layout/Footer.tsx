@@ -4,7 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Facebook, Instagram, Twitter, Youtube, Mail, Phone } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { useBookingWidget } from '@/context/BookingWidgetContext'; // Updated import
+import { useBookingModal } from '@/context/BookingModalContext'; // Updated import
 import { brandLogoUrl } from '@/lib/image-urls';
 import { footerLinkSections, footerLegalLinks } from '@/config/footerNav';
 
@@ -16,7 +16,7 @@ const socialIconsLinks = [
 ];
 
 export default function Footer() {
-  const { openWidget } = useBookingWidget(); // Updated hook usage
+  const { openModal } = useBookingModal(); // Updated hook usage
 
   return (
     <footer className="bg-brand-navy text-white" aria-labelledby="footer-heading">
@@ -30,7 +30,7 @@ export default function Footer() {
                 <ul className="space-y-3">
                   {section.items.map((link) => (
                     <li key={link.name}>
-                      <Link 
+                      <Link
                         href={link.href}
                         target={link.isExternal ? '_blank' : undefined}
                         rel={link.isExternal ? 'noopener noreferrer' : undefined}
@@ -50,7 +50,7 @@ export default function Footer() {
           <div className="md:col-span-4 space-y-6">
             <div>
               <h3 className="text-sm font-semibold uppercase tracking-wider text-indigo-400 mb-2">Follow Us</h3>
-              <Link 
+              <Link
                 href="https://www.instagram.com/ricentertainment?igsh=NTc4MTIwNjQ2YQ=="
                 target="_blank"
                 rel="noopener noreferrer"
@@ -64,7 +64,7 @@ export default function Footer() {
               {/* Instagram Embed Placeholder - Replace with actual embed or component if available */}
               {/* The iframe can be problematic for responsiveness and might require a library or specific styling */}
                <iframe
-                src="https://www.instagram.com/ricentertainment/embed" 
+                src="https://www.instagram.com/ricentertainment/embed"
                 width="100%"
                 height="100%"
                 frameBorder="0"
@@ -75,8 +75,8 @@ export default function Footer() {
                 loading="lazy" // Add lazy loading
               />
             </div>
-            <Button 
-              onClick={openWidget} // Use openWidget
+            <Button
+              onClick={openModal} // Use openModal
               className="w-full button-primary-styles bg-indigo-500 hover:bg-indigo-400 text-white py-3"
             >
               Book Your Event Now
@@ -90,9 +90,9 @@ export default function Footer() {
         <div className="max-w-7xl mx-auto px-6 py-8 flex flex-col md:flex-row justify-between items-center gap-6">
           <div className="flex flex-col sm:flex-row items-center gap-4 text-center sm:text-left">
             <Link href="/" className="shrink-0">
-               <Image 
-                src={brandLogoUrl} 
-                alt="Rice Entertainment Logo Inverted" 
+               <Image
+                src={brandLogoUrl}
+                alt="Rice Entertainment Logo Inverted"
                 width={140} // Adjusted for better visibility
                 height={46} // Adjusted for aspect ratio based on 140 width
                 className="h-10 w-auto filter invert brightness-150 contrast-150" // Adjusted filter for better white on dark

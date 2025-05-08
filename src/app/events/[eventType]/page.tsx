@@ -6,12 +6,12 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { CheckCircle } from 'lucide-react';
 import Link from 'next/link';
-import { useBookingWidget } from '@/context/BookingWidgetContext'; // Updated import
+import { useBookingModal } from '@/context/BookingModalContext'; // Updated import
 import { eventTypeContentMap, defaultEventTypeContent } from '@/content/event-type-content';
 
 export default function EventTypePage() {
   const params = useParams();
-  const { openWidget } = useBookingWidget(); // Updated hook usage
+  const { openModal } = useBookingModal(); // Updated hook usage
   const eventType = typeof params.eventType === 'string' ? params.eventType : 'default';
   const details = eventTypeContentMap[eventType.toLowerCase()] || defaultEventTypeContent;
 
@@ -38,7 +38,7 @@ export default function EventTypePage() {
             {details.description}
           </p>
           <div className="mt-10">
-            <Button onClick={openWidget} size="lg" className="button-primary-styles"> {/* Use openWidget */}
+            <Button onClick={openModal} size="lg" className="button-primary-styles"> {/* Use openModal */}
               {details.ctaText || "Book This Event Type"}
             </Button>
           </div>
@@ -83,12 +83,12 @@ export default function EventTypePage() {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {details.gallery.map((item, index) => (
                 <div key={index} className="relative aspect-[4/3] rounded-xl overflow-hidden group shadow-lg">
-                  <Image 
-                    src={item.src} 
-                    alt={item.alt} 
+                  <Image
+                    src={item.src}
+                    alt={item.alt}
                     data-ai-hint={item.hint}
-                    layout="fill" 
-                    objectFit="cover" 
+                    layout="fill"
+                    objectFit="cover"
                     className="transition-transform duration-300 group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
@@ -139,7 +139,7 @@ export default function EventTypePage() {
             {details.finalCtaDescription}
           </p>
           <div className="mt-10">
-             <Button onClick={openWidget} size="lg" className="button-primary-styles bg-white text-primary hover:bg-gray-100"> {/* Use openWidget */}
+             <Button onClick={openModal} size="lg" className="button-primary-styles bg-white text-primary hover:bg-gray-100"> {/* Use openModal */}
               {details.finalCtaButtonText}
             </Button>
           </div>

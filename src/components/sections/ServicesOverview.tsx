@@ -5,11 +5,11 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { ArrowRight } from 'lucide-react';
-import { useBookingWidget } from '@/context/BookingWidgetContext'; // Updated import
+import { useBookingModal } from '@/context/BookingModalContext'; // Updated import
 import { servicesOverviewContent } from '@/content/services-overview-content';
 
 export default function ServicesOverview() {
-  const { openWidget } = useBookingWidget(); // Updated hook usage
+  const { openModal } = useBookingModal(); // Updated hook usage
   return (
     <div className="bg-white dark:bg-gray-900 py-24 sm:py-32">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
@@ -27,10 +27,10 @@ export default function ServicesOverview() {
             <Card key={service.title} className="card-feature-styles bg-gray-50 dark:bg-gray-800/50 shadow-lg hover:shadow-xl">
               <CardHeader>
                 <div className="relative h-48 w-full mb-4 rounded-t-lg overflow-hidden">
-                  <Image 
-                    src={service.image} 
-                    alt={service.title} 
-                    layout="fill" 
+                  <Image
+                    src={service.image}
+                    alt={service.title}
+                    layout="fill"
                     objectFit="cover"
                     data-ai-hint={service.imageHint}
                   />
@@ -54,7 +54,7 @@ export default function ServicesOverview() {
           ))}
         </div>
         <div className="mt-20 text-center">
-          <Button onClick={openWidget} size="lg" className="button-primary-styles"> {/* Use openWidget */}
+          <Button onClick={openModal} size="lg" className="button-primary-styles"> {/* Use openModal */}
             {servicesOverviewContent.ctaButtonText}
           </Button>
         </div>

@@ -2,12 +2,12 @@
 "use client";
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { useBookingWidget } from '@/context/BookingWidgetContext'; // Updated import
+import { useBookingModal } from '@/context/BookingModalContext'; // Updated import
 import Image from 'next/image';
 import { callToActionContent } from '@/content/call-to-action-content';
 
 export default function CallToAction() {
-  const { openWidget } = useBookingWidget(); // Updated hook usage
+  const { openModal } = useBookingModal(); // Updated hook usage
   return (
     <div className="primary-gradient">
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-24 sm:py-32">
@@ -34,7 +34,7 @@ export default function CallToAction() {
               {callToActionContent.description}
             </p>
             <div className="mt-10 flex items-center justify-center gap-x-6 lg:justify-start">
-              <Button onClick={openWidget} size="lg" className="button-primary-styles bg-white text-primary hover:bg-gray-100"> {/* Use openWidget */}
+              <Button onClick={openModal} size="lg" className="button-primary-styles bg-white text-primary hover:bg-gray-100"> {/* Use openModal */}
                 {callToActionContent.ctaButton1Text}
               </Button>
               <Link href={callToActionContent.ctaButton2Link} passHref>

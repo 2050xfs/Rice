@@ -2,12 +2,12 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { useBookingWidget } from "@/context/BookingWidgetContext";
+import { useBookingModal } from "@/context/BookingModalContext"; // Updated import path and hook name
 import { Calendar } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 export default function BookingButton() {
-  const { openWidget } = useBookingWidget();
+  const { openModal } = useBookingModal(); // Updated hook usage
 
   return (
     <motion.div
@@ -18,7 +18,7 @@ export default function BookingButton() {
     >
         <Button
             size="lg"
-            onClick={openWidget}
+            onClick={openModal} // Use openModal
             className="rounded-full shadow-xl primary-gradient text-white px-5 py-5 h-16 w-16 md:h-auto md:w-auto md:px-6 md:py-3 flex items-center justify-center gap-2 hover:scale-110 transition-transform duration-300"
             aria-label="Open Booking Widget"
         >

@@ -2,7 +2,8 @@
 'use server'; // Mark this module for server-side execution
 
 const webhookUrl = 'https://services.leadconnectorhq.com/hooks/iAR0shcsJ7fDRLUy9mAx/webhook-trigger/5b5b441d-3699-43a3-b039-117ec5c79911';
-export const redirectUrl = 'https://ricentertainmentlogin.com/request_information.asp?djidnumber=23220';
+// Keep as internal constant, not exported
+const redirectUrl = 'https://ricentertainmentlogin.com/request_information.asp?djidnumber=23220';
 
 export interface BookingFormData {
   name: string;
@@ -43,6 +44,7 @@ export async function submitBookingRequest(data: BookingFormData): Promise<void>
     // console.log('Webhook Response Success Body:', responseBody);
 
     console.log('Booking request submitted successfully.');
+    // The redirection will happen in the component using the constant defined above.
 
   } catch (error) {
     console.error('Error submitting booking request:', error);
@@ -53,4 +55,10 @@ export async function submitBookingRequest(data: BookingFormData): Promise<void>
       throw new Error('An unknown error occurred while submitting the booking request.');
     }
   }
+}
+
+// Function to get the redirect URL if needed elsewhere (though not strictly required by current BookingFormWidget implementation)
+// Exporting this async function is allowed
+export async function getRedirectUrl(): Promise<string> {
+    return redirectUrl;
 }
