@@ -4,11 +4,11 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { viboAppHighlightContent } from '@/content/vibo-app-highlight-content';
-import { useBookingModal } from '@/context/BookingModalContext';
+import { useBookingWidget } from '@/context/BookingWidgetContext'; // Updated import
 
 
 export default function ViboAppHighlight() {
-  const { openModal } = useBookingModal();
+  const { openWidget } = useBookingWidget(); // Updated hook usage
   return (
     <div className="bg-gradient-to-b from-gray-50 to-white dark:from-gray-950 dark:to-gray-900 py-24 sm:py-32">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">

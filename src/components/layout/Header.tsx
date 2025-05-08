@@ -15,7 +15,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { cn } from '@/lib/utils';
-import { useBookingModal } from '@/context/BookingModalContext';
+import { useBookingWidget } from '@/context/BookingWidgetContext'; // Updated import
 import { brandLogoUrl } from '@/lib/image-urls';
 import { navItems, type NavItem } from '@/config/nav';
 import ViboBadge from '@/components/common/ViboBadge'; // Import the badge
@@ -38,7 +38,7 @@ const SiteLogo = () => (
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const { openModal } = useBookingModal();
+  const { openWidget } = useBookingWidget(); // Updated hook usage
 
   useEffect(() => {
     const handleScroll = () => {
@@ -147,7 +147,7 @@ export default function Header() {
              {/* Desktop CTA Button and Badge Container */}
             <div className="hidden lg:flex items-center gap-3">
               <ViboBadge />
-              <Button onClick={openModal} className="button-primary-styles shrink-0">
+              <Button onClick={openWidget} className="button-primary-styles shrink-0"> {/* Use openWidget */}
                 Book Now
               </Button>
             </div>
@@ -176,7 +176,7 @@ export default function Header() {
                       ))}
                       <div className="pt-4 flex flex-col items-center gap-2"> {/* Centered mobile items */}
                         <ViboBadge />
-                        <Button onClick={() => { openModal(); setIsMobileMenuOpen(false); }} className="button-primary-styles w-full">
+                        <Button onClick={() => { openWidget(); setIsMobileMenuOpen(false); }} className="button-primary-styles w-full"> {/* Use openWidget */}
                           Book Now
                         </Button>
                       </div>

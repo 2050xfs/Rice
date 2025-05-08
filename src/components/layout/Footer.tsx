@@ -4,7 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Facebook, Instagram, Twitter, Youtube, Mail, Phone } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { useBookingModal } from '@/context/BookingModalContext';
+import { useBookingWidget } from '@/context/BookingWidgetContext'; // Updated import
 import { brandLogoUrl } from '@/lib/image-urls';
 import { footerLinkSections, footerLegalLinks } from '@/config/footerNav';
 
@@ -16,7 +16,7 @@ const socialIconsLinks = [
 ];
 
 export default function Footer() {
-  const { openModal } = useBookingModal();
+  const { openWidget } = useBookingWidget(); // Updated hook usage
 
   return (
     <footer className="bg-brand-navy text-white" aria-labelledby="footer-heading">
@@ -72,10 +72,11 @@ export default function Footer() {
                 allowTransparency={true}
                 title="Instagram Feed"
                 className="bg-gray-800" // Ensure iframe bg matches if content is slow to load
+                loading="lazy" // Add lazy loading
               />
             </div>
             <Button 
-              onClick={openModal}
+              onClick={openWidget} // Use openWidget
               className="w-full button-primary-styles bg-indigo-500 hover:bg-indigo-400 text-white py-3"
             >
               Book Your Event Now

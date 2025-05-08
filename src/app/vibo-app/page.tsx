@@ -3,11 +3,11 @@
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { useBookingModal } from '@/context/BookingModalContext';
+import { useBookingWidget } from '@/context/BookingWidgetContext'; // Updated import
 import { viboAppPageContent } from '@/content/vibo-app-page-content';
 
 export default function ViboAppPage() {
-  const { openModal } = useBookingModal();
+  const { openWidget } = useBookingWidget(); // Updated hook usage
   const { hero, howItWorks, features, benefits, cta } = viboAppPageContent;
 
   return (
@@ -34,7 +34,7 @@ export default function ViboAppPage() {
             {hero.description}
           </p>
           <div className="mt-10">
-            <Button onClick={openModal} size="lg" className="button-primary-styles bg-white text-primary hover:bg-gray-100">
+            <Button onClick={openWidget} size="lg" className="button-primary-styles bg-white text-primary hover:bg-gray-100"> {/* Use openWidget */}
               {hero.ctaButtonText}
             </Button>
           </div>
@@ -142,7 +142,7 @@ export default function ViboAppPage() {
             {cta.description}
           </p>
           <div className="mt-8">
-            <Button onClick={openModal} size="lg" className="button-primary-styles bg-white text-primary hover:bg-gray-100">
+            <Button onClick={openWidget} size="lg" className="button-primary-styles bg-white text-primary hover:bg-gray-100"> {/* Use openWidget */}
               {cta.buttonText}
             </Button>
           </div>

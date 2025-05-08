@@ -4,12 +4,12 @@ import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import Link from 'next/link';
-import { useBookingModal } from '@/context/BookingModalContext';
+import { useBookingWidget } from '@/context/BookingWidgetContext'; // Updated import
 import { djServicesPageContent } from '@/content/dj-services-page-content';
 
 
 export default function DjServicesPage() {
-  const { openModal } = useBookingModal();
+  const { openWidget } = useBookingWidget(); // Updated hook usage
   const { hero, packages, vibo, equipmentAndDjs, cta } = djServicesPageContent;
   const EquipmentPointIcon = equipmentAndDjs.equipment.pointIcon;
 
@@ -36,7 +36,7 @@ export default function DjServicesPage() {
             {hero.description}
           </p>
           <div className="mt-10">
-            <Button onClick={openModal} size="lg" className="button-primary-styles">
+            <Button onClick={openWidget} size="lg" className="button-primary-styles"> {/* Use openWidget */}
               {hero.ctaButtonText}
             </Button>
           </div>
@@ -75,7 +75,7 @@ export default function DjServicesPage() {
                       </li>
                     ))}
                   </ul>
-                   <Button onClick={openModal} className="button-primary-styles w-full mt-auto">
+                   <Button onClick={openWidget} className="button-primary-styles w-full mt-auto"> {/* Use openWidget */}
                     {packages.ctaButtonText}
                   </Button>
                 </CardContent>
@@ -174,7 +174,7 @@ export default function DjServicesPage() {
             {cta.description}
           </p>
           <div className="mt-10">
-             <Button onClick={openModal} size="lg" className="button-primary-styles">
+             <Button onClick={openWidget} size="lg" className="button-primary-styles"> {/* Use openWidget */}
               {cta.buttonText}
             </Button>
           </div>

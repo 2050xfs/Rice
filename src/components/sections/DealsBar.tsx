@@ -2,10 +2,10 @@
 "use client";
 import { Gift, CalendarDays, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { useBookingModal } from '@/context/BookingModalContext';
+import { useBookingWidget } from '@/context/BookingWidgetContext'; // Updated import
 
 export default function DealsBar() {
-  const { openModal } = useBookingModal();
+  const { openWidget } = useBookingWidget(); // Updated hook usage
 
   const deals = [
     {
@@ -35,7 +35,7 @@ export default function DealsBar() {
           ))}
         </div>
         <Button
-          onClick={openModal}
+          onClick={openWidget} // Use openWidget
           variant="secondary" 
           className="bg-white/20 hover:bg-white/30 text-white shrink-0 px-6 py-2.5 shadow-md border border-white/30"
           hasShimmer

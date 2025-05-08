@@ -5,11 +5,11 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { ArrowRight } from 'lucide-react';
-import { useBookingModal } from '@/context/BookingModalContext';
+import { useBookingWidget } from '@/context/BookingWidgetContext'; // Updated import
 import { servicesOverviewContent } from '@/content/services-overview-content';
 
 export default function ServicesOverview() {
-  const { openModal } = useBookingModal();
+  const { openWidget } = useBookingWidget(); // Updated hook usage
   return (
     <div className="bg-white dark:bg-gray-900 py-24 sm:py-32">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
@@ -54,7 +54,7 @@ export default function ServicesOverview() {
           ))}
         </div>
         <div className="mt-20 text-center">
-          <Button onClick={openModal} size="lg" className="button-primary-styles">
+          <Button onClick={openWidget} size="lg" className="button-primary-styles"> {/* Use openWidget */}
             {servicesOverviewContent.ctaButtonText}
           </Button>
         </div>

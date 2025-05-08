@@ -6,12 +6,12 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { CheckCircle } from 'lucide-react';
 import Link from 'next/link';
-import { useBookingModal } from '@/context/BookingModalContext';
+import { useBookingWidget } from '@/context/BookingWidgetContext'; // Updated import
 import { eventTypeContentMap, defaultEventTypeContent } from '@/content/event-type-content';
 
 export default function EventTypePage() {
   const params = useParams();
-  const { openModal } = useBookingModal();
+  const { openWidget } = useBookingWidget(); // Updated hook usage
   const eventType = typeof params.eventType === 'string' ? params.eventType : 'default';
   const details = eventTypeContentMap[eventType.toLowerCase()] || defaultEventTypeContent;
 
@@ -38,7 +38,7 @@ export default function EventTypePage() {
             {details.description}
           </p>
           <div className="mt-10">
-            <Button onClick={openModal} size="lg" className="button-primary-styles">
+            <Button onClick={openWidget} size="lg" className="button-primary-styles"> {/* Use openWidget */}
               {details.ctaText || "Book This Event Type"}
             </Button>
           </div>
@@ -139,7 +139,7 @@ export default function EventTypePage() {
             {details.finalCtaDescription}
           </p>
           <div className="mt-10">
-             <Button onClick={openModal} size="lg" className="button-primary-styles bg-white text-primary hover:bg-gray-100">
+             <Button onClick={openWidget} size="lg" className="button-primary-styles bg-white text-primary hover:bg-gray-100"> {/* Use openWidget */}
               {details.finalCtaButtonText}
             </Button>
           </div>

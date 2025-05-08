@@ -4,11 +4,11 @@ import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { useBookingModal } from '@/context/BookingModalContext';
+import { useBookingWidget } from '@/context/BookingWidgetContext'; // Updated import
 import { photoBoothsPageContent } from '@/content/photo-booths-page-content';
 
 export default function PhotoBoothsPage() {
-  const { openModal } = useBookingModal();
+  const { openWidget } = useBookingWidget(); // Updated hook usage
   const { hero, booths, addOns, cta } = photoBoothsPageContent;
   const FeatureIcon = booths.featureIcon;
 
@@ -36,7 +36,7 @@ export default function PhotoBoothsPage() {
             {hero.description}
           </p>
           <div className="mt-10">
-            <Button onClick={openModal} size="lg" className="button-primary-styles">
+            <Button onClick={openWidget} size="lg" className="button-primary-styles"> {/* Use openWidget */}
               {hero.ctaButtonText}
             </Button>
           </div>
@@ -159,7 +159,7 @@ export default function PhotoBoothsPage() {
             {cta.description}
           </p>
           <div className="mt-10">
-             <Button onClick={openModal} size="lg" className="button-primary-styles">
+             <Button onClick={openWidget} size="lg" className="button-primary-styles"> {/* Use openWidget */}
               {cta.buttonText}
             </Button>
           </div>

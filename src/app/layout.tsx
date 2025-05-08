@@ -4,8 +4,9 @@ import './globals.css';
 import { Toaster } from "@/components/ui/toaster";
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
-import { BookingModalProvider } from '@/context/BookingModalContext';
-import BookingModal from '@/components/booking/BookingModal';
+import { BookingWidgetProvider } from '@/context/BookingWidgetContext'; // Renamed import
+import BookingFormWidget from '@/components/common/BookingFormWidget'; // Import the new widget
+import BookingButton from '@/components/common/BookingButton'; // Import the floating button
 
 
 const inter = Inter({ 
@@ -27,13 +28,14 @@ export default function RootLayout({
   return (
     <html lang="en" className={inter.variable}>
       <body className="antialiased font-sans">
-        <BookingModalProvider>
+        <BookingWidgetProvider> {/* Renamed Provider */}
           <Header />
           <main>{children}</main>
           <Footer />
           <Toaster />
-          <BookingModal />
-        </BookingModalProvider>
+          <BookingFormWidget /> {/* Render the new widget */}
+          <BookingButton /> {/* Render the floating button */}
+        </BookingWidgetProvider>
       </body>
     </html>
   );

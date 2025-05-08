@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { cn } from '@/lib/utils';
-import { useBookingModal } from '@/context/BookingModalContext';
+import { useBookingWidget } from '@/context/BookingWidgetContext'; // Updated import
 import { testimonialsPageContent, type TestimonialPageItem } from '@/content/testimonials-page-content';
 
 
@@ -23,7 +23,7 @@ export default function TestimonialsPage() {
   const [filterService, setFilterService] = useState('All');
   const [filterEventType, setFilterEventType] = useState('All');
   const [filteredTestimonials, setFilteredTestimonials] = useState<TestimonialPageItem[]>(testimonialsPageContent.testimonials);
-  const { openModal } = useBookingModal();
+  const { openWidget } = useBookingWidget(); // Updated hook usage
 
   useEffect(() => {
     let testimonials = testimonialsPageContent.testimonials;
@@ -169,7 +169,7 @@ export default function TestimonialsPage() {
             {cta.description}
           </p>
           <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-             <Button onClick={openModal} size="lg" className="button-primary-styles">
+             <Button onClick={openWidget} size="lg" className="button-primary-styles"> {/* Use openWidget */}
               {cta.button1Text}
             </Button>
             <Button size="lg" variant="outline" className="button-secondary-styles" hasShimmer>

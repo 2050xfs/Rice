@@ -1,34 +1,34 @@
-// context/BookingModalContext.tsx
+// context/BookingWidgetContext.tsx
 "use client";
 
 import type { ReactNode } from 'react';
 import { createContext, useContext, useState, useCallback } from 'react';
 
-interface BookingModalContextType {
+interface BookingWidgetContextType {
   isOpen: boolean;
-  openModal: () => void;
-  closeModal: () => void;
+  openWidget: () => void;
+  closeWidget: () => void;
 }
 
-const BookingModalContext = createContext<BookingModalContextType | undefined>(undefined);
+const BookingWidgetContext = createContext<BookingWidgetContextType | undefined>(undefined);
 
-export function BookingModalProvider({ children }: { children: ReactNode }) {
+export function BookingWidgetProvider({ children }: { children: ReactNode }) {
   const [isOpen, setIsOpen] = useState(false);
 
-  const openModal = useCallback(() => setIsOpen(true), []);
-  const closeModal = useCallback(() => setIsOpen(false), []);
+  const openWidget = useCallback(() => setIsOpen(true), []);
+  const closeWidget = useCallback(() => setIsOpen(false), []);
 
   return (
-    <BookingModalContext.Provider value={{ isOpen, openModal, closeModal }}>
+    <BookingWidgetContext.Provider value={{ isOpen, openWidget, closeWidget }}>
       {children}
-    </BookingModalContext.Provider>
+    </BookingWidgetContext.Provider>
   );
 }
 
-export function useBookingModal() {
-  const context = useContext(BookingModalContext);
+export function useBookingWidget() {
+  const context = useContext(BookingWidgetContext);
   if (context === undefined) {
-    throw new Error('useBookingModal must be used within a BookingModalProvider');
+    throw new Error('useBookingWidget must be used within a BookingWidgetProvider');
   }
   return context;
 }
