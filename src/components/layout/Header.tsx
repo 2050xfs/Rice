@@ -54,9 +54,11 @@ export default function Header() {
       return (
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button variant="ghost" className="flex items-center gap-1 text-base font-medium text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-primary px-3 py-2">
-              {item.name}
-              <ChevronDown className="h-4 w-4" />
+            <Button variant="ghost" className="text-base font-medium text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-primary px-3 py-2">
+              <span className="flex items-center gap-1">
+                {item.name}
+                <ChevronDown className="h-4 w-4" />
+              </span>
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent className="w-56 ring-1 ring-black/5">
@@ -182,3 +184,4 @@ export default function Header() {
     </header>
   );
 }
+
