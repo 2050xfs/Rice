@@ -5,9 +5,8 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
-import { Building, CalendarDays, Mail, Phone, User, MessageCircle, Send, Loader2, Camera } from 'lucide-react';
+import { CalendarDays, Mail, Phone, User, MessageCircle, Send, Loader2, Camera } from 'lucide-react';
 import { useToast } from "@/hooks/use-toast";
 import Image from 'next/image';
 import { 
@@ -18,8 +17,6 @@ interface ContactFormData {
   name: string;
   email: string;
   phone?: string;
-  company?: string;
-  subject: string;
   message: string;
   eventDate?: string;
 }
@@ -28,8 +25,6 @@ const initialContactFormData: ContactFormData = {
   name: '',
   email: '',
   phone: '',
-  company: '',
-  subject: '',
   message: '',
   eventDate: '',
 };
@@ -81,10 +76,6 @@ export default function ContactPage() {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
   
-  const handleSelectChange = (value: string) => {
-    setFormData(prev => ({ ...prev, subject: value }));
-  };
-
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -186,31 +177,12 @@ export default function ContactPage() {
                   <Input type="tel" name="phone" id="phone" autoComplete="tel" value={formData.phone} onChange={handleChange} className="input-styles mt-1" />
                 </div>
                  <div>
-                  <Label htmlFor="company" className="label-styles flex items-center"><Building className="w-4 h-4 mr-2 opacity-70" /> Company (If applicable)</Label>
-                  <Input type="text" name="company" id="company" autoComplete="organization" value={formData.company} onChange={handleChange} className="input-styles mt-1" />
-                </div>
-                <div>
-                  <Label htmlFor="subject" className="label-styles flex items-center"><MessageCircle className="w-4 h-4 mr-2 opacity-70" /> Subject</Label>
-                   <Select name="subject" value={formData.subject} onValueChange={handleSelectChange}>
-                    <SelectTrigger className="select-styles mt-1"><SelectValue placeholder="Select a subject" /></SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="Booking Inquiry">Booking Inquiry</SelectItem>
-                      <SelectItem value="DJ Services Question">DJ Services Question</SelectItem>
-                      <SelectItem value="Photo Booth Question">Photo Booth Question</SelectItem>
-                      <SelectItem value="VIBO App Support">VIBO App Support</SelectItem>
-                      <SelectItem value="Partnership">Partnership Opportunity</SelectItem>
-                      <SelectItem value="General Feedback">General Feedback/Question</SelectItem>
-                      <SelectItem value="Other">Other</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-                 <div>
                   <Label htmlFor="eventDate" className="label-styles flex items-center"><CalendarDays className="w-4 h-4 mr-2 opacity-70" /> Potential Event Date (Optional)</Label>
                   <Input type="date" name="eventDate" id="eventDate" value={formData.eventDate ?? ''} onChange={handleChange} className="input-styles mt-1" />
                 </div>
                 <div>
                   <Label htmlFor="message" className="label-styles flex items-center"><MessageCircle className="w-4 h-4 mr-2 opacity-70" /> Message</Label>
-                  <Textarea name="message" id="message" rows={4} value={formData.message} onChange={handleChange} className="input-styles mt-1 min-h-[120px]" required />
+                  <Textarea name="message" id="message" rows={4} value={formData.message} onChange={handleChange} className="input-styles mt-1 min-h-[120px]" required placeholder="Tell us about your event, what services you're interested in, and any specific questions you have."/>
                 </div>
                 <div>
                   <Button type="submit" disabled={isSubmitting} className="w-full button-primary-styles py-3 text-base">
@@ -261,3 +233,4 @@ export default function ContactPage() {
     </div>
   );
 }
+
