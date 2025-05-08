@@ -7,6 +7,10 @@ import { Button } from '@/components/ui/button';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Card, CardContent } from '@/components/ui/card';
 import { cn } from '@/lib/utils';
+import { 
+  testimonialSarahTomImg, testimonialTechCorpImg, testimonialDavidLisaImg 
+} from '@/lib/image-urls';
+
 
 interface Testimonial {
   id: string;
@@ -30,7 +34,7 @@ const allTestimonials: Testimonial[] = [
     serviceUsed: 'DJ',
     rating: 5,
     quote: "Rice Entertainment made our wedding reception unforgettable! The DJ was phenomenal, kept everyone dancing all night. VIBO app was a lifesaver for planning.",
-    image: 'https://picsum.photos/100/100?random=5',
+    image: testimonialSarahTomImg,
     imageHint: "happy couple",
     isFeatured: true,
   },
@@ -42,7 +46,7 @@ const allTestimonials: Testimonial[] = [
     serviceUsed: 'Photo Booth',
     rating: 5,
     quote: "The 360 Photo Booth was a massive hit at our annual corporate event. Professional setup and super fun for all employees. Highly recommend!",
-    image: 'https://picsum.photos/100/100?random=6',
+    image: testimonialTechCorpImg,
     imageHint: "corporate event",
   },
   {
@@ -62,7 +66,7 @@ const allTestimonials: Testimonial[] = [
     serviceUsed: 'Both',
     rating: 5,
     quote: "Absolutely fantastic! The DJ understood our music taste perfectly, and the Luxx Booth photos are stunning. Made our special day even more magical.",
-    image: 'https://picsum.photos/100/100?random=7',
+    image: testimonialDavidLisaImg,
     imageHint: "wedding guests",
     isFeatured: true,
   },
@@ -148,7 +152,7 @@ export default function TestimonialsSection() {
               "card-testimonial-styles", 
               testimonial.isFeatured ? "bg-gradient-to-br from-indigo-700 to-indigo-600 dark:from-indigo-600 dark:to-indigo-500 shadow-xl ring-2 ring-indigo-400" : "bg-gray-800 dark:bg-gray-800"
             )}>
-              <CardContent className="p-0"> {/* Adjusted padding here for better control */}
+              <CardContent className="p-6"> {/* Adjusted padding here */}
                 <div className="flex items-center gap-x-4 mb-4">
                   {testimonial.image && (
                     <Image

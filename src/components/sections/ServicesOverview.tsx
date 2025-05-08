@@ -6,13 +6,14 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Disc3, Camera, Sparkles, ArrowRight } from 'lucide-react';
 import { useBookingModal } from '@/context/BookingModalContext';
+import { serviceOverviewDjImg, serviceOverviewPhotoBoothImg, serviceOverviewViboImg } from '@/lib/image-urls';
 
 const services = [
   {
     icon: Disc3,
     title: 'Dynamic DJ Services',
     description: 'Our professional DJs curate the perfect soundtrack for your event, ensuring an electrifying atmosphere and a packed dance floor.',
-    image: 'https://picsum.photos/600/400?random=2',
+    image: serviceOverviewDjImg,
     imageHint: "DJ mixing",
     link: '/services/dj-services',
   },
@@ -20,7 +21,7 @@ const services = [
     icon: Camera,
     title: 'Interactive Photo Booths',
     description: 'Capture fun memories with our state-of-the-art photo booths, including 360, Luxx, and Social Booths with custom props and backdrops.',
-    image: 'https://picsum.photos/600/400?random=3',
+    image: serviceOverviewPhotoBoothImg,
     imageHint: "photo booth",
     link: '/services/photo-booths',
   },
@@ -28,7 +29,7 @@ const services = [
     icon: Sparkles,
     title: 'VIBO Music Planning',
     description: 'Seamlessly plan your event\'s music with the intuitive VIBO app. Collaborate with your DJ and make requests with ease.',
-    image: 'https://picsum.photos/600/400?random=4',
+    image: serviceOverviewViboImg,
     imageHint: "music app",
     link: '/vibo-app',
   },

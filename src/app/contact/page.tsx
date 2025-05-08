@@ -9,6 +9,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Building, CalendarDays, Mail, MapPin, Phone, User, MessageCircle, Send, Loader2 } from 'lucide-react';
 import { useToast } from "@/hooks/use-toast";
 import Image from 'next/image';
+import { contactPageHeroBg, contactPageMapPlaceholder } from '@/lib/image-urls';
 
 interface ContactFormData {
   name: string;
@@ -73,12 +74,13 @@ export default function ContactPage() {
       <div className="relative bg-indigo-700">
         <div className="absolute inset-0">
           <Image
-            src="https://picsum.photos/1920/600?random=60"
+            src={contactPageHeroBg}
             alt="Abstract contact background"
             data-ai-hint="contact abstract pattern"
             layout="fill"
             objectFit="cover"
             className="opacity-20"
+            priority
           />
         </div>
         <div className="relative max-w-7xl mx-auto py-24 px-6 sm:py-32 lg:px-8 text-center">
@@ -129,7 +131,7 @@ export default function ContactPage() {
                   <div className="aspect-w-16 aspect-h-9 rounded-lg overflow-hidden bg-gray-200 dark:bg-gray-700 shadow-md">
                     {/* Replace with actual map embed or next/image if static */}
                     <Image 
-                      src="https://picsum.photos/600/350?random=61" 
+                      src={contactPageMapPlaceholder} 
                       alt="Map placeholder showing office location" 
                       data-ai-hint="city map location"
                       layout="fill" 

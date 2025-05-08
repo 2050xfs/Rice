@@ -5,6 +5,11 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { CheckCircle, Music, Edit3, Users, Share2, MessageSquare, ListChecks, Smile } from 'lucide-react';
 import { useBookingModal } from '@/context/BookingModalContext';
+import { 
+  viboAppHeroBg, viboHowItWorksStep1Img, viboHowItWorksStep2Img, viboHowItWorksStep3Img,
+  viboBenefitsSectionImg
+} from '@/lib/image-urls';
+
 
 const viboFeatures = [
   {
@@ -58,19 +63,20 @@ const viboBenefits = [
 ];
 
 export default function ViboAppPage() {
-  const { openModal } = useBookingModal();
+  const { openModal } } = useBookingModal();
 
   return (
     <div className="bg-gray-50 dark:bg-gray-950">
       {/* Hero Section */}
       <div className="relative isolate overflow-hidden pt-14 lg:pt-20 bg-gradient-to-br from-indigo-700 via-purple-700 to-pink-600">
         <Image
-          src="https://picsum.photos/1920/800?random=40"
+          src={viboAppHeroBg}
           alt="Abstract background representing music and technology"
           data-ai-hint="music technology abstract"
           layout="fill"
           objectFit="cover"
           className="absolute inset-0 -z-10 h-full w-full object-cover opacity-30"
+          priority
         />
         <div className="max-w-7xl mx-auto px-6 lg:px-8 py-24 sm:py-32 text-center">
           <div className="inline-flex items-center justify-center p-3 bg-white/20 rounded-full mb-6 shadow-lg">
@@ -101,9 +107,9 @@ export default function ViboAppPage() {
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
-              { step: 1, title: 'Access VIBO', description: 'Once you book our DJ services, you\'ll receive exclusive access to your personalized VIBO event planning portal.', image: 'https://picsum.photos/600/400?random=41', imageHint: 'app login screen' },
-              { step: 2, title: 'Curate Playlists', description: 'Browse songs, add to must-play/do-not-play lists, and organize music for different parts of your event.', image: 'https://picsum.photos/600/400?random=42', imageHint: 'playlist creation interface' },
-              { step: 3, title: 'Collaborate & Finalize', description: 'Your DJ reviews your plan, offers suggestions, and ensures everything is set for an amazing event.', image: 'https://picsum.photos/600/400?random=43', imageHint: 'DJ collaboration chat' },
+              { step: 1, title: 'Access VIBO', description: 'Once you book our DJ services, you\'ll receive exclusive access to your personalized VIBO event planning portal.', image: viboHowItWorksStep1Img, imageHint: 'app login screen' },
+              { step: 2, title: 'Curate Playlists', description: 'Browse songs, add to must-play/do-not-play lists, and organize music for different parts of your event.', image: viboHowItWorksStep2Img, imageHint: 'playlist creation interface' },
+              { step: 3, title: 'Collaborate & Finalize', description: 'Your DJ reviews your plan, offers suggestions, and ensures everything is set for an amazing event.', image: viboHowItWorksStep3Img, imageHint: 'DJ collaboration chat' },
             ].map(item => (
               <Card key={item.step} className="card-feature-styles bg-white dark:bg-gray-900 shadow-lg hover:shadow-xl">
                  <div className="relative h-48 w-full overflow-hidden rounded-t-lg">
@@ -176,7 +182,7 @@ export default function ViboAppPage() {
             </div>
             <div className="mt-12 lg:mt-0 relative">
               <Image
-                src="https://picsum.photos/800/900?random=44"
+                src={viboBenefitsSectionImg}
                 alt="Mobile and tablet screens showing VIBO app interface"
                 data-ai-hint="app interface mobile tablet"
                 width={800}

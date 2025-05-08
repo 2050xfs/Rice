@@ -6,6 +6,11 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { CheckCircle, Zap, Gem, Users, SlidersHorizontal } from 'lucide-react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useBookingModal } from '@/context/BookingModalContext';
+import {
+  photoBoothsHeroBg, booth360MainImg, booth360Gallery1Img, booth360Gallery2Img, booth360Gallery3Img,
+  boothLuxxMainImg, boothLuxxGallery1Img, boothLuxxGallery2Img, boothLuxxGallery3Img,
+  boothSocialMainImg, boothSocialGallery1Img, boothSocialGallery2Img, boothSocialGallery3Img
+} from '@/lib/image-urls';
 
 const boothTypes = [
   {
@@ -23,12 +28,12 @@ const boothTypes = [
     ],
     dimensions: 'Platform: 3-4 ft diameter, Requires approx. 10x10 ft space',
     outputs: ['MP4 Video Files', 'GIFs'],
-    image: 'https://picsum.photos/800/600?random=10',
+    image: booth360MainImg,
     imageHint: '360 photo booth action',
     gallery: [
-      { src: 'https://picsum.photos/400/300?random=11', alt: '360 Booth Output Example 1', hint: "video booth spin" },
-      { src: 'https://picsum.photos/400/300?random=12', alt: '360 Booth Setup Example', hint: "event setup" },
-      { src: 'https://picsum.photos/400/300?random=13', alt: 'Guests enjoying 360 Booth', hint: "party fun" },
+      { src: booth360Gallery1Img, alt: '360 Booth Output Example 1', hint: "video booth spin" },
+      { src: booth360Gallery2Img, alt: '360 Booth Setup Example', hint: "event setup" },
+      { src: booth360Gallery3Img, alt: 'Guests enjoying 360 Booth', hint: "party fun" },
     ],
   },
   {
@@ -46,12 +51,12 @@ const boothTypes = [
     ],
     dimensions: 'Requires approx. 8x8 ft space',
     outputs: ['High-Quality Prints (2x6, 4x6)', 'Digital Photos'],
-    image: 'https://picsum.photos/800/600?random=14',
+    image: boothLuxxMainImg,
     imageHint: 'luxury photo booth',
     gallery: [
-      { src: 'https://picsum.photos/400/300?random=15', alt: 'Luxx Booth Glam Shot', hint: "glamour portrait" },
-      { src: 'https://picsum.photos/400/300?random=16', alt: 'Luxx Booth Print Example', hint: "photo strip" },
-      { src: 'https://picsum.photos/400/300?random=17', alt: 'Luxx Booth Setup Detail', hint: "elegant setup" },
+      { src: boothLuxxGallery1Img, alt: 'Luxx Booth Glam Shot', hint: "glamour portrait" },
+      { src: boothLuxxGallery2Img, alt: 'Luxx Booth Print Example', hint: "photo strip" },
+      { src: boothLuxxGallery3Img, alt: 'Luxx Booth Setup Detail', hint: "elegant setup" },
     ],
   },
   {
@@ -69,12 +74,12 @@ const boothTypes = [
     ],
     dimensions: 'Requires approx. 6x6 ft space',
     outputs: ['Digital Photos', 'GIFs', 'Boomerangs'],
-    image: 'https://picsum.photos/800/600?random=18',
+    image: boothSocialMainImg,
     imageHint: 'social media photo booth',
     gallery: [
-      { src: 'https://picsum.photos/400/300?random=19', alt: 'Social Booth GIF Example', hint: "animated gif" },
-      { src: 'https://picsum.photos/400/300?random=20', alt: 'Guests with Digital Props', hint: "digital props" },
-      { src: 'https://picsum.photos/400/300?random=21', alt: 'Social Booth Sharing Interface', hint: "sharing screen" },
+      { src: boothSocialGallery1Img, alt: 'Social Booth GIF Example', hint: "animated gif" },
+      { src: boothSocialGallery2Img, alt: 'Guests with Digital Props', hint: "digital props" },
+      { src: boothSocialGallery3Img, alt: 'Social Booth Sharing Interface', hint: "sharing screen" },
     ],
   },
 ];
@@ -96,12 +101,13 @@ export default function PhotoBoothsPage() {
       {/* Hero Section */}
       <div className="relative isolate overflow-hidden pt-14 lg:pt-20">
         <Image
-          src="https://picsum.photos/1920/1080?random=22"
+          src={photoBoothsHeroBg}
           alt="Array of fun photo booth images"
           data-ai-hint="photo booth collage"
           layout="fill"
           objectFit="cover"
           className="absolute inset-0 -z-10 h-full w-full object-cover"
+          priority
         />
         <div className="absolute inset-0 -z-10 hero-overlay-gradient from-black/80 via-black/60 to-black/30" />
         <div className="max-w-7xl mx-auto px-6 lg:px-8 py-24 sm:py-32 text-center">

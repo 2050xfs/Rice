@@ -15,6 +15,8 @@ import {
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { cn } from '@/lib/utils';
 import { useBookingModal } from '@/context/BookingModalContext';
+import { brandLogoUrl } from '@/lib/image-urls';
+
 
 interface NavItem {
   name: string;
@@ -49,10 +51,15 @@ const navItems: NavItem[] = [
 
 const SiteLogo = () => (
   <Link href="/" className="flex items-center gap-2">
-    {/* Placeholder for Rice Entertainment Logo. Replace with actual SVG or Image */}
-    <svg width="32" height="32" viewBox="0 0 100 100" fill="currentColor" className="text-primary">
-      <path d="M50 5C25.167 5 5 25.167 5 50s20.167 45 45 45 45-20.167 45-45S74.833 5 50 5zm0 12.5c17.938 0 32.5 14.563 32.5 32.5S67.938 82.5 50 82.5 17.5 67.938 17.5 50 32.063 17.5 50 17.5zm-7.812 18.75l-4.688 12.5 12.5 4.688 4.688-12.5-12.5-4.688zm15.624 0l-4.688 12.5 12.5 4.688 4.688-12.5-12.5-4.688zM50 53.125c-4.327 0-7.813 3.486-7.813 7.812s3.486 7.813 7.813 7.813 7.813-3.486 7.813-7.813-3.486-7.812-7.813-7.812z"/>
-    </svg>
+    <Image 
+      src={brandLogoUrl} 
+      alt="Rice Entertainment Logo" 
+      data-ai-hint="brand logo"
+      width={32} 
+      height={32} 
+      className="text-primary" 
+      priority 
+    />
     <span className="text-2xl font-bold text-gray-900 dark:text-white">Rice<span className="text-primary">Ent</span></span>
   </Link>
 );
@@ -204,3 +211,4 @@ export default function Header() {
     </header>
   );
 }
+

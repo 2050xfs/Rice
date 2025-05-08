@@ -8,6 +8,11 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { cn } from '@/lib/utils';
 import { useBookingModal } from '@/context/BookingModalContext';
+import { 
+  testimonialsHeroBg, testimonialJessicaMichaelImg, testimonialInnovateSolutionsImg, 
+  testimonialMarkChenImg, testimonialGreenTechImg 
+} from '@/lib/image-urls';
+
 
 interface Testimonial {
   id: string;
@@ -33,7 +38,7 @@ const allTestimonials: Testimonial[] = [
     rating: 5,
     quote: "Rice Entertainment was the BEST decision for our wedding! DJ RICE kept the dance floor packed, and the Luxx Photo Booth was a huge hit. The VIBO app made music planning so easy!",
     fullStory: "From our first consultation to the last song of the night, Rice Entertainment exceeded all our expectations. DJ RICE was incredibly intuitive, playing the perfect mix of songs that catered to all our guests. The VIBO app was a fantastic tool that allowed us to meticulously plan our music and make special requests. The Luxx Photo Booth added such a fun and glamorous element; our guests are still talking about their photos! Professional, responsive, and truly talented – we can't recommend them enough.",
-    image: 'https://picsum.photos/120/120?random=50',
+    image: testimonialJessicaMichaelImg,
     imageHint: "bride groom",
     isFeatured: true,
   },
@@ -45,7 +50,7 @@ const allTestimonials: Testimonial[] = [
     serviceUsed: 'DJ',
     rating: 5,
     quote: "Our annual holiday party was a massive success, largely thanks to the fantastic DJ services from Rice Entertainment. Professional, engaging, and perfectly curated music.",
-    image: 'https://picsum.photos/120/120?random=51',
+    image: testimonialInnovateSolutionsImg,
     imageHint: "corporate team",
   },
   {
@@ -66,7 +71,7 @@ const allTestimonials: Testimonial[] = [
     serviceUsed: 'DJ',
     rating: 5,
     quote: "DJ Nova was incredible for our multicultural wedding. She blended different genres seamlessly and everyone had a fantastic time. The VIBO app was also very user-friendly.",
-    image: 'https://picsum.photos/120/120?random=52',
+    image: testimonialMarkChenImg,
     imageHint: "wedding party",
     isFeatured: true,
   },
@@ -87,7 +92,7 @@ const allTestimonials: Testimonial[] = [
     serviceUsed: 'Photo Booth',
     rating: 5,
     quote: "The branded Social Photo Booth was perfect for our conference. Great for engagement and getting our hashtag out there. Smooth process from booking to execution.",
-    image: 'https://picsum.photos/120/120?random=53',
+    image: testimonialGreenTechImg,
     imageHint: "conference attendees"
   },
 ];
@@ -104,7 +109,7 @@ export default function TestimonialsPage() {
   const [filterService, setFilterService] = useState('All');
   const [filterEventType, setFilterEventType] = useState('All');
   const [filteredTestimonials, setFilteredTestimonials] = useState<Testimonial[]>(allTestimonials);
-  const { openModal } = useBookingModal();
+  const { openModal } } from '@/context/BookingModalContext';
 
   useEffect(() => {
     let testimonials = allTestimonials;
@@ -127,12 +132,13 @@ export default function TestimonialsPage() {
       <div className="relative bg-gradient-to-r from-indigo-600 to-purple-600 py-20 sm:py-28 lg:py-32">
         <div className="absolute inset-0 overflow-hidden">
           <Image
-            src="https://picsum.photos/1920/500?random=55"
+            src={testimonialsHeroBg}
             alt="Happy people at an event"
             data-ai-hint="event crowd celebration"
             layout="fill"
             objectFit="cover"
             className="opacity-30"
+            priority
           />
         </div>
         <div className="relative max-w-7xl mx-auto px-6 lg:px-8 text-center">

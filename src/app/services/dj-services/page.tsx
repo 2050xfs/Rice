@@ -6,6 +6,11 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/com
 import { CheckCircle, Disc3, Zap, Music, Users, CalendarCheck2, Headphones } from 'lucide-react';
 import Link from 'next/link';
 import { useBookingModal } from '@/context/BookingModalContext';
+import { 
+  djServicesHeroBg, djPackageEssentialBeatsImg, djPackagePremiumSoundImg, djPackageUltimateExperienceImg,
+  djProfileDjRiceImg, djProfileDjNovaImg, viboAppDjPageImg
+} from '@/lib/image-urls';
+
 
 const djPackages = [
   {
@@ -19,7 +24,7 @@ const djPackages = [
       'Basic dance floor lighting',
       'VIBO App for music planning',
     ],
-    image: 'https://picsum.photos/600/400?random=30',
+    image: djPackageEssentialBeatsImg,
     imageHint: "DJ setup small event"
   },
   {
@@ -34,7 +39,7 @@ const djPackages = [
       'Wireless microphone for speeches',
       'VIBO App Pro access',
     ],
-    image: 'https://picsum.photos/600/400?random=31',
+    image: djPackagePremiumSoundImg,
     imageHint: "wedding DJ lights"
   },
   {
@@ -50,7 +55,7 @@ const djPackages = [
       'Ceremony sound system (if applicable)',
       'VIBO App Premium & personal consultation',
     ],
-    image: 'https://picsum.photos/600/400?random=32',
+    image: djPackageUltimateExperienceImg,
     imageHint: "large event DJ concert"
   },
 ];
@@ -60,14 +65,14 @@ const djProfiles = [
     name: 'DJ RICE',
     specialties: ['Weddings', 'Corporate', 'Top 40', 'Hip Hop'],
     bio: 'With over 10 years of experience, DJ RICE knows how to read a crowd and keep the energy high. His seamless transitions and diverse music knowledge make him a versatile choice for any event.',
-    image: 'https://picsum.photos/300/300?random=33',
+    image: djProfileDjRiceImg,
     imageHint: "DJ portrait"
   },
   {
     name: 'DJ Nova',
     specialties: ['Electronic Dance Music', 'House', 'Private Parties', 'Latin'],
     bio: 'DJ Nova brings a fresh, energetic vibe to every event. Specializing in modern beats and electronic music, she creates an unforgettable party atmosphere.',
-    image: 'https://picsum.photos/300/300?random=34',
+    image: djProfileDjNovaImg,
     imageHint: "female DJ portrait"
   },
 ];
@@ -80,12 +85,13 @@ export default function DjServicesPage() {
       {/* Hero Section */}
       <div className="relative isolate overflow-hidden pt-14 lg:pt-20">
         <Image
-          src="https://picsum.photos/1920/1080?random=35"
+          src={djServicesHeroBg}
           alt="DJ mixing console with vibrant lights"
           data-ai-hint="DJ console lights"
           layout="fill"
           objectFit="cover"
           className="absolute inset-0 -z-10 h-full w-full object-cover"
+          priority
         />
         <div className="absolute inset-0 -z-10 hero-overlay-gradient from-black/80 via-black/60 to-black/30" />
         <div className="max-w-7xl mx-auto px-6 lg:px-8 py-24 sm:py-32 text-center">
@@ -179,7 +185,7 @@ export default function DjServicesPage() {
           </div>
           <div className="mt-12 lg:mt-0">
             <Image
-              src="https://picsum.photos/800/700?random=36"
+              src={viboAppDjPageImg}
               alt="VIBO App screenshot on a tablet"
               data-ai-hint="music planning app tablet"
               width={800}

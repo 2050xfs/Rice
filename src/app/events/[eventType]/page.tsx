@@ -7,6 +7,13 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { CheckCircle, Sparkles, Gift, Users, Music, Camera } from 'lucide-react';
 import Link from 'next/link';
 import { useBookingModal } from '@/context/BookingModalContext';
+import { 
+  weddingsHeroImage, weddingsGalleryImage1, weddingsGalleryImage2, weddingsGalleryImage3,
+  corporateHeroImage, corporateGalleryImage1, corporateGalleryImage2, corporateGalleryImage3,
+  privatePartiesHeroImage, privatePartiesGalleryImage1, privatePartiesGalleryImage2, privatePartiesGalleryImage3,
+  defaultEventHeroImage
+} from '@/lib/image-urls';
+
 
 interface EventTypeDetails {
   title: string;
@@ -26,7 +33,7 @@ interface EventTypeDetails {
 const eventDetailsMap: Record<string, EventTypeDetails> = {
   weddings: {
     title: "Unforgettable Weddings",
-    heroImage: "https://picsum.photos/1920/1080?random=70",
+    heroImage: weddingsHeroImage,
     heroImageHint: "wedding reception elegant",
     tagline: "Crafting Your Dream Wedding Experience",
     description: "Your wedding day is one of the most important days of your life. Rice Entertainment specializes in creating magical wedding experiences with personalized DJ services, elegant photo booths, and seamless coordination. Let us help you make memories that last a lifetime.",
@@ -37,15 +44,15 @@ const eventDetailsMap: Record<string, EventTypeDetails> = {
       { icon: Users, title: "Guest Engagement", description: "Interactive elements to keep your guests involved and the energy high throughout the celebration." },
     ],
     gallery: [
-        { src: 'https://picsum.photos/600/400?random=71', alt: 'Bride and groom first dance', hint: 'wedding first dance' },
-        { src: 'https://picsum.photos/600/400?random=72', alt: 'Wedding guests dancing', hint: 'party dance floor' },
-        { src: 'https://picsum.photos/600/400?random=73', alt: 'Elegant wedding photo booth setup', hint: 'photo booth wedding' },
+        { src: weddingsGalleryImage1, alt: 'Bride and groom first dance', hint: 'wedding first dance' },
+        { src: weddingsGalleryImage2, alt: 'Wedding guests dancing', hint: 'party dance floor' },
+        { src: weddingsGalleryImage3, alt: 'Elegant wedding photo booth setup', hint: 'photo booth wedding' },
     ],
     ctaText: "Plan Your Perfect Wedding Day"
   },
   corporate: {
     title: "Professional Corporate Events",
-    heroImage: "https://picsum.photos/1920/1080?random=74",
+    heroImage: corporateHeroImage,
     heroImageHint: "corporate event conference",
     tagline: "Elevating Your Brand and Engaging Your Audience",
     description: "From holiday parties and awards galas to conferences and brand activations, Rice Entertainment provides polished and professional DJ and photo booth services that align with your corporate image and objectives.",
@@ -56,15 +63,15 @@ const eventDetailsMap: Record<string, EventTypeDetails> = {
       { icon: Sparkles, title: "Seamless AV & Presentation Support", description: "Reliable audio-visual solutions for presentations and announcements." },
     ],
      gallery: [
-        { src: 'https://picsum.photos/600/400?random=75', alt: 'Corporate event presentation', hint: 'business presentation stage' },
-        { src: 'https://picsum.photos/600/400?random=76', alt: 'Networking at a corporate function', hint: 'business networking' },
-        { src: 'https://picsum.photos/600/400?random=77', alt: 'Branded photo booth at a trade show', hint: 'corporate branding booth' },
+        { src: corporateGalleryImage1, alt: 'Corporate event presentation', hint: 'business presentation stage' },
+        { src: corporateGalleryImage2, alt: 'Networking at a corporate function', hint: 'business networking' },
+        { src: corporateGalleryImage3, alt: 'Branded photo booth at a trade show', hint: 'corporate branding booth' },
     ],
     ctaText: "Elevate Your Next Corporate Event"
   },
   'private-parties': {
     title: "Vibrant Private Parties",
-    heroImage: "https://picsum.photos/1920/1080?random=78",
+    heroImage: privatePartiesHeroImage,
     heroImageHint: "birthday party celebration",
     tagline: "Creating Unforgettable Celebrations, Big or Small",
     description: "Birthdays, anniversaries, graduations, or just a get-together – Rice Entertainment brings the fun! Our versatile DJs and exciting photo booths can turn any private party into a memorable bash.",
@@ -75,9 +82,9 @@ const eventDetailsMap: Record<string, EventTypeDetails> = {
       { icon: Sparkles, title: "Customizable Packages", description: "Flexible options to fit the scale and budget of your private celebration." },
     ],
     gallery: [
-        { src: 'https://picsum.photos/600/400?random=79', alt: 'Guests enjoying a birthday party', hint: 'party friends fun' },
-        { src: 'https://picsum.photos/600/400?random=80', alt: 'Colorful private party lighting', hint: 'event lighting design' },
-        { src: 'https://picsum.photos/600/400?random=81', alt: 'Social photo booth at a graduation party', hint: 'graduation party fun' },
+        { src: privatePartiesGalleryImage1, alt: 'Guests enjoying a birthday party', hint: 'party friends fun' },
+        { src: privatePartiesGalleryImage2, alt: 'Colorful private party lighting', hint: 'event lighting design' },
+        { src: privatePartiesGalleryImage3, alt: 'Social photo booth at a graduation party', hint: 'graduation party fun' },
     ],
     ctaText: "Make Your Private Party Epic"
   },
@@ -85,7 +92,7 @@ const eventDetailsMap: Record<string, EventTypeDetails> = {
 
 const DefaultEventDetails: EventTypeDetails = {
   title: "Custom Event Solutions",
-  heroImage: "https://picsum.photos/1920/1080?random=82",
+  heroImage: defaultEventHeroImage,
   heroImageHint: "versatile event setup",
   tagline: "Entertainment Tailored to Your Unique Event",
   description: "Have a unique event in mind? Rice Entertainment provides flexible and customizable DJ and photo booth services for a wide range of occasions. Contact us to discuss your specific needs.",

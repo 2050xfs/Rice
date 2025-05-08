@@ -3,6 +3,8 @@
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { useBookingModal } from '@/context/BookingModalContext';
+import Image from 'next/image';
+import { callToActionAppScreenshotImg } from '@/lib/image-urls';
 
 export default function CallToAction() {
   const { openModal } = useBookingModal();
@@ -43,9 +45,9 @@ export default function CallToAction() {
             </div>
           </div>
           <div className="relative mt-16 h-80 lg:mt-8">
-            <img
+            <Image
               className="absolute left-0 top-0 w-[57rem] max-w-none rounded-md bg-white/5 ring-1 ring-white/10"
-              src="https://picsum.photos/1152/768?random=8"
+              src={callToActionAppScreenshotImg}
               alt="App screenshot showing event planning interface"
               data-ai-hint="event planning app"
               width={1824}
@@ -57,3 +59,4 @@ export default function CallToAction() {
     </div>
   );
 }
+
