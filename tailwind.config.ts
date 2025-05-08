@@ -115,8 +115,8 @@ export default {
   },
   plugins: [
     require("tailwindcss-animate"),
-    require('@tailwindcss/typography'),
-    require('@tailwindcss/forms'),
-    require('@tailwindcss/aspect-ratio'),
+    // require('@tailwindcss/typography'), // Ensure this is installed or remove
+    // require('@tailwindcss/forms'), // Ensure this is installed or remove
+    // require('@tailwindcss/aspect-ratio'), // Ensure this is installed or remove
   ],
 } satisfies Config;
