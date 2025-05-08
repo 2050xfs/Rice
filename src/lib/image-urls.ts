@@ -79,12 +79,13 @@ export const testimonialSarahOld = "https://storage.googleapis.com/msgsndr/iAR0s
 export const testimonialMichaelOld = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/681c2ff3ec114063105f6e56.jpeg";
 
 
-// VIBO App Page
+// VIBO App Page & Highlight Section
 export const viboAppHeroBg = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/placeholder_random_40.jpeg"; // Placeholder
 export const viboHowItWorksStep1Img = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/placeholder_random_41.jpeg"; // Placeholder
-export const viboHowItWorksStep2Img = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/placeholder_random_42.jpeg"; // Placeholder
-export const viboHowItWorksStep3Img = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/placeholder_random_43.jpeg"; // Placeholder
-export const viboBenefitsSectionImg = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/placeholder_random_44.jpeg"; // Placeholder
+export const viboHowItWorksStep2Img = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/music_selection_interface.png"; // Updated
+export const viboHowItWorksStep3Img = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/music_planning_timeline.png"; // Updated
+export const viboBenefitsSectionImg = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/vibo_DJ_planning_app_side_b....png"; // Updated
+export const viboAppHighlightInterfaceImg = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/hero-phone.png"; // Updated
 
 // CallToAction Section
 export const callToActionAppScreenshotImg = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/placeholder_random_8.jpeg"; // Placeholder
@@ -92,10 +93,7 @@ export const callToActionAppScreenshotImg = "https://storage.googleapis.com/msgs
 // ServicesOverview Section
 export const serviceOverviewDjImg = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/placeholder_random_2.jpeg"; // Placeholder
 export const serviceOverviewPhotoBoothImg = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/placeholder_random_3.jpeg"; // Placeholder
-export const serviceOverviewViboImg = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/placeholder_random_4.jpeg"; // Placeholder
-
-// ViboAppHighlight Section
-export const viboAppHighlightInterfaceImg = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/placeholder_random_9.jpeg"; // Placeholder
+export const serviceOverviewViboImg = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/hero-phone.png"; // Updated
 
 // About Page Images
 export const aboutHeroImage = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/placeholder_random_90.jpeg"; // Placeholder

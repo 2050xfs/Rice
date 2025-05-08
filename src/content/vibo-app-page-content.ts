@@ -1,7 +1,7 @@
 // src/content/vibo-app-page-content.ts
 import type { LucideIcon } from 'lucide-react';
-import { CheckCircle, Music, Edit3, Users, Share2, MessageSquare, ListChecks, Smile } from 'lucide-react';
-import { 
+import { CheckCircle, Music, Edit3, Users, Share2, MessageSquare, ListChecks, Smile, CalendarCheck2 } from 'lucide-react'; // Added CalendarCheck2
+import {
   viboAppHeroBg, viboHowItWorksStep1Img, viboHowItWorksStep2Img, viboHowItWorksStep3Img,
   viboBenefitsSectionImg
 } from '@/lib/image-urls';
@@ -31,18 +31,18 @@ export const viboAppPageContent = {
     icon: Music,
     title: "VIBO: Your Personal Event Music Planner",
     description: "Take full control of your event's soundtrack with VIBO, our exclusive, easy-to-use music planning app. Craft the perfect atmosphere for every moment.",
-    image: viboAppHeroBg,
+    image: viboAppHeroBg, // Using placeholder, could use vibomusoc_planning_app_group... if better
     imageAlt: "Abstract background representing music and technology",
     imageHint: "music technology abstract",
     ctaButtonText: "Book Services & Get VIBO Access",
   },
   howItWorks: {
     label: "Simple & Powerful",
-    title: "How VIBO Elevates Your Music Planning",
+    title: "Experience the Vibo DJ App", // Updated Title
     steps: [
-      { step: 1, title: 'Access VIBO', description: 'Once you book our DJ services, you\'ll receive exclusive access to your personalized VIBO event planning portal.', image: viboHowItWorksStep1Img, imageHint: 'app login screen' },
-      { step: 2, title: 'Curate Playlists', description: 'Browse songs, add to must-play/do-not-play lists, and organize music for different parts of your event.', image: viboHowItWorksStep2Img, imageHint: 'playlist creation interface' },
-      { step: 3, title: 'Collaborate & Finalize', description: 'Your DJ reviews your plan, offers suggestions, and ensures everything is set for an amazing event.', image: viboHowItWorksStep3Img, imageHint: 'DJ collaboration chat' },
+      { step: 1, title: 'Music Selection', description: 'Browse and organize your event playlist with ease.', image: viboHowItWorksStep2Img, imageHint: 'music selection interface' }, // Using music_selection image
+      { step: 2, title: 'Timeline Planning', description: 'Keep your event perfectly timed and organized.', image: viboHowItWorksStep3Img, imageHint: 'music planning timeline' }, // Using music_planning_timeline image
+      { step: 3, title: 'Collaborative Tools', description: 'Work directly with your DJ to check the perfect soundtrack.', image: viboHowItWorksStep1Img, imageHint: 'DJ collaboration chat' }, // Using placeholder for collab
     ] as ViboStep[],
   },
   features: {
@@ -54,21 +54,21 @@ export const viboAppPageContent = {
       { icon: Edit3, title: 'Personalize Your Requests', description: 'Add "Must Play", "Play If Possible", and "Do Not Play" lists. Leave specific notes for your DJ on certain songs or moments.' },
       { icon: Users, title: 'Guest Song Requests (Optional)', description: 'Allow your guests to suggest songs before the event, giving you insight into their preferences (you have final approval).' },
       { icon: Share2, title: 'Seamless DJ Collaboration', description: 'Your DJ gets direct access to your VIBO plan, ensuring they understand your vision perfectly. No miscommunications!' },
-      { icon: MessageSquare, title: 'Timeline Integration', description: 'Coordinate special songs with key moments of your event timeline, like first dance, cake cutting, or grand entrance.' },
+      { icon: CalendarCheck2, title: 'Timeline Integration', description: 'Coordinate special songs with key moments of your event timeline, like first dance, cake cutting, or grand entrance.' }, // Changed icon
     ] as ViboFeature[],
   },
   benefits: {
     label: "The VIBO Advantage",
-    title: "Why You'll Love Planning with VIBO",
-    description: "VIBO isn't just an app; it's your partner in creating the perfect musical backdrop for your special day. Enjoy a seamless, fun, and collaborative planning experience.",
+    title: "Your Event, Your Music", // Updated Title
+    description: "Take control of your event's soundtrack with our powerful DJ planning tools. Create the perfect playlist, set the timeline, and collaborate with your DJ in real-time.", // Updated Description
     items: [
       { icon: Smile, title: 'Stress-Free Planning', description: 'VIBO simplifies music selection, making it a fun and easy part of your event preparation.' },
       { icon: CheckCircle, title: 'Your Event, Your Vibe', description: 'Ensure the music perfectly reflects your style and preferences, creating the atmosphere you envision.' },
       { icon: Users, title: 'Engage Your Guests', description: 'Optional guest request features can make attendees feel more involved and excited for the event.' },
     ] as ViboBenefit[],
-    image: viboBenefitsSectionImg,
-    imageAlt: "Mobile and tablet screens showing VIBO app interface",
-    imageHint: "app interface mobile tablet",
+    image: viboBenefitsSectionImg, // Updated via image-urls.ts
+    imageAlt: "VIBO DJ planning app shown on two side-by-side phone screens",
+    imageHint: "app interface mobile comparison",
   },
   cta: {
     title: "Ready to Craft Your Perfect Event Soundtrack?",

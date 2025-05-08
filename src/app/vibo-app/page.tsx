@@ -42,35 +42,31 @@ export default function ViboAppPage() {
       </div>
 
       {/* How it Works Section */}
-       <div className="py-24 sm:py-32">
+       <div className="py-24 sm:py-32 bg-white dark:bg-gray-900">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="max-w-2xl mx-auto lg:text-center mb-16">
-            <p className="section-label-style">{howItWorks.label}</p>
+            {/* <p className="section-label-style">{howItWorks.label}</p> */}
             <h2 className="mt-2 h2-style text-gray-900 dark:text-white">
               {howItWorks.title}
             </h2>
+             <p className="mt-4 body-text-default text-gray-600 dark:text-gray-300">
+                Plan your event music with our intuitive DJ planning app.
+             </p>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-8 items-start">
             {howItWorks.steps.map(item => (
-              <Card key={item.step} className="card-feature-styles bg-white dark:bg-gray-900 shadow-lg hover:shadow-xl">
-                 <div className="relative h-48 w-full overflow-hidden rounded-t-lg">
-                   <Image src={item.image} alt={item.title} data-ai-hint={item.imageHint} layout="fill" objectFit="cover" />
+              <div key={item.step} className="text-center flex flex-col items-center">
+                 <div className="relative w-full max-w-[250px] h-auto mb-6">
+                   <Image src={item.image} alt={item.title} data-ai-hint={item.imageHint} width={300} height={600} className="rounded-lg shadow-lg object-contain" />
                  </div>
-                <CardHeader>
-                  <CardTitle className="flex items-center">
-                    <span className="flex items-center justify-center h-8 w-8 rounded-full bg-primary text-primary-foreground mr-3 font-bold text-sm">{item.step}</span>
-                    <span className="h3-style text-xl text-gray-900 dark:text-white">{item.title}</span>
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="body-text-default text-gray-600 dark:text-gray-300">{item.description}</p>
-                </CardContent>
-              </Card>
+                 <h3 className="h3-style text-lg text-gray-900 dark:text-white mb-2">{item.title}</h3>
+                 <p className="body-text-default text-gray-600 dark:text-gray-300 max-w-xs">{item.description}</p>
+              </div>
             ))}
           </div>
         </div>
       </div>
-      
+
 
       {/* Features Section */}
       <div className="bg-gray-100 dark:bg-gray-900 py-24 sm:py-32">
@@ -98,18 +94,29 @@ export default function ViboAppPage() {
       </div>
 
       {/* Benefits Section */}
-      <div className="py-24 sm:py-32">
+      <div className="py-24 sm:py-32 bg-white dark:bg-gray-900">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="lg:grid lg:grid-cols-2 lg:gap-x-12 lg:items-center">
-            <div>
-              <p className="section-label-style">{benefits.label}</p>
+          <div className="lg:grid lg:grid-cols-2 lg:gap-x-16 lg:items-center">
+            <div className="relative mb-12 lg:mb-0">
+              <Image
+                src={benefits.image}
+                alt={benefits.imageAlt}
+                data-ai-hint={benefits.imageHint}
+                width={800}
+                height={700} // Adjust height based on image aspect ratio
+                className="rounded-xl shadow-2xl object-contain"
+              />
+            </div>
+             <div>
+              {/* <p className="section-label-style">{benefits.label}</p> */}
               <h2 className="mt-2 h2-style text-gray-900 dark:text-white">
                 {benefits.title}
               </h2>
               <p className="mt-6 body-text-large text-gray-600 dark:text-gray-300">
                 {benefits.description}
               </p>
-              <dl className="mt-10 max-w-xl space-y-8 text-base leading-7 text-gray-600 dark:text-gray-300 lg:max-w-none">
+              {/* Removed the DL list for benefits as per the visual reference */}
+              {/* <dl className="mt-10 max-w-xl space-y-8 text-base leading-7 text-gray-600 dark:text-gray-300 lg:max-w-none">
                 {benefits.items.map((benefit) => (
                   <div key={benefit.title} className="relative pl-9">
                     <dt className="inline font-semibold text-gray-900 dark:text-white">
@@ -119,17 +126,7 @@ export default function ViboAppPage() {
                     <dd className="mt-1 block">{benefit.description}</dd>
                   </div>
                 ))}
-              </dl>
-            </div>
-            <div className="mt-12 lg:mt-0 relative">
-              <Image
-                src={benefits.image}
-                alt={benefits.imageAlt}
-                data-ai-hint={benefits.imageHint}
-                width={800}
-                height={900}
-                className="rounded-xl shadow-2xl object-cover"
-              />
+              </dl> */}
             </div>
           </div>
         </div>

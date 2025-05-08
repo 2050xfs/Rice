@@ -41,15 +41,18 @@ export default function ViboAppHighlight() {
               </Link>
             </div>
           </div>
-          <div className="mt-12 lg:mt-0 relative group">
-            <Image
-              src={viboAppHighlightContent.imageSrc}
-              alt={viboAppHighlightContent.imageAlt}
-              data-ai-hint={viboAppHighlightContent.imageHint}
-              width={800}
-              height={600}
-              className="rounded-xl shadow-2xl ring-1 ring-gray-900/10 transition-all duration-500 group-hover:scale-105 group-hover:shadow-indigo-400/30"
-            />
+          <div className="mt-12 lg:mt-0 relative group flex justify-center">
+            {/* Adjusted image container for better centering/sizing */}
+            <div className="relative w-full max-w-md lg:max-w-lg"> 
+              <Image
+                src={viboAppHighlightContent.imageSrc}
+                alt={viboAppHighlightContent.imageAlt}
+                data-ai-hint={viboAppHighlightContent.imageHint}
+                width={600} // Adjusted width
+                height={800} // Adjusted height based on image aspect ratio
+                className="rounded-xl shadow-2xl ring-1 ring-gray-900/10 transition-all duration-500 group-hover:scale-105 group-hover:shadow-indigo-400/30 object-contain" // Changed to object-contain
+              />
+            </div>
             <div className="absolute -inset-4 rounded-xl border-2 border-dashed border-indigo-300/50 dark:border-indigo-500/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10 scale-95 group-hover:scale-100" />
           </div>
         </div>

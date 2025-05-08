@@ -37,8 +37,8 @@ export const servicesOverviewContent = {
       icon: Sparkles,
       title: 'VIBO Music Planning',
       description: 'Seamlessly plan your event\'s music with the intuitive VIBO app. Collaborate with your DJ and make requests with ease.',
-      image: serviceOverviewViboImg,
-      imageHint: "music app",
+      image: serviceOverviewViboImg, // Updated via image-urls.ts
+      imageHint: "music app interface",
       link: '/vibo-app',
     },
   ] as ServiceOverviewItem[],

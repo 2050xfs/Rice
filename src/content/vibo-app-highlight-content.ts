@@ -32,7 +32,7 @@ export const viboAppHighlightContent = {
     },
   ] as ViboFeature[],
   ctaButtonText: "Learn More About VIBO",
-  imageSrc: viboAppHighlightInterfaceImg,
+  imageSrc: viboAppHighlightInterfaceImg, // Updated via image-urls.ts
   imageAlt: "VIBO App interface on a smartphone",
   imageHint: "music app interface",
 };
