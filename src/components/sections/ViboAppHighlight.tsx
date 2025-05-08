@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { CheckCircle, Music, Edit3, Share2 } from 'lucide-react';
 import { viboAppHighlightInterfaceImg } from '@/lib/image-urls';
+import { useBookingModal } from '@/context/BookingModalContext';
 
 const features = [
   {
@@ -25,7 +26,7 @@ const features = [
 ];
 
 export default function ViboAppHighlight() {
-  const { openModal } } = useBookingModal();
+  const { openModal } = useBookingModal();
   return (
     <div className="bg-gradient-to-b from-gray-50 to-white dark:from-gray-950 dark:to-gray-900 py-24 sm:py-32">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
@@ -73,3 +74,4 @@ export default function ViboAppHighlight() {
     </div>
   );
 }
+
