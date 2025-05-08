@@ -12,7 +12,7 @@ export default function ViboBadge() {
 
   return (
     <div className="vibo-badge relative inline-flex items-center gap-1.5 rounded-full bg-indigo-100/50 dark:bg-indigo-900/30 px-3 py-1 text-xs font-medium cursor-pointer group transform transition-transform hover:scale-105 active:scale-95"
-         style={{ transform: 'translateY(4px)' }}>
+         > {/* Removed style={{ transform: 'translateY(4px)' }} */}
       <Music className="h-3 w-3 text-primary" />
       <span className="rainbow-shimmer-text font-semibold">VIBO</span>
 

@@ -18,8 +18,7 @@ import { cn } from '@/lib/utils';
 import { useBookingModal } from '@/context/BookingModalContext';
 import { brandLogoUrl } from '@/lib/image-urls';
 import { navItems, type NavItem } from '@/config/nav';
-import ViboBadge from '@/components/common/ViboBadge'; // Import the new badge
-
+import ViboBadge from '@/components/common/ViboBadge'; // Import the badge
 
 const SiteLogo = () => (
   <Link href="/" className="flex items-center shrink-0">
@@ -35,7 +34,6 @@ const SiteLogo = () => (
     </div>
   </Link>
 );
-
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -55,11 +53,9 @@ export default function Header() {
       return (
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button variant="ghost" className="text-base font-medium text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-primary px-3 py-2">
-              <span className="flex items-center gap-1">
-                {item.name}
-                <ChevronDown className="h-4 w-4" />
-              </span>
+            <Button variant="ghost" className="text-base font-medium text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-primary px-3 py-2 flex items-center gap-1">
+              {item.name}
+              <ChevronDown className="h-4 w-4" />
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent className="w-56 ring-1 ring-black/5">
@@ -81,7 +77,7 @@ export default function Header() {
       </Link>
     );
   };
-  
+
   const MobileNavLink = ({ item, closeMenu }: { item: NavItem, closeMenu: () => void }) => {
     const [isSubMenuOpen, setIsSubMenuOpen] = useState(false);
 
@@ -128,7 +124,6 @@ export default function Header() {
     );
   };
 
-
   return (
     <header className={cn(
       "sticky top-0 z-50 w-full transition-all duration-300",
@@ -137,7 +132,7 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-24"> {/* Adjusted height for single row */}
           <SiteLogo />
-          
+
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-1">
             {navItems.map((item) => (
@@ -147,13 +142,12 @@ export default function Header() {
 
           <div className="flex items-center">
              {/* Desktop CTA Button and Badge Container */}
-            <div className="relative hidden lg:block">
+            <div className="hidden lg:flex items-center gap-3"> {/* Changed to flex layout */}
+              <ViboBadge /> {/* Badge placed before the button */}
               <Button onClick={openModal} className="button-primary-styles shrink-0">
                 Book Now
               </Button>
-              <div className="absolute left-1/2 -translate-x-1/2 bottom-[-8px]"> {/* Adjust positioning */}
-                <ViboBadge />
-              </div>
+              {/* Removed the absolute positioning container for the badge */}
             </div>
 
             {/* Mobile Navigation Trigger */}
@@ -167,7 +161,6 @@ export default function Header() {
                 <SheetContent side="right" className="w-full max-w-xs bg-white dark:bg-gray-900 p-0">
                   <div className="flex flex-col h-full">
                     <div className="flex items-center justify-between p-4 border-b dark:border-gray-700">
-                       {/* For mobile, maybe a smaller logo or just text? Re-using SiteLogo for consistency */}
                       <SiteLogo />
                       <SheetTrigger asChild>
                          <Button variant="ghost" size="icon" aria-label="Close menu">
@@ -183,7 +176,7 @@ export default function Header() {
                         <Button onClick={() => { openModal(); setIsMobileMenuOpen(false); }} className="button-primary-styles w-full">
                           Book Now
                         </Button>
-                         {/* Optionally show badge on mobile too? Maybe simpler text? */}
+                         {/* Optionally show badge on mobile too? */}
                          {/* <div className="text-center mt-2"> <ViboBadge /> </div> */}
                       </div>
                     </nav>
