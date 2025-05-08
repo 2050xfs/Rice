@@ -3,22 +3,26 @@
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { useBookingModal } from '@/context/BookingModalContext';
+import { heroBackgroundImage } from '@/lib/image-urls';
 
 export default function HeroSection() {
   const { openModal } = useBookingModal();
   return (
     <div className="relative isolate overflow-hidden pt-14 min-h-[calc(100vh-5rem)] flex items-center justify-center">
       <Image
-        src="https://picsum.photos/1920/1080?random=1"
-        alt="Hero background: vibrant event setting"
-        data-ai-hint="event party"
+        src={heroBackgroundImage}
+        alt="High-energy DJ performance with excited crowd and vibrant lighting"
+        data-ai-hint="DJ crowd"
         layout="fill"
-        objectFit="cover"
-        className="absolute inset-0 -z-10 h-full w-full object-cover"
+        className="absolute inset-0 h-full w-full hero-image" // Applies object-fit, brightness, and z-index from globals.css
         priority
       />
+      {/* Primary Overlay: From Top to Bottom */}
       <div className="absolute inset-0 -z-10 hero-overlay-gradient" />
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 py-24 sm:py-32 text-center">
+      {/* Secondary Overlay: From Left to Right */}
+      <div className="absolute inset-0 -z-10 secondary-hero-overlay" />
+      
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 py-24 sm:py-32 text-center relative z-0"> {/* Added z-0 to ensure content is above -z-10 elements */}
         <div className="max-w-2xl mx-auto">
           <h1 className="h1-style text-white">
             Unforgettable Events, <span className="text-gradient-highlight">Expertly Crafted</span>
