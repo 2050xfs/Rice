@@ -55,17 +55,20 @@ export default {
   				'5': 'hsl(var(--chart-5))'
   			},
         // Custom Project Colors (Direct Hex for Tailwind classes if needed, but prefer HSL via globals.css)
-        'indigo-600': '#4F46E5',
-        'indigo-500': '#6366F1',
-        'indigo-400': '#818CF8',
-        'indigo-300': '#A5B4FC',
+        'brand-indigo-600': '#4F46E5',
+        'brand-indigo-500': '#6366F1',
+        'brand-indigo-400': '#818CF8',
+        'brand-indigo-300': '#A5B4FC',
         'brand-white': '#FFFFFF',
-        'gray-900': '#111827', // Primary text on light, BG for dark sections
-        'gray-800': '#1F2937', // Secondary text, BG for testimonials
-        'gray-600': '#4B5563', // Body text
-        'gray-500': '#6B7280', // For small text, captions
-        'gray-300': '#D1D5DB', // Subdued text on dark BG
-        'yellow-400': '#FBBF24', // Star ratings
+        'brand-gray-900': '#111827', 
+        'brand-gray-800': '#1F2937', 
+        'brand-gray-700': 'hsl(var(--brand-gray-700))', // Approx #374151
+        'brand-gray-600': '#4B5563', 
+        'brand-gray-500': '#6B7280', 
+        'brand-gray-400': 'hsl(var(--brand-gray-400))', // Approx #9CA3AF
+        'brand-gray-300': '#D1D5DB', 
+        'brand-yellow-400': '#FBBF24', 
+        'brand-navy': 'hsl(var(--brand-navy))', // #0B0F17
   		},
   		borderRadius: {
   			lg: 'var(--radius)', // Typically 0.5rem
@@ -89,34 +92,31 @@ export default {
   		animation: {
   			'accordion-down': 'accordion-down 0.2s ease-out',
   			'accordion-up': 'accordion-up 0.2s ease-out',
-        'shimmer': 'shimmer 1s linear', // Duration can be adjusted
+        'shimmer': 'shimmer 1s linear', 
   		},
-      // Typography from Project Spec (can be used as utility classes or within components)
+      // Typography from Project Spec
       fontSize: {
-        'h1-hero': ['2.25rem', { lineHeight: '2.5rem', letterSpacing: '-0.025em', fontWeight: '700' }], // text-4xl
-        'h1-hero-sm': ['3.75rem', { lineHeight: '1', letterSpacing: '-0.025em', fontWeight: '700' }], // sm:text-6xl
-        'h2-section': ['1.875rem', { lineHeight: '2.25rem', letterSpacing: '-0.025em', fontWeight: '700' }], // text-3xl
-        'h2-section-sm': ['2.25rem', { lineHeight: '2.5rem', letterSpacing: '-0.025em', fontWeight: '700' }], // sm:text-4xl
-        'h3-sub': ['1.5rem', { lineHeight: '2rem', letterSpacing: '-0.025em', fontWeight: '600' }], // text-2xl
-        'section-label': ['1rem', { lineHeight: '1.75rem', fontWeight: '600' }], // text-base
-        'body-lg': ['1.125rem', { lineHeight: '2rem' }], // text-lg
-        'body-base': ['1rem', { lineHeight: '1.75rem' }], // text-base
-        'body-sm': ['0.875rem', { lineHeight: '1.25rem' }], // text-sm
+        'h1-hero': ['2.25rem', { lineHeight: '2.5rem', letterSpacing: '-0.025em', fontWeight: '700' }], 
+        'h1-hero-sm': ['3.75rem', { lineHeight: '1', letterSpacing: '-0.025em', fontWeight: '700' }], 
+        'h2-section': ['1.875rem', { lineHeight: '2.25rem', letterSpacing: '-0.025em', fontWeight: '700' }], 
+        'h2-section-sm': ['2.25rem', { lineHeight: '2.5rem', letterSpacing: '-0.025em', fontWeight: '700' }], 
+        'h3-sub': ['1.5rem', { lineHeight: '2rem', letterSpacing: '-0.025em', fontWeight: '600' }], 
+        'section-label': ['1rem', { lineHeight: '1.75rem', fontWeight: '600' }], 
+        'body-lg': ['1.125rem', { lineHeight: '2rem' }], 
+        'body-base': ['1rem', { lineHeight: '1.75rem' }], 
+        'body-sm': ['0.875rem', { lineHeight: '1.25rem' }], 
       },
       // Spacing System from Project Spec
       spacing: {
-        'section-py': '6rem', // py-24
-        'section-py-sm': '8rem', // sm:py-32
-        'content-mt': '4rem', // mt-16
-        'content-mt-sm': '5rem', // sm:mt-20
-        'content-mt-lg': '6rem', // lg:mt-24
+        'section-py': '6rem', 
+        'section-py-sm': '8rem', 
+        'content-mt': '4rem', 
+        'content-mt-sm': '5rem', 
+        'content-mt-lg': '6rem', 
       }
   	}
   },
   plugins: [
     require("tailwindcss-animate"),
-    // require('@tailwindcss/typography'), // Ensure this is installed or remove
-    // require('@tailwindcss/forms'), // Ensure this is installed or remove
-    // require('@tailwindcss/aspect-ratio'), // Ensure this is installed or remove
   ],
 } satisfies Config;

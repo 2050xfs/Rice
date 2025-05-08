@@ -3,12 +3,12 @@ import Image from 'next/image';
 import { CheckCircle, Users, Target, Award, Handshake } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-
-// Placeholder image URLs - replace with actuals from image-urls.ts if available
-const aboutHeroImage = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/placeholder_random_90.jpeg";
-const teamMember1Image = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/placeholder_random_91.jpeg";
-const teamMember2Image = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/placeholder_random_92.jpeg";
-const companyTimelineImage = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/placeholder_random_93.jpeg";
+import { 
+  aboutHeroImage as aboutHeroImageUrl, 
+  teamMember1Image as teamMember1ImageUrl, 
+  teamMember2Image as teamMember2ImageUrl, 
+  companyTimelineImage as companyTimelineImageUrl 
+} from '@/lib/image-urls';
 
 
 const teamMembers = [
@@ -16,14 +16,14 @@ const teamMembers = [
     name: 'Alex "DJ RICE" Nguyen',
     role: 'Founder & Lead DJ/MC',
     bio: 'With over a decade of experience, Alex founded Rice Entertainment to bring a new level of professionalism and fun to events. His passion for music and creating unforgettable moments is the driving force behind the company.',
-    image: teamMember1Image,
+    image: teamMember1ImageUrl,
     imageHint: "male portrait professional"
   },
   {
     name: 'Jamie "Nova" Lee',
     role: 'Lead Photo Booth Technician & DJ',
     bio: 'Jamie is a tech enthusiast with an eye for detail. She ensures every photo booth experience is seamless and manages our cutting-edge equipment. Also a talented DJ, she brings versatility to the team.',
-    image: teamMember2Image,
+    image: teamMember2ImageUrl,
     imageHint: "female portrait creative"
   },
 ];
@@ -41,7 +41,7 @@ export default function AboutPage() {
       {/* Hero Section */}
       <div className="relative isolate overflow-hidden pt-14 lg:pt-20">
         <Image
-          src={aboutHeroImage}
+          src={aboutHeroImageUrl}
           alt="Team celebrating at an event"
           data-ai-hint="team event celebration"
           layout="fill"
@@ -79,7 +79,7 @@ export default function AboutPage() {
             </div>
             <div className="mt-12 lg:mt-0 relative">
               <Image
-                src={companyTimelineImage} 
+                src={companyTimelineImageUrl} 
                 alt="Collage of past Rice Entertainment events or team milestones"
                 data-ai-hint="event collage timeline"
                 width={700}

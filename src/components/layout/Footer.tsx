@@ -1,135 +1,129 @@
 // components/layout/Footer.tsx
+"use client";
 import Link from 'next/link';
 import Image from 'next/image';
 import { Facebook, Instagram, Twitter, Youtube, Mail, Phone } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { useBookingModal } from '@/context/BookingModalContext';
 import { brandLogoUrl } from '@/lib/image-urls';
+import { footerLinkSections, footerLegalLinks } from '@/config/footerNav';
 
-const footerNavs = [
-  {
-    label: "Services",
-    items: [
-      { href: '/services/photo-booths', name: 'Photo Booths' },
-      { href: '/services/dj-services', name: 'DJ Services' },
-      { href: '/services/event-planning', name: 'Event Planning' },
-    ],
-  },
-  {
-    label: "Company",
-    items: [
-      { href: '/about', name: 'About Us' },
-      { href: '/vibo-app', name: 'VIBO App' },
-      { href: '/testimonials', name: 'Testimonials' },
-      { href: '/faq', name: 'FAQ' },
-    ],
-  },
-  {
-    label: "Legal",
-    items: [
-      { href: '/privacy-policy', name: 'Privacy Policy' },
-      { href: '/terms-of-service', name: 'Terms of Service' },
-    ],
-  },
-];
-
-const socialLinks = [
+const socialIconsLinks = [
   { icon: Facebook, href: '#', name: 'Facebook' },
   { icon: Instagram, href: '#', name: 'Instagram' },
   { icon: Twitter, href: '#', name: 'Twitter' },
   { icon: Youtube, href: '#', name: 'YouTube' },
 ];
 
-const SiteLogoSmall = () => (
-  <Link href="/" className="flex items-center">
-     <Image 
-        src={brandLogoUrl} 
-        alt="Rice Entertainment Logo Small" 
-        data-ai-hint="brand logo small"
-        width={32} 
-        height={32} 
-      />
-  </Link>
-);
-
-
 export default function Footer() {
+  const { openModal } = useBookingModal();
+
   return (
-    <footer className="bg-gray-50 dark:bg-gray-900 border-t dark:border-gray-800">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 py-16 sm:py-24">
-        <div className="xl:grid xl:grid-cols-3 xl:gap-8">
-          <div className="space-y-8">
-            <SiteLogoSmall />
-            <p className="text-sm text-gray-600 dark:text-gray-400">
-              Crafting unforgettable moments with premier DJ services, innovative photo booths, and expert event planning.
+    <footer className="bg-brand-navy text-white" aria-labelledby="footer-heading">
+      <div className="max-w-7xl mx-auto px-6 pt-16 pb-8 sm:pt-24">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
+          {/* Left Section - Navigation (8 columns) */}
+          <div className="md:col-span-8 grid grid-cols-2 sm:grid-cols-4 gap-8">
+            {footerLinkSections.map((section) => (
+              <div key={section.title}>
+                <h3 className="text-sm font-semibold uppercase tracking-wider text-indigo-400 mb-4">{section.title}</h3>
+                <ul className="space-y-3">
+                  {section.items.map((link) => (
+                    <li key={link.name}>
+                      <Link 
+                        href={link.href}
+                        target={link.isExternal ? '_blank' : undefined}
+                        rel={link.isExternal ? 'noopener noreferrer' : undefined}
+                        className="text-gray-300 hover:text-white flex items-center gap-2 transition-colors text-sm"
+                      >
+                        <span className="text-lg leading-none">{link.icon}</span>
+                        {link.name}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+
+          {/* Right Section - Instagram & CTA (4 columns) */}
+          <div className="md:col-span-4 space-y-6">
+            <div>
+              <h3 className="text-sm font-semibold uppercase tracking-wider text-indigo-400 mb-2">Follow Us</h3>
+              <Link 
+                href="https://www.instagram.com/djriceentertainment" // Example handle
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-indigo-400 hover:text-indigo-300 flex items-center gap-2 text-sm"
+              >
+                <Instagram className="w-5 h-5" />
+                @djriceentertainment {/* Example handle */}
+              </Link>
+            </div>
+            <div className="h-[275px] bg-gray-800 rounded-lg overflow-hidden border border-gray-700">
+              {/* Instagram Embed Placeholder - Replace with actual embed or component if available */}
+              {/* The iframe can be problematic for responsiveness and might require a library or specific styling */}
+               <iframe
+                src="https://www.instagram.com/rice.entertainment/embed" // Example embed URL
+                width="100%"
+                height="100%"
+                frameBorder="0"
+                scrolling="no"
+                allowTransparency={true}
+                title="Instagram Feed"
+                className="bg-gray-800" // Ensure iframe bg matches if content is slow to load
+              />
+            </div>
+            <Button 
+              onClick={openModal}
+              className="w-full button-primary-styles bg-indigo-500 hover:bg-indigo-400 text-white py-3"
+            >
+              Book Your Event Now
+            </Button>
+          </div>
+        </div>
+      </div>
+
+      {/* Bottom Bar */}
+      <div className="border-t border-gray-700">
+        <div className="max-w-7xl mx-auto px-6 py-8 flex flex-col md:flex-row justify-between items-center gap-6">
+          <div className="flex flex-col sm:flex-row items-center gap-4 text-center sm:text-left">
+            <Link href="/" className="shrink-0">
+               <Image 
+                src={brandLogoUrl} 
+                alt="Rice Entertainment Logo Inverted" 
+                width={140} // Adjusted for better visibility
+                height={46} // Adjusted for aspect ratio based on 140 width
+                className="h-10 w-auto filter invert brightness-150 contrast-150" // Adjusted filter for better white on dark
+                data-ai-hint="brand logo inverted"
+              />
+            </Link>
+            <p className="text-xs text-gray-400 max-w-xs sm:max-w-none">
+              Creating unforgettable moments through exceptional entertainment services.
             </p>
-            <div className="flex space-x-6">
-              {socialLinks.map((item) => (
-                <Link key={item.name} href={item.href} className="text-gray-400 hover:text-primary dark:hover:text-indigo-400">
+          </div>
+          <div className="flex flex-col sm:flex-row items-center gap-6">
+            <div className="flex space-x-5">
+              {socialIconsLinks.map((item) => (
+                <Link key={item.name} href={item.href} className="text-gray-400 hover:text-white transition-colors">
                   <span className="sr-only">{item.name}</span>
-                  <item.icon className="h-6 w-6" aria-hidden="true" />
+                  <item.icon className="h-5 w-5" aria-hidden="true" />
                 </Link>
               ))}
             </div>
-          </div>
-          <div className="mt-16 grid grid-cols-2 gap-8 xl:col-span-2 xl:mt-0">
-            <div className="md:grid md:grid-cols-2 md:gap-8">
-              <div>
-                <h3 className="text-sm font-semibold leading-6 text-gray-900 dark:text-white">{footerNavs[0].label}</h3>
-                <ul role="list" className="mt-6 space-y-4">
-                  {footerNavs[0].items.map((item) => (
-                    <li key={item.name}>
-                      <Link href={item.href} className="text-sm leading-6 text-gray-600 hover:text-primary dark:text-gray-400 dark:hover:text-indigo-400">
-                        {item.name}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div className="mt-10 md:mt-0">
-                <h3 className="text-sm font-semibold leading-6 text-gray-900 dark:text-white">{footerNavs[1].label}</h3>
-                <ul role="list" className="mt-6 space-y-4">
-                  {footerNavs[1].items.map((item) => (
-                    <li key={item.name}>
-                      <Link href={item.href} className="text-sm leading-6 text-gray-600 hover:text-primary dark:text-gray-400 dark:hover:text-indigo-400">
-                        {item.name}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-            <div className="md:grid md:grid-cols-2 md:gap-8">
-              <div>
-                <h3 className="text-sm font-semibold leading-6 text-gray-900 dark:text-white">{footerNavs[2].label}</h3>
-                <ul role="list" className="mt-6 space-y-4">
-                  {footerNavs[2].items.map((item) => (
-                    <li key={item.name}>
-                      <Link href={item.href} className="text-sm leading-6 text-gray-600 hover:text-primary dark:text-gray-400 dark:hover:text-indigo-400">
-                        {item.name}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div className="mt-10 md:mt-0">
-                <h3 className="text-sm font-semibold leading-6 text-gray-900 dark:text-white">Contact Us</h3>
-                <ul role="list" className="mt-6 space-y-4">
-                  <li>
-                    <a href="mailto:info@riceentertainment.com" className="flex items-center text-sm leading-6 text-gray-600 hover:text-primary dark:text-gray-400 dark:hover:text-indigo-400">
-                      <Mail className="h-5 w-5 mr-2" /> info@riceentertainment.com
-                    </a>
-                  </li>
-                  <li>
-                    <a href="tel:+1234567890" className="flex items-center text-sm leading-6 text-gray-600 hover:text-primary dark:text-gray-400 dark:hover:text-indigo-400">
-                      <Phone className="h-5 w-5 mr-2" /> (123) 456-7890
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
+            <ul className="flex flex-wrap justify-center gap-x-4 gap-y-1 text-xs text-gray-400">
+              {footerLegalLinks.map((link) => (
+                <li key={link.name}>
+                  <Link href={link.href} className="hover:text-white transition-colors">
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
-        <div className="mt-16 border-t border-gray-900/10 dark:border-white/10 pt-8 sm:mt-20 lg:mt-24">
-          <p className="text-xs leading-5 text-gray-500 dark:text-gray-400">&copy; {new Date().getFullYear()} Rice Entertainment. All rights reserved.</p>
+         <div className="max-w-7xl mx-auto px-6 pb-8 text-center md:text-right">
+            <p className="text-xs text-gray-500">&copy; {new Date().getFullYear()} Rice Entertainment. All rights reserved.</p>
         </div>
       </div>
     </footer>
