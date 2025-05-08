@@ -23,12 +23,13 @@ export default function HeroSection() {
       <div className="absolute inset-0 -z-10 secondary-hero-overlay" />
       
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-24 sm:py-32 text-center relative z-0"> {/* Added z-0 to ensure content is above -z-10 elements */}
-        <div className="max-w-2xl mx-auto">
+        <div className="max-w-3xl mx-auto"> {/* Increased max-width slightly for longer title */}
           <h1 className="h1-style text-white">
+            <span className="text-gradient-highlight">{heroSectionContent.titleHighlight1}</span>
             {heroSectionContent.titlePart1}
             <span className="text-gradient-highlight">{heroSectionContent.titlePart2Highlight}</span>
           </h1>
-          <p className="mt-6 body-text-large text-gray-300">
+          <p className="mt-6 body-text-large text-gray-200"> {/* Changed text-gray-300 to text-gray-200 */}
             {heroSectionContent.subtitle}
           </p>
           <div className="mt-10 flex items-center justify-center gap-x-6">
@@ -36,7 +37,7 @@ export default function HeroSection() {
               {heroSectionContent.ctaButton1Text}
             </Button>
             <Button variant="transparent" size="lg" className="button-transparent-styles" hasShimmer>
-              {heroSectionContent.ctaButton2Text}
+              {heroSectionContent.ctaButton2Text} <span aria-hidden="true">→</span> {/* Added arrow */}
             </Button>
           </div>
         </div>
