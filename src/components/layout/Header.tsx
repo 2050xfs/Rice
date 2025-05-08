@@ -21,7 +21,7 @@ import { navItems, type NavItem } from '@/config/nav';
 import ViboBadge from '@/components/common/ViboBadge'; // Import the badge
 
 const SiteLogo = () => (
-  <Link href="/" className="flex items-center shrink-0">
+  <Link href="/" className="flex items-center shrink-0 mr-auto"> {/* Added mr-auto to push nav right */}
     <div className="logo-container">
       <Image
         src={brandLogoUrl}
@@ -53,9 +53,10 @@ export default function Header() {
       return (
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button variant="ghost" className="text-base font-medium text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-primary px-3 py-2 flex items-center gap-1">
-              {item.name}
-              <ChevronDown className="h-4 w-4" />
+            {/* Ensure button content is centered and doesn't wrap */}
+            <Button variant="ghost" className="text-base font-medium text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-primary px-3 py-2 flex items-center gap-1 whitespace-nowrap">
+              <span>{item.name}</span> {/* Wrap text in span */}
+              <ChevronDown className="h-4 w-4 shrink-0" /> {/* Ensure icon doesn't shrink excessively */}
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent className="w-56 ring-1 ring-black/5">
@@ -72,7 +73,7 @@ export default function Header() {
       );
     }
     return (
-      <Link href={item.href || '#'} className="flex items-center gap-1 text-base font-medium text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-primary px-3 py-2">
+      <Link href={item.href || '#'} className="flex items-center gap-1 text-base font-medium text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-primary px-3 py-2 whitespace-nowrap">
         {item.name}
       </Link>
     );
@@ -130,24 +131,25 @@ export default function Header() {
       isScrolled ? "bg-white/80 dark:bg-gray-900/80 backdrop-blur-md shadow-lg" : "bg-transparent"
     )}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-24"> {/* Adjusted height for single row */}
+        {/* Use flexbox for single-row layout */}
+        <div className="flex items-center justify-between h-24">
           <SiteLogo />
 
-          {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center space-x-1">
+          {/* Desktop Navigation (Centrally aligned between logo and CTA) */}
+          <nav className="hidden lg:flex items-center space-x-1 mx-auto"> {/* Added mx-auto */}
             {navItems.map((item) => (
               <NavLink key={item.name} item={item} />
             ))}
           </nav>
 
-          <div className="flex items-center">
+          {/* Right side container for Badge + Button */}
+          <div className="flex items-center gap-3 ml-auto"> {/* Added ml-auto */}
              {/* Desktop CTA Button and Badge Container */}
-            <div className="hidden lg:flex items-center gap-3"> {/* Changed to flex layout */}
-              <ViboBadge /> {/* Badge placed before the button */}
+            <div className="hidden lg:flex items-center gap-3">
+              <ViboBadge />
               <Button onClick={openModal} className="button-primary-styles shrink-0">
                 Book Now
               </Button>
-              {/* Removed the absolute positioning container for the badge */}
             </div>
 
             {/* Mobile Navigation Trigger */}
@@ -172,12 +174,11 @@ export default function Header() {
                       {navItems.map((item) => (
                         <MobileNavLink key={item.name} item={item} closeMenu={() => setIsMobileMenuOpen(false)} />
                       ))}
-                      <div className="pt-4">
+                      <div className="pt-4 flex flex-col items-center gap-2"> {/* Centered mobile items */}
+                        <ViboBadge />
                         <Button onClick={() => { openModal(); setIsMobileMenuOpen(false); }} className="button-primary-styles w-full">
                           Book Now
                         </Button>
-                         {/* Optionally show badge on mobile too? */}
-                         {/* <div className="text-center mt-2"> <ViboBadge /> </div> */}
                       </div>
                     </nav>
                   </div>

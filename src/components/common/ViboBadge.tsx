@@ -2,21 +2,22 @@
 "use client";
 import { Music } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import React from 'react'; // Import React
 
 export default function ViboBadge() {
-  // Generate random translate values for confetti pieces
-  const pieces = Array.from({ length: 4 }).map(() => ({
+  // Generate random translate values for confetti pieces - updated for 4 pieces
+  const pieces = React.useMemo(() => Array.from({ length: 4 }).map(() => ({
     tx: Math.random() * 40 - 20, // Random horizontal translation (-20px to 20px)
     ty: Math.random() * -30 - 10, // Random upward vertical translation (-10px to -40px)
-  }));
+  })), []); // Use useMemo to calculate once per component instance
 
   return (
     <div className="vibo-badge relative inline-flex items-center gap-1.5 rounded-full bg-indigo-100/50 dark:bg-indigo-900/30 px-3 py-1 text-xs font-medium cursor-pointer group transform transition-transform hover:scale-105 active:scale-95"
-         > {/* Removed style={{ transform: 'translateY(4px)' }} */}
+         > {/* Removed inline style */}
       <Music className="h-3 w-3 text-primary" />
       <span className="rainbow-shimmer-text font-semibold">VIBO</span>
 
-      {/* CSS Confetti Pieces */}
+      {/* CSS Confetti Pieces - referencing generated styles */}
       <div
         className="confetti-piece confetti-piece-1"
         style={{ '--tx': pieces[0].tx, '--ty': pieces[0].ty } as React.CSSProperties}
@@ -30,9 +31,10 @@ export default function ViboBadge() {
         style={{ '--tx': pieces[2].tx, '--ty': pieces[2].ty } as React.CSSProperties}
       />
         <div
-        className="confetti-piece confetti-piece-4" // Using pseudo-element rule implicitly
+        className="confetti-piece confetti-piece-4" // Added 4th piece
         style={{ '--tx': pieces[3].tx, '--ty': pieces[3].ty, background: 'linear-gradient(45deg, #34D399, #A5B4FC)' } as React.CSSProperties} // Different color
       />
+      {/* ::before and ::after confetti are handled purely in CSS */}
     </div>
   );
 }

@@ -210,12 +210,6 @@ body {
   @apply bg-gray-800 text-gray-100 ring-gray-700 focus:ring-indigo-500;
 }
 
-/* Fix for @apply with 'group' utility not allowed (moved from buttonVariants directly) */
-/* Shimmer effect applied directly in Button component logic now */
-/* .button-shimmer-effect::after {
-  @apply absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000 ease-linear;
-} */
-
 
 /* VIBO Badge Animations */
 @keyframes rainbow-shimmer {
@@ -239,42 +233,54 @@ body {
   content: '';
   @apply absolute w-1 h-1 rounded-full opacity-0;
   background: linear-gradient(45deg, hsl(var(--primary)), hsl(var(--secondary)));
-  animation: confetti-burst 0.6s ease-out forwards;
+  /* Updated animation rule */
+  animation: confetti-burst 0.6s ease-out infinite;
 }
 
-.vibo-badge:hover::before {
+/* Removed :hover and apply animation with delays */
+.vibo-badge::before {
   top: 20%;
   left: 10%;
-  animation-delay: 0s;
+  /* Start after 9s, repeat infinitely */
+  animation-delay: 9s;
 }
 
-.vibo-badge:hover::after {
+.vibo-badge::after {
   top: 60%;
   right: 15%;
-  animation-delay: 0.15s;
+  /* Staggered start after 9s, repeat infinitely */
+  animation-delay: calc(9s + 0.15s);
 }
 
 /* Additional confetti pieces can be added using more pseudo-elements or child divs */
 .confetti-piece {
    @apply absolute w-1 h-1 rounded-full opacity-0;
    background: linear-gradient(45deg, hsl(var(--accent)), hsl(var(--brand-yellow-400)));
-   animation: confetti-burst 0.6s ease-out forwards;
+   /* Updated animation rule */
+   animation: confetti-burst 0.6s ease-out infinite;
 }
 
-.vibo-badge:hover .confetti-piece-1 {
+/* Removed :hover and apply animation with delays */
+.confetti-piece-1 {
   top: 40%;
   left: 30%;
-  animation-delay: 0.05s;
+  animation-delay: calc(9s + 0.05s);
 }
-.vibo-badge:hover .confetti-piece-2 {
+.confetti-piece-2 {
   top: 10%;
   right: 40%;
-  animation-delay: 0.1s;
+  animation-delay: calc(9s + 0.1s);
 }
-.vibo-badge:hover .confetti-piece-3 {
+.confetti-piece-3 {
   bottom: 15%;
   left: 50%;
-  animation-delay: 0.2s;
+  animation-delay: calc(9s + 0.2s);
+}
+.confetti-piece-4 { /* Assuming you had a 4th piece in component */
+  /* Example position */
+  bottom: 30%;
+  right: 30%;
+  animation-delay: calc(9s + 0.25s);
 }
 
 
