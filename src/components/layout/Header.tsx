@@ -18,6 +18,7 @@ import { cn } from '@/lib/utils';
 import { useBookingModal } from '@/context/BookingModalContext';
 import { brandLogoUrl } from '@/lib/image-urls';
 import { navItems, type NavItem } from '@/config/nav';
+import ViboBadge from '@/components/common/ViboBadge'; // Import the new badge
 
 
 const SiteLogo = () => (
@@ -145,9 +146,15 @@ export default function Header() {
           </nav>
 
           <div className="flex items-center">
-            <Button onClick={openModal} className="button-primary-styles shrink-0 hidden lg:flex">
-              Book Now
-            </Button>
+             {/* Desktop CTA Button and Badge Container */}
+            <div className="relative hidden lg:block">
+              <Button onClick={openModal} className="button-primary-styles shrink-0">
+                Book Now
+              </Button>
+              <div className="absolute left-1/2 -translate-x-1/2 bottom-[-8px]"> {/* Adjust positioning */}
+                <ViboBadge />
+              </div>
+            </div>
 
             {/* Mobile Navigation Trigger */}
             <div className="lg:hidden">
@@ -176,6 +183,8 @@ export default function Header() {
                         <Button onClick={() => { openModal(); setIsMobileMenuOpen(false); }} className="button-primary-styles w-full">
                           Book Now
                         </Button>
+                         {/* Optionally show badge on mobile too? Maybe simpler text? */}
+                         {/* <div className="text-center mt-2"> <ViboBadge /> </div> */}
                       </div>
                     </nav>
                   </div>

@@ -211,6 +211,83 @@ body {
 }
 
 /* Fix for @apply with 'group' utility not allowed (moved from buttonVariants directly) */
-.button-shimmer-effect::after {
+/* Shimmer effect applied directly in Button component logic now */
+/* .button-shimmer-effect::after {
   @apply absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000 ease-linear;
+} */
+
+
+/* VIBO Badge Animations */
+@keyframes rainbow-shimmer {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.rainbow-shimmer-text {
+  @apply bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 bg-clip-text text-transparent;
+  background-size: 200% 200%;
+  animation: rainbow-shimmer 4s ease infinite;
+}
+
+.vibo-badge {
+  @apply relative overflow-hidden;
+}
+
+.vibo-badge::before,
+.vibo-badge::after {
+  content: '';
+  @apply absolute w-1 h-1 rounded-full opacity-0;
+  background: linear-gradient(45deg, hsl(var(--primary)), hsl(var(--secondary)));
+  animation: confetti-burst 0.6s ease-out forwards;
+}
+
+.vibo-badge:hover::before {
+  top: 20%;
+  left: 10%;
+  animation-delay: 0s;
+}
+
+.vibo-badge:hover::after {
+  top: 60%;
+  right: 15%;
+  animation-delay: 0.15s;
+}
+
+/* Additional confetti pieces can be added using more pseudo-elements or child divs */
+.confetti-piece {
+   @apply absolute w-1 h-1 rounded-full opacity-0;
+   background: linear-gradient(45deg, hsl(var(--accent)), hsl(var(--brand-yellow-400)));
+   animation: confetti-burst 0.6s ease-out forwards;
+}
+
+.vibo-badge:hover .confetti-piece-1 {
+  top: 40%;
+  left: 30%;
+  animation-delay: 0.05s;
+}
+.vibo-badge:hover .confetti-piece-2 {
+  top: 10%;
+  right: 40%;
+  animation-delay: 0.1s;
+}
+.vibo-badge:hover .confetti-piece-3 {
+  bottom: 15%;
+  left: 50%;
+  animation-delay: 0.2s;
+}
+
+
+@keyframes confetti-burst {
+  0% {
+    transform: translate(0, 0) scale(0);
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(calc(var(--tx, 0) * 1px), calc(var(--ty, 0) * 1px)) scale(1.5);
+    opacity: 0;
+  }
 }
