@@ -55,7 +55,7 @@ export default function Header() {
           <DropdownMenuTrigger asChild>
             {/* Ensure button content is centered and doesn't wrap */}
             <Button variant="ghost" className="text-base font-medium text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-primary px-3 py-2 flex items-center gap-1 whitespace-nowrap">
-              <span>{item.name}</span> {/* Wrap text in span */}
+              {item.name} {/* Removed span wrapper */}
               <ChevronDown className="h-4 w-4 shrink-0" /> {/* Ensure icon doesn't shrink excessively */}
             </Button>
           </DropdownMenuTrigger>
