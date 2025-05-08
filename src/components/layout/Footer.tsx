@@ -10,7 +10,7 @@ import { footerLinkSections, footerLegalLinks } from '@/config/footerNav';
 
 const socialIconsLinks = [
   { icon: Facebook, href: '#', name: 'Facebook' },
-  { icon: Instagram, href: '#', name: 'Instagram' },
+  { icon: Instagram, href: 'https://www.instagram.com/ricentertainment?igsh=NTc4MTIwNjQ2YQ==', name: 'Instagram' },
   { icon: Twitter, href: '#', name: 'Twitter' },
   { icon: Youtube, href: '#', name: 'YouTube' },
 ];
@@ -51,20 +51,20 @@ export default function Footer() {
             <div>
               <h3 className="text-sm font-semibold uppercase tracking-wider text-indigo-400 mb-2">Follow Us</h3>
               <Link 
-                href="https://www.instagram.com/djriceentertainment" // Example handle
+                href="https://www.instagram.com/ricentertainment?igsh=NTc4MTIwNjQ2YQ=="
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-indigo-400 hover:text-indigo-300 flex items-center gap-2 text-sm"
               >
                 <Instagram className="w-5 h-5" />
-                @djriceentertainment {/* Example handle */}
+                @ricentertainment
               </Link>
             </div>
             <div className="h-[275px] bg-gray-800 rounded-lg overflow-hidden border border-gray-700">
               {/* Instagram Embed Placeholder - Replace with actual embed or component if available */}
               {/* The iframe can be problematic for responsiveness and might require a library or specific styling */}
                <iframe
-                src="https://www.instagram.com/rice.entertainment/embed" // Example embed URL
+                src="https://www.instagram.com/ricentertainment/embed" 
                 width="100%"
                 height="100%"
                 frameBorder="0"
