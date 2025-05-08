@@ -122,14 +122,14 @@ body {
 }
 
 /* Typography from User Request */
-.h1-style { @apply text-4xl font-bold tracking-tight sm:text-6xl; }
+.h1-style { @apply text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl; } /* Adjusted sm size */
 .h2-style { @apply text-3xl font-bold tracking-tight sm:text-4xl; }
-.h3-style { @apply text-2xl font-semibold tracking-tight; }
-.section-label-style { @apply text-base font-semibold leading-7 text-primary; } /* text-indigo-600 */
+.h3-style { @apply text-xl font-semibold tracking-tight sm:text-2xl; } /* Adjusted base and sm size */
+.section-label-style { @apply text-sm font-semibold leading-7 text-primary sm:text-base; } /* Adjusted base and sm size */
 
-.body-text-large { @apply text-lg leading-8 text-foreground/80; } /* text-gray-600 */
-.body-text-default { @apply text-base leading-7 text-foreground/80; } /* text-gray-600 */
-.body-text-small { @apply text-sm text-muted-foreground; } /* text-gray-500 */
+.body-text-large { @apply text-base leading-8 text-foreground/80 sm:text-lg; } /* Adjusted base and sm size */
+.body-text-default { @apply text-sm leading-7 text-foreground/80 sm:text-base; } /* Adjusted base and sm size */
+.body-text-small { @apply text-xs text-muted-foreground sm:text-sm; } /* Adjusted base and sm size */
 
 /* Gradient Patterns */
 .primary-gradient { @apply bg-gradient-to-r from-indigo-600 to-indigo-500; }
@@ -146,6 +146,13 @@ body {
   brightness: 110%;
   z-index: -10; /* As per user request, ensures it's behind overlays if they share the same z-index or are higher */
 }
+
+.logo-container {
+  position: relative;
+  width: 280px;
+  height: 93px;
+}
+
 
 /* Component Styles from User Request - These will be applied via cn() or specific components */
 .button-primary-styles {
@@ -175,7 +182,7 @@ body {
   /* For dark mode, text color and placeholder might need adjustment */
 }
 .dark .input-styles {
-   @apply text-gray-100 placeholder:text-gray-500 ring-gray-700 focus:ring-indigo-500;
+   @apply bg-gray-800 text-gray-100 placeholder:text-gray-500 ring-gray-700 focus:ring-indigo-500;
 }
 
 

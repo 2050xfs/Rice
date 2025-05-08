@@ -3,9 +3,9 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import type { ComponentProps, ElementType, ReactNode } from 'react';
+import type { ElementType } from 'react';
 import { useState, useEffect } from 'react';
-import { Menu, X, ChevronDown, Briefcase, CalendarDays, Disc3, Camera, Users, Star, Sparkles, MessageSquare } from 'lucide-react';
+import { Menu, X, ChevronDown, Briefcase, CalendarDays, Disc3, Camera, Star, Sparkles, MessageSquare } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
@@ -52,14 +52,16 @@ const navItems: NavItem[] = [
 
 const SiteLogo = () => (
   <Link href="/" className="flex items-center">
-    <Image 
-      src={brandLogoUrl} 
-      alt="Rice Entertainment Logo" 
-      data-ai-hint="brand logo"
-      width={40} 
-      height={40} 
-      priority 
-    />
+    <div className="logo-container">
+      <Image
+        src={brandLogoUrl}
+        alt="Rice Entertainment Logo"
+        data-ai-hint="brand logo main"
+        layout="fill"
+        objectFit="contain"
+        priority
+      />
+    </div>
   </Link>
 );
 
@@ -115,7 +117,7 @@ export default function Header() {
     if (item.subItems) {
       return (
         <div>
-          <button 
+          <button
             onClick={() => setIsSubMenuOpen(!isSubMenuOpen)}
             className="flex items-center justify-between w-full py-3 px-4 text-left text-base font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-md"
           >
@@ -162,9 +164,9 @@ export default function Header() {
       isScrolled ? "bg-white/80 dark:bg-gray-900/80 backdrop-blur-md shadow-lg" : "bg-transparent"
     )}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
+        <div className="flex items-center justify-between h-24"> {/* Adjusted height from h-20 to h-24 */}
           <SiteLogo />
-          <nav className="hidden lg:flex items-center space-x-4">
+          <nav className="hidden lg:flex items-center space-x-1"> {/* Reduced space-x-4 to space-x-1 to make more room for larger logo */}
             {navItems.map((item) => (
               <NavLink key={item.name} item={item} />
             ))}
@@ -210,4 +212,3 @@ export default function Header() {
     </header>
   );
 }
-
