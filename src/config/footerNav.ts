@@ -25,7 +25,7 @@ export const footerLinkSections: FooterLinkSection[] = [
     items: [
       { name: 'DJ & Emcee Services', href: '/services/dj-services', icon: '🎵' },
       { name: 'Photo Booths', href: '/services/photo-booths', icon: '📷' },
-      // { name: 'Lighting', href: '/services/lighting', icon: '💡' }, // Kept from old, can be uncommented if page exists
+      { name: 'Lighting', href: '/services/lighting', icon: '💡' }, // Added Lighting
       // { name: 'Event Planning', href: '/services/event-planning', icon: '📋' }, // Kept from old
     ],
   },

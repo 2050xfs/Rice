@@ -59,6 +59,19 @@ export const boothSocialGallery1Img = "https://storage.googleapis.com/msgsndr/iA
 export const boothSocialGallery2Img = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/placeholder_random_20.jpeg"; // Placeholder
 export const boothSocialGallery3Img = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/placeholder_random_21.jpeg"; // Placeholder
 
+// Lighting Services Page
+export const lightingHeroBg = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/681c61a78d1baa71442f1252.png"; // cold-sparklers-outdoor-display.png
+export const uplightingImg = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/placeholder_uplighting.jpeg"; // Placeholder
+export const danceFloorLightingImg = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/placeholder_dance_floor.jpeg"; // Placeholder
+export const specialtyEffectsImg = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/placeholder_special_effects.jpeg"; // Placeholder
+export const outdoorLightingImg = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/placeholder_outdoor_lighting.jpeg"; // Placeholder
+export const architecturalLightingImg = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/placeholder_architectural.jpeg"; // Placeholder
+export const lightingGalleryImg1 = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/placeholder_lighting_gallery_1.jpeg"; // Placeholder
+export const lightingGalleryImg2 = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/placeholder_lighting_gallery_2.jpeg"; // Placeholder
+export const lightingGalleryImg3 = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/placeholder_lighting_gallery_3.jpeg"; // Placeholder
+export const lightingGalleryImg4 = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/placeholder_lighting_gallery_4.jpeg"; // Placeholder
+
+
 // Testimonials Page
 export const testimonialsHeroBg = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/placeholder_random_55.jpeg"; // Placeholder
 
@@ -80,12 +93,14 @@ export const testimonialMichaelOld = "https://storage.googleapis.com/msgsndr/iAR
 
 
 // VIBO App Page & Highlight Section
-export const viboAppHeroBg = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/placeholder_random_40.jpeg"; // Placeholder
-export const viboHowItWorksStep1Img = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/placeholder_random_41.jpeg"; // Placeholder
-export const viboHowItWorksStep2Img = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/music_selection_interface.png"; // Updated
-export const viboHowItWorksStep3Img = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/music_planning_timeline.png"; // Updated
-export const viboBenefitsSectionImg = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/vibo_DJ_planning_app_side_b....png"; // Updated
-export const viboAppHighlightInterfaceImg = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/hero-phone.png"; // Updated
+export const viboAppHeroBg = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/681c57b3a418b3edc6889d27.png"; // Abstract Background
+export const viboAppContainerOverlay = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/681c57b3a418b36de6889d28.png"; // Container Overlay
+export const viboAppPhoneMockup = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/681c56baa418b30fd1889c2c.png"; // Hero Phone Mockup
+export const viboHowItWorksStep1Img = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/681c56bae17a08219129b4f6.png"; // Music Selection Interface icon
+export const viboHowItWorksStep2Img = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/681c56ba7fc2d23459238bb4.png"; // Music Planning Timeline
+export const viboHowItWorksStep3Img = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/681c56ba7fc2d27b83238bb6.png"; // VIBO Music Planning App group
+export const viboBenefitsSectionImg = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/681c56ba7fc2d26c1c238bb5.png"; // VIBO DJ Planning App UI mockup
+export const viboAppHighlightInterfaceImg = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/681c56baa418b30fd1889c2c.png"; // Hero Phone Mockup
 
 // CallToAction Section
 export const callToActionAppScreenshotImg = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/placeholder_random_8.jpeg"; // Placeholder

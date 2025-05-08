@@ -2,9 +2,12 @@
 "use client";
 import { Music } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import React from 'react'; // Import React
+import React from 'react';
+import { useBookingModal } from '@/context/BookingModalContext';
 
 export default function ViboBadge() {
+  const { openModal } = useBookingModal();
+  
   // Generate random translate values for confetti pieces - updated for 4 pieces
   const pieces = React.useMemo(() => Array.from({ length: 4 }).map(() => ({
     tx: Math.random() * 40 - 20, // Random horizontal translation (-20px to 20px)
@@ -12,8 +15,11 @@ export default function ViboBadge() {
   })), []); // Use useMemo to calculate once per component instance
 
   return (
-    <div className="vibo-badge relative inline-flex items-center gap-1.5 rounded-full bg-indigo-100/50 dark:bg-indigo-900/30 px-3 py-1 text-xs font-medium cursor-pointer group transform transition-transform hover:scale-105 active:scale-95"
-         > {/* Removed inline style */}
+    <div 
+      className="vibo-badge relative inline-flex items-center gap-1.5 rounded-full bg-indigo-100/50 dark:bg-indigo-900/30 px-3 py-1 text-xs font-medium cursor-pointer group transform transition-transform hover:scale-105 active:scale-95"
+      onClick={openModal}
+      title="Book services & get VIBO access"
+    >
       <Music className="h-3 w-3 text-primary" />
       <span className="rainbow-shimmer-text font-semibold">VIBO</span>
 

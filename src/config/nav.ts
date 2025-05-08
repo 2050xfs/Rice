@@ -1,6 +1,6 @@
 // src/config/nav.ts
 import type { ElementType } from 'react';
-import { Disc3, Camera, Home, Users, Phone } from 'lucide-react';
+import { Disc3, Camera, Home, Users, Phone, Lightbulb } from 'lucide-react'; // Added Lightbulb
 
 export interface NavItem {
   name: string;
@@ -18,6 +18,7 @@ export const navItems: NavItem[] = [
     subItems: [
       { name: 'Photo Booths', href: '/services/photo-booths', icon: Camera },
       { name: 'DJ Services', href: '/services/dj-services', icon: Disc3 },
+      { name: 'Lighting', href: '/services/lighting', icon: Lightbulb }, // Added Lighting
     ],
   },
   {
