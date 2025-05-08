@@ -29,7 +29,7 @@ export default function HeroSection() {
             {heroSectionContent.titlePart1}
             <span className="text-gradient-highlight">{heroSectionContent.titlePart2Highlight}</span>
           </h1>
-          <p className="mt-6 body-text-large text-gray-100"> {/* Changed to text-gray-100 for shell white */}
+          <p className="mt-6 body-text-large text-white">
             {heroSectionContent.subtitle}
           </p>
           <div className="mt-10 flex items-center justify-center gap-x-6">
