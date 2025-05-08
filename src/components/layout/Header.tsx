@@ -134,17 +134,9 @@ export default function Header() {
       isScrolled ? "bg-white/80 dark:bg-gray-900/80 backdrop-blur-md shadow-lg" : "bg-transparent"
     )}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Row 1: Logo and Book Now button */}
-        <div className="flex items-center justify-between h-24"> {/* Height to accommodate logo */}
+        <div className="flex items-center justify-between h-24"> {/* Adjusted height for single row */}
           <SiteLogo />
-          <Button onClick={openModal} className="button-primary-styles shrink-0">
-            Book Now
-          </Button>
-        </div>
-
-        {/* Row 2: Navigation Links (Desktop) / Hamburger (Mobile) */}
-        {/* This entire div will be hidden on < lg, and hamburger shown instead */}
-        <div className="h-16 flex items-center justify-center"> 
+          
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-1">
             {navItems.map((item) => (
@@ -152,36 +144,47 @@ export default function Header() {
             ))}
           </nav>
 
-          {/* Mobile Navigation Trigger (for second row content) */}
-          <div className="lg:hidden">
-            <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
-              <SheetTrigger asChild>
-                <Button variant="ghost" size="icon" aria-label="Open menu">
-                  <Menu className="h-6 w-6 text-gray-800 dark:text-white" />
-                </Button>
-              </SheetTrigger>
-              <SheetContent side="right" className="w-full max-w-xs bg-white dark:bg-gray-900 p-0">
-                <div className="flex flex-col h-full">
-                  <div className="flex items-center justify-between p-4 border-b dark:border-gray-700">
-                    <SiteLogo /> 
-                    <SheetTrigger asChild>
-                       <Button variant="ghost" size="icon" aria-label="Close menu">
-                         <X className="h-6 w-6 text-gray-800 dark:text-white" />
-                       </Button>
-                    </SheetTrigger>
+          <div className="flex items-center">
+            <Button onClick={openModal} className="button-primary-styles shrink-0 hidden lg:flex">
+              Book Now
+            </Button>
+
+            {/* Mobile Navigation Trigger */}
+            <div className="lg:hidden">
+              <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
+                <SheetTrigger asChild>
+                  <Button variant="ghost" size="icon" aria-label="Open menu">
+                    <Menu className="h-6 w-6 text-gray-800 dark:text-white" />
+                  </Button>
+                </SheetTrigger>
+                <SheetContent side="right" className="w-full max-w-xs bg-white dark:bg-gray-900 p-0">
+                  <div className="flex flex-col h-full">
+                    <div className="flex items-center justify-between p-4 border-b dark:border-gray-700">
+                       {/* For mobile, maybe a smaller logo or just text? Re-using SiteLogo for consistency */}
+                      <SiteLogo />
+                      <SheetTrigger asChild>
+                         <Button variant="ghost" size="icon" aria-label="Close menu">
+                           <X className="h-6 w-6 text-gray-800 dark:text-white" />
+                         </Button>
+                      </SheetTrigger>
+                    </div>
+                    <nav className="flex-grow p-4 space-y-1 overflow-y-auto">
+                      {navItems.map((item) => (
+                        <MobileNavLink key={item.name} item={item} closeMenu={() => setIsMobileMenuOpen(false)} />
+                      ))}
+                      <div className="pt-4">
+                        <Button onClick={() => { openModal(); setIsMobileMenuOpen(false); }} className="button-primary-styles w-full">
+                          Book Now
+                        </Button>
+                      </div>
+                    </nav>
                   </div>
-                  <nav className="flex-grow p-4 space-y-1 overflow-y-auto">
-                    {navItems.map((item) => (
-                      <MobileNavLink key={item.name} item={item} closeMenu={() => setIsMobileMenuOpen(false)} />
-                    ))}
-                  </nav>
-                </div>
-              </SheetContent>
-            </Sheet>
+                </SheetContent>
+              </Sheet>
+            </div>
           </div>
         </div>
       </div>
     </header>
   );
 }
-
