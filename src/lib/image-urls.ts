@@ -11,7 +11,12 @@ export const heroBackgroundImage = "https://storage.googleapis.com/msgsndr/iAR0s
 
 // Contact Page
 export const contactPageHeroBg = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/placeholder_random_60.jpeg";
-export const contactPageMapPlaceholder = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/placeholder_random_61.jpeg";
+// Note: contactPageMapPlaceholder is removed as per user request
+export const contactEventGalleryImg1 = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/placeholder_event_gallery_1.jpeg";
+export const contactEventGalleryImg2 = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/placeholder_event_gallery_2.jpeg";
+export const contactEventGalleryImg3 = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/placeholder_event_gallery_3.jpeg";
+export const contactEventGalleryImg4 = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/placeholder_event_gallery_4.jpeg";
+
 
 // EventType Pages
 export const weddingsHeroImage = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/placeholder_random_70.jpeg";
@@ -84,3 +89,9 @@ export const testimonialDavidLisaImg = "https://storage.googleapis.com/msgsndr/i
 
 // ViboAppHighlight Section
 export const viboAppHighlightInterfaceImg = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/placeholder_random_9.jpeg";
+
+// About Page Images
+export const aboutHeroImage = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/placeholder_random_90.jpeg";
+export const teamMember1Image = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/placeholder_random_91.jpeg";
+export const teamMember2Image = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/placeholder_random_92.jpeg";
+export const companyTimelineImage = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/placeholder_random_93.jpeg";

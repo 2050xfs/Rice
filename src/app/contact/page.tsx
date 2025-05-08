@@ -7,10 +7,12 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
-import { Building, CalendarDays, Mail, MapPin, Phone, User, MessageCircle, Send, Loader2, Clock } from 'lucide-react';
+import { Building, CalendarDays, Mail, Phone, User, MessageCircle, Send, Loader2, Camera } from 'lucide-react';
 import { useToast } from "@/hooks/use-toast";
 import Image from 'next/image';
-import { contactPageMapPlaceholder } from '@/lib/image-urls';
+import { 
+  contactEventGalleryImg1, contactEventGalleryImg2, contactEventGalleryImg3, contactEventGalleryImg4 
+} from '@/lib/image-urls';
 
 interface ContactFormData {
   name: string;
@@ -60,16 +62,19 @@ const faqItems = [
   },
 ];
 
+const eventGalleryImages = [
+  { src: contactEventGalleryImg1, alt: 'Excited crowd at a wedding reception', hint: 'wedding party dance' },
+  { src: contactEventGalleryImg2, alt: 'Professional corporate event setup', hint: 'corporate conference' },
+  { src: contactEventGalleryImg3, alt: 'Fun moments at a private party photo booth', hint: 'photo booth fun' },
+  { src: contactEventGalleryImg4, alt: 'DJ performing at an outdoor event', hint: 'DJ outdoor event' },
+];
+
 
 export default function ContactPage() {
   const [formData, setFormData] = useState<ContactFormData>(initialContactFormData);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
-  const [mapLoaded, setMapLoaded] = useState(false); 
-
-  useEffect(() => {
-    setMapLoaded(true);
-  }, []);
+ 
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -101,9 +106,9 @@ export default function ContactPage() {
     <div className="bg-gray-50 dark:bg-gray-950 pt-24 sm:pt-32 pb-16 sm:pb-24">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h1 className="h1-style text-gray-900 dark:text-white">Contact Us</h1>
+          <h1 className="h1-style text-gray-900 dark:text-white">Get in Touch</h1>
           <p className="mt-4 body-text-large text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-            We're here to help with any questions or booking inquiries. Reach out via the form below or use our direct contact details.
+            We're excited to hear about your event! Fill out the form below or use our direct contact details for any questions or booking inquiries.
           </p>
         </div>
       </div>
@@ -111,12 +116,12 @@ export default function ContactPage() {
       {/* Contact Form and Info Section */}
       <div className="relative bg-white dark:bg-gray-900">
         <div className="max-w-7xl mx-auto lg:grid lg:grid-cols-5 lg:gap-x-8">
-          {/* Contact Information */}
+          {/* Contact Information & Event Gallery */}
           <div className="bg-gray-50 dark:bg-gray-800 py-16 px-6 lg:col-span-2 lg:px-8 lg:py-16 xl:pr-12 rounded-lg shadow-md">
             <div className="max-w-lg mx-auto">
-              <h2 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-3xl">Contact Information</h2>
+              <h2 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-3xl">Contact Details</h2>
               <p className="mt-3 body-text-default text-gray-500 dark:text-gray-400">
-                Reach out to us through any of the channels below, or fill out the form and we'll contact you.
+                Reach out to us for a quick response. We're here to help plan your perfect event.
               </p>
               <dl className="mt-8 space-y-6">
                 <div>
@@ -133,50 +138,34 @@ export default function ContactPage() {
                     <a href="mailto:info@riceentertainment.com" className="hover:text-primary dark:hover:text-indigo-400">info@riceentertainment.com</a>
                   </dd>
                 </div>
-                <div>
-                  <dt className="sr-only">Address</dt>
-                  <dd className="flex items-start text-base text-gray-500 dark:text-gray-300">
-                    <MapPin className="flex-shrink-0 w-6 h-6 text-gray-400 dark:text-gray-500 mr-3 mt-1" aria-hidden="true" />
-                    <span>123 Entertainment Ave<br />Suite 404<br />Party City, CA 90210</span>
-                  </dd>
-                </div>
               </dl>
 
-              {/* Office Hours */}
-              <div className="mt-10">
-                <h3 className="flex items-center text-xl font-semibold text-gray-900 dark:text-white mb-3">
-                    <Clock className="w-6 h-6 mr-3 text-primary" /> Office Hours
+              {/* Event Gallery Carousel */}
+              <div className="mt-12">
+                <h3 className="flex items-center text-xl font-semibold text-gray-900 dark:text-white mb-4">
+                    <Camera className="w-6 h-6 mr-3 text-primary" /> Event Showcase
                 </h3>
-                <dl className="space-y-1 text-base text-gray-600 dark:text-gray-400">
-                    <div>
-                        <dt className="inline font-medium">Monday - Friday:</dt>
-                        <dd className="inline ml-2">9:00 AM - 5:00 PM</dd>
+                <div className="grid grid-cols-2 gap-4">
+                  {eventGalleryImages.map((image, index) => (
+                    <div key={index} className="relative aspect-square rounded-lg overflow-hidden shadow-md group">
+                      <Image 
+                        src={image.src} 
+                        alt={image.alt} 
+                        data-ai-hint={image.hint}
+                        layout="fill" 
+                        objectFit="cover"
+                        className="transition-transform duration-300 group-hover:scale-105"
+                      />
+                       <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-2">
+                        <p className="text-white text-xs font-medium">{image.alt}</p>
+                      </div>
                     </div>
-                    <div>
-                        <dt className="inline font-medium">Saturday:</dt>
-                        <dd className="inline ml-2">By Appointment Only</dd>
-                    </div>
-                    <div>
-                        <dt className="inline font-medium">Sunday:</dt>
-                        <dd className="inline ml-2">Closed</dd>
-                    </div>
-                </dl>
-              </div>
-
-              {/* Placeholder for a map */}
-              {mapLoaded && (
-                <div className="mt-10">
-                  <div className="aspect-w-16 aspect-h-9 rounded-lg overflow-hidden bg-gray-200 dark:bg-gray-700 shadow-md">
-                    <Image 
-                      src={contactPageMapPlaceholder} 
-                      alt="Map placeholder showing office location" 
-                      data-ai-hint="city map location"
-                      layout="fill" 
-                      objectFit="cover"
-                    />
-                  </div>
+                  ))}
                 </div>
-              )}
+                 <p className="mt-4 text-xs text-gray-500 dark:text-gray-400 text-center">
+                  A glimpse of the unforgettable moments we help create!
+                </p>
+              </div>
             </div>
           </div>
 
