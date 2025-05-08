@@ -2,12 +2,12 @@
 import { heroBackgroundImage } from '@/lib/image-urls';
 
 export const heroSectionContent = {
-  titlePart1: "Unforgettable Events, ",
-  titlePart2Highlight: "Expertly Crafted",
-  subtitle: "From pulsating DJ sets to interactive photo booths, Rice Entertainment brings your vision to life. Let's create memories that last a lifetime.",
+  titlePart1: "Crafting Memorable Events with Rice Entertainment – ",
+  titlePart2Highlight: "Your Event, Your Experience", // Highlighted part
+  subtitle: "Creating high-energy, customized experiences for weddings, corporate events, and private parties. Let's make your vision come to life with personalized music and entertainment.",
   backgroundImage: heroBackgroundImage,
   backgroundImageAlt: "High-energy DJ performance with excited crowd and vibrant lighting",
   backgroundImageHint: "DJ crowd",
-  ctaButton1Text: "Get a Quote",
-  ctaButton2Text: "Explore Services",
+  ctaButton1Text: "Book Your Experience", // Updated text
+  ctaButton2Text: "Explore Our Services", // Updated text
 };
