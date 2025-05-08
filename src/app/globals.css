@@ -153,6 +153,10 @@ body {
   height: 93px;
 }
 
+.logo-image {
+  object-fit: contain;
+}
+
 
 /* Component Styles from User Request - These will be applied via cn() or specific components */
 .button-primary-styles {
