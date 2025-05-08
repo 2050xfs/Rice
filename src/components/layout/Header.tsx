@@ -3,6 +3,7 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
+import type { ComponentProps, ElementType, ReactNode } from 'react';
 import { useState, useEffect } from 'react';
 import { Menu, X, ChevronDown, Briefcase, CalendarDays, Disc3, Camera, Users, Star, Sparkles, MessageSquare } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -21,7 +22,7 @@ import { brandLogoUrl } from '@/lib/image-urls';
 interface NavItem {
   name: string;
   href?: string;
-  icon?: React.ElementType;
+  icon?: ElementType;
   subItems?: NavItem[];
 }
 
@@ -50,17 +51,15 @@ const navItems: NavItem[] = [
 ];
 
 const SiteLogo = () => (
-  <Link href="/" className="flex items-center gap-2">
+  <Link href="/" className="flex items-center">
     <Image 
       src={brandLogoUrl} 
       alt="Rice Entertainment Logo" 
       data-ai-hint="brand logo"
-      width={32} 
-      height={32} 
-      className="text-primary" 
+      width={40} 
+      height={40} 
       priority 
     />
-    <span className="text-2xl font-bold text-gray-900 dark:text-white">Rice<span className="text-primary">Ent</span></span>
   </Link>
 );
 
@@ -165,7 +164,7 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           <SiteLogo />
-          <nav className="hidden lg:flex items-center space-x-2">
+          <nav className="hidden lg:flex items-center space-x-4">
             {navItems.map((item) => (
               <NavLink key={item.name} item={item} />
             ))}

@@ -39,15 +39,14 @@ const socialLinks = [
 ];
 
 const SiteLogoSmall = () => (
-  <Link href="/" className="flex items-center gap-2">
+  <Link href="/" className="flex items-center">
      <Image 
         src={brandLogoUrl} 
         alt="Rice Entertainment Logo Small" 
-        width={28} 
-        height={28} 
-        className="text-primary" // Keep if you want the primary color tint, remove otherwise
+        data-ai-hint="brand logo small"
+        width={32} 
+        height={32} 
       />
-    <span className="text-xl font-bold text-gray-900 dark:text-white">Rice<span className="text-primary">Ent</span></span>
   </Link>
 );
 
