@@ -6,10 +6,11 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Building, CalendarDays, Mail, MapPin, Phone, User, MessageCircle, Send, Loader2 } from 'lucide-react';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import { Building, CalendarDays, Mail, MapPin, Phone, User, MessageCircle, Send, Loader2, Clock } from 'lucide-react';
 import { useToast } from "@/hooks/use-toast";
 import Image from 'next/image';
-import { contactPageHeroBg, contactPageMapPlaceholder } from '@/lib/image-urls';
+import { contactPageMapPlaceholder } from '@/lib/image-urls';
 
 interface ContactFormData {
   name: string;
@@ -31,36 +32,64 @@ const initialContactFormData: ContactFormData = {
   eventDate: '',
 };
 
+const faqItems = [
+  {
+    id: 'faq1',
+    question: 'What areas do you serve for events?',
+    answer: 'We primarily serve the Greater Anytown Area. However, we are available for travel to surrounding regions and beyond. Travel fees may apply for locations outside our standard service zone. Please contact us with your event details for a specific quote.',
+  },
+  {
+    id: 'faq2',
+    question: 'How far in advance should I book your services?',
+    answer: 'We recommend booking as early as possible, especially for popular dates like weekends and holidays. For weddings, 6-12 months in advance is typical. For corporate events and private parties, 2-6 months is advisable. However, don\'t hesitate to reach out for last-minute inquiries, as we may have availability.',
+  },
+  {
+    id: 'faq3',
+    question: 'What types of music can your DJs play?',
+    answer: 'Our DJs are versatile and have extensive music libraries spanning many genres, including Top 40, Pop, Hip Hop, R&B, EDM, Rock, Country, Jazz, Classical, Latin, and more. We work closely with you using our VIBO app to tailor the music selection to your specific tastes and event atmosphere.',
+  },
+  {
+    id: 'faq4',
+    question: 'Do your photo booths come with an attendant?',
+    answer: 'Yes, most of our photo booth packages include a professional and friendly attendant to ensure everything runs smoothly, assist your guests, and manage the props and equipment. For certain drop-off style social booths, an attendant may be optional.',
+  },
+  {
+    id: 'faq5',
+    question: 'What is included in your basic DJ package?',
+    answer: 'Our Essential Beats package typically includes up to 4 hours of DJ service, a professional DJ & MC, a sound system suitable for up to 100 guests, basic dance floor lighting, and access to our VIBO music planning app. For detailed package information, please visit our DJ Services page or contact us.',
+  },
+];
+
+
 export default function ContactPage() {
   const [formData, setFormData] = useState<ContactFormData>(initialContactFormData);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
-  const [mapLoaded, setMapLoaded] = useState(false); // To avoid hydration errors with map
+  const [mapLoaded, setMapLoaded] = useState(false); 
 
   useEffect(() => {
-    // This ensures map-related components only render client-side
     setMapLoaded(true);
   }, []);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
   };
-
-  const handleSubjectChange = (value: string) => {
+  
+  const handleSelectChange = (value: string) => {
     setFormData(prev => ({ ...prev, subject: value }));
   };
+
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     console.log("Contact Form Data Submitted:", formData);
 
-    // Simulate API call
     await new Promise(resolve => setTimeout(resolve, 2000));
 
     setIsSubmitting(false);
-    setFormData(initialContactFormData); // Reset form
+    setFormData(initialContactFormData); 
     toast({
       title: "Message Sent!",
       description: "Thanks for reaching out! We'll get back to you as soon as possible.",
@@ -69,33 +98,21 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="bg-gray-50 dark:bg-gray-950">
-      {/* Hero Section */}
-      <div className="relative bg-indigo-700">
-        <div className="absolute inset-0">
-          <Image
-            src={contactPageHeroBg}
-            alt="Abstract contact background"
-            data-ai-hint="contact abstract pattern"
-            layout="fill"
-            objectFit="cover"
-            className="opacity-20"
-            priority
-          />
-        </div>
-        <div className="relative max-w-7xl mx-auto py-24 px-6 sm:py-32 lg:px-8 text-center">
-          <h1 className="h1-style text-white">Get in Touch</h1>
-          <p className="mt-6 max-w-3xl mx-auto body-text-large text-indigo-100">
-            We're excited to hear about your event! Whether you have questions, need a quote, or just want to brainstorm ideas, our team is ready to help.
+    <div className="bg-gray-50 dark:bg-gray-950 pt-24 sm:pt-32 pb-16 sm:pb-24">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+        <div className="text-center mb-16">
+          <h1 className="h1-style text-gray-900 dark:text-white">Contact Us</h1>
+          <p className="mt-4 body-text-large text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+            We're here to help with any questions or booking inquiries. Reach out via the form below or use our direct contact details.
           </p>
         </div>
       </div>
 
       {/* Contact Form and Info Section */}
       <div className="relative bg-white dark:bg-gray-900">
-        <div className="max-w-7xl mx-auto lg:grid lg:grid-cols-5">
+        <div className="max-w-7xl mx-auto lg:grid lg:grid-cols-5 lg:gap-x-8">
           {/* Contact Information */}
-          <div className="bg-gray-50 dark:bg-gray-800 py-16 px-6 lg:col-span-2 lg:px-8 lg:py-24 xl:pr-12">
+          <div className="bg-gray-50 dark:bg-gray-800 py-16 px-6 lg:col-span-2 lg:px-8 lg:py-16 xl:pr-12 rounded-lg shadow-md">
             <div className="max-w-lg mx-auto">
               <h2 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-3xl">Contact Information</h2>
               <p className="mt-3 body-text-default text-gray-500 dark:text-gray-400">
@@ -125,11 +142,31 @@ export default function ContactPage() {
                 </div>
               </dl>
 
+              {/* Office Hours */}
+              <div className="mt-10">
+                <h3 className="flex items-center text-xl font-semibold text-gray-900 dark:text-white mb-3">
+                    <Clock className="w-6 h-6 mr-3 text-primary" /> Office Hours
+                </h3>
+                <dl className="space-y-1 text-base text-gray-600 dark:text-gray-400">
+                    <div>
+                        <dt className="inline font-medium">Monday - Friday:</dt>
+                        <dd className="inline ml-2">9:00 AM - 5:00 PM</dd>
+                    </div>
+                    <div>
+                        <dt className="inline font-medium">Saturday:</dt>
+                        <dd className="inline ml-2">By Appointment Only</dd>
+                    </div>
+                    <div>
+                        <dt className="inline font-medium">Sunday:</dt>
+                        <dd className="inline ml-2">Closed</dd>
+                    </div>
+                </dl>
+              </div>
+
               {/* Placeholder for a map */}
               {mapLoaded && (
                 <div className="mt-10">
                   <div className="aspect-w-16 aspect-h-9 rounded-lg overflow-hidden bg-gray-200 dark:bg-gray-700 shadow-md">
-                    {/* Replace with actual map embed or next/image if static */}
                     <Image 
                       src={contactPageMapPlaceholder} 
                       alt="Map placeholder showing office location" 
@@ -137,7 +174,6 @@ export default function ContactPage() {
                       layout="fill" 
                       objectFit="cover"
                     />
-                    {/* Example: <iframe src="google_maps_embed_url" width="100%" height="100%" style={{border:0}} allowFullScreen="" loading="lazy"></iframe> */}
                   </div>
                 </div>
               )}
@@ -145,7 +181,7 @@ export default function ContactPage() {
           </div>
 
           {/* Contact Form */}
-          <div className="py-16 px-6 lg:col-span-3 lg:py-24 lg:px-8 xl:pl-12">
+          <div className="py-16 px-6 lg:col-span-3 lg:py-16 lg:px-8 xl:pl-12 bg-white dark:bg-gray-900 rounded-lg shadow-md">
             <div className="max-w-lg mx-auto lg:max-w-none">
               <form onSubmit={handleSubmit} className="grid grid-cols-1 gap-y-6">
                 <div>
@@ -166,7 +202,7 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <Label htmlFor="subject" className="label-styles flex items-center"><MessageCircle className="w-4 h-4 mr-2 opacity-70" /> Subject</Label>
-                   <Select name="subject" value={formData.subject} onValueChange={handleSubjectChange}>
+                   <Select name="subject" value={formData.subject} onValueChange={handleSelectChange}>
                     <SelectTrigger className="select-styles mt-1"><SelectValue placeholder="Select a subject" /></SelectTrigger>
                     <SelectContent>
                       <SelectItem value="Booking Inquiry">Booking Inquiry</SelectItem>
@@ -181,7 +217,7 @@ export default function ContactPage() {
                 </div>
                  <div>
                   <Label htmlFor="eventDate" className="label-styles flex items-center"><CalendarDays className="w-4 h-4 mr-2 opacity-70" /> Potential Event Date (Optional)</Label>
-                  <Input type="date" name="eventDate" id="eventDate" value={formData.eventDate} onChange={handleChange} className="input-styles mt-1" />
+                  <Input type="date" name="eventDate" id="eventDate" value={formData.eventDate ?? ''} onChange={handleChange} className="input-styles mt-1" />
                 </div>
                 <div>
                   <Label htmlFor="message" className="label-styles flex items-center"><MessageCircle className="w-4 h-4 mr-2 opacity-70" /> Message</Label>
@@ -202,6 +238,34 @@ export default function ContactPage() {
                 </div>
               </form>
             </div>
+          </div>
+        </div>
+      </div>
+
+      {/* FAQ Section */}
+      <div className="bg-white dark:bg-gray-900 py-16 sm:py-24 mt-16 sm:mt-24">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="max-w-3xl mx-auto text-center">
+            <h2 className="h2-style text-gray-900 dark:text-white">
+              Frequently Asked Questions
+            </h2>
+            <p className="mt-4 body-text-large text-gray-600 dark:text-gray-300">
+              Find answers to common questions about our services and booking process.
+            </p>
+          </div>
+          <div className="mt-12 max-w-3xl mx-auto">
+            <Accordion type="single" collapsible className="w-full space-y-4">
+              {faqItems.map((item) => (
+                <AccordionItem value={item.id} key={item.id} className="bg-gray-50 dark:bg-gray-800 p-0 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700">
+                  <AccordionTrigger className="text-left px-6 py-4 text-lg font-medium text-gray-700 dark:text-gray-200 hover:no-underline hover:bg-gray-100 dark:hover:bg-gray-700/50 rounded-t-lg transition-colors">
+                    {item.question}
+                  </AccordionTrigger>
+                  <AccordionContent className="px-6 pb-4 pt-0 text-base text-gray-600 dark:text-gray-300">
+                    {item.answer}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
           </div>
         </div>
       </div>
