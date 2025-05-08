@@ -11,7 +11,6 @@ export const heroBackgroundImage = "https://storage.googleapis.com/msgsndr/iAR0s
 
 // Contact Page
 export const contactPageHeroBg = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/placeholder_random_60.jpeg";
-// Note: contactPageMapPlaceholder is removed as per user request
 export const contactEventGalleryImg1 = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/placeholder_event_gallery_1.jpeg";
 export const contactEventGalleryImg2 = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/placeholder_event_gallery_2.jpeg";
 export const contactEventGalleryImg3 = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/placeholder_event_gallery_3.jpeg";

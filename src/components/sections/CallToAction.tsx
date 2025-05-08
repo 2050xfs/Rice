@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { useBookingModal } from '@/context/BookingModalContext';
 import Image from 'next/image';
-import { callToActionAppScreenshotImg } from '@/lib/image-urls';
+import { callToActionContent } from '@/content/call-to-action-content';
 
 export default function CallToAction() {
   const { openModal } = useBookingModal();
@@ -28,18 +28,18 @@ export default function CallToAction() {
           </svg>
           <div className="mx-auto max-w-md text-center lg:mx-0 lg:flex-auto lg:py-32 lg:text-left">
             <h2 className="h2-style text-white">
-              Ready to Elevate Your Event?
+              {callToActionContent.title}
             </h2>
             <p className="mt-6 body-text-large text-gray-300">
-              Let Rice Entertainment transform your next celebration into an extraordinary experience. Contact us today for a personalized quote.
+              {callToActionContent.description}
             </p>
             <div className="mt-10 flex items-center justify-center gap-x-6 lg:justify-start">
               <Button onClick={openModal} size="lg" className="button-primary-styles bg-white text-primary hover:bg-gray-100">
-                Book Your Event
+                {callToActionContent.ctaButton1Text}
               </Button>
-              <Link href="/contact" passHref>
+              <Link href={callToActionContent.ctaButton2Link} passHref>
                 <Button variant="transparent" size="lg" className="button-transparent-styles" hasShimmer>
-                  Contact Us <span aria-hidden="true">→</span>
+                  {callToActionContent.ctaButton2Text} <span aria-hidden="true">→</span>
                 </Button>
               </Link>
             </div>
@@ -47,9 +47,9 @@ export default function CallToAction() {
           <div className="relative mt-16 h-80 lg:mt-8">
             <Image
               className="absolute left-0 top-0 w-[57rem] max-w-none rounded-md bg-white/5 ring-1 ring-white/10"
-              src={callToActionAppScreenshotImg}
-              alt="App screenshot showing event planning interface"
-              data-ai-hint="event planning app"
+              src={callToActionContent.imageSrc}
+              alt={callToActionContent.imageAlt}
+              data-ai-hint={callToActionContent.imageHint}
               width={1824}
               height={1080}
             />
@@ -59,4 +59,3 @@ export default function CallToAction() {
     </div>
   );
 }
-

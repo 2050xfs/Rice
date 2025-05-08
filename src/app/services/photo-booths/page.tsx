@@ -3,107 +3,24 @@
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { CheckCircle, Zap, Gem, Users, SlidersHorizontal } from 'lucide-react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useBookingModal } from '@/context/BookingModalContext';
-import {
-  photoBoothsHeroBg, booth360MainImg, booth360Gallery1Img, booth360Gallery2Img, booth360Gallery3Img,
-  boothLuxxMainImg, boothLuxxGallery1Img, boothLuxxGallery2Img, boothLuxxGallery3Img,
-  boothSocialMainImg, boothSocialGallery1Img, boothSocialGallery2Img, boothSocialGallery3Img
-} from '@/lib/image-urls';
-
-const boothTypes = [
-  {
-    id: '360booth',
-    name: '360 Photo Booth',
-    icon: Zap,
-    tagline: 'Dynamic Videos, Unforgettable Moments',
-    description: 'Step onto the platform and let our camera spin around you, capturing stunning 360-degree slow-motion videos. Perfect for high-energy events and creating shareable content.',
-    features: [
-      'Slow-motion video capture',
-      'Instant sharing via QR/email/text',
-      'Customizable overlays & music',
-      'Professional lighting',
-      'On-site attendant',
-    ],
-    dimensions: 'Platform: 3-4 ft diameter, Requires approx. 10x10 ft space',
-    outputs: ['MP4 Video Files', 'GIFs'],
-    image: booth360MainImg,
-    imageHint: '360 photo booth action',
-    gallery: [
-      { src: booth360Gallery1Img, alt: '360 Booth Output Example 1', hint: "video booth spin" },
-      { src: booth360Gallery2Img, alt: '360 Booth Setup Example', hint: "event setup" },
-      { src: booth360Gallery3Img, alt: 'Guests enjoying 360 Booth', hint: "party fun" },
-    ],
-  },
-  {
-    id: 'luxxbooth',
-    name: 'Luxx Booth',
-    icon: Gem,
-    tagline: 'Glamorous Photos, Timeless Elegance',
-    description: 'Our Luxx Booth delivers high-quality, studio-style photos with a flattering beauty filter. Ideal for weddings and upscale events where a touch of glamour is desired.',
-    features: [
-      'High-resolution DSLR camera',
-      'Beauty filter for flawless skin',
-      'Choice of premium backdrops',
-      'Professional studio lighting',
-      'Instant prints & digital sharing',
-    ],
-    dimensions: 'Requires approx. 8x8 ft space',
-    outputs: ['High-Quality Prints (2x6, 4x6)', 'Digital Photos'],
-    image: boothLuxxMainImg,
-    imageHint: 'luxury photo booth',
-    gallery: [
-      { src: boothLuxxGallery1Img, alt: 'Luxx Booth Glam Shot', hint: "glamour portrait" },
-      { src: boothLuxxGallery2Img, alt: 'Luxx Booth Print Example', hint: "photo strip" },
-      { src: boothLuxxGallery3Img, alt: 'Luxx Booth Setup Detail', hint: "elegant setup" },
-    ],
-  },
-  {
-    id: 'socialbooth',
-    name: 'Social Booth',
-    icon: Users,
-    tagline: 'Fun & Shareable, Instantly Engaging',
-    description: 'The Social Booth is all about fun, animated GIFs, boomerangs, and digital props. Designed for maximum social media engagement and easy sharing.',
-    features: [
-      'Photos, GIFs, Boomerangs',
-      'Digital props & filters',
-      'Instant sharing to social media',
-      'Customizable branding',
-      'Compact setup',
-    ],
-    dimensions: 'Requires approx. 6x6 ft space',
-    outputs: ['Digital Photos', 'GIFs', 'Boomerangs'],
-    image: boothSocialMainImg,
-    imageHint: 'social media photo booth',
-    gallery: [
-      { src: boothSocialGallery1Img, alt: 'Social Booth GIF Example', hint: "animated gif" },
-      { src: boothSocialGallery2Img, alt: 'Guests with Digital Props', hint: "digital props" },
-      { src: boothSocialGallery3Img, alt: 'Social Booth Sharing Interface', hint: "sharing screen" },
-    ],
-  },
-];
-
-const addOns = [
-  { name: 'Custom Backdrops', description: 'Tailor the look with a unique backdrop matching your theme.' },
-  { name: 'Premium Prop Box', description: 'An extensive collection of high-quality, themed props.' },
-  { name: 'Guest Book Album', description: 'A beautiful album where guests can leave a copy of their photo strip and a message.' },
-  { name: 'Roaming Photographer Add-on', description: 'Capture candid moments throughout your event.' },
-  { name: 'Extended Hours', description: 'Keep the fun going longer!' },
-  { name: 'Custom Start Screens & Animations', description: 'Brand the entire experience, from start to finish.' },
-];
+import { photoBoothsPageContent } from '@/content/photo-booths-page-content';
 
 export default function PhotoBoothsPage() {
   const { openModal } = useBookingModal();
+  const { hero, booths, addOns, cta } = photoBoothsPageContent;
+  const FeatureIcon = booths.featureIcon;
+
 
   return (
     <div className="bg-gray-50 dark:bg-gray-950">
       {/* Hero Section */}
       <div className="relative isolate overflow-hidden pt-14 lg:pt-20">
         <Image
-          src={photoBoothsHeroBg}
-          alt="Array of fun photo booth images"
-          data-ai-hint="photo booth collage"
+          src={hero.image}
+          alt={hero.imageAlt}
+          data-ai-hint={hero.imageHint}
           layout="fill"
           objectFit="cover"
           className="absolute inset-0 -z-10 h-full w-full object-cover"
@@ -111,16 +28,16 @@ export default function PhotoBoothsPage() {
         />
         <div className="absolute inset-0 -z-10 hero-overlay-gradient from-black/80 via-black/60 to-black/30" />
         <div className="max-w-7xl mx-auto px-6 lg:px-8 py-24 sm:py-32 text-center">
-          <p className="section-label-style text-indigo-300">Capture Every Moment</p>
+          <p className="section-label-style text-indigo-300">{hero.label}</p>
           <h1 className="mt-2 h1-style text-white">
-            Interactive Photo Booth Experiences
+            {hero.title}
           </h1>
           <p className="mt-6 body-text-large text-gray-200 max-w-3xl mx-auto">
-            Elevate your event with our cutting-edge photo booths. From dynamic 360 videos to glamorous stills and fun social shares, we have the perfect booth to make your celebration unforgettable.
+            {hero.description}
           </p>
           <div className="mt-10">
             <Button onClick={openModal} size="lg" className="button-primary-styles">
-              Book a Photo Booth
+              {hero.ctaButtonText}
             </Button>
           </div>
         </div>
@@ -130,22 +47,22 @@ export default function PhotoBoothsPage() {
       <div className="py-24 sm:py-32">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="max-w-2xl mx-auto lg:text-center mb-16">
-            <p className="section-label-style">Choose Your Booth</p>
+            <p className="section-label-style">{booths.label}</p>
             <h2 className="mt-2 h2-style text-gray-900 dark:text-white">
-              Find the Perfect Fit for Your Event
+              {booths.title}
             </h2>
           </div>
 
-          <Tabs defaultValue={boothTypes[0].id} className="w-full">
+          <Tabs defaultValue={booths.items[0].id} className="w-full">
             <TabsList className="grid w-full grid-cols-1 sm:grid-cols-3 mb-12 gap-2 bg-indigo-100 dark:bg-gray-800 p-2 rounded-lg">
-              {boothTypes.map((booth) => (
+              {booths.items.map((booth) => (
                 <TabsTrigger key={booth.id} value={booth.id} className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=active]:shadow-lg py-3 text-base font-medium">
                   <booth.icon className="h-5 w-5 mr-2" /> {booth.name}
                 </TabsTrigger>
               ))}
             </TabsList>
 
-            {boothTypes.map((booth) => (
+            {booths.items.map((booth) => (
               <TabsContent key={booth.id} value={booth.id}>
                 <Card className="overflow-hidden shadow-xl bg-white dark:bg-gray-900 border-0">
                   <div className="grid md:grid-cols-2 gap-0">
@@ -171,7 +88,7 @@ export default function PhotoBoothsPage() {
                         <ul className="space-y-2 mb-6">
                           {booth.features.map((feature, idx) => (
                             <li key={idx} className="flex items-start">
-                              <CheckCircle className="h-5 w-5 text-green-500 dark:text-green-400 mr-2 mt-0.5 shrink-0" />
+                              <FeatureIcon className="h-5 w-5 text-green-500 dark:text-green-400 mr-2 mt-0.5 shrink-0" />
                               <span className="text-sm text-gray-600 dark:text-gray-400">{feature}</span>
                             </li>
                           ))}
@@ -183,7 +100,7 @@ export default function PhotoBoothsPage() {
                   </div>
                   {/* Gallery Section within Tab */}
                   <div className="p-8 md:p-12 border-t border-gray-200 dark:border-gray-700">
-                     <h4 className="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-6 text-center">Sample Outputs & Setup</h4>
+                     <h4 className="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-6 text-center">{booths.galleryTitle}</h4>
                      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                         {booth.gallery.map((img, idx) => (
                             <div key={idx} className="relative aspect-video rounded-lg overflow-hidden shadow-md group">
@@ -206,20 +123,20 @@ export default function PhotoBoothsPage() {
       <div className="bg-gradient-to-r from-indigo-600 to-indigo-500 py-24 sm:py-32">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="max-w-2xl mx-auto lg:text-center mb-16">
-            <p className="section-label-style text-indigo-200">Enhance Your Experience</p>
+            <p className="section-label-style text-indigo-200">{addOns.label}</p>
             <h2 className="mt-2 h2-style text-white">
-              Popular Add-Ons & Customizations
+              {addOns.title}
             </h2>
             <p className="mt-6 body-text-large text-gray-300">
-              Personalize your photo booth experience with our range of exciting add-ons.
+              {addOns.description}
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {addOns.map((addon) => (
+            {addOns.items.map((addon) => (
               <Card key={addon.name} className="bg-white/10 dark:bg-white/5 backdrop-blur-sm border border-white/20 shadow-lg">
                 <CardHeader>
                   <CardTitle className="flex items-center text-xl font-semibold text-white">
-                    <SlidersHorizontal className="h-6 w-6 mr-3 text-indigo-300" />
+                    <addon.icon className="h-6 w-6 mr-3 text-indigo-300" />
                     {addon.name}
                   </CardTitle>
                 </CardHeader>
@@ -236,14 +153,14 @@ export default function PhotoBoothsPage() {
       <div className="bg-gray-100 dark:bg-gray-900 py-24 sm:py-32">
         <div className="max-w-4xl mx-auto text-center px-6 lg:px-8">
           <h2 className="h2-style text-gray-900 dark:text-white">
-            Ready to Add Some Fun to Your Event?
+            {cta.title}
           </h2>
           <p className="mt-6 body-text-large text-gray-600 dark:text-gray-300">
-            Our photo booths are more than just pictures; they're memory-making machines. Let's discuss how we can customize the perfect photo experience for your guests.
+            {cta.description}
           </p>
           <div className="mt-10">
              <Button onClick={openModal} size="lg" className="button-primary-styles">
-              Inquire About Photo Booths
+              {cta.buttonText}
             </Button>
           </div>
         </div>

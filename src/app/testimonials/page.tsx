@@ -8,94 +8,8 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { cn } from '@/lib/utils';
 import { useBookingModal } from '@/context/BookingModalContext';
-import { 
-  testimonialsHeroBg, testimonialJessicaMichaelImg, testimonialInnovateSolutionsImg, 
-  testimonialMarkChenImg, testimonialGreenTechImg 
-} from '@/lib/image-urls';
+import { testimonialsPageContent, type TestimonialPageItem } from '@/content/testimonials-page-content';
 
-
-interface Testimonial {
-  id: string;
-  name: string;
-  eventDate: string;
-  eventType: 'Wedding' | 'Corporate' | 'Private Party' | 'School Event' | 'Other';
-  serviceUsed: 'DJ' | 'Photo Booth' | 'Both' | 'Event Planning' | 'Other';
-  rating: number;
-  quote: string;
-  fullStory?: string; // Optional longer version of the testimonial
-  image?: string;
-  imageHint?: string;
-  isFeatured?: boolean;
-}
-
-const allTestimonials: Testimonial[] = [
-  {
-    id: '1',
-    name: 'Jessica & Michael P.',
-    eventDate: 'November 12, 2023',
-    eventType: 'Wedding',
-    serviceUsed: 'Both',
-    rating: 5,
-    quote: "Rice Entertainment was the BEST decision for our wedding! DJ RICE kept the dance floor packed, and the Luxx Photo Booth was a huge hit. The VIBO app made music planning so easy!",
-    fullStory: "From our first consultation to the last song of the night, Rice Entertainment exceeded all our expectations. DJ RICE was incredibly intuitive, playing the perfect mix of songs that catered to all our guests. The VIBO app was a fantastic tool that allowed us to meticulously plan our music and make special requests. The Luxx Photo Booth added such a fun and glamorous element; our guests are still talking about their photos! Professional, responsive, and truly talented – we can't recommend them enough.",
-    image: testimonialJessicaMichaelImg,
-    imageHint: "bride groom",
-    isFeatured: true,
-  },
-  {
-    id: '2',
-    name: 'Innovate Solutions Ltd.',
-    eventDate: 'December 8, 2023',
-    eventType: 'Corporate',
-    serviceUsed: 'DJ',
-    rating: 5,
-    quote: "Our annual holiday party was a massive success, largely thanks to the fantastic DJ services from Rice Entertainment. Professional, engaging, and perfectly curated music.",
-    image: testimonialInnovateSolutionsImg,
-    imageHint: "corporate team",
-  },
-  {
-    id: '3',
-    name: 'Sophia K.',
-    eventDate: 'August 5, 2023',
-    eventType: 'Private Party',
-    serviceUsed: 'Photo Booth',
-    rating: 4,
-    quote: "The 360 Photo Booth was the highlight of my 30th birthday! So much fun and the videos look amazing. Setup was quick and the attendant was super helpful.",
-    fullStory: "I booked the 360 Photo Booth for my 30th birthday bash, and it was an absolute blast! My friends and I had so much fun creating dynamic videos. The setup was efficient, and the on-site attendant was friendly and guided everyone through the process. The quality of the videos was excellent, and sharing them was super easy. My only minor feedback would be to have a slightly wider selection of props, but overall, it was a fantastic experience and definitely worth it!",
-  },
-   {
-    id: '4',
-    name: 'Mark & Chen W.',
-    eventDate: 'July 1, 2023',
-    eventType: 'Wedding',
-    serviceUsed: 'DJ',
-    rating: 5,
-    quote: "DJ Nova was incredible for our multicultural wedding. She blended different genres seamlessly and everyone had a fantastic time. The VIBO app was also very user-friendly.",
-    image: testimonialMarkChenImg,
-    imageHint: "wedding party",
-    isFeatured: true,
-  },
-  {
-    id: '5',
-    name: 'Northwood High School',
-    eventDate: 'May 20, 2023',
-    eventType: 'School Event',
-    serviceUsed: 'Both',
-    rating: 5,
-    quote: "Rice Entertainment is our go-to for prom! The students love the DJ and the Social Booth is always a hit. Reliable, professional, and great with teenagers.",
-  },
-  {
-    id: '6',
-    name: 'GreenTech Summit',
-    eventDate: 'October 2, 2023',
-    eventType: 'Corporate',
-    serviceUsed: 'Photo Booth',
-    rating: 5,
-    quote: "The branded Social Photo Booth was perfect for our conference. Great for engagement and getting our hashtag out there. Smooth process from booking to execution.",
-    image: testimonialGreenTechImg,
-    imageHint: "conference attendees"
-  },
-];
 
 const StarRating = ({ rating, color = "text-yellow-400" }: { rating: number, color?: string }) => (
   <div className="flex">
@@ -108,11 +22,11 @@ const StarRating = ({ rating, color = "text-yellow-400" }: { rating: number, col
 export default function TestimonialsPage() {
   const [filterService, setFilterService] = useState('All');
   const [filterEventType, setFilterEventType] = useState('All');
-  const [filteredTestimonials, setFilteredTestimonials] = useState<Testimonial[]>(allTestimonials);
-  const { openModal } } from '@/context/BookingModalContext';
+  const [filteredTestimonials, setFilteredTestimonials] = useState<TestimonialPageItem[]>(testimonialsPageContent.testimonials);
+  const { openModal } = useBookingModal();
 
   useEffect(() => {
-    let testimonials = allTestimonials;
+    let testimonials = testimonialsPageContent.testimonials;
     if (filterService !== 'All') {
       testimonials = testimonials.filter(t => t.serviceUsed === filterService || (filterService === 'Photo Booth' && t.serviceUsed === 'Both') || (filterService === 'DJ' && t.serviceUsed === 'Both'));
     }
@@ -123,8 +37,7 @@ export default function TestimonialsPage() {
     setFilteredTestimonials(testimonials);
   }, [filterService, filterEventType]);
 
-  const serviceOptions = ['All', 'DJ', 'Photo Booth', 'Both', 'Event Planning'];
-  const eventTypeOptions = ['All', 'Wedding', 'Corporate', 'Private Party', 'School Event'];
+  const { hero, filters, testimonials, noMatchMessage, cta } = testimonialsPageContent;
 
   return (
     <div className="bg-gray-50 dark:bg-gray-950 min-h-screen">
@@ -132,9 +45,9 @@ export default function TestimonialsPage() {
       <div className="relative bg-gradient-to-r from-indigo-600 to-purple-600 py-20 sm:py-28 lg:py-32">
         <div className="absolute inset-0 overflow-hidden">
           <Image
-            src={testimonialsHeroBg}
-            alt="Happy people at an event"
-            data-ai-hint="event crowd celebration"
+            src={hero.image}
+            alt={hero.imageAlt}
+            data-ai-hint={hero.imageHint}
             layout="fill"
             objectFit="cover"
             className="opacity-30"
@@ -142,12 +55,12 @@ export default function TestimonialsPage() {
           />
         </div>
         <div className="relative max-w-7xl mx-auto px-6 lg:px-8 text-center">
-          <p className="section-label-style text-indigo-200">Real Stories, Real Satisfaction</p>
+          <p className="section-label-style text-indigo-200">{hero.label}</p>
           <h1 className="mt-2 h1-style text-white">
-            What Our Clients Are Saying
+            {hero.title}
           </h1>
           <p className="mt-6 body-text-large text-gray-100 max-w-3xl mx-auto">
-            We're passionate about creating unforgettable events. Read first-hand accounts from clients who've experienced the Rice Entertainment difference.
+            {hero.description}
           </p>
         </div>
       </div>
@@ -159,7 +72,7 @@ export default function TestimonialsPage() {
             <div className="flex flex-col md:flex-row gap-4 md:items-center justify-between">
               <div className="flex items-center gap-2">
                 <Filter className="h-6 w-6 text-primary" />
-                <h3 className="text-lg font-semibold text-gray-800 dark:text-white">Filter Testimonials:</h3>
+                <h3 className="text-lg font-semibold text-gray-800 dark:text-white">{filters.title}</h3>
               </div>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Select value={filterService} onValueChange={setFilterService}>
@@ -167,7 +80,7 @@ export default function TestimonialsPage() {
                     <SelectValue placeholder="Filter by Service" />
                   </SelectTrigger>
                   <SelectContent>
-                    {serviceOptions.map(opt => <SelectItem key={opt} value={opt}>{opt}</SelectItem>)}
+                    {filters.serviceOptions.map(opt => <SelectItem key={opt} value={opt}>{opt}</SelectItem>)}
                   </SelectContent>
                 </Select>
                 <Select value={filterEventType} onValueChange={setFilterEventType}>
@@ -175,7 +88,7 @@ export default function TestimonialsPage() {
                     <SelectValue placeholder="Filter by Event Type" />
                   </SelectTrigger>
                   <SelectContent>
-                    {eventTypeOptions.map(opt => <SelectItem key={opt} value={opt}>{opt}</SelectItem>)}
+                    {filters.eventTypeOptions.map(opt => <SelectItem key={opt} value={opt}>{opt}</SelectItem>)}
                   </SelectContent>
                 </Select>
               </div>
@@ -218,12 +131,12 @@ export default function TestimonialsPage() {
                     </blockquote>
                     {testimonial.fullStory && (
                        <Button variant="link" className={cn("mt-3 px-0 text-sm self-start", testimonial.isFeatured ? "text-indigo-200 hover:text-white" : "text-indigo-400 hover:text-indigo-300")}>
+                         {/* Add Modal/Accordion logic here to show fullStory */}
                          Read Full Story
                        </Button>
                     )}
                   </CardContent>
-                  <div className="border-t p-4 text-xs space-y-1",
-                    className={cn("border-t p-4 text-xs space-y-1", testimonial.isFeatured ? "border-white/20 bg-black/10" : "border-gray-700 bg-gray-900/50")}>
+                  <div className={cn("border-t p-4 text-xs space-y-1", testimonial.isFeatured ? "border-white/20 bg-black/10" : "border-gray-700 bg-gray-900/50")}>
                     <p className={cn("flex items-center", testimonial.isFeatured ? "text-indigo-200" : "text-gray-400")}>
                       <CalendarDays className="h-4 w-4 mr-2" /> Event: {testimonial.eventType} on {testimonial.eventDate}
                     </p>
@@ -239,7 +152,7 @@ export default function TestimonialsPage() {
               <MessageSquareQuote className="h-16 w-16 text-gray-400 dark:text-gray-600 mx-auto mb-4" />
               <p className="h3-style text-gray-700 dark:text-gray-300">No Testimonials Found</p>
               <p className="body-text-default text-gray-500 dark:text-gray-400 mt-2">
-                Try adjusting your filters or check back later for more client stories.
+                {noMatchMessage}
               </p>
             </div>
           )}
@@ -250,17 +163,17 @@ export default function TestimonialsPage() {
       <div className="bg-gray-100 dark:bg-gray-900 py-16 sm:py-24">
         <div className="max-w-4xl mx-auto text-center px-6 lg:px-8">
           <h2 className="h2-style text-gray-900 dark:text-white">
-            Experienced Rice Entertainment?
+            {cta.title}
           </h2>
           <p className="mt-6 body-text-large text-gray-600 dark:text-gray-300">
-            We'd love to hear about your event! Your feedback helps us grow and continue to provide top-notch service. Or, if you're ready to create your own unforgettable moments:
+            {cta.description}
           </p>
           <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
              <Button onClick={openModal} size="lg" className="button-primary-styles">
-              Book Your Event
+              {cta.button1Text}
             </Button>
             <Button size="lg" variant="outline" className="button-secondary-styles" hasShimmer>
-              Share Your Story
+              {cta.button2Text}
             </Button>
           </div>
         </div>

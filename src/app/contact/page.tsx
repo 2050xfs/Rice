@@ -6,12 +6,10 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
-import { CalendarDays, Mail, Phone, User, MessageCircle, Send, Loader2, Camera } from 'lucide-react';
+import { CalendarDays, Mail, Phone, User, MessageCircle, Send, Loader2 } from 'lucide-react';
 import { useToast } from "@/hooks/use-toast";
 import Image from 'next/image';
-import { 
-  contactEventGalleryImg1, contactEventGalleryImg2, contactEventGalleryImg3, contactEventGalleryImg4 
-} from '@/lib/image-urls';
+import { contactPageContent } from '@/content/contact-page-content';
 
 interface ContactFormData {
   name: string;
@@ -28,42 +26,6 @@ const initialContactFormData: ContactFormData = {
   message: '',
   eventDate: '',
 };
-
-const faqItems = [
-  {
-    id: 'faq1',
-    question: 'What areas do you serve for events?',
-    answer: 'We primarily serve the Greater Anytown Area. However, we are available for travel to surrounding regions and beyond. Travel fees may apply for locations outside our standard service zone. Please contact us with your event details for a specific quote.',
-  },
-  {
-    id: 'faq2',
-    question: 'How far in advance should I book your services?',
-    answer: 'We recommend booking as early as possible, especially for popular dates like weekends and holidays. For weddings, 6-12 months in advance is typical. For corporate events and private parties, 2-6 months is advisable. However, don\'t hesitate to reach out for last-minute inquiries, as we may have availability.',
-  },
-  {
-    id: 'faq3',
-    question: 'What types of music can your DJs play?',
-    answer: 'Our DJs are versatile and have extensive music libraries spanning many genres, including Top 40, Pop, Hip Hop, R&B, EDM, Rock, Country, Jazz, Classical, Latin, and more. We work closely with you using our VIBO app to tailor the music selection to your specific tastes and event atmosphere.',
-  },
-  {
-    id: 'faq4',
-    question: 'Do your photo booths come with an attendant?',
-    answer: 'Yes, most of our photo booth packages include a professional and friendly attendant to ensure everything runs smoothly, assist your guests, and manage the props and equipment. For certain drop-off style social booths, an attendant may be optional.',
-  },
-  {
-    id: 'faq5',
-    question: 'What is included in your basic DJ package?',
-    answer: 'Our Essential Beats package typically includes up to 4 hours of DJ service, a professional DJ & MC, a sound system suitable for up to 100 guests, basic dance floor lighting, and access to our VIBO music planning app. For detailed package information, please visit our DJ Services page or contact us.',
-  },
-];
-
-const eventGalleryImages = [
-  { src: contactEventGalleryImg1, alt: 'Excited crowd at a wedding reception', hint: 'wedding party dance' },
-  { src: contactEventGalleryImg2, alt: 'Professional corporate event setup', hint: 'corporate conference' },
-  { src: contactEventGalleryImg3, alt: 'Fun moments at a private party photo booth', hint: 'photo booth fun' },
-  { src: contactEventGalleryImg4, alt: 'DJ performing at an outdoor event', hint: 'DJ outdoor event' },
-];
-
 
 export default function ContactPage() {
   const [formData, setFormData] = useState<ContactFormData>(initialContactFormData);
@@ -82,24 +44,31 @@ export default function ContactPage() {
     setIsSubmitting(true);
     console.log("Contact Form Data Submitted:", formData);
 
+    // Simulate API call
     await new Promise(resolve => setTimeout(resolve, 2000));
 
     setIsSubmitting(false);
     setFormData(initialContactFormData); 
     toast({
-      title: "Message Sent!",
-      description: "Thanks for reaching out! We'll get back to you as soon as possible.",
+      title: contactPageContent.form.successToastTitle,
+      description: contactPageContent.form.successToastDescription,
       variant: "default",
     });
   };
+
+  const { contactDetails, eventGallery, faq } = contactPageContent;
+  const PhoneIcon = contactDetails.phone.icon;
+  const MailIcon = contactDetails.email.icon;
+  const GalleryIcon = eventGallery.icon;
+
 
   return (
     <div className="bg-gray-50 dark:bg-gray-950 pt-24 sm:pt-32 pb-16 sm:pb-24">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h1 className="h1-style text-gray-900 dark:text-white">Get in Touch</h1>
+          <h1 className="h1-style text-gray-900 dark:text-white">{contactPageContent.pageTitle}</h1>
           <p className="mt-4 body-text-large text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-            We're excited to hear about your event! Fill out the form below or use our direct contact details for any questions or booking inquiries.
+            {contactPageContent.pageDescription}
           </p>
         </div>
       </div>
@@ -110,23 +79,23 @@ export default function ContactPage() {
           {/* Contact Information & Event Gallery */}
           <div className="bg-gray-50 dark:bg-gray-800 py-16 px-6 lg:col-span-2 lg:px-8 lg:py-16 xl:pr-12 rounded-lg shadow-md">
             <div className="max-w-lg mx-auto">
-              <h2 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-3xl">Contact Details</h2>
+              <h2 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-3xl">{contactDetails.title}</h2>
               <p className="mt-3 body-text-default text-gray-500 dark:text-gray-400">
-                Reach out to us for a quick response. We're here to help plan your perfect event.
+                {contactDetails.description}
               </p>
               <dl className="mt-8 space-y-6">
                 <div>
                   <dt className="sr-only">Phone number</dt>
                   <dd className="flex items-center text-base text-gray-500 dark:text-gray-300">
-                    <Phone className="flex-shrink-0 w-6 h-6 text-gray-400 dark:text-gray-500 mr-3" aria-hidden="true" />
-                    <a href="tel:+1234567890" className="hover:text-primary dark:hover:text-indigo-400">(123) 456-7890</a>
+                    <PhoneIcon className="flex-shrink-0 w-6 h-6 text-gray-400 dark:text-gray-500 mr-3" aria-hidden="true" />
+                    <a href={contactDetails.phone.href} className="hover:text-primary dark:hover:text-indigo-400">{contactDetails.phone.number}</a>
                   </dd>
                 </div>
                 <div>
                   <dt className="sr-only">Email</dt>
                   <dd className="flex items-center text-base text-gray-500 dark:text-gray-300">
-                    <Mail className="flex-shrink-0 w-6 h-6 text-gray-400 dark:text-gray-500 mr-3" aria-hidden="true" />
-                    <a href="mailto:info@riceentertainment.com" className="hover:text-primary dark:hover:text-indigo-400">info@riceentertainment.com</a>
+                    <MailIcon className="flex-shrink-0 w-6 h-6 text-gray-400 dark:text-gray-500 mr-3" aria-hidden="true" />
+                    <a href={contactDetails.email.href} className="hover:text-primary dark:hover:text-indigo-400">{contactDetails.email.address}</a>
                   </dd>
                 </div>
               </dl>
@@ -134,10 +103,10 @@ export default function ContactPage() {
               {/* Event Gallery Carousel */}
               <div className="mt-12">
                 <h3 className="flex items-center text-xl font-semibold text-gray-900 dark:text-white mb-4">
-                    <Camera className="w-6 h-6 mr-3 text-primary" /> Event Showcase
+                    <GalleryIcon className="w-6 h-6 mr-3 text-primary" /> {eventGallery.title}
                 </h3>
                 <div className="grid grid-cols-2 gap-4">
-                  {eventGalleryImages.map((image, index) => (
+                  {eventGallery.images.map((image, index) => (
                     <div key={index} className="relative aspect-square rounded-lg overflow-hidden shadow-md group">
                       <Image 
                         src={image.src} 
@@ -154,7 +123,7 @@ export default function ContactPage() {
                   ))}
                 </div>
                  <p className="mt-4 text-xs text-gray-500 dark:text-gray-400 text-center">
-                  A glimpse of the unforgettable moments we help create!
+                  {eventGallery.caption}
                 </p>
               </div>
             </div>
@@ -166,15 +135,15 @@ export default function ContactPage() {
               <form onSubmit={handleSubmit} className="grid grid-cols-1 gap-y-6">
                 <div>
                   <Label htmlFor="name" className="label-styles flex items-center"><User className="w-4 h-4 mr-2 opacity-70" /> Full Name</Label>
-                  <Input type="text" name="name" id="name" autoComplete="name" value={formData.name} onChange={handleChange} className="input-styles mt-1" required />
+                  <Input type="text" name="name" id="name" autoComplete="name" value={formData.name} onChange={handleChange} className="input-styles mt-1" required placeholder={contactPageContent.form.placeholders.name} />
                 </div>
                 <div>
                   <Label htmlFor="email" className="label-styles flex items-center"><Mail className="w-4 h-4 mr-2 opacity-70" /> Email</Label>
-                  <Input type="email" name="email" id="email" autoComplete="email" value={formData.email} onChange={handleChange} className="input-styles mt-1" required />
+                  <Input type="email" name="email" id="email" autoComplete="email" value={formData.email} onChange={handleChange} className="input-styles mt-1" required placeholder={contactPageContent.form.placeholders.email} />
                 </div>
                 <div>
                   <Label htmlFor="phone" className="label-styles flex items-center"><Phone className="w-4 h-4 mr-2 opacity-70" /> Phone (Optional)</Label>
-                  <Input type="tel" name="phone" id="phone" autoComplete="tel" value={formData.phone} onChange={handleChange} className="input-styles mt-1" />
+                  <Input type="tel" name="phone" id="phone" autoComplete="tel" value={formData.phone} onChange={handleChange} className="input-styles mt-1" placeholder={contactPageContent.form.placeholders.phone} />
                 </div>
                  <div>
                   <Label htmlFor="eventDate" className="label-styles flex items-center"><CalendarDays className="w-4 h-4 mr-2 opacity-70" /> Potential Event Date (Optional)</Label>
@@ -182,17 +151,17 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <Label htmlFor="message" className="label-styles flex items-center"><MessageCircle className="w-4 h-4 mr-2 opacity-70" /> Message</Label>
-                  <Textarea name="message" id="message" rows={4} value={formData.message} onChange={handleChange} className="input-styles mt-1 min-h-[120px]" required placeholder="Tell us about your event, what services you're interested in, and any specific questions you have."/>
+                  <Textarea name="message" id="message" rows={4} value={formData.message} onChange={handleChange} className="input-styles mt-1 min-h-[120px]" required placeholder={contactPageContent.form.placeholders.message} />
                 </div>
                 <div>
                   <Button type="submit" disabled={isSubmitting} className="w-full button-primary-styles py-3 text-base">
                     {isSubmitting ? (
                       <>
-                        <Loader2 className="mr-2 h-5 w-5 animate-spin" /> Sending...
+                        <Loader2 className="mr-2 h-5 w-5 animate-spin" /> {contactPageContent.form.submittingText}
                       </>
                     ) : (
                       <>
-                        Send Message <Send className="ml-2 h-5 w-5" />
+                        {contactPageContent.form.submitButtonText} <Send className="ml-2 h-5 w-5" />
                       </>
                     )}
                   </Button>
@@ -208,15 +177,15 @@ export default function ContactPage() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="h2-style text-gray-900 dark:text-white">
-              Frequently Asked Questions
+              {faq.title}
             </h2>
             <p className="mt-4 body-text-large text-gray-600 dark:text-gray-300">
-              Find answers to common questions about our services and booking process.
+              {faq.description}
             </p>
           </div>
           <div className="mt-12 max-w-3xl mx-auto">
             <Accordion type="single" collapsible className="w-full space-y-4">
-              {faqItems.map((item) => (
+              {faq.items.map((item) => (
                 <AccordionItem value={item.id} key={item.id} className="bg-gray-50 dark:bg-gray-800 p-0 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700">
                   <AccordionTrigger className="text-left px-6 py-4 text-lg font-medium text-gray-700 dark:text-gray-200 hover:no-underline hover:bg-gray-100 dark:hover:bg-gray-700/50 rounded-t-lg transition-colors">
                     {item.question}
@@ -233,4 +202,3 @@ export default function ContactPage() {
     </div>
   );
 }
-
