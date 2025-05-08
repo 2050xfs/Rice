@@ -5,7 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import type { ElementType } from 'react';
 import { useState, useEffect } from 'react';
-import { Menu, X, ChevronDown, Briefcase, CalendarDays, Disc3, Camera, Star, Sparkles, MessageSquare } from 'lucide-react';
+import { Menu, X, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
@@ -17,48 +17,18 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { cn } from '@/lib/utils';
 import { useBookingModal } from '@/context/BookingModalContext';
 import { brandLogoUrl } from '@/lib/image-urls';
+import { navItems, type NavItem } from '@/config/nav';
 
-
-interface NavItem {
-  name: string;
-  href?: string;
-  icon?: ElementType;
-  subItems?: NavItem[];
-}
-
-const navItems: NavItem[] = [
-  { name: 'Home', href: '/' },
-  {
-    name: 'Services',
-    icon: Briefcase,
-    subItems: [
-      { name: 'Photo Booths', href: '/services/photo-booths', icon: Camera },
-      { name: 'DJ Services', href: '/services/dj-services', icon: Disc3 },
-    ],
-  },
-  {
-    name: 'Events',
-    icon: CalendarDays,
-    subItems: [
-      { name: 'Weddings', href: '/events/weddings' },
-      { name: 'Corporate', href: '/events/corporate' },
-      { name: 'Private Parties', href: '/events/private-parties' },
-    ],
-  },
-  { name: 'VIBO App', href: '/vibo-app', icon: Sparkles },
-  { name: 'Testimonials', href: '/testimonials', icon: Star },
-  { name: 'Contact', href: '/contact', icon: MessageSquare },
-];
 
 const SiteLogo = () => (
-  <Link href="/" className="flex items-center shrink-0"> {/* Added shrink-0 */}
+  <Link href="/" className="flex items-center shrink-0">
     <div className="logo-container">
       <Image
         src={brandLogoUrl}
         alt="Rice Entertainment Logo"
         data-ai-hint="brand logo main"
         layout="fill"
-        className="logo-image" // Added class for object-fit: contain
+        className="logo-image"
         priority
       />
     </div>
@@ -85,7 +55,6 @@ export default function Header() {
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="ghost" className="flex items-center gap-1 text-base font-medium text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-primary px-3 py-2">
-              {item.icon && <item.icon className="h-4 w-4 mr-1" />}
               {item.name}
               <ChevronDown className="h-4 w-4" />
             </Button>
@@ -105,7 +74,6 @@ export default function Header() {
     }
     return (
       <Link href={item.href || '#'} className="flex items-center gap-1 text-base font-medium text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-primary px-3 py-2">
-        {item.icon && <item.icon className="h-4 w-4 mr-1" />}
         {item.name}
       </Link>
     );
@@ -167,7 +135,7 @@ export default function Header() {
         {/* Row 1: Logo and Book Now button */}
         <div className="flex items-center justify-between h-24"> {/* Height to accommodate logo */}
           <SiteLogo />
-          <Button onClick={openModal} className="button-primary-styles shrink-0"> {/* Added shrink-0 */}
+          <Button onClick={openModal} className="button-primary-styles shrink-0">
             Book Now
           </Button>
         </div>
@@ -205,7 +173,6 @@ export default function Header() {
                       <MobileNavLink key={item.name} item={item} closeMenu={() => setIsMobileMenuOpen(false)} />
                     ))}
                   </nav>
-                  {/* Removed redundant Book Now button from sheet, as Row 1 button should be visible */}
                 </div>
               </SheetContent>
             </Sheet>
