@@ -8,6 +8,7 @@ import { CheckCircle } from 'lucide-react';
 import Link from 'next/link';
 import { useBookingModal } from '@/context/BookingModalContext'; // Updated import
 import { eventTypeContentMap, defaultEventTypeContent } from '@/content/event-type-content';
+import ImageGallerySection from '@/components/sections/ImageGallerySection';
 
 export default function EventTypePage() {
   const params = useParams();
@@ -70,36 +71,8 @@ export default function EventTypePage() {
         </div>
       </div>
 
-      {/* Gallery Section (if exists) */}
-      {details.gallery && details.gallery.length > 0 && (
-        <div className="bg-gray-100 dark:bg-gray-900 py-24 sm:py-32">
-          <div className="max-w-7xl mx-auto px-6 lg:px-8">
-            <div className="max-w-2xl mx-auto lg:text-center mb-16">
-              <p className="section-label-style">Visual Inspiration</p>
-              <h2 className="mt-2 h2-style text-gray-900 dark:text-white">
-                Moments from Past {details.title}
-              </h2>
-            </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {details.gallery.map((item, index) => (
-                <div key={index} className="relative aspect-[4/3] rounded-xl overflow-hidden group shadow-lg">
-                  <Image
-                    src={item.src}
-                    alt={item.alt}
-                    data-ai-hint={item.hint}
-                    layout="fill"
-                    objectFit="cover"
-                    className="transition-transform duration-300 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                    <p className="text-white text-sm font-medium">{item.alt}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      )}
+      {/* Enhanced Gallery Section */}
+      <ImageGallerySection />
 
       {/* Why Choose Us Section */}
       <div className="py-24 sm:py-32">

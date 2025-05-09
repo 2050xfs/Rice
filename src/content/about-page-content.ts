@@ -2,8 +2,11 @@
 import type { LucideIcon } from 'lucide-react';
 import { CheckCircle, Users, Target, Award, Handshake } from 'lucide-react';
 import { 
-  aboutHeroImage, teamMember1Image, teamMember2Image, companyTimelineImage 
+  teamMember1Image, teamMember2Image, companyTimelineImage 
 } from '@/lib/image-urls';
+
+// New image URL for the About page hero section
+const aboutHeroImageNew = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/681c3002e17a08200b292ebf.jpeg";
 
 export interface TeamMember {
   name: string;
@@ -22,11 +25,12 @@ export interface CompanyValue {
 export const aboutPageContent = {
   hero: {
     label: "Who We Are",
-    title: "About Rice Entertainment",
-    description: "Founded on the principle of creating unforgettable experiences, Rice Entertainment has been serving joy and professionalism to events of all sizes for over [Number] years. We specialize in dynamic DJ services and interactive photo booths that elevate any celebration.",
-    image: aboutHeroImage,
-    imageAlt: "Team celebrating at an event",
-    imageHint: "team event celebration",
+    title: "Meet the Visionary Behind Rice Entertainment",
+    description: "Passionate about creating unforgettable experiences through music, entertainment, and meticulous event planning.",
+    image: aboutHeroImageNew, // Updated image URL
+    imageAlt: "Visionary leader planning an event", // Updated alt text
+    imageHint: "leader planning event", // Updated hint
+    ctaButtonText: "Book Your Event", // Added CTA button text for hero
   },
   story: {
     label: "Our Journey",
