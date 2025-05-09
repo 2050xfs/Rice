@@ -9,9 +9,10 @@ import { callToActionContent } from '@/content/call-to-action-content';
 export default function CallToAction() {
   const { openModal } = useBookingModal();
   return (
-    <div className="bg-gray-100 dark:bg-gray-900"> {/* Removed primary-gradient */}
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 py-24 sm:py-32">
-        <div className="relative isolate overflow-hidden bg-gray-900/50 dark:bg-black/30 px-6 pt-16 shadow-2xl rounded-2xl sm:rounded-3xl sm:px-16 md:pt-24 lg:flex lg:gap-x-20 lg:px-24 lg:pt-0">
+    <div className="bg-gray-100 dark:bg-gray-900"> {/* Outer container for section padding */}
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 py-24 sm:py-32"> {/* Section padding */}
+        {/* Inner card-like container */}
+        <div className="relative isolate overflow-hidden bg-gray-900/50 dark:bg-black/30 px-6 pt-16 shadow-2xl rounded-2xl sm:rounded-3xl sm:px-16 md:pt-24 lg:flex lg:items-center lg:gap-x-20 lg:px-24 lg:pt-0">
           <div className="absolute inset-0 -z-10 overlay-gradient opacity-30" />
           <svg
             viewBox="0 0 1024 1024"
@@ -26,6 +27,7 @@ export default function CallToAction() {
               </radialGradient>
             </defs>
           </svg>
+          {/* Text block */}
           <div className="mx-auto max-w-md text-center lg:mx-0 lg:flex-auto lg:py-32 lg:text-left">
             <h2 className="h2-style text-white">
               {callToActionContent.title}
@@ -44,14 +46,14 @@ export default function CallToAction() {
               </Link>
             </div>
           </div>
-          <div className="relative mt-16 h-80 lg:mt-8 lg:flex-shrink-0 lg:w-1/2"> {/* Added lg:w-1/2 to give it a width in flex layout, adjust as needed */}
+          {/* Image block container */}
+          <div className="relative mt-16 h-80 lg:mt-0 lg:flex-shrink-0 lg:w-1/2"> {/* Changed lg:mt-8 to lg:mt-0 to allow items-center to fully manage vertical alignment */}
             <Image
               className="absolute inset-0 h-full w-full object-cover rounded-md bg-white/5 ring-1 ring-white/10"
               src={callToActionContent.imageSrc}
               alt={callToActionContent.imageAlt}
               data-ai-hint={callToActionContent.imageHint}
-              width={1824} // Aspect ratio width
-              height={1080} // Aspect ratio height
+              fill
             />
           </div>
         </div>
@@ -59,4 +61,3 @@ export default function CallToAction() {
     </div>
   );
 }
-
