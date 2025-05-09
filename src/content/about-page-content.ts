@@ -1,8 +1,8 @@
 // src/content/about-page-content.ts
 import type { LucideIcon } from 'lucide-react';
-import { CheckCircle, Users, Target, Award, Handshake } from 'lucide-react';
-import { 
-  teamMember1Image, teamMember2Image, companyTimelineImageUpdated
+import { Users, Target, Award, Handshake } from 'lucide-react';
+import {
+  teamMember1Image, teamMember2Image, companyTimelineImage
 } from '@/lib/image-urls';
 
 // New image URL for the About page hero section
@@ -28,17 +28,17 @@ export const aboutPageContent = {
     label: "Who We Are",
     title: "Meet the Visionary Behind Rice Entertainment",
     description: "Passionate about creating unforgettable experiences through music, entertainment, and meticulous event planning.",
-    image: aboutHeroImageNew, 
-    imageAlt: "Visionary leader planning an event", 
-    imageHint: "leader planning event", 
-    ctaButtonText: "Book Your Event", 
+    image: aboutHeroImageNew,
+    imageAlt: "Visionary leader planning an event",
+    imageHint: "leader planning event",
+    ctaButtonText: "Book Your Event",
   },
   story: {
     label: "Our Journey",
     title: "A Personal Approach to Event Entertainment",
-    paragraph1: "Driven by a passion for creating unforgettable moments, Brandon founded Rice Entertainment to bring a personal touch to the world of event DJing. Frustrated by the impersonal approach of larger, multi-DJ companies, he envisioned a service that prioritized individual client needs and visions.",
+    paragraph1: "Driven by a passion for creating unforgettable moments, Brandon founded <strong class=\"text-gradient-highlight\">Rice Entertainment</strong> to bring a personal touch to the world of event DJing. Frustrated by the impersonal approach of larger, multi-DJ companies, he envisioned a service that prioritized individual client needs and visions.",
     paragraph2: "With years of experience packing dance floors across Northern California and beyond, Brandon brings an infectious energy and unwavering professionalism to every event. He understands that each celebration is unique, and he is dedicated to working closely with clients to craft a musical experience that perfectly matches their vision.",
-    image: companyTimelineImageUpdated, 
+    image: companyTimelineImage,
     imageAlt: "Collage of past Rice Entertainment events or team milestones",
     imageHint: "event collage timeline",
   },
