@@ -2,14 +2,14 @@
 "use client";
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { useBookingModal } from '@/context/BookingModalContext'; // Updated import
+import { useBookingModal } from '@/context/BookingModalContext';
 import Image from 'next/image';
 import { callToActionContent } from '@/content/call-to-action-content';
 
 export default function CallToAction() {
-  const { openModal } = useBookingModal(); // Updated hook usage
+  const { openModal } = useBookingModal();
   return (
-    <div className="primary-gradient">
+    <div className="bg-gray-100 dark:bg-gray-900"> {/* Removed primary-gradient */}
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-24 sm:py-32">
         <div className="relative isolate overflow-hidden bg-gray-900/50 dark:bg-black/30 px-6 pt-16 shadow-2xl rounded-2xl sm:rounded-3xl sm:px-16 md:pt-24 lg:flex lg:gap-x-20 lg:px-24 lg:pt-0">
           <div className="absolute inset-0 -z-10 overlay-gradient opacity-30" />
@@ -34,7 +34,7 @@ export default function CallToAction() {
               {callToActionContent.description}
             </p>
             <div className="mt-10 flex items-center justify-center gap-x-6 lg:justify-start">
-              <Button onClick={openModal} size="lg" className="button-primary-styles bg-white text-primary hover:bg-gray-100"> {/* Use openModal */}
+              <Button onClick={openModal} size="lg" className="button-primary-styles bg-white text-primary hover:bg-gray-100">
                 {callToActionContent.ctaButton1Text}
               </Button>
               <Link href={callToActionContent.ctaButton2Link} passHref>

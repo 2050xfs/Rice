@@ -1,5 +1,5 @@
 // src/content/call-to-action-content.ts
-import { callToActionAppScreenshotImg } from '@/lib/image-urls';
+import { companyTimelineImage } from '@/lib/image-urls'; // Using the updated image from about page
 
 export const callToActionContent = {
   title: "Ready to Elevate Your Event?",
@@ -7,7 +7,8 @@ export const callToActionContent = {
   ctaButton1Text: "Book Your Event",
   ctaButton2Text: "Contact Us",
   ctaButton2Link: "/contact",
-  imageSrc: callToActionAppScreenshotImg,
-  imageAlt: "App screenshot showing event planning interface",
-  imageHint: "event planning app",
+  imageSrc: companyTimelineImage, // Updated image URL
+  imageAlt: "Brandon Leo - Professional DJ", // Updated alt text
+  imageHint: "professional DJ", // Updated hint
 };
+
