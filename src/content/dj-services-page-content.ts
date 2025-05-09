@@ -1,10 +1,12 @@
 // src/content/dj-services-page-content.ts
 import type { LucideIcon } from 'lucide-react';
-import { Disc3, Zap, Music, Users, CalendarCheck2, CheckCircle, Headphones } from 'lucide-react';
+import { Disc3, Zap, Music, Users, CalendarCheck2, CheckCircle, Headphones, Speaker, Lightbulb, Mic } from 'lucide-react';
 import { 
   djServicesHeroBg, djPackageEssentialBeatsImg, djPackagePremiumSoundImg, djPackageUltimateExperienceImg,
   djProfileDjRiceImg, djProfileDjNovaImg, viboAppDjPageImg
 } from '@/lib/image-urls';
+import type { HeroTitlePart, HeroFeature } from '@/components/sections/PageHero';
+
 
 export interface DjPackage {
   name: string;
@@ -25,13 +27,24 @@ export interface DjProfile {
 
 export const djServicesPageContent = {
   hero: {
-    label: "Set The Mood",
-    title: "Professional DJ Services",
+    badgeText: "Expert DJ & MC Services",
+    titleParts: [
+      { text: "Set The Mood with", highlight: false },
+      { text: "Professional DJ Services", highlight: true },
+    ] as HeroTitlePart[],
     description: "Our experienced DJs bring the perfect energy and soundtrack to any event. From elegant weddings to high-energy corporate parties, we tailor the music to your unique style and guests.",
+    features: [
+        { text: "Pro Sound Systems", icon: Speaker },
+        { text: "Dynamic Lighting", icon: Lightbulb },
+        { text: "Engaging MCs", icon: Mic },
+        { text: "VIBO Music Planning", icon: Music },
+    ] as HeroFeature[],
     image: djServicesHeroBg,
     imageAlt: "DJ mixing console with vibrant lights",
     imageHint: "DJ console lights",
     ctaButtonText: "Get a DJ Quote",
+    secondaryCtaText: "View Packages",
+    secondaryCtaLink: "#dj-packages-section", // Anchor link to packages section
   },
   packages: {
     label: "Our Offerings",

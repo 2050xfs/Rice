@@ -6,48 +6,41 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { CheckCircle } from 'lucide-react';
 import Link from 'next/link';
-import { useBookingModal } from '@/context/BookingModalContext'; // Updated import
+import { useBookingModal } from '@/context/BookingModalContext';
 import { eventTypeContentMap, defaultEventTypeContent } from '@/content/event-type-content';
 import ImageGallerySection from '@/components/sections/ImageGallerySection';
+import PageHero from '@/components/sections/PageHero'; // Import the new hero
 
 export default function EventTypePage() {
   const params = useParams();
-  const { openModal } = useBookingModal(); // Updated hook usage
+  const { openModal } = useBookingModal();
   const eventType = typeof params.eventType === 'string' ? params.eventType : 'default';
   const details = eventTypeContentMap[eventType.toLowerCase()] || defaultEventTypeContent;
 
+  // Function to scroll to a specific section if needed by secondary CTA
+  const handleViewDetails = () => {
+    const detailsSection = document.getElementById('service-highlights-section');
+    if (detailsSection) {
+      detailsSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <div className="bg-gray-50 dark:bg-gray-950">
-      {/* Hero Section */}
-      <div className="relative isolate overflow-hidden pt-14 lg:pt-20">
-        <Image
-          src={details.heroImage}
-          alt={`Hero image for ${details.title}`}
-          data-ai-hint={details.heroImageHint}
-          layout="fill"
-          objectFit="cover"
-          className="absolute inset-0 -z-10 h-full w-full object-cover"
-          priority
-        />
-        <div className="absolute inset-0 -z-10 hero-overlay-gradient from-black/80 via-black/60 to-black/30" />
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 py-24 sm:py-32 text-center">
-          <p className="section-label-style text-indigo-300">{details.tagline}</p>
-          <h1 className="mt-2 h1-style text-white">
-            {details.title}
-          </h1>
-          <p className="mt-6 body-text-large text-gray-200 max-w-3xl mx-auto">
-            {details.description}
-          </p>
-          <div className="mt-10">
-            <Button onClick={openModal} size="lg" className="button-primary-styles"> {/* Use openModal */}
-              {details.ctaText || "Book This Event Type"}
-            </Button>
-          </div>
-        </div>
-      </div>
+      <PageHero
+        badgeText={details.badgeText}
+        titleParts={details.titleParts}
+        subtitle={details.description}
+        features={details.heroFeatures}
+        primaryCta={{ text: details.ctaText || "Book This Event", action: openModal }}
+        secondaryCta={details.secondaryCtaText ? { text: details.secondaryCtaText, action: handleViewDetails } : undefined}
+        imageSrc={details.heroImage}
+        imageAlt={`Hero image for ${details.title}`}
+        imageHint={details.heroImageHint}
+      />
 
       {/* Service Highlights Section */}
-      <div className="py-24 sm:py-32">
+      <div id="service-highlights-section" className="py-24 sm:py-32">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="max-w-2xl mx-auto lg:text-center mb-16">
             <p className="section-label-style">What We Offer For {details.title}</p>
@@ -71,8 +64,8 @@ export default function EventTypePage() {
         </div>
       </div>
 
-      {/* Enhanced Gallery Section */}
-      <ImageGallerySection />
+      {/* Enhanced Gallery Section - Conditionally render if event type has gallery images */}
+      {details.gallery && details.gallery.length > 0 && <ImageGallerySection />}
 
       {/* Why Choose Us Section */}
       <div className="py-24 sm:py-32">
@@ -112,7 +105,7 @@ export default function EventTypePage() {
             {details.finalCtaDescription}
           </p>
           <div className="mt-10">
-             <Button onClick={openModal} size="lg" className="button-primary-styles bg-white text-primary hover:bg-gray-100"> {/* Use openModal */}
+             <Button onClick={openModal} size="lg" className="button-primary-styles bg-white text-primary hover:bg-gray-100">
               {details.finalCtaButtonText}
             </Button>
           </div>

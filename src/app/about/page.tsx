@@ -1,19 +1,19 @@
 // app/about/page.tsx
-"use client"; // Added "use client" for useBookingModal hook
+"use client"; 
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { aboutPageContent } from '@/content/about-page-content';
-import { useBookingModal } from '@/context/BookingModalContext'; // Import useBookingModal
+import { useBookingModal } from '@/context/BookingModalContext'; 
 
 export default function AboutPage() {
-  const { openModal } = useBookingModal(); // Initialize useBookingModal
+  const { openModal } = useBookingModal(); 
   const { hero, story, team, values, cta } = aboutPageContent;
 
   return (
     <div className="bg-gray-50 dark:bg-gray-950">
-      {/* Hero Section */}
-      <div className="relative isolate overflow-hidden pt-14 lg:pt-20">
+      {/* Hero Section - Retaining full-width hero style for About page */}
+      <div className="relative isolate overflow-hidden pt-14 lg:pt-20 min-h-[60vh] flex items-center justify-center">
         <Image
           src={hero.image}
           alt={hero.imageAlt}
@@ -32,7 +32,6 @@ export default function AboutPage() {
           <p className="mt-6 body-text-large text-gray-200 max-w-3xl mx-auto">
             {hero.description}
           </p>
-          {/* CTA Button added to Hero Section */}
           <div className="mt-10">
             <Button onClick={openModal} size="lg" className="button-primary-styles">
               {hero.ctaButtonText}
@@ -50,12 +49,8 @@ export default function AboutPage() {
               <h2 className="mt-2 h2-style text-gray-900 dark:text-white">
                 {story.title}
               </h2>
-              <p className="mt-6 body-text-default text-gray-600 dark:text-gray-300">
-                {story.paragraph1}
-              </p>
-              <p className="mt-4 body-text-default text-gray-600 dark:text-gray-300">
-                {story.paragraph2}
-              </p>
+              <p className="mt-6 body-text-default text-gray-600 dark:text-gray-300" dangerouslySetInnerHTML={{ __html: story.paragraph1 }}/>
+              <p className="mt-4 body-text-default text-gray-600 dark:text-gray-300" dangerouslySetInnerHTML={{ __html: story.paragraph2 }}/>
             </div>
             <div className="mt-12 lg:mt-0 relative">
               <Image

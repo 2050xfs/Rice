@@ -5,7 +5,6 @@ import React, { useState, useRef } from 'react';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger, DialogDescription } from '@/components/ui/dialog';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -14,13 +13,13 @@ import { useToast } from '@/hooks/use-toast';
 import { useBookingModal } from '@/context/BookingModalContext';
 import { lightingPageContent } from '@/content/lighting-services-page-content';
 import { CheckCircle } from 'lucide-react';
+import PageHero from '@/components/sections/PageHero'; // Import the new hero
 
 // Demo Request Form Component
-const LightingDemoForm = () => {
+const LightingDemoForm = ({ onOpenChange }: { onOpenChange: (open: boolean) => void }) => {
     const [formData, setFormData] = useState({ name: '', email: '', eventDate: '', eventType: '', venueType: '' });
     const [isSubmitting, setIsSubmitting] = useState(false);
     const { toast } = useToast();
-    const [isDialogOpen, setIsDialogOpen] = useState(false); // Control dialog state
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -42,68 +41,61 @@ const LightingDemoForm = () => {
             variant: 'default',
         });
         setFormData({ name: '', email: '', eventDate: '', eventType: '', venueType: '' }); // Reset form
-        setIsDialogOpen(false); // Close dialog on success
+        onOpenChange(false); // Close dialog on success
     };
 
     return (
-        <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-            <DialogTrigger asChild>
-                <Button size="lg" className="button-primary-styles">
-                    {lightingPageContent.hero.primaryCtaText}
+        <DialogContent className="sm:max-w-[425px]">
+            <DialogHeader>
+                <DialogTitle>{lightingPageContent.demoForm.title}</DialogTitle>
+                 <DialogDescription>
+                    Tell us a bit about your event, and we'll get back to you to schedule a lighting demo.
+                </DialogDescription>
+            </DialogHeader>
+            <form onSubmit={handleSubmit} className="grid gap-4 py-4">
+                <div className="grid gap-2">
+                    <Label htmlFor="name">Your Name</Label>
+                    <Input id="name" name="name" value={formData.name} onChange={handleChange} required />
+                </div>
+                <div className="grid gap-2">
+                    <Label htmlFor="email">Email Address</Label>
+                    <Input id="email" name="email" type="email" value={formData.email} onChange={handleChange} required />
+                </div>
+                <div className="grid gap-2">
+                    <Label htmlFor="eventDate">Event Date</Label>
+                    <Input id="eventDate" name="eventDate" type="date" value={formData.eventDate} onChange={handleChange} required />
+                </div>
+                 <div className="grid gap-2">
+                    <Label htmlFor="eventType">Event Type</Label>
+                     <Select name="eventType" onValueChange={(value) => handleSelectChange('eventType', value)} value={formData.eventType} required>
+                        <SelectTrigger>
+                            <SelectValue placeholder="Select event type" />
+                        </SelectTrigger>
+                        <SelectContent>
+                            {lightingPageContent.demoForm.eventTypes.map(type => (
+                                <SelectItem key={type} value={type}>{type}</SelectItem>
+                            ))}
+                        </SelectContent>
+                    </Select>
+                </div>
+                 <div className="grid gap-2">
+                    <Label htmlFor="venueType">Venue Type</Label>
+                     <Select name="venueType" onValueChange={(value) => handleSelectChange('venueType', value)} value={formData.venueType} required>
+                         <SelectTrigger>
+                            <SelectValue placeholder="Select venue type" />
+                        </SelectTrigger>
+                        <SelectContent>
+                            {lightingPageContent.demoForm.venueTypes.map(type => (
+                                <SelectItem key={type} value={type}>{type}</SelectItem>
+                            ))}
+                        </SelectContent>
+                    </Select>
+                </div>
+                <Button type="submit" disabled={isSubmitting} className="mt-4 button-primary-styles">
+                    {isSubmitting ? 'Submitting...' : lightingPageContent.demoForm.submitButtonText}
                 </Button>
-            </DialogTrigger>
-            <DialogContent className="sm:max-w-[425px]">
-                <DialogHeader>
-                    <DialogTitle>{lightingPageContent.demoForm.title}</DialogTitle>
-                     <DialogDescription>
-                        Tell us a bit about your event, and we'll get back to you to schedule a lighting demo.
-                    </DialogDescription>
-                </DialogHeader>
-                <form onSubmit={handleSubmit} className="grid gap-4 py-4">
-                    <div className="grid gap-2">
-                        <Label htmlFor="name">Your Name</Label>
-                        <Input id="name" name="name" value={formData.name} onChange={handleChange} required />
-                    </div>
-                    <div className="grid gap-2">
-                        <Label htmlFor="email">Email Address</Label>
-                        <Input id="email" name="email" type="email" value={formData.email} onChange={handleChange} required />
-                    </div>
-                    <div className="grid gap-2">
-                        <Label htmlFor="eventDate">Event Date</Label>
-                        <Input id="eventDate" name="eventDate" type="date" value={formData.eventDate} onChange={handleChange} required />
-                    </div>
-                     <div className="grid gap-2">
-                        <Label htmlFor="eventType">Event Type</Label>
-                         <Select name="eventType" onValueChange={(value) => handleSelectChange('eventType', value)} value={formData.eventType} required>
-                            <SelectTrigger>
-                                <SelectValue placeholder="Select event type" />
-                            </SelectTrigger>
-                            <SelectContent>
-                                {lightingPageContent.demoForm.eventTypes.map(type => (
-                                    <SelectItem key={type} value={type}>{type}</SelectItem>
-                                ))}
-                            </SelectContent>
-                        </Select>
-                    </div>
-                     <div className="grid gap-2">
-                        <Label htmlFor="venueType">Venue Type</Label>
-                         <Select name="venueType" onValueChange={(value) => handleSelectChange('venueType', value)} value={formData.venueType} required>
-                             <SelectTrigger>
-                                <SelectValue placeholder="Select venue type" />
-                            </SelectTrigger>
-                            <SelectContent>
-                                {lightingPageContent.demoForm.venueTypes.map(type => (
-                                    <SelectItem key={type} value={type}>{type}</SelectItem>
-                                ))}
-                            </SelectContent>
-                        </Select>
-                    </div>
-                    <Button type="submit" disabled={isSubmitting} className="mt-4">
-                        {isSubmitting ? 'Submitting...' : lightingPageContent.demoForm.submitButtonText}
-                    </Button>
-                </form>
-            </DialogContent>
-        </Dialog>
+            </form>
+        </DialogContent>
     );
 };
 
@@ -112,6 +104,7 @@ export default function LightingServicesPage() {
     const { hero, offerings, packages, techSpecs, benefits, gallery, cta } = lightingPageContent;
     const { openModal: openBookingModal } = useBookingModal();
     const galleryRef = useRef<HTMLDivElement>(null);
+    const [isDemoFormOpen, setIsDemoFormOpen] = useState(false);
 
     const scrollToGallery = () => {
         galleryRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -119,36 +112,21 @@ export default function LightingServicesPage() {
 
     return (
         <div className="bg-gray-50 dark:bg-gray-950">
-            {/* Hero Section */}
-            <div className="relative isolate overflow-hidden pt-14 lg:pt-20 min-h-[60vh] flex items-center justify-center">
-                <Image
-                    src={hero.backgroundImage}
-                    alt={hero.backgroundImageAlt}
-                    data-ai-hint={hero.backgroundImageHint}
-                    layout="fill"
-                    objectFit="cover"
-                    className="absolute inset-0 -z-10 h-full w-full object-cover"
-                    priority
+             <Dialog open={isDemoFormOpen} onOpenChange={setIsDemoFormOpen}>
+                <PageHero
+                    badgeText={hero.badgeText}
+                    titleParts={hero.titleParts}
+                    subtitle={hero.subheading}
+                    features={hero.features}
+                    primaryCta={{ text: hero.primaryCtaText, action: () => setIsDemoFormOpen(true) }}
+                    secondaryCta={hero.secondaryCtaText ? { text: hero.secondaryCtaText, action: scrollToGallery } : undefined}
+                    imageSrc={hero.backgroundImage}
+                    imageAlt={hero.backgroundImageAlt}
+                    imageHint={hero.backgroundImageHint}
                 />
-                <div className="absolute inset-0 -z-10 bg-gradient-to-br from-black/80 via-black/50 to-indigo-900/50" />
-                <div className="max-w-7xl mx-auto px-6 lg:px-8 py-24 sm:py-32 text-center">
-                     <Badge variant="secondary" className="mb-4 bg-white/20 text-white border-none">
-                       {hero.badgeText}
-                    </Badge>
-                    <h1 className="h1-style text-white">
-                        {hero.heading}
-                    </h1>
-                    <p className="mt-6 body-text-large text-gray-200 max-w-3xl mx-auto">
-                        {hero.subheading}
-                    </p>
-                    <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-                       <LightingDemoForm />
-                        <Button onClick={scrollToGallery} size="lg" variant="outline" className="button-secondary-styles border-white/50 text-white hover:bg-white/10 hover:text-white" hasShimmer>
-                            {hero.secondaryCtaText}
-                        </Button>
-                    </div>
-                </div>
-            </div>
+                <LightingDemoForm onOpenChange={setIsDemoFormOpen} />
+            </Dialog>
+
 
             {/* Lighting Services Offerings Section */}
             <div className="py-24 sm:py-32">
@@ -253,7 +231,7 @@ export default function LightingServicesPage() {
             </div>
 
              {/* Gallery Section */}
-            <div ref={galleryRef} className="bg-gray-100 dark:bg-gray-900 py-24 sm:py-32">
+            <div ref={galleryRef} id="lighting-gallery" className="bg-gray-100 dark:bg-gray-900 py-24 sm:py-32">
                 <div className="max-w-7xl mx-auto px-6 lg:px-8">
                     <div className="max-w-2xl mx-auto lg:text-center mb-16">
                         <h2 className="h2-style text-gray-900 dark:text-white">

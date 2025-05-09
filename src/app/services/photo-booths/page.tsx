@@ -4,47 +4,45 @@ import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { useBookingModal } from '@/context/BookingModalContext'; // Updated import
+import { useBookingModal } from '@/context/BookingModalContext';
 import { photoBoothsPageContent } from '@/content/photo-booths-page-content';
+import PageHero from '@/components/sections/PageHero'; // Import the new hero
 
 export default function PhotoBoothsPage() {
-  const { openModal } = useBookingModal(); // Updated hook usage
+  const { openModal } = useBookingModal();
   const { hero, booths, addOns, cta } = photoBoothsPageContent;
   const FeatureIcon = booths.featureIcon;
 
+  const handleScheduleDemo = () => {
+    // For photo booths, "Schedule a Demo" might open the same booking modal
+    // or a different one if specialized demo requests are handled differently.
+    // Assuming it opens the standard booking modal for now.
+    openModal();
+  };
+
+  const handleViewGallery = () => {
+    const galleryElement = document.getElementById('booth-types-section');
+    if (galleryElement) {
+      galleryElement.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   return (
     <div className="bg-gray-50 dark:bg-gray-950">
-      {/* Hero Section */}
-      <div className="relative isolate overflow-hidden pt-14 lg:pt-20">
-        <Image
-          src={hero.image}
-          alt={hero.imageAlt}
-          data-ai-hint={hero.imageHint}
-          layout="fill"
-          objectFit="cover"
-          className="absolute inset-0 -z-10 h-full w-full object-cover"
-          priority
-        />
-        <div className="absolute inset-0 -z-10 hero-overlay-gradient from-black/80 via-black/60 to-black/30" />
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 py-24 sm:py-32 text-center">
-          <p className="section-label-style text-indigo-300">{hero.label}</p>
-          <h1 className="mt-2 h1-style text-white">
-            {hero.title}
-          </h1>
-          <p className="mt-6 body-text-large text-gray-200 max-w-3xl mx-auto">
-            {hero.description}
-          </p>
-          <div className="mt-10">
-            <Button onClick={openModal} size="lg" className="button-primary-styles"> {/* Use openModal */}
-              {hero.ctaButtonText}
-            </Button>
-          </div>
-        </div>
-      </div>
+      <PageHero
+        badgeText={hero.badgeText}
+        titleParts={hero.titleParts}
+        subtitle={hero.description}
+        features={hero.features}
+        primaryCta={{ text: hero.ctaButtonText, action: handleScheduleDemo }}
+        secondaryCta={hero.secondaryCtaText && hero.secondaryCtaLink ? { text: hero.secondaryCtaText, action: handleViewGallery } : undefined}
+        imageSrc={hero.image}
+        imageAlt={hero.imageAlt}
+        imageHint={hero.imageHint}
+      />
 
       {/* Booth Types Section */}
-      <div className="py-24 sm:py-32">
+      <div id="booth-types-section" className="py-24 sm:py-32">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="max-w-2xl mx-auto lg:text-center mb-16">
             <p className="section-label-style">{booths.label}</p>
@@ -159,7 +157,7 @@ export default function PhotoBoothsPage() {
             {cta.description}
           </p>
           <div className="mt-10">
-             <Button onClick={openModal} size="lg" className="button-primary-styles"> {/* Use openModal */}
+             <Button onClick={openModal} size="lg" className="button-primary-styles">
               {cta.buttonText}
             </Button>
           </div>

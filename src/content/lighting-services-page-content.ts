@@ -1,10 +1,11 @@
 // src/content/lighting-services-page-content.ts
-import { Lightbulb, Palette, Sparkles, SunMoon, Building, CheckCircle, ShieldCheck, Zap } from 'lucide-react';
+import { Lightbulb, Palette, Sparkles, SunMoon, Building, CheckCircle, ShieldCheck, Zap, Settings, Video } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 import {
   lightingHeroBg, uplightingImg, danceFloorLightingImg, specialtyEffectsImg, outdoorLightingImg,
   architecturalLightingImg, lightingGalleryImg1, lightingGalleryImg2, lightingGalleryImg3, lightingGalleryImg4
 } from '@/lib/image-urls';
+import type { HeroTitlePart, HeroFeature } from '@/components/sections/PageHero';
 
 export interface LightingOffering {
   icon: LucideIcon;
@@ -19,7 +20,7 @@ export interface LightingPackage {
   name: string;
   perfectFor: string;
   includes: string[];
-  priceTier?: string; // Optional: Like "Standard", "Premium" etc.
+  priceTier?: string;
 }
 
 export interface TechSpecItem {
@@ -42,8 +43,17 @@ export interface GalleryImage {
 export const lightingPageContent = {
   hero: {
     badgeText: "New: Cold Sparkler Effects",
-    heading: "Transform Your Event with Stunning Lighting Design",
+    titleParts: [
+        { text: "Transform Your Event with", highlight: false },
+        { text: "Stunning Lighting Design", highlight: true },
+    ] as HeroTitlePart[],
     subheading: "From elegant uplighting to dynamic effects and safe indoor sparklers, our professional lighting solutions create the perfect atmosphere for any occasion.",
+    features: [
+        { text: "Custom Uplighting", icon: Palette },
+        { text: "Dance Floor Effects", icon: Sparkles },
+        { text: "Cold Sparklers", icon: Zap },
+        { text: "Gobo Projections", icon: Settings },
+    ] as HeroFeature[],
     primaryCtaText: "Schedule a Demo",
     secondaryCtaText: "View Gallery",
     backgroundImage: lightingHeroBg,
@@ -89,7 +99,7 @@ export const lightingPageContent = {
         imageHint: 'dance floor lights party',
       },
       {
-        icon: Lightbulb, // Or Zap
+        icon: Lightbulb, 
         title: 'Specialty Effects',
         description: 'Unique lighting effects to add dramatic moments and visual interest to your event.',
         features: [

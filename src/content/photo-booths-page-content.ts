@@ -1,11 +1,12 @@
 // src/content/photo-booths-page-content.ts
 import type { LucideIcon } from 'lucide-react';
-import { CheckCircle, Zap, Gem, Users, SlidersHorizontal } from 'lucide-react';
+import { CheckCircle, Zap, Gem, Users, SlidersHorizontal, Camera, Printer, Aperture, Share } from 'lucide-react';
 import {
   photoBoothsHeroBg, booth360MainImg, booth360Gallery1Img, booth360Gallery2Img, booth360Gallery3Img,
   boothLuxxMainImg, boothLuxxGallery1Img, boothLuxxGallery2Img, boothLuxxGallery3Img,
   boothSocialMainImg, boothSocialGallery1Img, boothSocialGallery2Img, boothSocialGallery3Img
 } from '@/lib/image-urls';
+import type { HeroTitlePart, HeroFeature } from '@/components/sections/PageHero';
 
 export interface PhotoBoothGalleryItem {
   src: string;
@@ -35,13 +36,24 @@ export interface PhotoBoothAddOn {
 
 export const photoBoothsPageContent = {
   hero: {
-    label: "Capture Every Moment",
-    title: "Interactive Photo Booth Experiences",
-    description: "Elevate your event with our cutting-edge photo booths. From dynamic 360 videos to glamorous stills and fun social shares, we have the perfect booth to make your celebration unforgettable.",
+    badgeText: "Premium Photo Experience",
+    titleParts: [
+      { text: "Capture Moments with our", highlight: false },
+      { text: "Premium Photo Booth Services", highlight: true }
+    ] as HeroTitlePart[],
+    description: "Capture memorable moments with our premium photo booth experiences perfect for any event from casual gatherings to luxury weddings.",
+    features: [
+      { text: "High-quality DSLR cameras", icon: Camera },
+      { text: "Instant printing", icon: Printer },
+      { text: "Custom backdrops", icon: Aperture },
+      { text: "Digital sharing", icon: Share },
+    ] as HeroFeature[],
     image: photoBoothsHeroBg,
-    imageAlt: "Array of fun photo booth images",
-    imageHint: "photo booth collage",
-    ctaButtonText: "Book a Photo Booth",
+    imageAlt: "Premium 360 photo booth setup with gold backdrop",
+    imageHint: "360 photo booth gold",
+    ctaButtonText: "Schedule a Demo", // Primary CTA
+    secondaryCtaText: "View Booth Types", // Secondary CTA
+    secondaryCtaLink: "#booth-types-section" // Anchor link
   },
   booths: {
     label: "Choose Your Booth",
