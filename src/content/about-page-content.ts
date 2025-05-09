@@ -2,11 +2,12 @@
 import type { LucideIcon } from 'lucide-react';
 import { CheckCircle, Users, Target, Award, Handshake } from 'lucide-react';
 import { 
-  teamMember1Image, teamMember2Image, companyTimelineImage 
+  teamMember1Image, teamMember2Image
 } from '@/lib/image-urls';
 
 // New image URL for the About page hero section
 const aboutHeroImageNew = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/681c3002e17a08200b292ebf.jpeg";
+const companyTimelineImageUpdated = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/681c3002ec1140199e5f6e77.jpeg";
 
 export interface TeamMember {
   name: string;
@@ -27,17 +28,17 @@ export const aboutPageContent = {
     label: "Who We Are",
     title: "Meet the Visionary Behind Rice Entertainment",
     description: "Passionate about creating unforgettable experiences through music, entertainment, and meticulous event planning.",
-    image: aboutHeroImageNew, // Updated image URL
-    imageAlt: "Visionary leader planning an event", // Updated alt text
-    imageHint: "leader planning event", // Updated hint
-    ctaButtonText: "Book Your Event", // Added CTA button text for hero
+    image: aboutHeroImageNew, 
+    imageAlt: "Visionary leader planning an event", 
+    imageHint: "leader planning event", 
+    ctaButtonText: "Book Your Event", 
   },
   story: {
     label: "Our Journey",
     title: "The Story Behind the Music",
     paragraph1: "Rice Entertainment started from a simple love for music and a desire to make events more engaging and memorable. What began as a small DJ operation quickly grew as clients recognized our commitment to quality, personalized service, and genuine enthusiasm.",
     paragraph2: "Over the years, we've expanded our offerings to include state-of-the-art photo booths and streamlined event planning tools like our VIBO app. Our mission remains the same: to provide exceptional entertainment solutions that exceed expectations and create lasting positive memories. We are proud to have been a part of hundreds of weddings, corporate functions, and private parties, each one unique and special.",
-    image: companyTimelineImage,
+    image: companyTimelineImageUpdated, // Updated image URL
     imageAlt: "Collage of past Rice Entertainment events or team milestones",
     imageHint: "event collage timeline",
   },

@@ -111,7 +111,7 @@ export const serviceOverviewPhotoBoothImg = "https://storage.googleapis.com/msgs
 export const serviceOverviewViboImg = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/hero-phone.png"; // Updated
 
 // About Page Images
-// Removed: export const aboutHeroImage = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/placeholder_random_90.jpeg"; // Placeholder
+export const aboutHeroImage = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/681c3002e17a08200b292ebf.jpeg";
 export const teamMember1Image = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/placeholder_random_91.jpeg"; // Placeholder - Alex
 export const teamMember2Image = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/placeholder_random_92.jpeg"; // Placeholder - Jamie
-export const companyTimelineImage = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/placeholder_random_93.jpeg"; // Placeholder
+export const companyTimelineImage = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/681c3002ec1140199e5f6e77.jpeg";
