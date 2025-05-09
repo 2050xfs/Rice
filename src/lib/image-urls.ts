@@ -45,7 +45,8 @@ export const djProfileDjNovaImg = "https://storage.googleapis.com/msgsndr/iAR0sh
 export const viboAppDjPageImg = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/placeholder_random_36.jpeg"; // Placeholder
 
 // Photo Booths Page
-export const photoBoothsHeroBg = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/placeholder_random_22.jpeg"; // Placeholder
+export const photoBoothsHeroBgOld = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/placeholder_random_22.jpeg"; // Placeholder - keeping old one for reference if needed during transition
+export const photoBoothsHeroBgNew = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/681db348e3bce0d40228d0e1.jpeg"; // New image
 export const booth360MainImg = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/placeholder_random_10.jpeg"; // Placeholder
 export const booth360Gallery1Img = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/placeholder_random_11.jpeg"; // Placeholder
 export const booth360Gallery2Img = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/placeholder_random_12.jpeg"; // Placeholder
@@ -115,3 +116,6 @@ export const aboutHeroImage = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7
 export const teamMember1Image = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/placeholder_random_91.jpeg"; // Placeholder - Alex
 export const teamMember2Image = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/placeholder_random_92.jpeg"; // Placeholder - Jamie
 export const companyTimelineImage = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/681c3002ec1140199e5f6e77.jpeg";
+
+// Used for Image Gallery Section default placeholders
+export const imageGalleryPlaceholderBlur = "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNzAwIiBoZWlnaHQ9IjQ3NSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2ZXJzaW9uPSIxLjEiPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNmMWYxZjEiLz48L3N2Zz4=";

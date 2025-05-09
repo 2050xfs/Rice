@@ -2,7 +2,8 @@
 import type { LucideIcon } from 'lucide-react';
 import { CheckCircle, Zap, Gem, Users, SlidersHorizontal, Camera, Printer, Aperture, Share } from 'lucide-react';
 import {
-  photoBoothsHeroBg, booth360MainImg, booth360Gallery1Img, booth360Gallery2Img, booth360Gallery3Img,
+  photoBoothsHeroBgNew, // Updated variable name
+  booth360MainImg, booth360Gallery1Img, booth360Gallery2Img, booth360Gallery3Img,
   boothLuxxMainImg, boothLuxxGallery1Img, boothLuxxGallery2Img, boothLuxxGallery3Img,
   boothSocialMainImg, boothSocialGallery1Img, boothSocialGallery2Img, boothSocialGallery3Img
 } from '@/lib/image-urls';
@@ -48,7 +49,7 @@ export const photoBoothsPageContent = {
       { text: "Custom backdrops", icon: Aperture },
       { text: "Digital sharing", icon: Share },
     ] as HeroFeature[],
-    image: photoBoothsHeroBg,
+    image: photoBoothsHeroBgNew, // Updated image
     imageAlt: "Premium 360 photo booth setup with gold backdrop",
     imageHint: "360 photo booth gold",
     ctaButtonText: "Schedule a Demo", // Primary CTA
