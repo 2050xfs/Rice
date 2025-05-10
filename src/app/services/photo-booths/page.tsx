@@ -8,6 +8,7 @@ import { useBookingModal } from '@/context/BookingModalContext';
 import { photoBoothsPageContent } from '@/content/photo-booths-page-content';
 import PageHero from '@/components/sections/PageHero'; // Import the new hero
 import VideoThumbnail from '@/components/common/VideoThumbnail'; // Import the VideoThumbnail component
+import { cn } from '@/lib/utils';
 
 export default function PhotoBoothsPage() {
   const { openModal } = useBookingModal();
@@ -58,7 +59,7 @@ export default function PhotoBoothsPage() {
                 <TabsTrigger
                   key={booth.id}
                   value={booth.id}
-                  className="flex items-center justify-center gap-2 rounded-md py-2.5 px-3 text-sm font-medium transition-colors duration-150 ease-in-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=active]:shadow-lg data-[state=inactive]:text-gray-600 dark:data-[state=inactive]:text-gray-400 data-[state=inactive]:hover:bg-primary/10 data-[state=inactive]:hover:text-primary"
+                  className="flex items-center justify-center gap-2 rounded-md py-2.5 px-3 text-sm font-medium transition-colors duration-150 ease-in-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=active]:shadow-md data-[state=inactive]:text-gray-600 dark:data-[state=inactive]:text-gray-400 data-[state=inactive]:hover:bg-primary/10 data-[state=inactive]:hover:text-primary"
                 >
                   <booth.icon className="h-5 w-5 mr-0" /> {/* Removed mr-2 as gap-2 on trigger handles spacing */}
                   {booth.name}
@@ -90,7 +91,10 @@ export default function PhotoBoothsPage() {
                         />
                       )}
                     </div>
-                    <div className="p-8 md:p-12">
+                    <div className={cn(
+                        "p-8 md:p-12",
+                        booth.id === 'socialbooth' && "p-6 md:p-8" // Scaled down padding for social booth
+                      )}>
                       <span className="inline-flex items-center rounded-full bg-indigo-100 dark:bg-indigo-900 px-3 py-1 text-sm font-medium text-primary dark:text-indigo-300 mb-2">
                         {booth.tagline}
                       </span>
@@ -114,7 +118,10 @@ export default function PhotoBoothsPage() {
                     </div>
                   </div>
                   {/* Gallery Section within Tab */}
-                  <div className="p-8 md:p-12 border-t border-gray-200 dark:border-gray-700">
+                  <div className={cn(
+                      "p-8 md:p-12 border-t border-gray-200 dark:border-gray-700",
+                      booth.id === 'socialbooth' && "p-6 md:p-8" // Scaled down padding for social booth gallery
+                    )}>
                      {/* Removed h4 title: <h4 className="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-6 text-center">{booths.galleryTitle}</h4> */}
                      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-0"> {/* Adjusted mt if needed, but p-8 should handle spacing */}
                         {booth.gallery.map((img, idx) => (
@@ -180,4 +187,3 @@ export default function PhotoBoothsPage() {
     </div>
   );
 }
-
