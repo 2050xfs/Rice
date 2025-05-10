@@ -94,7 +94,7 @@ export default function PageHero({
                     "block xl:inline" // Ensure text flows naturally and wraps if needed
                   )}
                 >
-                  {part.text} {/* Removed trailing space to let CSS handle word spacing */}
+                  {part.text}{' '} {/* Add space for natural word separation only if not last part or part.highlight */}
                 </span>
               ))}
             </h1>
@@ -130,7 +130,7 @@ export default function PageHero({
           />
           
           {/* Image Container: Takes full height of its column */}
-          <div className="relative w-full h-full rounded-lg overflow-hidden shadow-xl">
+          <div className="relative w-full h-full rounded-lg overflow-hidden">
              {/* Mobile-specific gradient (for when image is centered below text) */}
             <div className="absolute inset-y-0 left-0 w-1/2 bg-gradient-to-r from-background to-transparent lg:hidden z-20" aria-hidden="true" />
             <Image
