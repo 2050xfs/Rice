@@ -58,7 +58,7 @@ export default function PhotoBoothsPage() {
                 <TabsTrigger
                   key={booth.id}
                   value={booth.id}
-                  className="flex items-center justify-center gap-2 rounded-md py-2 px-3 text-sm font-medium transition-colors duration-150 ease-in-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=active]:shadow-md data-[state=inactive]:text-gray-600 dark:data-[state=inactive]:text-gray-400 data-[state=inactive]:hover:bg-primary/10 data-[state=inactive]:hover:text-primary"
+                  className="flex items-center justify-center gap-2 rounded-md py-2.5 px-3 text-sm font-medium transition-colors duration-150 ease-in-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=active]:shadow-lg data-[state=inactive]:text-gray-600 dark:data-[state=inactive]:text-gray-400 data-[state=inactive]:hover:bg-primary/10 data-[state=inactive]:hover:text-primary"
                 >
                   <booth.icon className="h-5 w-5 mr-0" /> {/* Removed mr-2 as gap-2 on trigger handles spacing */}
                   {booth.name}
@@ -68,9 +68,9 @@ export default function PhotoBoothsPage() {
 
             {booths.items.map((booth) => (
               <TabsContent key={booth.id} value={booth.id}>
-                <Card className="overflow-hidden shadow-xl bg-white dark:bg-gray-900 border-0">
+                <Card className="overflow-hidden shadow-lg bg-white dark:bg-gray-900 border-0 rounded-xl">
                   <div className="grid md:grid-cols-2 gap-0">
-                    <div className="relative min-h-[300px] md:min-h-full">
+                    <div className="relative min-h-[300px] md:min-h-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center p-4 md:p-8">
                       {booth.id === 'luxxbooth' ? (
                         <VideoThumbnail
                           src={booth.image}
@@ -86,6 +86,7 @@ export default function PhotoBoothsPage() {
                           data-ai-hint={booth.imageHint}
                           layout="fill"
                           objectFit="contain" 
+                          className="max-h-[400px] md:max-h-full w-auto h-auto"
                         />
                       )}
                     </div>
@@ -119,9 +120,7 @@ export default function PhotoBoothsPage() {
                         {booth.gallery.map((img, idx) => (
                             <div key={idx} className="relative aspect-video rounded-lg overflow-hidden shadow-md group bg-gray-100 dark:bg-gray-800">
                                 <Image src={img.src} alt={img.alt} data-ai-hint={img.hint} layout="fill" objectFit="contain" className="transition-transform duration-300 group-hover:scale-105" />
-                                <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                                  <p className="text-white text-sm p-2 bg-black/50 rounded">{img.alt}</p>
-                                </div>
+                                {/* Removed hover text description overlay */}
                             </div>
                         ))}
                      </div>
@@ -134,10 +133,10 @@ export default function PhotoBoothsPage() {
       </div>
 
       {/* Add-ons Section */}
-      <div className="bg-gray-50 dark:bg-gray-950 py-24 sm:py-32"> {/* Removed gradient background */}
+      <div className="py-24 sm:py-32 bg-gray-50 dark:bg-gray-950"> 
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="max-w-2xl mx-auto lg:text-center mb-16">
-            <p className="section-label-style text-primary dark:text-indigo-400">{addOns.label}</p> {/* Adjusted text color for visibility */}
+            <p className="section-label-style text-primary dark:text-indigo-400">{addOns.label}</p> 
             <h2 className="mt-2 h2-style text-gray-900 dark:text-white">
               {addOns.title}
             </h2>
@@ -147,10 +146,10 @@ export default function PhotoBoothsPage() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {addOns.items.map((addon) => (
-              <Card key={addon.name} className="bg-white dark:bg-gray-800/50 shadow-lg border border-gray-200 dark:border-gray-700"> {/* Adjusted card style */}
+              <Card key={addon.name} className="bg-white dark:bg-gray-800/50 shadow-lg border border-gray-200 dark:border-gray-700"> 
                 <CardHeader>
                   <CardTitle className="flex items-center text-xl font-semibold text-gray-900 dark:text-white">
-                    <addon.icon className="h-6 w-6 mr-3 text-primary dark:text-indigo-400" /> {/* Adjusted icon color */}
+                    <addon.icon className="h-6 w-6 mr-3 text-primary dark:text-indigo-400" /> 
                     {addon.name}
                   </CardTitle>
                 </CardHeader>
@@ -182,4 +181,3 @@ export default function PhotoBoothsPage() {
     </div>
   );
 }
-
