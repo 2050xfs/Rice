@@ -133,7 +133,7 @@ export default function Header() {
         <div className="flex items-center justify-between h-24">
           <SiteLogo />
 
-          <nav className="hidden lg:flex items-center space-x-4 mx-auto"> {/* Changed space-x-1 to space-x-4 */}
+          <nav className="hidden lg:flex items-center space-x-2 mx-auto"> {/* Adjusted space-x-4 to space-x-2 */}
             {navItems.map((item) => (
               <NavLink key={item.name} item={item} />
             ))}
@@ -185,3 +185,4 @@ export default function Header() {
     </header>
   );
 }
+
