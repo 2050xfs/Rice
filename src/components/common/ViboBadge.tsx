@@ -1,20 +1,25 @@
 // src/components/common/ViboBadge.tsx
 "use client";
 import { Music } from 'lucide-react';
-import { cn } from '@/lib/utils';
 import React from 'react';
+import { usePathname, useRouter } from 'next/navigation'; // Import hooks
 
 export default function ViboBadge() {
+  const pathname = usePathname();
+  const router = useRouter();
   
   const scrollToViboSection = () => {
-    const viboSection = document.getElementById('vibo-app-highlight-section');
-    if (viboSection) {
-      viboSection.scrollIntoView({ behavior: 'smooth' });
+    const targetId = 'vibo-app-highlight-section';
+    if (pathname === '/') {
+      const viboSection = document.getElementById(targetId);
+      if (viboSection) {
+        viboSection.scrollIntoView({ behavior: 'smooth' });
+      } else {
+        console.warn(`${targetId} section not found for scrolling.`);
+      }
     } else {
-      // Fallback or console log if the section isn't found,
-      // especially if ViboBadge is used on pages without ViboAppHighlight.
-      // For now, we'll assume it's primarily used where the section exists.
-      console.warn("ViboAppHighlight section not found for scrolling.");
+      // Redirect to home page with hash to trigger scroll on home page
+      router.push(`/#${targetId}`);
     }
   };
   
