@@ -134,28 +134,28 @@ export default function PhotoBoothsPage() {
       </div>
 
       {/* Add-ons Section */}
-      <div className="bg-gradient-to-r from-indigo-600 to-indigo-500 py-24 sm:py-32">
+      <div className="bg-gray-50 dark:bg-gray-950 py-24 sm:py-32"> {/* Removed gradient background */}
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="max-w-2xl mx-auto lg:text-center mb-16">
-            <p className="section-label-style text-indigo-200">{addOns.label}</p>
-            <h2 className="mt-2 h2-style text-white">
+            <p className="section-label-style text-primary dark:text-indigo-400">{addOns.label}</p> {/* Adjusted text color for visibility */}
+            <h2 className="mt-2 h2-style text-gray-900 dark:text-white">
               {addOns.title}
             </h2>
-            <p className="mt-6 body-text-large text-gray-300">
+            <p className="mt-6 body-text-large text-gray-600 dark:text-gray-300">
               {addOns.description}
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {addOns.items.map((addon) => (
-              <Card key={addon.name} className="bg-white/10 dark:bg-white/5 backdrop-blur-sm border border-white/20 shadow-lg">
+              <Card key={addon.name} className="bg-white dark:bg-gray-800/50 shadow-lg border border-gray-200 dark:border-gray-700"> {/* Adjusted card style */}
                 <CardHeader>
-                  <CardTitle className="flex items-center text-xl font-semibold text-white">
-                    <addon.icon className="h-6 w-6 mr-3 text-indigo-300" />
+                  <CardTitle className="flex items-center text-xl font-semibold text-gray-900 dark:text-white">
+                    <addon.icon className="h-6 w-6 mr-3 text-primary dark:text-indigo-400" /> {/* Adjusted icon color */}
                     {addon.name}
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-sm text-gray-200">{addon.description}</p>
+                  <p className="text-sm text-gray-600 dark:text-gray-400">{addon.description}</p>
                 </CardContent>
               </Card>
             ))}
