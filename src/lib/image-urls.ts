@@ -107,7 +107,8 @@ export const viboAppHighlightInterfaceImg = "https://storage.googleapis.com/msgs
 export const callToActionAppScreenshotImg = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/placeholder_random_8.jpeg"; // Placeholder
 
 // ServicesOverview Section
-export const serviceOverviewDjImg = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/placeholder_random_2.jpeg"; // Placeholder
+export const serviceOverviewDjImgOld = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/placeholder_random_2.jpeg"; // Placeholder
+export const serviceOverviewDjImg = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/681cff5b02d0207b8a012933.jpeg"; // New image
 export const serviceOverviewPhotoBoothImg = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/placeholder_random_3.jpeg"; // Placeholder
 export const serviceOverviewViboImg = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/hero-phone.png"; // Updated
 
@@ -119,3 +120,5 @@ export const companyTimelineImage = "https://storage.googleapis.com/msgsndr/iAR0
 
 // Used for Image Gallery Section default placeholders
 export const imageGalleryPlaceholderBlur = "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNzAwIiBoZWlnaHQ9IjQ3NSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2ZXJzaW9uPSIxLjEiPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNmMWYxZjEiLz48L3N2Zz4=";
+
+    

@@ -21,8 +21,8 @@ export const servicesOverviewContent = {
       icon: Disc3,
       title: 'Dynamic DJ Services',
       description: 'Our professional DJs curate the perfect soundtrack for your event, ensuring an electrifying atmosphere and a packed dance floor.',
-      image: serviceOverviewDjImg,
-      imageHint: "DJ mixing",
+      image: serviceOverviewDjImg, // This line is updated
+      imageHint: "DJ mixing vibrant", // Updated hint
       link: '/services/dj-services',
     },
     {
@@ -37,10 +37,12 @@ export const servicesOverviewContent = {
       icon: Sparkles,
       title: 'VIBO Music Planning',
       description: 'Seamlessly plan your event\'s music with the intuitive VIBO app. Collaborate with your DJ and make requests with ease.',
-      image: serviceOverviewViboImg, // Updated via image-urls.ts
+      image: serviceOverviewViboImg, 
       imageHint: "music app interface",
       link: '/vibo-app',
     },
   ] as ServiceOverviewItem[],
   ctaButtonText: "Ready to Plan? Book Now!",
 };
+
+    
