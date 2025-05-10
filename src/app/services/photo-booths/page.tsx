@@ -115,12 +115,11 @@ export default function PhotoBoothsPage() {
                   </div>
                   {/* Gallery Section within Tab */}
                   <div className="p-8 md:p-12 border-t border-gray-200 dark:border-gray-700">
-                     <h4 className="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-6 text-center">{booths.galleryTitle}</h4>
-                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                     {/* Removed h4 title: <h4 className="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-6 text-center">{booths.galleryTitle}</h4> */}
+                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-0"> {/* Adjusted mt if needed, but p-8 should handle spacing */}
                         {booth.gallery.map((img, idx) => (
                             <div key={idx} className="relative aspect-video rounded-lg overflow-hidden shadow-md group bg-gray-100 dark:bg-gray-800">
                                 <Image src={img.src} alt={img.alt} data-ai-hint={img.hint} layout="fill" objectFit="contain" className="transition-transform duration-300 group-hover:scale-105" />
-                                {/* Removed hover text description overlay */}
                             </div>
                         ))}
                      </div>
@@ -181,3 +180,4 @@ export default function PhotoBoothsPage() {
     </div>
   );
 }
+
