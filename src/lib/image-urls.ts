@@ -109,7 +109,7 @@ export const callToActionAppScreenshotImg = "https://storage.googleapis.com/msgs
 // ServicesOverview Section
 export const serviceOverviewDjImgOld = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/placeholder_random_2.jpeg"; // Placeholder
 export const serviceOverviewDjImg = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/681cff5b02d0207b8a012933.jpeg"; // New image
-export const serviceOverviewPhotoBoothImg = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/placeholder_random_3.jpeg"; // Placeholder
+export const serviceOverviewPhotoBoothImg = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/681db31fe3bce085ea28d094.jpeg"; // New image
 export const serviceOverviewViboImg = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/hero-phone.png"; // Updated
 
 // About Page Images
