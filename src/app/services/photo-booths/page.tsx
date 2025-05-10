@@ -58,7 +58,7 @@ export default function PhotoBoothsPage() {
                 <TabsTrigger
                   key={booth.id}
                   value={booth.id}
-                  className="flex items-center justify-center gap-2 rounded-md py-2 px-3 text-sm font-medium transition-colors duration-150 ease-in-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-gray-600 dark:data-[state=inactive]:text-gray-400 data-[state=inactive]:hover:bg-primary/10 data-[state=inactive]:hover:text-primary"
+                  className="flex items-center justify-center gap-2 rounded-md py-2 px-3 text-sm font-medium transition-colors duration-150 ease-in-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=active]:shadow-md data-[state=inactive]:text-gray-600 dark:data-[state=inactive]:text-gray-400 data-[state=inactive]:hover:bg-primary/10 data-[state=inactive]:hover:text-primary"
                 >
                   <booth.icon className="h-5 w-5 mr-0" /> {/* Removed mr-2 as gap-2 on trigger handles spacing */}
                   {booth.name}
@@ -85,7 +85,7 @@ export default function PhotoBoothsPage() {
                           alt={booth.name}
                           data-ai-hint={booth.imageHint}
                           layout="fill"
-                          objectFit="cover"
+                          objectFit="contain" 
                         />
                       )}
                     </div>
@@ -182,3 +182,4 @@ export default function PhotoBoothsPage() {
     </div>
   );
 }
+
