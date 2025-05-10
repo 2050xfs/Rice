@@ -1,7 +1,7 @@
 // src/content/services-overview-content.ts
 import type { LucideIcon } from 'lucide-react';
 import { Disc3, Camera, Sparkles } from 'lucide-react';
-import { serviceOverviewDjImg, serviceOverviewViboImg } from '@/lib/image-urls';
+import { serviceOverviewDjImg, serviceOverviewPhotoBoothImg, viboAppPhoneMockup } from '@/lib/image-urls'; // Updated import
 
 export interface ServiceOverviewItem {
   icon: LucideIcon;
@@ -29,16 +29,16 @@ export const servicesOverviewContent = {
       icon: Camera,
       title: 'Interactive Photo Booths',
       description: 'Capture fun memories with our state-of-the-art photo booths, including 360, Luxx, and Social Booths with custom props and backdrops.',
-      image: "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/681db31fe3bce085ea28d094.jpeg",
-      imageHint: "photo booth setup", // Updated hint
+      image: serviceOverviewPhotoBoothImg,
+      imageHint: "photo booth setup",
       link: '/services/photo-booths',
     },
     {
       icon: Sparkles,
       title: 'VIBO Music Planning',
       description: 'Seamlessly plan your event\'s music with the intuitive VIBO app. Collaborate with your DJ and make requests with ease.',
-      image: serviceOverviewViboImg, 
-      imageHint: "music app interface",
+      image: viboAppPhoneMockup, // Updated image
+      imageHint: "VIBO app phone", // Updated hint
       link: '/vibo-app',
     },
   ] as ServiceOverviewItem[],
@@ -46,3 +46,4 @@ export const servicesOverviewContent = {
 };
 
     
+
