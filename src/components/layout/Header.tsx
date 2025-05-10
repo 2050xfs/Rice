@@ -15,13 +15,13 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { cn } from '@/lib/utils';
-import { useBookingModal } from '@/context/BookingModalContext'; // Updated import
+import { useBookingModal } from '@/context/BookingModalContext';
 import { brandLogoUrl } from '@/lib/image-urls';
 import { navItems, type NavItem } from '@/config/nav';
-import ViboBadge from '@/components/common/ViboBadge'; // Import the badge
+import ViboBadge from '@/components/common/ViboBadge';
 
 const SiteLogo = () => (
-  <Link href="/" className="flex items-center shrink-0 mr-auto"> {/* Added mr-auto to push nav right */}
+  <Link href="/" className="flex items-center shrink-0 mr-auto">
     <div className="logo-container">
       <Image
         src={brandLogoUrl}
@@ -38,7 +38,7 @@ const SiteLogo = () => (
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const { openModal } = useBookingModal(); // Updated hook usage
+  const { openModal } = useBookingModal();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -53,10 +53,9 @@ export default function Header() {
       return (
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            {/* Ensure button content is centered and doesn't wrap */}
             <Button variant="ghost" className="text-base font-medium text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-primary px-3 py-2 flex items-center gap-1 whitespace-nowrap">
-              {item.name} {/* Removed span wrapper */}
-              <ChevronDown className="h-4 w-4 shrink-0" /> {/* Ensure icon doesn't shrink excessively */}
+              {item.name}
+              <ChevronDown className="h-4 w-4 shrink-0" />
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent className="w-56 ring-1 ring-black/5">
@@ -131,28 +130,23 @@ export default function Header() {
       isScrolled ? "bg-white/80 dark:bg-gray-900/80 backdrop-blur-md shadow-lg" : "bg-transparent"
     )}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Use flexbox for single-row layout */}
         <div className="flex items-center justify-between h-24">
           <SiteLogo />
 
-          {/* Desktop Navigation (Centrally aligned between logo and CTA) */}
-          <nav className="hidden lg:flex items-center space-x-1 mx-auto"> {/* Added mx-auto */}
+          <nav className="hidden lg:flex items-center space-x-4 mx-auto"> {/* Changed space-x-1 to space-x-4 */}
             {navItems.map((item) => (
               <NavLink key={item.name} item={item} />
             ))}
           </nav>
 
-          {/* Right side container for Badge + Button */}
-          <div className="flex items-center gap-3 ml-auto"> {/* Added ml-auto */}
-             {/* Desktop CTA Button and Badge Container */}
+          <div className="flex items-center gap-3 ml-auto">
             <div className="hidden lg:flex items-center gap-3">
               <ViboBadge />
-              <Button onClick={openModal} className="button-primary-styles shrink-0"> {/* Use openModal */}
+              <Button onClick={openModal} className="button-primary-styles shrink-0">
                 Book Now
               </Button>
             </div>
 
-            {/* Mobile Navigation Trigger */}
             <div className="lg:hidden">
               <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
                 <SheetTrigger asChild>
@@ -174,9 +168,9 @@ export default function Header() {
                       {navItems.map((item) => (
                         <MobileNavLink key={item.name} item={item} closeMenu={() => setIsMobileMenuOpen(false)} />
                       ))}
-                      <div className="pt-4 flex flex-col items-center gap-2"> {/* Centered mobile items */}
+                      <div className="pt-4 flex flex-col items-center gap-2">
                         <ViboBadge />
-                        <Button onClick={() => { openModal(); setIsMobileMenuOpen(false); }} className="button-primary-styles w-full"> {/* Use openModal */}
+                        <Button onClick={() => { openModal(); setIsMobileMenuOpen(false); }} className="button-primary-styles w-full">
                           Book Now
                         </Button>
                       </div>
