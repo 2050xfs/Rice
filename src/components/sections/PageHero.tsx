@@ -26,11 +26,11 @@ export interface PageHeroProps {
   features?: HeroFeature[];
   primaryCta: {
     text: string;
-    action: (() => void) | LinkProps['href']; // Can be a function or a link href
+    action: (() => void) | LinkProps['href']; 
   };
   secondaryCta?: {
     text: string;
-    action: (() => void) | LinkProps['href']; // Can be a function or a link href
+    action: (() => void) | LinkProps['href']; 
   };
   imageSrc: string;
   imageAlt: string;
@@ -75,11 +75,11 @@ export default function PageHero({
   };
 
   return (
-    <div className="relative bg-background text-foreground pt-16 pb-20 lg:pt-24 lg:pb-28">
-      <div className="max-w-7xl mx-auto lg:grid lg:grid-cols-12 lg:gap-x-8 px-4 sm:px-6 lg:px-8">
-        {/* Text Content Area (Left) */}
-        <div className="sm:text-center md:max-w-2xl md:mx-auto lg:col-span-6 lg:text-left lg:flex lg:items-center">
-          <div>
+    <div className="relative bg-background text-foreground pt-16 pb-20 lg:pt-24 lg:pb-28 overflow-hidden">
+      <div className="max-w-7xl mx-auto lg:grid lg:grid-cols-12 lg:items-stretch lg:gap-x-8 px-4 sm:px-6 lg:px-8">
+        {/* Text Content Area (Left Column) */}
+        <div className="lg:col-span-6 flex flex-col justify-center text-center sm:text-left md:max-w-2xl md:mx-auto lg:mx-0 lg:text-left z-20">
+          <div> {/* Inner div for content grouping */}
             {badgeText && (
               <Badge variant="secondary" className="mb-3 bg-primary/10 text-primary dark:bg-primary/20 dark:text-indigo-300 border-none px-4 py-1.5 text-sm font-semibold rounded-full">
                 {badgeText}
@@ -91,10 +91,10 @@ export default function PageHero({
                   key={index}
                   className={cn(
                     part.highlight ? "text-primary dark:text-indigo-400" : "text-gray-900 dark:text-white",
-                    "block xl:inline"
+                    "block xl:inline" // Ensure text flows naturally and wraps if needed
                   )}
                 >
-                  {part.text}{' '}
+                  {part.text} {/* Removed trailing space to let CSS handle word spacing */}
                 </span>
               ))}
             </h1>
@@ -121,23 +121,28 @@ export default function PageHero({
           </div>
         </div>
 
-        {/* Image Area (Right) */}
-        <div className="mt-12 relative sm:max-w-lg sm:mx-auto lg:mt-0 lg:max-w-none lg:mx-0 lg:col-span-6 lg:flex lg:items-center">
-          <div className="absolute inset-y-0 left-0 w-1/2 bg-gradient-to-r from-background to-transparent lg:hidden z-10" aria-hidden="true" />
-          <div className="relative mx-auto w-full rounded-lg shadow-xl lg:max-w-md">
-            <div className="relative block w-full bg-background rounded-lg overflow-hidden">
-                <Image
-                    src={imageSrc}
-                    alt={imageAlt}
-                    data-ai-hint={imageHint}
-                    width={800} 
-                    height={700}
-                    className="w-full h-full object-cover"
-                    priority
-                />
-            </div>
+        {/* Image Area (Right Column) */}
+        <div className="mt-12 lg:mt-0 lg:col-span-6 relative"> {/* Column will stretch due to lg:items-stretch */}
+          {/* Gradient: Fades from left (background color) to transparent, covering the left part of the image column */}
+          <div
+            className="hidden lg:block absolute inset-y-0 left-0 w-2/5 md:w-1/3 bg-gradient-to-r from-background to-transparent z-10"
+            aria-hidden="true"
+          />
+          
+          {/* Image Container: Takes full height of its column */}
+          <div className="relative w-full h-full rounded-lg overflow-hidden shadow-xl">
+             {/* Mobile-specific gradient (for when image is centered below text) */}
+            <div className="absolute inset-y-0 left-0 w-1/2 bg-gradient-to-r from-background to-transparent lg:hidden z-20" aria-hidden="true" />
+            <Image
+                src={imageSrc}
+                alt={imageAlt}
+                data-ai-hint={imageHint}
+                layout="fill"
+                objectFit="cover"
+                className="z-0" // Ensure image is behind the desktop gradient
+                priority
+            />
           </div>
-          <div className="hidden lg:block absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-background to-transparent z-0" aria-hidden="true" />
         </div>
       </div>
     </div>
