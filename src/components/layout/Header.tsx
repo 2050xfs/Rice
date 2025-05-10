@@ -53,9 +53,14 @@ export default function Header() {
       return (
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button variant="ghost" className="text-base font-medium text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-primary px-3 py-2 flex items-center gap-1 whitespace-nowrap">
-              {item.name}
-              <ChevronDown className="h-4 w-4 shrink-0" />
+            <Button 
+              variant="ghost" 
+              className="text-base font-medium text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-primary px-3 py-2 border-none shadow-none focus:ring-0 focus:ring-offset-0"
+            >
+              <span className="flex items-center gap-1.5">
+                {item.name}
+                <ChevronDown className="h-4 w-4 shrink-0" />
+              </span>
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent className="w-56 ring-1 ring-black/5">
@@ -133,7 +138,7 @@ export default function Header() {
         <div className="flex items-center justify-between h-24">
           <SiteLogo />
 
-          <nav className="hidden lg:flex items-center space-x-2 mx-auto"> {/* Adjusted space-x-4 to space-x-2 */}
+          <nav className="hidden lg:flex items-center space-x-4 mx-auto">
             {navItems.map((item) => (
               <NavLink key={item.name} item={item} />
             ))}
@@ -185,4 +190,3 @@ export default function Header() {
     </header>
   );
 }
-

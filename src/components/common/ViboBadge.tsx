@@ -3,10 +3,20 @@
 import { Music } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import React from 'react';
-import { useBookingModal } from '@/context/BookingModalContext';
 
 export default function ViboBadge() {
-  const { openModal } = useBookingModal();
+  
+  const scrollToViboSection = () => {
+    const viboSection = document.getElementById('vibo-app-highlight-section');
+    if (viboSection) {
+      viboSection.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      // Fallback or console log if the section isn't found,
+      // especially if ViboBadge is used on pages without ViboAppHighlight.
+      // For now, we'll assume it's primarily used where the section exists.
+      console.warn("ViboAppHighlight section not found for scrolling.");
+    }
+  };
   
   // Generate random translate values for confetti pieces - updated for 4 pieces
   const pieces = React.useMemo(() => Array.from({ length: 4 }).map(() => ({
@@ -17,8 +27,8 @@ export default function ViboBadge() {
   return (
     <div 
       className="vibo-badge relative inline-flex items-center gap-1.5 rounded-full bg-indigo-100/50 dark:bg-indigo-900/30 px-3 py-1 text-xs font-medium cursor-pointer group transform transition-transform hover:scale-105 active:scale-95"
-      onClick={openModal}
-      title="Book services & get VIBO access"
+      onClick={scrollToViboSection}
+      title="Learn more about VIBO App"
     >
       <Music className="h-3 w-3 text-primary" />
       <span className="rainbow-shimmer-text font-semibold">VIBO</span>

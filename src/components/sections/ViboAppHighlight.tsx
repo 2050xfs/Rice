@@ -10,7 +10,7 @@ export default function ViboAppHighlight() {
   const { openModal } = useBookingModal();
   
   return (
-    <div className="bg-gradient-to-b from-gray-50 to-white dark:from-gray-950 dark:to-gray-900 py-24 sm:py-32">
+    <div id="vibo-app-highlight-section" className="bg-gradient-to-b from-gray-50 to-white dark:from-gray-950 dark:to-gray-900 py-24 sm:py-32">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         {/* Header Section */}
         <div className="lg:grid lg:grid-cols-2 lg:gap-x-12 lg:items-center mb-20">
