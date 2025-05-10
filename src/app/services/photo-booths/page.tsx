@@ -7,6 +7,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useBookingModal } from '@/context/BookingModalContext';
 import { photoBoothsPageContent } from '@/content/photo-booths-page-content';
 import PageHero from '@/components/sections/PageHero'; // Import the new hero
+import VideoThumbnail from '@/components/common/VideoThumbnail'; // Import the VideoThumbnail component
 
 export default function PhotoBoothsPage() {
   const { openModal } = useBookingModal();
@@ -70,13 +71,23 @@ export default function PhotoBoothsPage() {
                 <Card className="overflow-hidden shadow-xl bg-white dark:bg-gray-900 border-0">
                   <div className="grid md:grid-cols-2 gap-0">
                     <div className="relative min-h-[300px] md:min-h-full">
-                      <Image
-                        src={booth.image}
-                        alt={booth.name}
-                        data-ai-hint={booth.imageHint}
-                        layout="fill"
-                        objectFit="cover"
-                      />
+                      {booth.id === 'luxxbooth' ? (
+                        <VideoThumbnail
+                          src={booth.image}
+                          alt={booth.name}
+                          dataAiHint={booth.imageHint}
+                          layout="fill"
+                          objectFit="cover"
+                        />
+                      ) : (
+                        <Image
+                          src={booth.image}
+                          alt={booth.name}
+                          data-ai-hint={booth.imageHint}
+                          layout="fill"
+                          objectFit="cover"
+                        />
+                      )}
                     </div>
                     <div className="p-8 md:p-12">
                       <span className="inline-flex items-center rounded-full bg-indigo-100 dark:bg-indigo-900 px-3 py-1 text-sm font-medium text-primary dark:text-indigo-300 mb-2">
@@ -106,8 +117,8 @@ export default function PhotoBoothsPage() {
                      <h4 className="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-6 text-center">{booths.galleryTitle}</h4>
                      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                         {booth.gallery.map((img, idx) => (
-                            <div key={idx} className="relative aspect-video rounded-lg overflow-hidden shadow-md group">
-                                <Image src={img.src} alt={img.alt} data-ai-hint={img.hint} layout="fill" objectFit="cover" className="transition-transform duration-300 group-hover:scale-105" />
+                            <div key={idx} className="relative aspect-video rounded-lg overflow-hidden shadow-md group bg-gray-100 dark:bg-gray-800">
+                                <Image src={img.src} alt={img.alt} data-ai-hint={img.hint} layout="fill" objectFit="contain" className="transition-transform duration-300 group-hover:scale-105" />
                                 <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                                   <p className="text-white text-sm p-2 bg-black/50 rounded">{img.alt}</p>
                                 </div>
@@ -171,4 +182,3 @@ export default function PhotoBoothsPage() {
     </div>
   );
 }
-

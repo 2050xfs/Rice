@@ -3,7 +3,7 @@ import type { LucideIcon } from 'lucide-react';
 import { Disc3, Zap, Music, Users, CalendarCheck2, CheckCircle, Headphones, Speaker, Lightbulb, Mic } from 'lucide-react';
 import { 
   djServicesHeroBg, djPackageEssentialBeatsImg, djPackagePremiumSoundImg, djPackageUltimateExperienceImg,
-  djProfileDjRiceImg, djProfileDjNovaImg, viboAppDjPageImg
+  djProfileDjRiceImg, viboAppDjPageImg
 } from '@/lib/image-urls';
 import type { HeroTitlePart, HeroFeature } from '@/components/sections/PageHero';
 
@@ -139,14 +139,7 @@ export const djServicesPageContent = {
             bio: 'With over 10 years of experience, DJ RICE knows how to read a crowd and keep the energy high. His seamless transitions and diverse music knowledge make him a versatile choice for any event.',
             image: djProfileDjRiceImg,
             imageHint: "DJ portrait",
-          },
-          {
-            name: 'DJ Nova',
-            specialties: ['Electronic Dance Music', 'House', 'Private Parties', 'Latin'],
-            bio: 'DJ Nova brings a fresh, energetic vibe to every event. Specializing in modern beats and electronic music, she creates an unforgettable party atmosphere.',
-            image: djProfileDjNovaImg,
-            imageHint: "female DJ portrait",
-          },
+          }
         ] as DjProfile[],
     }
   },

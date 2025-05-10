@@ -36,29 +36,29 @@ export const privatePartiesGalleryImage3 = "https://storage.googleapis.com/msgsn
 export const defaultEventHeroImage = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/placeholder_random_82.jpeg"; // Placeholder
 
 // DJ Services Page
-export const djServicesHeroBg = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/placeholder_random_35.jpeg"; // Placeholder
-export const djPackageEssentialBeatsImg = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/placeholder_random_30.jpeg"; // Placeholder
-export const djPackagePremiumSoundImg = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/placeholder_random_31.jpeg"; // Placeholder
-export const djPackageUltimateExperienceImg = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/placeholder_random_32.jpeg"; // Placeholder
-export const djProfileDjRiceImg = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/placeholder_random_33.jpeg"; // Placeholder
-export const djProfileDjNovaImg = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/placeholder_random_34.jpeg"; // Placeholder
-export const viboAppDjPageImg = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/placeholder_random_36.jpeg"; // Placeholder
+export const djServicesHeroBg = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/681f0fa7837e1b6c1df07d23.jpeg";
+export const djPackageEssentialBeatsImg = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/66da89a521669e33564a465e.jpeg";
+export const djPackagePremiumSoundImg = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/681d710d6b471c70ae987789.jpeg";
+export const djPackageUltimateExperienceImg = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/681d710d02d0209fe601d7fa.png";
+export const djProfileDjRiceImg = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/66da89a521669e33564a465e.jpeg";
+// export const djProfileDjNovaImg = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/placeholder_random_34.jpeg"; // Deprecated - only one DJ profile needed
+export const viboAppDjPageImg = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/681c57b3a418b3edc6889d27.png";
 
 // Photo Booths Page
 export const photoBoothsHeroBgOld = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/placeholder_random_22.jpeg"; // Placeholder - keeping old one for reference if needed during transition
 export const photoBoothsHeroBgNew = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/681db348e3bce0d40228d0e1.jpeg"; // New image
-export const booth360MainImg = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/placeholder_random_10.jpeg"; // Placeholder
-export const booth360Gallery1Img = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/placeholder_random_11.jpeg"; // Placeholder
-export const booth360Gallery2Img = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/placeholder_random_12.jpeg"; // Placeholder
-export const booth360Gallery3Img = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/placeholder_random_13.jpeg"; // Placeholder
-export const boothLuxxMainImg = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/placeholder_random_14.jpeg"; // Placeholder
-export const boothLuxxGallery1Img = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/placeholder_random_15.jpeg"; // Placeholder
-export const boothLuxxGallery2Img = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/placeholder_random_16.jpeg"; // Placeholder
-export const boothLuxxGallery3Img = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/placeholder_random_17.jpeg"; // Placeholder
-export const boothSocialMainImg = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/placeholder_random_18.jpeg"; // Placeholder
-export const boothSocialGallery1Img = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/placeholder_random_19.jpeg"; // Placeholder
-export const boothSocialGallery2Img = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/placeholder_random_20.jpeg"; // Placeholder
-export const boothSocialGallery3Img = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/placeholder_random_21.jpeg"; // Placeholder
+export const booth360MainImg = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/681db348b78a40577f291a58.jpeg";
+export const booth360Gallery1Img = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/681db348e3bce075dc28d0dd.jpeg";
+export const booth360Gallery2Img = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/681db348e3bce0d40228d0e1.jpeg";
+export const booth360Gallery3Img = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/681db348e3bce0d40228d0e1.jpeg"; // Using the same image for the third gallery item
+export const boothLuxxMainImg = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/681db37ab4903b6703cd17ea.mp4"; // Video link
+export const boothLuxxGallery1Img = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/681db37a263b9d01c5643be3.jpeg";
+export const boothLuxxGallery2Img = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/681db37ab4903b010acd17e8.jpeg";
+export const boothLuxxGallery3Img = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/681db37a6c4021ea59e21297.jpeg";
+export const boothSocialMainImg = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/681dbcaf6c4021151fe21dcb.jpeg";
+export const boothSocialGallery1Img = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/681dbcafb78a40d035292579.gif";
+export const boothSocialGallery2Img = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/681dbcaf263b9d16a564452e.gif";
+export const boothSocialGallery3Img = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/681dbcaf6c4021488ce21dcd.gif";
 
 // Lighting Services Page
 export const lightingHeroBg = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/681c61a78d1baa71442f1252.png"; // cold-sparklers-outdoor-display.png
@@ -120,5 +120,3 @@ export const companyTimelineImage = "https://storage.googleapis.com/msgsndr/iAR0
 
 // Used for Image Gallery Section default placeholders
 export const imageGalleryPlaceholderBlur = "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNzAwIiBoZWlnaHQ9IjQ3NSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2ZXJzaW9uPSIxLjEiPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNmMWYxZjEiLz48L3N2Zz4=";
-
-    
