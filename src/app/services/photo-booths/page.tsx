@@ -52,10 +52,15 @@ export default function PhotoBoothsPage() {
           </div>
 
           <Tabs defaultValue={booths.items[0].id} className="w-full">
-            <TabsList className="grid w-full grid-cols-1 sm:grid-cols-3 mb-12 gap-2 bg-indigo-100 dark:bg-gray-800 p-2 rounded-lg">
+            <TabsList className="grid w-full grid-cols-1 sm:grid-cols-3 mb-12 gap-1 bg-gray-200 dark:bg-gray-700/50 p-1 rounded-lg shadow-inner">
               {booths.items.map((booth) => (
-                <TabsTrigger key={booth.id} value={booth.id} className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=active]:shadow-lg py-3 text-base font-medium">
-                  <booth.icon className="h-5 w-5 mr-2" /> {booth.name}
+                <TabsTrigger
+                  key={booth.id}
+                  value={booth.id}
+                  className="flex items-center justify-center gap-2 rounded-md py-2 px-3 text-sm font-medium transition-colors duration-150 ease-in-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-gray-600 dark:data-[state=inactive]:text-gray-400 data-[state=inactive]:hover:bg-primary/10 data-[state=inactive]:hover:text-primary"
+                >
+                  <booth.icon className="h-5 w-5 mr-0" /> {/* Removed mr-2 as gap-2 on trigger handles spacing */}
+                  {booth.name}
                 </TabsTrigger>
               ))}
             </TabsList>
@@ -166,3 +171,4 @@ export default function PhotoBoothsPage() {
     </div>
   );
 }
+
