@@ -9,7 +9,7 @@ import { useBookingModal } from '@/context/BookingModalContext';
 import { photoBoothsPageContent } from '@/content/photo-booths-page-content';
 import PageHero from '@/components/sections/PageHero';
 import VideoThumbnail from '@/components/common/VideoThumbnail';
-import EndlessCarousel, { CarouselImage } from '@/components/common/EndlessCarousel';
+// Removed EndlessCarousel and CarouselImage imports as they are no longer used
 import { cn } from '@/lib/utils';
 
 export default function PhotoBoothsPage() {
@@ -18,9 +18,6 @@ export default function PhotoBoothsPage() {
   const FeatureIcon = booths.featureIcon;
 
   const handleScheduleDemo = () => {
-    // For photo booths, "Schedule a Demo" might open the same booking modal
-    // or a different one if specialized demo requests are handled differently.
-    // Assuming it opens the standard booking modal for now.
     openModal();
   };
 
@@ -61,9 +58,9 @@ export default function PhotoBoothsPage() {
                 <TabsTrigger
                   key={booth.id}
                   value={booth.id}
-                  className="flex items-center justify-center gap-2 rounded-md py-2.5 px-3 text-sm font-medium transition-colors duration-150 ease-in-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=active]:shadow-md data-[state=inactive]:text-gray-600 dark:data-[state=inactive]:text-gray-400 data-[state=inactive]:hover:bg-primary/10 data-[state=inactive]:hover:text-primary"
+                  className="flex items-center justify-center gap-2 rounded-md py-2.5 px-3 text-sm font-medium transition-colors duration-150 ease-in-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=active]:shadow-sm data-[state=inactive]:text-gray-600 dark:data-[state=inactive]:text-gray-400 data-[state=inactive]:hover:bg-primary/10 data-[state=inactive]:hover:text-primary"
                 >
-                  <booth.icon className="h-5 w-5 mr-0" /> {/* Removed mr-2 as gap-2 on trigger handles spacing */}
+                  <booth.icon className="h-5 w-5 mr-0" />
                   {booth.name}
                 </TabsTrigger>
               ))}
@@ -95,7 +92,7 @@ export default function PhotoBoothsPage() {
                     </div>
                     <div className={cn(
                         "p-8 md:p-12",
-                        booth.id === 'socialbooth' && "p-6 md:p-8" // Scaled down padding for social booth
+                        booth.id === 'socialbooth' && "p-6 md:p-8" 
                       )}>
                       <span className="inline-flex items-center rounded-full bg-indigo-100 dark:bg-indigo-900 px-3 py-1 text-sm font-medium text-primary dark:text-indigo-300 mb-2">
                         {booth.tagline}
@@ -119,26 +116,35 @@ export default function PhotoBoothsPage() {
                       </CardContent>
                     </div>
                   </div>
-                  {/* Gallery Section within Tab - Now using EndlessCarousel */}
+                  {/* Updated Gallery Section within Tab */}
                   <div className={cn(
                       "p-8 md:p-12 border-t border-gray-200 dark:border-gray-700",
-                      booth.id === 'socialbooth' && "p-6 md:p-8" // Scaled down padding for social booth gallery
+                      booth.id === 'socialbooth' && "p-6 md:p-8"
                     )}>
                     <h4 className="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-6 text-center">Gallery</h4>
-                    <div className="h-[400px] w-full">
-                      <EndlessCarousel
-                        images={booth.gallery.map(img => ({
-                          src: img.src,
-                          alt: img.alt,
-                          width: 800,
-                          height: 600,
-                          caption: img.alt
-                        }))}
-                        autoPlay={false}
-                        showControls={true}
-                        showIndicators={true}
-                        className="h-full rounded-lg shadow-lg"
-                      />
+                    <div className="max-h-[600px] overflow-y-auto scrollbar-thin scrollbar-thumb-gray-300 dark:scrollbar-thumb-gray-700 pr-2">
+                      {booth.gallery && booth.gallery.length > 0 ? (
+                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                          {booth.gallery.map((img, imgIndex) => (
+                            <div key={`${booth.id}-gallery-${imgIndex}`} className="relative aspect-square rounded-lg overflow-hidden shadow-md group">
+                              <Image
+                                src={img.src}
+                                alt={img.alt}
+                                data-ai-hint={img.hint}
+                                layout="fill"
+                                objectFit="cover"
+                                className="transition-transform duration-300 group-hover:scale-105"
+                                sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
+                              />
+                              <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-2">
+                                <p className="text-white text-xs font-medium line-clamp-2">{img.alt}</p>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      ) : (
+                        <p className="text-center text-gray-500 dark:text-gray-400 py-8">No gallery images available for this booth.</p>
+                      )}
                     </div>
                   </div>
                 </Card>
