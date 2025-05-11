@@ -29,11 +29,10 @@ export default function BookingButton() {
               <Button
                   size="icon" // Use icon size for consistency
                   onClick={openModal}
-                  className="rounded-full shadow-xl primary-gradient text-white h-14 w-14 flex items-center justify-center hover:scale-110 transition-transform duration-300" // Fixed size, removed gap
+                  className="rounded-full shadow-xl drop-shadow-lg primary-gradient text-white h-14 w-14 flex items-center justify-center hover:scale-110 transition-transform duration-300" // Added drop-shadow-lg
                   aria-label="Book Now" // Keep aria-label for accessibility
               >
                   <Calendar className="h-6 w-6" /> {/* Ensure icon size is appropriate */}
-                  {/* Removed the "Book Now" text span */}
               </Button>
             </TooltipTrigger>
             <TooltipContent>

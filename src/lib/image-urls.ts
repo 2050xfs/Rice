@@ -18,18 +18,21 @@ export const contactEventGalleryImg4 = "https://storage.googleapis.com/msgsndr/i
 
 
 // EventType Pages
-export const weddingsHeroImage = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/placeholder_random_70.jpeg"; // Placeholder
-export const weddingsGalleryImage1 = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/placeholder_random_71.jpeg"; // Placeholder
-export const weddingsGalleryImage2 = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/placeholder_random_72.jpeg"; // Placeholder
-export const weddingsGalleryImage3 = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/placeholder_random_73.jpeg"; // Placeholder
+export const weddingsHeroImage = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/681f0fa6a7510791f80baada.jpeg"; // Couple-dancing.jpg
+export const weddingsGalleryImage1 = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/681f0fa7de1cad9d7e1d39c1.jpeg"; // event-setup.jpg
+export const weddingsGalleryImage2 = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/681f0fa7a1792d79f2a9232a.jpeg"; // bride-selfie.jpg
+export const weddingsGalleryImage3 = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/681f0fa7837e1b6c1df07d23.jpeg"; // family-fun.jpg
+export const weddingsGalleryImage4 = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/681f0fa7ce65808d783213ff.jpeg"; // event-fun.jpg
+export const weddingsGalleryImage5 = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/681f0fa6837e1bcbc7f07d22.jpeg"; // couple-kiss.jpg
 
-export const corporateHeroImage = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/placeholder_random_74.jpeg"; // Placeholder
+
+export const corporateHeroImage = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/681f0f79a75107024a0baab5.jpeg"; // Large corporate event
 export const corporateGalleryImage1 = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/placeholder_random_75.jpeg"; // Placeholder
 export const corporateGalleryImage2 = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/placeholder_random_76.jpeg"; // Placeholder
 export const corporateGalleryImage3 = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/placeholder_random_77.jpeg"; // Placeholder
 
-export const privatePartiesHeroImage = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/placeholder_random_78.jpeg"; // Placeholder
-export const privatePartiesGalleryImage1 = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/placeholder_random_79.jpeg"; // Placeholder
+export const privatePartiesHeroImage = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/681cff5b02d0207b8a012933.jpeg"; // Lake gathering
+export const privatePartiesGalleryImage1 = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/681cff5b6b471c841297da43.jpeg"; // Family gathering
 export const privatePartiesGalleryImage2 = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/placeholder_random_80.jpeg"; // Placeholder
 export const privatePartiesGalleryImage3 = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/placeholder_random_81.jpeg"; // Placeholder
 
@@ -51,26 +54,50 @@ export const booth360MainImg = "https://storage.googleapis.com/msgsndr/iAR0shcsJ
 export const booth360Gallery1Img = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/681db348e3bce075dc28d0dd.jpeg";
 export const booth360Gallery2Img = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/681db348e3bce0d40228d0e1.jpeg";
 export const booth360Gallery3Img = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/681db348e3bce0d40228d0e1.jpeg"; // Using the same image for the third gallery item
+
+// Luxx Booth Images
 export const boothLuxxMainImg = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/681db37ab4903b6703cd17ea.mp4"; // Video link
 export const boothLuxxGallery1Img = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/681db37a263b9d01c5643be3.jpeg";
 export const boothLuxxGallery2Img = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/681db37ab4903b010acd17e8.jpeg";
 export const boothLuxxGallery3Img = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/681db37a6c4021ea59e21297.jpeg";
+// Additional Luxx Booth Images
+export const boothLuxxGallery4Img = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/681db37a6c40210329e21295.jpeg"; // luxx photo booth with backdrop
+export const boothLuxxGallery5Img = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/681db37ab4903b5b44cd17eb.jpeg"; // luxbooth with backdrop and props
+export const boothLuxxGallery6Img = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/681db37a6c40210b29e21296.jpeg"; // luxx photobooth with backdrop
+export const boothLuxxGallery7Img = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/681db37ab78a40b772291a79.jpeg"; // luxx photobooth with props
+export const boothLuxxGallery8Img = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/681db37ae3bce0761528d138.jpeg"; // luxx photo booth with backdrop
+export const boothLuxxGallery9Img = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/681db37a263b9d099b643be2.jpeg"; // luxx photo booth with backdrop
+export const boothLuxxGallery10Img = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/681db37ab78a406b95291a78.jpeg"; // luxx photobooth countdown
+export const boothLuxxGallery11Img = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/681db37ae3bce0f14f28d136.jpeg"; // luxx photobooth digital
+export const boothLuxxGallery12Img = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/681db37a6c4021ea59e21297.jpeg"; // luxx-booth-display
+export const boothLuxxGallery13Img = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/681db37ab78a40c185291a7a.jpeg"; // luxx photo booth digital
+export const boothLuxxGallery14Img = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/681db37a6c40214dc5e21294.jpeg"; // luxx photo booth sephora
+
+// Social Booth Images
 export const boothSocialMainImg = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/681dbcaf6c4021151fe21dcb.jpeg";
 export const boothSocialGallery1Img = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/681dbcafb78a40d035292579.gif";
 export const boothSocialGallery2Img = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/681dbcaf263b9d16a564452e.gif";
 export const boothSocialGallery3Img = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/681dbcaf6c4021488ce21dcd.gif";
+// Additional Social Booth Images
+export const boothSocialGallery4Img = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/681dbcaf6c4021f261e21dcc.jpeg"; // social-booth-2
+export const boothSocialGallery5Img = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/681dbcaf263b9d3de564452f.jpeg"; // social photobooth happy holidays
+export const boothSocialGallery6Img = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/681dbcaf6c4021751de21dca.gif"; // social photo booth founders
+export const boothSocialGallery7Img = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/681dbcafb78a406d8229257a.gif"; // social photo booth founders
+export const boothSocialGallery8Img = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/681dbcafb4903b5286cd2302.jpeg"; // social photo booth digital
+export const boothSocialGallery9Img = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/681dbcafb4903b6fb3cd2303.jpeg"; // social photobooth founders
 
 // Lighting Services Page
-export const lightingHeroBg = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/681c61a78d1baa71442f1252.png"; // cold-sparklers-outdoor-display.png
-export const uplightingImg = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/placeholder_uplighting.jpeg"; // Placeholder
-export const danceFloorLightingImg = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/placeholder_dance_floor.jpeg"; // Placeholder
-export const specialtyEffectsImg = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/placeholder_special_effects.jpeg"; // Placeholder
-export const outdoorLightingImg = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/placeholder_outdoor_lighting.jpeg"; // Placeholder
-export const architecturalLightingImg = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/placeholder_architectural.jpeg"; // Placeholder
-export const lightingGalleryImg1 = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/placeholder_lighting_gallery_1.jpeg"; // Placeholder
-export const lightingGalleryImg2 = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/placeholder_lighting_gallery_2.jpeg"; // Placeholder
-export const lightingGalleryImg3 = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/placeholder_lighting_gallery_3.jpeg"; // Placeholder
-export const lightingGalleryImg4 = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/placeholder_lighting_gallery_4.jpeg"; // Placeholder
+export const lightingHeroBg = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/681d710d6b471c5e2098778a.png"; // Cold-sparklers-outdoor background image
+export const uplightingImg = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/681f0fa7de1cad9d7e1d39c1.jpeg"; // Wedding event setup with lighting
+export const danceFloorLightingImg = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/681d710eb78a4033e1275244.png"; // LED dancefloor lighting
+export const specialtyEffectsImg = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/681d710d786bf1902cb55890.png"; // Cool sparkler machine
+export const outdoorLightingImg = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/681d710d6b471c5e2098778a.png"; // Cold sparklers outdoor lighting
+export const architecturalLightingImg = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/681f0f79a75107024a0baab5.jpeg"; // Large corporate venue with lighting
+export const pinspotLightingImg = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/681d710db78a402db3275243.jpeg"; // Pin spot lighting effect
+export const lightingGalleryImg1 = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/681f0fa7de1cad9d7e1d39c1.jpeg"; // Elegant uplighting setup
+export const lightingGalleryImg2 = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/681d710eb78a4033e1275244.png"; // LED dancefloor lighting
+export const lightingGalleryImg3 = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/681d710d6b471c70ae987789.jpeg"; // First dance cold sparklers
+export const lightingGalleryImg4 = "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/681d710d6b471c5e2098778a.png"; // Outdoor lighting with cold sparklers
 
 
 // Testimonials Page

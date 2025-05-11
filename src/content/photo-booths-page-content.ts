@@ -5,7 +5,12 @@ import {
   photoBoothsHeroBgNew, // Updated variable name
   booth360MainImg, booth360Gallery1Img, booth360Gallery2Img, booth360Gallery3Img,
   boothLuxxMainImg, boothLuxxGallery1Img, boothLuxxGallery2Img, boothLuxxGallery3Img,
-  boothSocialMainImg, boothSocialGallery1Img, boothSocialGallery2Img, boothSocialGallery3Img
+  boothLuxxGallery4Img, boothLuxxGallery5Img, boothLuxxGallery6Img, boothLuxxGallery7Img,
+  boothLuxxGallery8Img, boothLuxxGallery9Img, boothLuxxGallery10Img, boothLuxxGallery11Img,
+  boothLuxxGallery12Img, boothLuxxGallery13Img, boothLuxxGallery14Img,
+  boothSocialMainImg, boothSocialGallery1Img, boothSocialGallery2Img, boothSocialGallery3Img,
+  boothSocialGallery4Img, boothSocialGallery5Img, boothSocialGallery6Img, boothSocialGallery7Img,
+  boothSocialGallery8Img, boothSocialGallery9Img
 } from '@/lib/image-urls';
 import type { HeroTitlePart, HeroFeature } from '@/components/sections/PageHero';
 
@@ -104,6 +109,17 @@ export const photoBoothsPageContent = {
           { src: boothLuxxGallery1Img, alt: 'Luxx Booth Glam Shot', hint: "glamour portrait" },
           { src: boothLuxxGallery2Img, alt: 'Luxx Booth Print Example', hint: "photo strip" },
           { src: boothLuxxGallery3Img, alt: 'Luxx Booth Setup Detail', hint: "elegant setup" },
+          { src: boothLuxxGallery4Img, alt: 'Luxx Photo Booth with Backdrop', hint: "photo booth backdrop" },
+          { src: boothLuxxGallery5Img, alt: 'Luxx Booth with Backdrop and Props', hint: "photo booth props" },
+          { src: boothLuxxGallery6Img, alt: 'Luxx Photobooth with Backdrop', hint: "photobooth setup" },
+          { src: boothLuxxGallery7Img, alt: 'Luxx Photobooth with Props', hint: "photobooth props" },
+          { src: boothLuxxGallery8Img, alt: 'Luxx Photo Booth with Backdrop', hint: "photo booth backdrop" },
+          { src: boothLuxxGallery9Img, alt: 'Luxx Photo Booth with Backdrop', hint: "photo booth backdrop" },
+          { src: boothLuxxGallery10Img, alt: 'Luxx Photobooth Countdown', hint: "photobooth countdown" },
+          { src: boothLuxxGallery11Img, alt: 'Luxx Photobooth Digital', hint: "photobooth digital" },
+          { src: boothLuxxGallery12Img, alt: 'Luxx Booth Display', hint: "booth display" },
+          { src: boothLuxxGallery13Img, alt: 'Luxx Photo Booth Digital', hint: "photo booth digital" },
+          { src: boothLuxxGallery14Img, alt: 'Luxx Photo Booth Sephora', hint: "photo booth sephora" },
         ],
       },
       {
@@ -127,6 +143,12 @@ export const photoBoothsPageContent = {
           { src: boothSocialGallery1Img, alt: 'Social Booth GIF Example', hint: "animated gif" },
           { src: boothSocialGallery2Img, alt: 'Guests with Digital Props', hint: "digital props" },
           { src: boothSocialGallery3Img, alt: 'Social Booth Sharing Interface', hint: "sharing screen" },
+          { src: boothSocialGallery4Img, alt: 'Social Booth Setup', hint: "booth setup" },
+          { src: boothSocialGallery5Img, alt: 'Social Photobooth Happy Holidays', hint: "holiday photobooth" },
+          { src: boothSocialGallery6Img, alt: 'Social Photo Booth Founders', hint: "founders event" },
+          { src: boothSocialGallery7Img, alt: 'Social Photo Booth Founders Animation', hint: "founders animation" },
+          { src: boothSocialGallery8Img, alt: 'Social Photo Booth Digital', hint: "digital output" },
+          { src: boothSocialGallery9Img, alt: 'Social Photobooth Founders', hint: "founders event" },
         ],
       },
     ] as PhotoBoothType[],

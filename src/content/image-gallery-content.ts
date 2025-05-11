@@ -15,10 +15,17 @@ import {
   boothLuxxGallery1Img,
   boothLuxxGallery2Img,
   boothLuxxGallery3Img,
+  boothLuxxGallery5Img,
+  boothLuxxGallery7Img,
+  boothLuxxGallery10Img,
+  boothLuxxGallery13Img,
   boothSocialMainImg,
   boothSocialGallery1Img,
   boothSocialGallery2Img,
   boothSocialGallery3Img,
+  boothSocialGallery4Img,
+  boothSocialGallery6Img,
+  boothSocialGallery7Img,
   weddingsGalleryImage1,
   weddingsGalleryImage2,
   weddingsGalleryImage3,
@@ -64,7 +71,7 @@ export const imageGalleryContent = {
       height: 600,
       span: { col: 2, row: 2 },
       caption: "Dynamic 360 photo booth experience",
-      category: "Party"
+      category: "Photo Booth"
     },
     // Lighting images - mix of cell sizes
     {
@@ -157,7 +164,7 @@ export const imageGalleryContent = {
       height: 300,
       span: { col: 1, row: 1 },
       caption: "Stunning 360 video booth spin effect",
-      category: "Party"
+      category: "Photo Booth"
     },
     {
       id: "img11",
@@ -167,7 +174,7 @@ export const imageGalleryContent = {
       height: 600,
       span: { col: 1, row: 2 },
       caption: "Professional 360 booth event setup",
-      category: "Wedding"
+      category: "Photo Booth"
     },
     {
       id: "img12",
@@ -177,7 +184,7 @@ export const imageGalleryContent = {
       height: 300,
       span: { col: 1, row: 1 },
       caption: "Elegant glamour portrait from Luxx Booth",
-      category: "Wedding"
+      category: "Photo Booth"
     },
     {
       id: "img13",
@@ -187,7 +194,7 @@ export const imageGalleryContent = {
       height: 300,
       span: { col: 1, row: 1 },
       caption: "High-quality photo strip from Luxx Booth",
-      category: "Wedding"
+      category: "Photo Booth"
     },
     {
       id: "img14",
@@ -197,7 +204,7 @@ export const imageGalleryContent = {
       height: 300,
       span: { col: 2, row: 1 },
       caption: "Engaging Social Booth for maximum fun",
-      category: "Party"
+      category: "Photo Booth"
     },
     {
       id: "img15",
@@ -207,7 +214,7 @@ export const imageGalleryContent = {
       height: 300,
       span: { col: 1, row: 1 },
       caption: "Animated GIF from our Social Booth",
-      category: "Party"
+      category: "Photo Booth"
     },
     // Wedding images - mix of cell sizes
     {
@@ -238,7 +245,7 @@ export const imageGalleryContent = {
       height: 300,
       span: { col: 2, row: 1 },
       caption: "Guests enjoying our photo booth experience",
-      category: "Wedding"
+      category: "Photo Booth"
     },
     // Corporate images - mix of cell sizes
     {
@@ -302,9 +309,81 @@ export const imageGalleryContent = {
       span: { col: 2, row: 1 },
       caption: "Highlights from our event history",
       category: "Corporate"
+    },
+    // Additional Luxx Booth images
+    {
+      id: "img25",
+      src: boothLuxxGallery5Img,
+      alt: "Luxx Booth with Backdrop and Props",
+      width: 600,
+      height: 400,
+      span: { col: 1, row: 1 },
+      caption: "Elegant Luxx Booth with custom backdrop and props",
+      category: "Photo Booth"
+    },
+    {
+      id: "img26",
+      src: boothLuxxGallery7Img,
+      alt: "Luxx Photobooth with Props",
+      width: 600,
+      height: 400,
+      span: { col: 1, row: 1 },
+      caption: "Guests enjoying the Luxx Photobooth with props",
+      category: "Photo Booth"
+    },
+    {
+      id: "img27",
+      src: boothLuxxGallery10Img,
+      alt: "Luxx Photobooth Countdown",
+      width: 400,
+      height: 600,
+      span: { col: 1, row: 2 },
+      caption: "Luxx Photobooth countdown display",
+      category: "Photo Booth"
+    },
+    {
+      id: "img28",
+      src: boothLuxxGallery13Img,
+      alt: "Luxx Photo Booth Digital",
+      width: 600,
+      height: 300,
+      span: { col: 1, row: 1 },
+      caption: "Digital output from Luxx Photo Booth",
+      category: "Photo Booth"
+    },
+    // Additional Social Booth images
+    {
+      id: "img29",
+      src: boothSocialGallery4Img,
+      alt: "Social Booth Setup",
+      width: 600,
+      height: 400,
+      span: { col: 1, row: 1 },
+      caption: "Social Booth setup with custom backdrop",
+      category: "Photo Booth"
+    },
+    {
+      id: "img30",
+      src: boothSocialGallery6Img,
+      alt: "Social Photo Booth Founders",
+      width: 600,
+      height: 400,
+      span: { col: 1, row: 1 },
+      caption: "Social Photo Booth at a founders event",
+      category: "Photo Booth"
+    },
+    {
+      id: "img31",
+      src: boothSocialGallery7Img,
+      alt: "Social Photo Booth Animation",
+      width: 800,
+      height: 400,
+      span: { col: 2, row: 1 },
+      caption: "Animated GIF from Social Photo Booth",
+      category: "Photo Booth"
     }
   ] as GalleryImage[],
   
   // Filter categories
-  categories: ["All", "Wedding", "Corporate", "Party"]
+  categories: ["All", "Wedding", "Corporate", "Party", "Photo Booth"]
 };

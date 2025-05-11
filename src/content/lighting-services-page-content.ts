@@ -3,7 +3,8 @@ import { Lightbulb, Palette, Sparkles, SunMoon, Building, CheckCircle, ShieldChe
 import type { LucideIcon } from 'lucide-react';
 import {
   lightingHeroBg, uplightingImg, danceFloorLightingImg, specialtyEffectsImg, outdoorLightingImg,
-  architecturalLightingImg, lightingGalleryImg1, lightingGalleryImg2, lightingGalleryImg3, lightingGalleryImg4
+  architecturalLightingImg, lightingGalleryImg1, lightingGalleryImg2, lightingGalleryImg3, lightingGalleryImg4,
+  pinspotLightingImg
 } from '@/lib/image-urls';
 import type { HeroTitlePart, HeroFeature } from '@/components/sections/PageHero';
 
@@ -108,8 +109,8 @@ export const lightingPageContent = {
           'Cold sparkler fountains (indoor safe)',
           'Dancing on clouds effect (low fog)',
         ],
-        image: specialtyEffectsImg,
-        imageHint: 'gobo projection monogram',
+        image: pinspotLightingImg,
+        imageHint: 'pin spot lighting effect centerpiece',
       },
       {
         icon: SunMoon,

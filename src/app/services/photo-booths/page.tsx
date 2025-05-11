@@ -1,13 +1,15 @@
 // app/services/photo-booths/page.tsx
 "use client";
+import { useState } from 'react';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useBookingModal } from '@/context/BookingModalContext';
 import { photoBoothsPageContent } from '@/content/photo-booths-page-content';
-import PageHero from '@/components/sections/PageHero'; // Import the new hero
-import VideoThumbnail from '@/components/common/VideoThumbnail'; // Import the VideoThumbnail component
+import PageHero from '@/components/sections/PageHero';
+import VideoThumbnail from '@/components/common/VideoThumbnail';
+import EndlessCarousel, { CarouselImage } from '@/components/common/EndlessCarousel';
 import { cn } from '@/lib/utils';
 
 export default function PhotoBoothsPage() {
@@ -117,19 +119,27 @@ export default function PhotoBoothsPage() {
                       </CardContent>
                     </div>
                   </div>
-                  {/* Gallery Section within Tab */}
+                  {/* Gallery Section within Tab - Now using EndlessCarousel */}
                   <div className={cn(
                       "p-8 md:p-12 border-t border-gray-200 dark:border-gray-700",
                       booth.id === 'socialbooth' && "p-6 md:p-8" // Scaled down padding for social booth gallery
                     )}>
-                     {/* Removed h4 title: <h4 className="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-6 text-center">{booths.galleryTitle}</h4> */}
-                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-0"> {/* Adjusted mt if needed, but p-8 should handle spacing */}
-                        {booth.gallery.map((img, idx) => (
-                            <div key={idx} className="relative aspect-video rounded-lg overflow-hidden shadow-md group bg-gray-100 dark:bg-gray-800">
-                                <Image src={img.src} alt={img.alt} data-ai-hint={img.hint} layout="fill" objectFit="contain" className="transition-transform duration-300 group-hover:scale-105" />
-                            </div>
-                        ))}
-                     </div>
+                    <h4 className="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-6 text-center">Gallery</h4>
+                    <div className="h-[400px] w-full">
+                      <EndlessCarousel
+                        images={booth.gallery.map(img => ({
+                          src: img.src,
+                          alt: img.alt,
+                          width: 800,
+                          height: 600,
+                          caption: img.alt
+                        }))}
+                        autoPlay={false}
+                        showControls={true}
+                        showIndicators={true}
+                        className="h-full rounded-lg shadow-lg"
+                      />
+                    </div>
                   </div>
                 </Card>
               </TabsContent>

@@ -2,8 +2,8 @@
 import type React from 'react';
 import type { LucideIcon } from 'lucide-react';
 import { CheckCircle, Sparkles, Gift, Users, Music, Camera, Briefcase, PartyPopper, Settings } from 'lucide-react';
-import { 
-  weddingsHeroImage, weddingsGalleryImage1, weddingsGalleryImage2, weddingsGalleryImage3,
+import {
+  weddingsHeroImage, weddingsGalleryImage1, weddingsGalleryImage2, weddingsGalleryImage3, weddingsGalleryImage4, weddingsGalleryImage5,
   corporateHeroImage, corporateGalleryImage1, corporateGalleryImage2, corporateGalleryImage3,
   privatePartiesHeroImage, privatePartiesGalleryImage1, privatePartiesGalleryImage2, privatePartiesGalleryImage3,
   defaultEventHeroImage
@@ -66,9 +66,11 @@ export const eventTypeContentMap: Record<string, EventTypeDetails> = {
       { icon: Users, title: "Guest Engagement", description: "Interactive elements to keep your guests involved and the energy high throughout the celebration." },
     ],
     gallery: [
-        { src: weddingsGalleryImage1, alt: 'Bride and groom first dance', hint: 'wedding first dance' },
-        { src: weddingsGalleryImage2, alt: 'Wedding guests dancing', hint: 'party dance floor' },
-        { src: weddingsGalleryImage3, alt: 'Elegant wedding photo booth setup', hint: 'photo booth wedding' },
+        { src: weddingsGalleryImage1, alt: 'Wedding event setup', hint: 'wedding event setup' },
+        { src: weddingsGalleryImage2, alt: 'Bride selfie', hint: 'bride selfie' },
+        { src: weddingsGalleryImage3, alt: 'Family fun at wedding', hint: 'family fun wedding' },
+        { src: weddingsGalleryImage4, alt: 'Event fun at wedding', hint: 'event fun wedding' },
+        { src: weddingsGalleryImage5, alt: 'Couple kissing at wedding', hint: 'couple kiss wedding' },
     ],
     ctaText: "Plan Your Perfect Wedding Day",
     secondaryCtaText: "View Services",
@@ -91,7 +93,7 @@ export const eventTypeContentMap: Record<string, EventTypeDetails> = {
     ],
     description: "From holiday parties and awards galas to conferences and brand activations, Rice Entertainment provides polished and professional DJ and photo booth services that align with your corporate image and objectives.",
     heroImage: corporateHeroImage,
-    heroImageHint: "corporate event conference",
+    heroImageHint: "Large corporate event",
     heroFeatures: [
         { text: "Sophisticated DJ/MC", icon: Music },
         { text: "Branded Photo Booths", icon: Camera },
@@ -105,9 +107,7 @@ export const eventTypeContentMap: Record<string, EventTypeDetails> = {
       { icon: Sparkles, title: "Seamless AV & Presentation Support", description: "Reliable audio-visual solutions for presentations and announcements." },
     ],
      gallery: [
-        { src: corporateGalleryImage1, alt: 'Corporate event presentation', hint: 'business presentation stage' },
-        { src: corporateGalleryImage2, alt: 'Networking at a corporate function', hint: 'business networking' },
-        { src: corporateGalleryImage3, alt: 'Branded photo booth at a trade show', hint: 'corporate branding booth' },
+        // Add corporate gallery images here if provided
     ],
     ctaText: "Elevate Your Next Corporate Event",
     secondaryCtaText: "Our Corporate Services",
@@ -130,7 +130,7 @@ export const eventTypeContentMap: Record<string, EventTypeDetails> = {
     ],
     description: "Birthdays, anniversaries, graduations, or just a get-together – Rice Entertainment brings the fun! Our versatile DJs and exciting photo booths can turn any private party into a memorable bash.",
     heroImage: privatePartiesHeroImage,
-    heroImageHint: "birthday party celebration",
+    heroImageHint: "Lake gathering",
     heroFeatures: [
         { text: "High-Energy DJs", icon: Music },
         { text: "Interactive Photo Booths", icon: Camera },
@@ -144,9 +144,8 @@ export const eventTypeContentMap: Record<string, EventTypeDetails> = {
       { icon: Sparkles, title: "Customizable Packages", description: "Flexible options to fit the scale and budget of your private celebration." },
     ],
     gallery: [
-        { src: privatePartiesGalleryImage1, alt: 'Guests enjoying a birthday party', hint: 'party friends fun' },
-        { src: privatePartiesGalleryImage2, alt: 'Colorful private party lighting', hint: 'event lighting design' },
-        { src: privatePartiesGalleryImage3, alt: 'Social photo booth at a graduation party', hint: 'graduation party fun' },
+        { src: privatePartiesGalleryImage1, alt: 'Family gathering', hint: 'family gathering' },
+        // Add other private party gallery images here if provided
     ],
     ctaText: "Make Your Private Party Epic",
     secondaryCtaText: "Party Services Details",
