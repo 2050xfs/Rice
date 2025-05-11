@@ -381,6 +381,69 @@ export const imageGalleryContent = {
       span: { col: 2, row: 1 },
       caption: "Animated GIF from Social Photo Booth",
       category: "Photo Booth"
+    },
+    // Additional GIF animations
+    {
+      id: "img32",
+      src: "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/66ce6bad8f5bec770aa6b4d9.gif",
+      alt: "Photo Booth Animation 1",
+      width: 600,
+      height: 300,
+      span: { col: 1, row: 1 },
+      caption: "Fun animated moments from our photo booth",
+      category: "Photo Booth"
+    },
+    {
+      id: "img33",
+      src: "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/66ce6badda06ef21835d4791.gif",
+      alt: "Photo Booth Animation 2",
+      width: 600,
+      height: 300,
+      span: { col: 1, row: 1 },
+      caption: "Creative photo booth animations",
+      category: "Photo Booth"
+    },
+    // Additional Wedding Photos
+    {
+      id: "img34",
+      src: "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/66ce6bae8f5bec22e9a6b4ea.jpeg",
+      alt: "Lauren & Ryan Wedding",
+      width: 800,
+      height: 300,
+      span: { col: 2, row: 1 },
+      caption: "Beautiful wedding celebration moments",
+      category: "Wedding"
+    },
+    {
+      id: "img35",
+      src: "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/66ce6bae8f5bec3ed7a6b4eb.jpeg",
+      alt: "Wedding Dance Floor",
+      width: 600,
+      height: 300,
+      span: { col: 1, row: 1 },
+      caption: "Guests enjoying the wedding dance floor",
+      category: "Wedding"
+    },
+    // Additional Corporate Events
+    {
+      id: "img36",
+      src: "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/66ce6bad8f5bec22e9a6b4d7.png",
+      alt: "USTA Corporate Event",
+      width: 800,
+      height: 300,
+      span: { col: 2, row: 1 },
+      caption: "USTA corporate celebration",
+      category: "Corporate"
+    },
+    {
+      id: "img37",
+      src: "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/66ce6bae654dde1e2d835c32.jpeg",
+      alt: "DCAC 15 Year Celebration",
+      width: 600,
+      height: 300,
+      span: { col: 1, row: 1 },
+      caption: "DCAC's 15th anniversary celebration",
+      category: "Corporate"
     }
   ] as GalleryImage[],
   

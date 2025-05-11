@@ -123,25 +123,44 @@ export default function AboutPage() {
       </div>
 
       {/* Final CTA */}
-      <div className="bg-gradient-to-r from-indigo-700 to-purple-700 py-20 sm:py-28">
-        <div className="max-w-4xl mx-auto text-center px-6 lg:px-8">
-          <h2 className="h2-style text-white">
-            {cta.title}
-          </h2>
-          <p className="mt-6 body-text-large text-indigo-100">
-            {cta.description}
-          </p>
-          <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link href={cta.button1Link} passHref>
-              <Button size="lg" className="button-primary-styles bg-white text-primary hover:bg-gray-100">
-                {cta.button1Text}
-              </Button>
-            </Link>
-             <Link href={cta.button2Link} passHref>
-                 <Button size="lg" variant="outline" className="button-secondary-styles border-white/50 text-white hover:bg-white/10 hover:text-white" hasShimmer>
-                    {cta.button2Text}
-                </Button>
-            </Link>
+      <div className="bg-gray-100 dark:bg-gray-900"> {/* Outer container */}
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 py-24 sm:py-32"> {/* Section padding */}
+          {/* Inner card-like container */}
+          <div className="relative isolate overflow-hidden bg-gray-900/50 dark:bg-black/30 px-6 py-16 shadow-2xl rounded-2xl sm:rounded-3xl sm:px-16 md:py-24">
+            <svg
+              viewBox="0 0 1024 1024"
+              className="absolute left-1/2 top-1/2 -z-10 h-[64rem] w-[64rem] -translate-y-1/2 [mask-image:radial-gradient(closest-side,white,transparent)] sm:left-full sm:-ml-80 lg:left-1/2 lg:ml-0 lg:-translate-x-1/2 lg:translate-y-0"
+              aria-hidden="true"
+            >
+              <circle cx={512} cy={512} r={512} fill="url(#759c1415-0410-454c-8f7c-9a820de03641)" fillOpacity="0.7" />
+              <defs>
+                <radialGradient id="759c1415-0410-454c-8f7c-9a820de03641">
+                  <stop stopColor="#6366F1" /> {/* Indigo-500 */}
+                  <stop offset={1} stopColor="#4F46E5" /> {/* Indigo-600 */}
+                </radialGradient>
+              </defs>
+            </svg>
+            {/* Text block - centered */}
+            <div className="mx-auto max-w-2xl text-center">
+              <h2 className="h2-style text-white">
+                {cta.title}
+              </h2>
+              <p className="mt-6 body-text-large text-gray-300">
+                {cta.description}
+              </p>
+              <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-x-6 gap-y-4">
+                <Link href={cta.button1Link} passHref>
+                  <Button size="lg" className="button-primary-styles bg-white text-primary hover:bg-gray-100">
+                    {cta.button1Text}
+                  </Button>
+                </Link>
+                <Link href={cta.button2Link} passHref>
+                    <Button size="lg" variant="transparent" className="button-transparent-styles" hasShimmer>
+                        {cta.button2Text} <span aria-hidden="true">→</span>
+                    </Button>
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
       </div>
