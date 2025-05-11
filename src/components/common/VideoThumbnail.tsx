@@ -11,6 +11,7 @@ interface VideoThumbnailProps {
   height?: number;
   layout?: string;
   objectFit?: string;
+  poster?: string; // Added poster prop
 }
 
 const VideoThumbnail = ({
@@ -22,6 +23,7 @@ const VideoThumbnail = ({
   height,
   layout,
   objectFit,
+  poster, // Destructure poster prop
   ...props
 }: VideoThumbnailProps) => {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -70,18 +72,20 @@ const VideoThumbnail = ({
         data-ai-hint={dataAiHint}
         width={width}
         height={height}
+        poster={poster} // Use poster prop
+        onEnded={() => setIsPlaying(false)} // Optional: reset play button when video ends
         {...props}
       />
       
       {!isPlaying && (
         <div 
-          className="absolute inset-0 flex items-center justify-center bg-black/20 hover:bg-black/30 transition-colors cursor-pointer z-20"
+          className="absolute inset-0 flex items-center justify-center bg-black/20 hover:bg-black/30 transition-colors cursor-pointer z-20 rounded-lg" // Added rounded-lg to overlay
           onClick={handlePlayPause}
         >
           <button
             className="bg-white/90 hover:bg-white text-primary p-4 rounded-full shadow-lg transition-transform transform hover:scale-110"
             onClick={handlePlayPause}
-            aria-label="Play video"
+            aria-label={`Play video: ${alt}`}
           >
             <Play className="h-6 w-6" />
           </button>

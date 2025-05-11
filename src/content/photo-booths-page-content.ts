@@ -29,8 +29,9 @@ export interface PhotoBoothType {
   features: string[];
   dimensions: string;
   outputs: string[];
-  image: string;
+  image: string; // This will be the video src for video booths
   imageHint: string;
+  poster?: string; // Optional: for video booths, URL of an image to show as thumbnail
   gallery: PhotoBoothGalleryItem[];
 }
 
@@ -54,12 +55,12 @@ export const photoBoothsPageContent = {
       { text: "Custom backdrops", icon: Aperture },
       { text: "Digital sharing", icon: Share },
     ] as HeroFeature[],
-    image: photoBoothsHeroBgNew, // Updated image
+    image: photoBoothsHeroBgNew, 
     imageAlt: "Premium 360 photo booth setup with gold backdrop",
     imageHint: "360 photo booth gold",
-    ctaButtonText: "Schedule a Demo", // Primary CTA
-    secondaryCtaText: "View Booth Types", // Secondary CTA
-    secondaryCtaLink: "#booth-types-section" // Anchor link
+    ctaButtonText: "Schedule a Demo", 
+    secondaryCtaText: "View Booth Types", 
+    secondaryCtaLink: "#booth-types-section" 
   },
   booths: {
     label: "Choose Your Booth",
@@ -80,8 +81,9 @@ export const photoBoothsPageContent = {
         ],
         dimensions: 'Platform: 3-4 ft diameter, Requires approx. 10x10 ft space',
         outputs: ['MP4 Video Files', 'GIFs'],
-        image: booth360MainImg,
+        image: booth360MainImg, // This is a JPEG, assuming it's representative, or it's the video if it's an MP4
         imageHint: '360 photo booth action',
+        // poster: booth360Gallery1Img, // Example if 360booth also had a video main image
         gallery: [
           { src: booth360Gallery1Img, alt: '360 Booth Output Example 1', hint: "video booth spin" },
           { src: booth360Gallery2Img, alt: '360 Booth Setup Example', hint: "event setup" },
@@ -103,8 +105,9 @@ export const photoBoothsPageContent = {
         ],
         dimensions: 'Requires approx. 8x8 ft space',
         outputs: ['High-Quality Prints (2x6, 4x6)', 'Digital Photos'],
-        image: boothLuxxMainImg,
-        imageHint: 'luxury photo booth',
+        image: boothLuxxMainImg, // This is an MP4 video
+        imageHint: 'luxury photo booth video',
+        poster: boothLuxxGallery1Img, // Use a static image as poster. Replace with actual 02-second frame image URL
         gallery: [
           { src: boothLuxxGallery1Img, alt: 'Luxx Booth Glam Shot', hint: "glamour portrait" },
           { src: boothLuxxGallery2Img, alt: 'Luxx Booth Print Example', hint: "photo strip" },

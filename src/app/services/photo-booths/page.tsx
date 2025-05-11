@@ -9,7 +9,6 @@ import { useBookingModal } from '@/context/BookingModalContext';
 import { photoBoothsPageContent } from '@/content/photo-booths-page-content';
 import PageHero from '@/components/sections/PageHero';
 import VideoThumbnail from '@/components/common/VideoThumbnail';
-// Removed EndlessCarousel and CarouselImage imports as they are no longer used
 import { cn } from '@/lib/utils';
 
 export default function PhotoBoothsPage() {
@@ -71,9 +70,10 @@ export default function PhotoBoothsPage() {
                 <Card className="overflow-hidden shadow-lg bg-white dark:bg-gray-900 border-0 rounded-xl">
                   <div className="grid md:grid-cols-2 gap-0">
                     <div className="relative min-h-[300px] md:min-h-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center p-4 md:p-8">
-                      {booth.id === 'luxxbooth' ? (
+                      {booth.id === 'luxxbooth' && booth.image.endsWith('.mp4') ? (
                         <VideoThumbnail
-                          src={booth.image}
+                          src={booth.image} // This is the MP4 URL
+                          poster={booth.poster} // This is the image URL for the thumbnail
                           alt={booth.name}
                           dataAiHint={booth.imageHint}
                           layout="fill"
@@ -121,7 +121,7 @@ export default function PhotoBoothsPage() {
                       "p-8 md:p-12 border-t border-gray-200 dark:border-gray-700",
                       booth.id === 'socialbooth' && "p-6 md:p-8"
                     )}>
-                    <h4 className="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-6 text-center">Gallery</h4>
+                    <h4 className="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-6 text-center">{booths.galleryTitle}</h4>
                     <div className="max-h-[600px] overflow-y-auto scrollbar-thin scrollbar-thumb-gray-300 dark:scrollbar-thumb-gray-700 pr-2">
                       {booth.gallery && booth.gallery.length > 0 ? (
                         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
@@ -136,7 +136,7 @@ export default function PhotoBoothsPage() {
                                 className="transition-transform duration-300 group-hover:scale-105"
                                 sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
                               />
-                              <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-2">
+                               <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-2">
                                 <p className="text-white text-xs font-medium line-clamp-2">{img.alt}</p>
                               </div>
                             </div>
