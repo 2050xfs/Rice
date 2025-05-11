@@ -2,9 +2,10 @@
 import { Lightbulb, Palette, Sparkles, SunMoon, Building, CheckCircle, ShieldCheck, Zap, Settings, Video } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 import {
-  lightingHeroBg, uplightingImg, danceFloorLightingImg, specialtyEffectsImg, outdoorLightingImg,
+  lightingHeroBg, uplightingImg, /* danceFloorLightingImg, -- This was the old image */
+  specialtyEffectsImg, outdoorLightingImg,
   architecturalLightingImg, lightingGalleryImg1, lightingGalleryImg2, lightingGalleryImg3, lightingGalleryImg4,
-  pinspotLightingImg
+  pinspotLightingImg, djPackageUltimateExperienceImg // Using this as the new image for dance floor lighting
 } from '@/lib/image-urls';
 import type { HeroTitlePart, HeroFeature } from '@/components/sections/PageHero';
 
@@ -96,8 +97,8 @@ export const lightingPageContent = {
           'Pattern customization options',
           'Fog/haze enhancement available',
         ],
-        image: danceFloorLightingImg,
-        imageHint: 'dance floor lights party',
+        image: djPackageUltimateExperienceImg, // Updated image
+        imageHint: 'DJ setup party', // Updated hint
       },
       {
         icon: Lightbulb, 
@@ -248,3 +249,4 @@ export const lightingPageContent = {
     buttonText: "Get a Lighting Quote",
   }
 };
+
