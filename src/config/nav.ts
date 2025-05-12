@@ -1,6 +1,6 @@
 // src/config/nav.ts
 import type { ElementType } from 'react';
-import { Disc3, Camera, Home, Users, Phone, Lightbulb } from 'lucide-react'; // Added Lightbulb
+import { Disc3, Camera, Home, Users, Phone, Lightbulb } from 'lucide-react';
 
 export interface NavItem {
   name: string;

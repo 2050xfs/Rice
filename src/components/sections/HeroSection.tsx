@@ -4,11 +4,12 @@ import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { useBookingModal } from '@/context/BookingModalContext'; // Updated import
 import { heroSectionContent } from '@/content/hero-section-content';
+import LottieScrollIndicator from '@/components/common/LottieScrollIndicator';
 
 export default function HeroSection() {
   const { openModal } = useBookingModal(); // Updated hook usage
   return (
-    <div className="relative isolate overflow-hidden pt-14 min-h-[calc(100vh-5rem)] flex items-center justify-center">
+    <div className="relative isolate overflow-hidden pt-14 min-h-[calc(100vh-6rem-7rem)] flex flex-col justify-between">
       <Image
         src={heroSectionContent.backgroundImage}
         alt={heroSectionContent.backgroundImageAlt}
@@ -22,7 +23,7 @@ export default function HeroSection() {
       {/* Secondary Overlay: From Left to Right */}
       <div className="absolute inset-0 -z-10 secondary-hero-overlay" />
 
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 py-24 sm:py-32 text-center relative z-0"> {/* Added z-0 to ensure content is above -z-10 elements */}
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 py-16 sm:py-20 text-center relative z-0 flex-grow flex items-center justify-center"> {/* Reduced padding and added flex */}
         <div className="max-w-3xl mx-auto"> {/* Increased max-width slightly for longer title */}
           <h1 className="h1-style text-white">
             <span className="text-gradient-highlight">{heroSectionContent.titleHighlight1}</span>
@@ -41,6 +42,11 @@ export default function HeroSection() {
             </Button>
           </div>
         </div>
+      </div>
+      
+      {/* Scroll indicator */}
+      <div className="flex justify-center pb-4">
+        <LottieScrollIndicator />
       </div>
     </div>
   );

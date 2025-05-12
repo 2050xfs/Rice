@@ -9,9 +9,11 @@ import { imageGalleryContent, type GalleryImage } from '@/content/image-gallery-
 import { cn } from '@/lib/utils';
 
 export default function ImageGallerySection() {
-  // State for lightbox
+  // State for lightbox and touch handling
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
   
   // State for auto scroll
   const [autoScrollActive, setAutoScrollActive] = useState(false);
@@ -23,6 +25,7 @@ export default function ImageGallerySection() {
   
   // Refs
   const galleryRef = useRef<HTMLDivElement>(null);
+  const touchThreshold = 50; // minimum distance for swipe
   
   // Filter images when category changes
   useEffect(() => {
@@ -112,11 +115,39 @@ export default function ImageGallerySection() {
     setAutoScrollActive(prev => !prev);
   };
   
+  // Handle touch events for swipe navigation
+  const onTouchStart = (e: React.TouchEvent) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const onTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const onTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > touchThreshold;
+    const isRightSwipe = distance < -touchThreshold;
+    
+    if (isLeftSwipe) {
+      navigateLightbox('next');
+    }
+    if (isRightSwipe) {
+      navigateLightbox('prev');
+    }
+    
+    setTouchStart(null);
+    setTouchEnd(null);
+  };
+
   return (
-    <section className="bg-white dark:bg-gray-950 py-24 sm:py-32">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        {/* Header */}
-        <div className="max-w-2xl mx-auto lg:text-center mb-16">
+    <section className="section-spacing bg-white dark:bg-gray-950">
+      <div className="max-w-7xl mx-auto">
+        {/* Header with mobile-optimized spacing */}
+        <div className="max-w-2xl mx-auto lg:text-center mb-8 sm:mb-12 lg:mb-16">
           <p className="section-label-style">Gallery</p>
           <h2 className="mt-2 h2-style text-gray-900 dark:text-white">
             {imageGalleryContent.title}
@@ -125,8 +156,8 @@ export default function ImageGallerySection() {
             {imageGalleryContent.description}
           </p>
           
-          {/* Category Filter and Auto Scroll Controls */}
-          <div className="mt-10 mb-6 flex flex-col sm:flex-row gap-4 items-center justify-center">
+          {/* Mobile-optimized Category Filter and Auto Scroll Controls */}
+          <div className="mt-6 sm:mt-8 lg:mt-10 mb-6 flex flex-col sm:flex-row gap-4 items-stretch sm:items-center justify-center">
             <div className="flex items-center gap-2">
               <Filter className="h-5 w-5 text-gray-600 dark:text-gray-400" />
               <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Filter by:</span>
@@ -172,10 +203,10 @@ export default function ImageGallerySection() {
           </div>
         </div>
         
-        {/* Gallery Grid with Ref for Auto Scroll */}
+        {/* Mobile-optimized Gallery Grid with Touch Scroll */}
         <div 
           ref={galleryRef}
-          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 auto-rows-[minmax(100px,auto)] max-h-[800px] overflow-y-auto scrollbar-thin scrollbar-thumb-gray-300 dark:scrollbar-thumb-gray-700 scrollbar-track-transparent"
+          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 auto-rows-[minmax(250px,auto)] sm:auto-rows-[minmax(200px,auto)] max-h-[600px] sm:max-h-[800px] overflow-y-auto scrollbar-thin scrollbar-thumb-gray-300 dark:scrollbar-thumb-gray-700 scrollbar-track-transparent overscroll-y-contain"
         >
           {filteredImages.map((image, index) => (
             <div 
@@ -221,9 +252,15 @@ export default function ImageGallerySection() {
           )}
         </div>
         
-        {/* Lightbox Component */}
+        {/* Mobile-optimized Lightbox Component with Touch Support */}
         {lightboxOpen && (
-          <div className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center" onClick={() => setLightboxOpen(false)}>
+          <div 
+            className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center" 
+            onClick={() => setLightboxOpen(false)}
+            onTouchStart={onTouchStart}
+            onTouchMove={onTouchMove}
+            onTouchEnd={onTouchEnd}
+          >
             <div className="absolute top-4 right-4 z-10">
               <button 
                 onClick={(e) => {
@@ -249,7 +286,7 @@ export default function ImageGallerySection() {
             </button>
             
             <div 
-              className="relative max-w-5xl max-h-[90vh] mx-auto" 
+              className="relative w-full sm:w-auto max-w-5xl max-h-[90vh] mx-auto px-4 sm:px-0" 
               onClick={(e) => e.stopPropagation()}
             >
               <Image
@@ -257,12 +294,13 @@ export default function ImageGallerySection() {
                 alt={filteredImages[currentImageIndex].alt}
                 width={filteredImages[currentImageIndex].width * 1.5}
                 height={filteredImages[currentImageIndex].height * 1.5}
-                className="object-contain max-h-[85vh] rounded-lg"
+                className="object-contain w-full max-h-[85vh] rounded-lg"
                 priority
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 1200px"
               />
               
               {filteredImages[currentImageIndex].caption && (
-                <div className="absolute bottom-0 inset-x-0 bg-black/60 p-4 text-white text-center rounded-b-lg">
+                <div className="absolute bottom-0 inset-x-0 bg-black/60 p-3 sm:p-4 text-white text-center rounded-b-lg text-sm sm:text-base">
                   <p>{filteredImages[currentImageIndex].caption}</p>
                 </div>
               )}
@@ -279,7 +317,7 @@ export default function ImageGallerySection() {
               <ChevronRight className="h-10 w-10" />
             </button>
             
-            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 text-white text-sm">
+            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 text-white text-sm bg-black/40 px-3 py-1 rounded-full">
               {currentImageIndex + 1} / {filteredImages.length}
             </div>
           </div>

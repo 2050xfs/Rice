@@ -4,6 +4,9 @@
 
 body {
   font-family: var(--font-inter), Arial, Helvetica, sans-serif;
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+  width: 100%; /* Ensure body takes full width */
+  max-width: 100vw; /* Prevent content from exceeding viewport width */
 }
 
 @layer base {
@@ -129,13 +132,55 @@ body {
 }
 
 /* Typography from User Request */
-.h1-style { @apply text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl; } 
-.h2-style { @apply text-3xl font-bold tracking-tight sm:text-4xl; }
-.h3-style { @apply text-xl font-semibold tracking-tight sm:text-2xl; } 
-.section-label-style { @apply text-sm font-semibold leading-7 text-primary sm:text-base; } 
-.body-text-large { @apply text-base leading-8 sm:text-lg; } 
-.body-text-default { @apply text-sm leading-7 text-foreground/80 sm:text-base; } 
-.body-text-small { @apply text-xs text-muted-foreground sm:text-sm; } 
+/* Mobile-first Typography Scale */
+.h1-style { 
+  @apply text-3xl font-bold tracking-tight leading-tight
+         sm:text-4xl sm:leading-tight
+         md:text-5xl md:leading-tight
+         lg:text-6xl lg:leading-tight; 
+} 
+.h2-style { 
+  @apply text-2xl font-bold tracking-tight leading-tight
+         sm:text-3xl sm:leading-tight
+         md:text-4xl md:leading-tight; 
+}
+.h3-style { 
+  @apply text-lg font-semibold tracking-tight leading-snug
+         sm:text-xl sm:leading-snug
+         md:text-2xl md:leading-snug; 
+} 
+.section-label-style { 
+  @apply text-sm font-semibold leading-6 text-primary
+         sm:text-base sm:leading-7; 
+} 
+.body-text-large { 
+  @apply text-base leading-7
+         sm:text-lg sm:leading-8; 
+} 
+.body-text-default { 
+  @apply text-sm leading-6 text-foreground/80
+         sm:text-base sm:leading-7; 
+} 
+.body-text-small { 
+  @apply text-xs leading-5 text-muted-foreground
+         sm:text-sm sm:leading-6; 
+} 
+
+/* Mobile-optimized spacing utilities */
+.section-spacing { 
+  @apply py-12 px-4
+         sm:py-16 sm:px-6
+         lg:py-24 lg:px-8; 
+}
+.content-spacing {
+  @apply space-y-6
+         sm:space-y-8
+         lg:space-y-12;
+}
+.component-spacing {
+  @apply space-y-4
+         sm:space-y-6;
+}
 
 /* Gradient Patterns */
 .primary-gradient { @apply bg-gradient-to-r from-indigo-600 to-indigo-500; }
@@ -155,8 +200,6 @@ body {
 
 .logo-container {
   position: relative;
-  width: 280px;
-  height: 93px;
 }
 
 .logo-image {
@@ -164,47 +207,113 @@ body {
 }
 
 
-/* Component Styles from User Request - These will be applied via cn() or specific components */
+/* Mobile-optimized Component Styles */
 .button-primary-styles {
-  @apply rounded-md bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground shadow-md hover:bg-indigo-500 hover:scale-105 transition-all duration-300 active:scale-95;
+  @apply rounded-md bg-primary 
+         px-4 py-2.5 
+         sm:px-5 sm:py-3 
+         text-sm font-semibold text-primary-foreground 
+         shadow-md hover:bg-indigo-500 
+         hover:scale-[1.02] sm:hover:scale-105 
+         transition-all duration-300 
+         active:scale-[0.98] 
+         min-h-[44px] /* Minimum touch target size */
+         w-full sm:w-auto; /* Full width on mobile, auto on larger screens */
 }
 .button-secondary-styles {
-  @apply relative overflow-hidden rounded-md bg-background px-5 py-3 text-sm font-semibold text-primary shadow-md border border-indigo-200 hover:bg-indigo-50 hover:scale-105 transition-all duration-300 active:scale-95;
+  @apply relative overflow-hidden rounded-md bg-background 
+         px-4 py-2.5 
+         sm:px-5 sm:py-3 
+         text-sm font-semibold text-primary 
+         shadow-md border border-indigo-200 
+         hover:bg-indigo-50 
+         hover:scale-[1.02] sm:hover:scale-105 
+         transition-all duration-300 
+         active:scale-[0.98]
+         min-h-[44px] /* Minimum touch target size */
+         w-full sm:w-auto; /* Full width on mobile, auto on larger screens */
 }
 .button-transparent-styles {
-  @apply relative overflow-hidden rounded-md bg-white/10 backdrop-blur-sm border border-white/20 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-white/20 hover:scale-105 transition-all duration-300 sm:px-6 sm:py-3 active:scale-95;
+  @apply relative overflow-hidden rounded-md bg-white/10 
+         backdrop-blur-sm border border-white/20 
+         px-4 py-2.5 
+         sm:px-6 sm:py-3 
+         text-sm font-semibold text-white 
+         shadow-sm hover:bg-white/20 
+         hover:scale-[1.02] sm:hover:scale-105 
+         transition-all duration-300 
+         active:scale-[0.98]
+         min-h-[44px] /* Minimum touch target size */
+         w-full sm:w-auto; /* Full width on mobile, auto on larger screens */
 }
 
+/* Mobile-optimized Card Styles */
 .card-standard-styles {
-  @apply rounded-lg bg-card p-6 shadow-md hover:shadow-lg transition-all duration-300;
+  @apply rounded-lg bg-card 
+         p-4 sm:p-6 
+         shadow-md hover:shadow-lg 
+         transition-all duration-300
+         w-full; /* Full width on all screens */
 }
 .card-testimonial-styles {
-  @apply rounded-2xl p-8 text-sm leading-6 transition-transform duration-300 hover:scale-105;
+  @apply rounded-xl sm:rounded-2xl 
+         p-6 sm:p-8 
+         text-sm leading-6 
+         transition-transform duration-300 
+         hover:scale-[1.02] sm:hover:scale-105
+         w-full; /* Full width on all screens */
   background-color: hsl(var(--brand-gray-800));
   color: hsl(var(--brand-white));
 }
 .card-feature-styles {
-  @apply flex flex-col transition-all duration-300 hover:-translate-y-1;
+  @apply flex flex-col 
+         transition-all duration-300 
+         hover:-translate-y-0.5 sm:hover:-translate-y-1
+         w-full; /* Full width on all screens */
 }
 
+/* Mobile-optimized Form Styles */
 .input-styles {
-  @apply block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6;
-  /* For dark mode, text color and placeholder might need adjustment */
+  @apply block w-full 
+         rounded-md border-0 
+         px-3 py-2.5 /* Increased touch target size */
+         text-base sm:text-sm /* Larger text on mobile */
+         text-gray-900 
+         shadow-sm ring-1 ring-inset ring-gray-300 
+         placeholder:text-gray-400 
+         focus:ring-2 focus:ring-inset focus:ring-primary 
+         sm:leading-6
+         min-h-[44px]; /* Minimum touch target size */
 }
 .dark .input-styles {
    @apply bg-gray-800 text-gray-100 placeholder:text-gray-500 ring-gray-700 focus:ring-indigo-500;
 }
 
 
+/* Mobile-optimized Label Styles */
 .label-styles {
-  @apply block text-sm font-medium leading-6 text-gray-900;
+  @apply block 
+         text-base sm:text-sm /* Larger text on mobile */
+         font-medium 
+         leading-6 
+         text-gray-900
+         mb-1.5 sm:mb-1; /* Added bottom margin for touch spacing */
 }
 .dark .label-styles {
   @apply text-gray-100;
 }
 
+/* Mobile-optimized Select Styles */
 .select-styles {
-  @apply mt-2 block w-full rounded-md border-0 py-1.5 pl-3 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-primary sm:text-sm sm:leading-6;
+  @apply mt-2 block w-full 
+         rounded-md border-0 
+         py-2.5 pl-3 pr-10 /* Increased touch target size */
+         text-base sm:text-sm /* Larger text on mobile */
+         text-gray-900 
+         ring-1 ring-inset ring-gray-300 
+         focus:ring-2 focus:ring-primary 
+         sm:leading-6
+         min-h-[44px]; /* Minimum touch target size */
 }
 .dark .select-styles {
   @apply bg-gray-800 text-gray-100 ring-gray-700 focus:ring-indigo-500;
@@ -297,3 +406,115 @@ body {
     opacity: 0;
   }
 }
+
+/* Scroll indicator animation */
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(10px);
+  }
+}
+
+.animate-bounce {
+  animation: bounce 2s infinite;
+}
+
+/* Deals bar styling */
+.sticky-deals-bar {
+  position: relative;
+  z-index: 10;
+  box-shadow: 0 -4px 6px -1px rgba(0, 0, 0, 0.1), 0 -2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+/* Hide scrollbar but keep functionality */
+.no-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;  /* Chrome, Safari and Opera */
+}
+
+/* Extracted utility classes for refactoring */
+.drop-shadow-utility {
+  @apply filter drop-shadow-md;
+}
+
+.pill-padding {
+  @apply px-4 py-1.5;
+}
+
+.hero-heading {
+  @apply text-4xl tracking-tight font-extrabold sm:text-5xl md:text-6xl;
+}
+
+/* Tooltip system */
+.tooltip-container {
+  @apply inline-flex items-center justify-center relative;
+}
+
+/* Tooltip icon highlight effects for mobile */
+.tooltip-icon-highlight {
+  @apply relative transition-all duration-300 w-10 h-10 flex items-center justify-center 
+         bg-white/15 rounded-full backdrop-blur-sm;
+}
+
+.tooltip-icon-highlight::before {
+  content: '';
+  @apply absolute inset-[-4px] bg-[radial-gradient(circle,rgba(99,102,241,0.25)_0%,rgba(99,102,241,0)_70%)]
+         rounded-full opacity-0 scale-90 transition-all duration-300 -z-10;
+}
+
+.tooltip-icon-highlight:hover {
+  @apply scale-110 bg-white/25;
+}
+
+.tooltip-icon-highlight:hover::before {
+  @apply opacity-100 scale-125; /* Replaced scale-120 with scale-125 */
+}
+
+/* Desktop tooltip icon styling */
+.desktop-tooltip-icon {
+  @apply relative transition-all duration-300 text-[1.25em] inline-flex items-center justify-center text-[hsl(var(--primary))];
+}
+
+.desktop-tooltip-icon:hover,
+.desktop-tooltip-icon:focus {
+  @apply scale-110 text-[hsl(var(--primary))];
+}
+
+/* Tooltip bubble styling */
+.tooltip-bubble {
+  @apply absolute bottom-full left-1/2 -translate-x-1/2 mb-2
+         whitespace-nowrap px-3 py-1.5 rounded-md text-xs font-medium
+         bg-black/75 text-white
+         opacity-0 pointer-events-none transition-opacity duration-150
+         z-50 shadow-md;
+}
+
+/* Tooltip arrow */
+.tooltip-arrow {
+  @apply absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-black/75;
+}
+
+/* Sparkle animation for tooltip icons */
+@keyframes sparkle {
+  0%, 100% { opacity: 0; transform: scale(0); }
+  50% { opacity: 1; transform: scale(1); }
+}
+
+.animate-sparkle {
+  animation: sparkle 2s ease-in-out infinite;
+}
+
+.tooltip-icon-highlight::after {
+  content: '';
+  @apply absolute w-[5px] h-[5px] rounded-full bg-[linear-gradient(45deg,#6366F1,#A5B4FC)]
+         top-[-2px] right-[-2px] opacity-0 scale-0;
+  animation: sparkle 2s ease-in-out infinite;
+  animation-delay: calc(var(--delay, 0) * 1s);
+}
+

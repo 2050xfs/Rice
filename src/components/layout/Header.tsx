@@ -22,7 +22,7 @@ import ViboBadge from '@/components/common/ViboBadge';
 
 const SiteLogo = () => (
   <Link href="/" className="flex items-center shrink-0 mr-auto">
-    <div className="logo-container">
+    <div className="logo-container w-[200px] sm:w-[280px] h-[66px] sm:h-[93px]"> {/* Responsive sizing */}
       <Image
         src={brandLogoUrl}
         alt="Rice Entertainment Logo"
@@ -55,7 +55,7 @@ export default function Header() {
           <DropdownMenuTrigger asChild>
             <Button 
               variant="ghost" 
-              className="text-base font-medium text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-primary px-3 py-2 border-none shadow-none focus:ring-0 focus:ring-offset-0"
+              className="text-base font-medium text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-primary px-3 py-2 shadow-none focus:ring-0 focus:ring-offset-0"
             >
               <span className="flex items-center gap-1.5">
                 {item.name}

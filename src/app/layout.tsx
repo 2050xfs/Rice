@@ -5,6 +5,7 @@ import { Toaster } from "@/components/ui/toaster";
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import { BookingModalProvider } from '@/context/BookingModalContext'; // Updated import path and provider name
+import { DataSavingProvider } from '@/context/DataSavingContext'; // Import DataSavingProvider
 import BookingFormWidget from '@/components/common/BookingFormWidget'; // Import the new widget
 import BookingButton from '@/components/common/BookingButton'; // Import the floating button
 
@@ -28,14 +29,16 @@ export default function RootLayout({
   return (
     <html lang="en" className={inter.variable}>
       <body className="antialiased font-sans">
-        <BookingModalProvider> {/* Updated Provider */}
-          <Header />
-          <main>{children}</main>
-          <Footer />
-          <Toaster />
-          <BookingFormWidget /> {/* Render the new widget */}
-          <BookingButton /> {/* Render the floating button */}
-        </BookingModalProvider>
+        <DataSavingProvider>
+          <BookingModalProvider> {/* Updated Provider */}
+            <Header />
+            <main>{children}</main>
+            <Footer />
+            <Toaster />
+            <BookingFormWidget /> {/* Render the new widget */}
+            <BookingButton /> {/* Render the floating button */}
+          </BookingModalProvider>
+        </DataSavingProvider>
       </body>
     </html>
   );

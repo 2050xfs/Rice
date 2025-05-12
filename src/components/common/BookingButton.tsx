@@ -21,7 +21,7 @@ export default function BookingButton() {
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.5, duration: 0.5 }}
-        className="fixed bottom-6 right-6 z-40" // Ensure it's below the widget (z-50) but above other content
+        className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-40" // Adjusted for small screens
     >
         <TooltipProvider>
           <Tooltip>
@@ -29,10 +29,10 @@ export default function BookingButton() {
               <Button
                   size="icon" // Use icon size for consistency
                   onClick={openModal}
-                  className="rounded-full shadow-xl drop-shadow-lg primary-gradient text-white h-14 w-14 flex items-center justify-center hover:scale-110 transition-transform duration-300" // Added drop-shadow-lg
+                  className="rounded-full shadow-xl drop-shadow-lg primary-gradient text-white h-12 w-12 sm:h-14 sm:w-14 flex items-center justify-center hover:scale-110 transition-transform duration-300" // Adjusted size for small screens
                   aria-label="Book Now" // Keep aria-label for accessibility
               >
-                  <Calendar className="h-6 w-6" /> {/* Ensure icon size is appropriate */}
+                  <Calendar className="h-5 w-5 sm:h-6 sm:w-6" /> {/* Adjusted icon size for small screens */}
               </Button>
             </TooltipTrigger>
             <TooltipContent>

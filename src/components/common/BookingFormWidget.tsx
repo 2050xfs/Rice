@@ -34,11 +34,19 @@ const bookingSchema = z.object({
 
 type BookingFormInput = z.infer<typeof bookingSchema>;
 
-type ViewState = 'form' | 'submitting' | 'success' | 'error';
+// Define view states as string literals
+const VIEW_STATE = {
+  FORM: 'form',
+  SUBMITTING: 'submitting',
+  SUCCESS: 'success',
+  ERROR: 'error'
+} as const;
+
+type ViewState = typeof VIEW_STATE[keyof typeof VIEW_STATE];
 
 export default function BookingFormWidget() {
   const { isOpen, closeModal } = useBookingModal(); // Use updated hook and method names
-  const [viewState, setViewState] = useState<ViewState>('form');
+  const [viewState, setViewState] = useState<ViewState>(VIEW_STATE.FORM);
   const [submissionError, setSubmissionError] = useState<string | null>(null);
   const [redirectUrl, setRedirectUrl] = useState<string | null>(null); // State to hold redirect URL
   const router = useRouter();
@@ -58,14 +66,14 @@ export default function BookingFormWidget() {
    useEffect(() => {
     if (isOpen) {
       getRedirectUrl().then(url => setRedirectUrl(url));
-      setViewState('form');
+      setViewState(VIEW_STATE.FORM);
       setSubmissionError(null);
       reset(); // Reset form fields and errors
     }
   }, [isOpen, reset]);
 
   const onSubmit: SubmitHandler<BookingFormInput> = async (data) => {
-    setViewState('submitting');
+    setViewState(VIEW_STATE.SUBMITTING);
     setSubmissionError(null);
 
     const formattedData = {
@@ -75,7 +83,7 @@ export default function BookingFormWidget() {
 
     try {
       await submitBookingRequest(formattedData);
-      setViewState('success');
+      setViewState(VIEW_STATE.SUCCESS);
       toast({
         title: "Inquiry Submitted!",
         description: "Redirecting you to complete your booking...",
@@ -94,7 +102,7 @@ export default function BookingFormWidget() {
     } catch (error: any) {
       console.error("Submission failed:", error);
       setSubmissionError(error.message || 'Failed to submit inquiry. Please try again.');
-      setViewState('error');
+      setViewState(VIEW_STATE.ERROR);
       toast({
         title: "Submission Failed",
         description: error.message || 'Could not submit inquiry. Please try again later.',
@@ -104,7 +112,7 @@ export default function BookingFormWidget() {
   };
 
   const handleTryAgain = () => {
-    setViewState('form');
+    setViewState(VIEW_STATE.FORM);
     setSubmissionError(null);
     // Optionally reset specific fields if needed, but reset() handles it on open
   };
@@ -157,17 +165,17 @@ export default function BookingFormWidget() {
           {/* Widget Panel */}
           <motion.div
             variants={window.innerWidth < 768 ? panelVariants : desktopPanelVariants}
-            className="relative z-10 w-full md:w-[450px] h-full md:h-auto md:max-h-[90vh] md:my-4 md:mr-4 bg-white dark:bg-gray-900 shadow-2xl rounded-t-lg md:rounded-lg flex flex-col overflow-hidden"
+            className="relative z-10 w-full md:w-[450px] h-full md:h-auto md:max-h-[90vh] md:my-4 md:mr-4 bg-white dark:bg-gray-900 shadow-2xl rounded-t-lg md:rounded-lg flex flex-col overflow-hidden max-w-[100vw]" // Added max-width constraint
           >
             {/* Header */}
             <div className="flex items-center justify-between p-4 border-b dark:border-gray-700 sticky top-0 bg-white dark:bg-gray-900 z-10">
               <h2 id="booking-widget-title" className="text-lg font-semibold text-gray-900 dark:text-white">
-                {viewState === 'form' && 'Request Booking'}
-                {viewState === 'submitting' && 'Submitting...'}
-                {viewState === 'success' && 'Date Available!'}
-                {viewState === 'error' && 'Date Unavailable'}
+                {viewState === VIEW_STATE.FORM && 'Request Booking'}
+                {viewState === VIEW_STATE.SUBMITTING && 'Submitting...'}
+                {viewState === VIEW_STATE.SUCCESS && 'Date Available!'}
+                {viewState === VIEW_STATE.ERROR && 'Date Unavailable'}
               </h2>
-              <Button variant="ghost" size="icon" onClick={closeModal} aria-label="Close booking widget"> // Use updated method name
+              <Button variant="ghost" size="icon" onClick={closeModal} aria-label="Close booking widget">
                 <X className="h-5 w-5 text-gray-500 dark:text-gray-400" />
               </Button>
             </div>
@@ -175,7 +183,7 @@ export default function BookingFormWidget() {
             {/* Content Area */}
             <div className="flex-grow overflow-y-auto p-6">
               <AnimatePresence mode="wait">
-                {viewState === 'form' && (
+                {viewState === VIEW_STATE.FORM && (
                   <motion.form
                     key="form"
                     initial={{ opacity: 0, y: 10 }}
@@ -285,8 +293,8 @@ export default function BookingFormWidget() {
 
                      {/* Submit Button - Sticky Footer */}
                     <div className="sticky bottom-0 bg-white dark:bg-gray-900 p-4 -mx-6 -mb-6 border-t dark:border-gray-700">
-                        <Button type="submit" className="w-full button-primary-styles py-3" disabled={viewState === 'submitting'}>
-                            {viewState === 'submitting' ? (
+                        <Button type="submit" className="w-full button-primary-styles py-3" disabled={viewState === VIEW_STATE.SUBMITTING}>
+                            {viewState === VIEW_STATE.SUBMITTING ? (
                                 <>
                                 <Loader2 className="mr-2 h-4 w-4 animate-spin" />
                                 Submitting...
@@ -299,7 +307,7 @@ export default function BookingFormWidget() {
                   </motion.form>
                 )}
 
-                {viewState === 'success' && (
+                {viewState === VIEW_STATE.SUCCESS && (
                   <motion.div
                     key="success"
                     initial={{ opacity: 0, scale: 0.8 }}
@@ -322,7 +330,7 @@ export default function BookingFormWidget() {
                   </motion.div>
                 )}
 
-                {viewState === 'error' && (
+                {viewState === VIEW_STATE.ERROR && (
                   <motion.div
                     key="error"
                      initial={{ opacity: 0, scale: 0.8 }}
@@ -340,7 +348,7 @@ export default function BookingFormWidget() {
                   </motion.div>
                 )}
 
-                {viewState === 'submitting' && (
+                {viewState === VIEW_STATE.SUBMITTING && (
                   <motion.div
                     key="submitting"
                     initial={{ opacity: 0 }}
