@@ -81,7 +81,6 @@ export default function PageHero({
     return ButtonComponent;
   };
 
-  // Function to render subtitle with tooltip icons in a separate row
   const renderSubtitleWithTooltips = () => {
     if (!features || features.length === 0) {
       return <p className="mt-4 text-base text-white sm:mt-5 md:mt-5 sm:text-lg md:text-xl font-medium drop-shadow-utility">{subtitle}</p>;
@@ -107,7 +106,7 @@ export default function PageHero({
   };
 
   return (
-    <div className="relative bg-background text-foreground pt-16 pb-20 lg:pt-24 lg:pb-28 overflow-hidden min-h-[500px] sm:min-h-[600px] lg:min-h-0">
+    <div className="w-full relative bg-background text-foreground pt-16 pb-20 lg:pt-24 lg:pb-28 overflow-hidden min-h-[500px] sm:min-h-[600px] lg:min-h-0">
       {/* Full-bleed background image for mobile and tablet */}
       <div className="absolute inset-0 w-full h-full lg:hidden">
         <Image
@@ -115,10 +114,10 @@ export default function PageHero({
           alt={imageAlt}
           data-ai-hint={imageHint}
           fill
-          className="object-cover object-center scale-105" // Added scale to prevent white edges during iOS bounce
+          className="object-cover object-center scale-105" 
           sizes="100vw"
           priority
-          quality={90} // Increased quality for hero image
+          quality={90} 
         />
       </div>
 
@@ -138,15 +137,14 @@ export default function PageHero({
                   key={index}
                   className={cn(
                     part.highlight ? "text-primary dark:text-indigo-400" : "",
-                    "block xl:inline" // Ensure text flows naturally and wraps if needed
+                    "block xl:inline" 
                   )}
                 >
-                  {part.text}{' '} {/* Add space for natural word separation only if not last part or part.highlight */}
+                  {part.text}{' '} 
                 </span>
               ))}
             </h1>
             
-            {/* Subtitle with inline tooltip icons */}
             {renderSubtitleWithTooltips()}
           </div>
 
@@ -163,10 +161,10 @@ export default function PageHero({
                   key={index}
                   className={cn(
                     part.highlight ? "text-primary dark:text-indigo-400" : "text-gray-900 dark:text-white",
-                    "block xl:inline" // Ensure text flows naturally and wraps if needed
+                    "block xl:inline" 
                   )}
                 >
-                  {part.text}{' '} {/* Add space for natural word separation only if not last part or part.highlight */}
+                  {part.text}{' '} 
                 </span>
               ))}
             </h1>
