@@ -18,8 +18,8 @@ import { Calendar } from "@/components/ui/calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { useToast } from "@/hooks/use-toast";
 import { cn } from "@/lib/utils";
-import { useBookingModal } from '@/context/BookingModalContext'; // Updated context hook
-import { submitBookingRequest, getRedirectUrl } from '@/services/bookingService'; // Keep this import
+import { useBookingModal } from '@/context/BookingModalContext'; 
+import { submitBookingRequest, getRedirectUrl } from '@/services/bookingService'; 
 import { CalendarIcon, CheckCircle, AlertCircle, X, Loader2 } from 'lucide-react';
 
 
@@ -45,10 +45,10 @@ const VIEW_STATE = {
 type ViewState = typeof VIEW_STATE[keyof typeof VIEW_STATE];
 
 export default function BookingFormWidget() {
-  const { isOpen, closeModal } = useBookingModal(); // Use updated hook and method names
+  const { isOpen, closeModal } = useBookingModal(); 
   const [viewState, setViewState] = useState<ViewState>(VIEW_STATE.FORM);
   const [submissionError, setSubmissionError] = useState<string | null>(null);
-  const [redirectUrl, setRedirectUrl] = useState<string | null>(null); // State to hold redirect URL
+  const [redirectUrl, setRedirectUrl] = useState<string | null>(null); 
   const router = useRouter();
   const { toast } = useToast();
 
@@ -62,13 +62,12 @@ export default function BookingFormWidget() {
     },
   });
 
-  // Fetch the redirect URL when the component mounts or isOpen changes
    useEffect(() => {
     if (isOpen) {
       getRedirectUrl().then(url => setRedirectUrl(url));
       setViewState(VIEW_STATE.FORM);
       setSubmissionError(null);
-      reset(); // Reset form fields and errors
+      reset(); 
     }
   }, [isOpen, reset]);
 
@@ -78,7 +77,7 @@ export default function BookingFormWidget() {
 
     const formattedData = {
       ...data,
-      eventDate: format(data.eventDate, 'yyyy-MM-dd'), // Format date for API
+      eventDate: format(data.eventDate, 'yyyy-MM-dd'), 
     };
 
     try {
@@ -89,16 +88,14 @@ export default function BookingFormWidget() {
         description: "Redirecting you to complete your booking...",
         variant: "default",
       });
-      // Redirect after a delay
       setTimeout(() => {
         if (redirectUrl) {
-            window.location.href = redirectUrl; // Use window.location for external redirects
+            window.location.href = redirectUrl; 
         } else {
             console.warn("Redirect URL not available, cannot redirect.");
-             // Maybe show a message to the user here?
-             closeModal(); // Close the modal if redirect fails
+             closeModal(); 
         }
-      }, 2000); // 2-second delay
+      }, 2000); 
     } catch (error: any) {
       console.error("Submission failed:", error);
       setSubmissionError(error.message || 'Failed to submit inquiry. Please try again.');
@@ -114,15 +111,13 @@ export default function BookingFormWidget() {
   const handleTryAgain = () => {
     setViewState(VIEW_STATE.FORM);
     setSubmissionError(null);
-    // Optionally reset specific fields if needed, but reset() handles it on open
   };
 
   const handleCompleteBooking = () => {
      if (redirectUrl) {
-         window.location.href = redirectUrl; // Redirect immediately
+         window.location.href = redirectUrl; 
      } else {
         console.warn("Redirect URL not available for immediate redirect.");
-        // Fallback behavior? Maybe just close the modal.
         closeModal();
      }
   };
@@ -153,21 +148,18 @@ export default function BookingFormWidget() {
           aria-modal="true"
           role="dialog"
         >
-          {/* Overlay */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             className="fixed inset-0 bg-black/50 backdrop-blur-sm"
-            onClick={closeModal} // Use updated method name
+            onClick={closeModal} 
           />
 
-          {/* Widget Panel */}
           <motion.div
-            variants={window.innerWidth < 768 ? panelVariants : desktopPanelVariants}
-            className="relative z-10 w-full md:w-[450px] h-full md:h-auto md:max-h-[90vh] md:my-4 md:mr-4 bg-white dark:bg-gray-900 shadow-2xl rounded-t-lg md:rounded-lg flex flex-col overflow-hidden max-w-[100vw]" // Added max-width constraint
+            variants={typeof window !== 'undefined' && window.innerWidth < 768 ? panelVariants : desktopPanelVariants}
+            className="relative z-10 w-full md:w-[450px] h-full md:h-auto md:max-h-[90vh] md:my-4 md:mr-4 bg-white dark:bg-gray-900 shadow-2xl rounded-t-lg md:rounded-lg flex flex-col overflow-hidden max-w-[100vw]"
           >
-            {/* Header */}
             <div className="flex items-center justify-between p-4 border-b dark:border-gray-700 sticky top-0 bg-white dark:bg-gray-900 z-10">
               <h2 id="booking-widget-title" className="text-lg font-semibold text-gray-900 dark:text-white">
                 {viewState === VIEW_STATE.FORM && 'Request Booking'}
@@ -180,7 +172,6 @@ export default function BookingFormWidget() {
               </Button>
             </div>
 
-            {/* Content Area */}
             <div className="flex-grow overflow-y-auto p-6">
               <AnimatePresence mode="wait">
                 {viewState === VIEW_STATE.FORM && (
@@ -193,7 +184,6 @@ export default function BookingFormWidget() {
                     className="space-y-4"
                     noValidate
                   >
-                    {/* Event Date */}
                     <div>
                        <Label htmlFor="eventDate" className={cn("label-styles", errors.eventDate && "text-destructive")}>Event Date</Label>
                         <Controller
@@ -203,15 +193,15 @@ export default function BookingFormWidget() {
                                 <Popover>
                                     <PopoverTrigger asChild>
                                         <Button
-                                        variant={"outline"}
-                                        className={cn(
-                                            "w-full justify-start text-left font-normal input-styles mt-1",
+                                          variant={"outline"} // Using outline variant for border
+                                          className={cn(
+                                            "flex min-h-[44px] w-full items-center rounded-md border border-input bg-background px-3 py-2.5 text-base md:text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 justify-start text-left font-normal mt-1",
                                             !field.value && "text-muted-foreground",
-                                            errors.eventDate && "border-destructive"
-                                        )}
+                                            errors.eventDate && "border-destructive focus-visible:ring-destructive"
+                                          )}
                                         >
-                                        <CalendarIcon className="mr-2 h-4 w-4" />
-                                        {field.value ? format(field.value, "PPP") : <span>Pick a date</span>}
+                                          <CalendarIcon className="mr-2 h-4 w-4" />
+                                          {field.value ? format(field.value, "PPP") : <span className="whitespace-nowrap">Pick a date</span>}
                                         </Button>
                                     </PopoverTrigger>
                                     <PopoverContent className="w-auto p-0">
@@ -220,7 +210,7 @@ export default function BookingFormWidget() {
                                             selected={field.value}
                                             onSelect={field.onChange}
                                             initialFocus
-                                            disabled={(date) => date < new Date(new Date().setHours(0,0,0,0))} // Disable past dates
+                                            disabled={(date) => date < new Date(new Date().setHours(0,0,0,0))} 
                                         />
                                     </PopoverContent>
                                 </Popover>
@@ -229,7 +219,6 @@ export default function BookingFormWidget() {
                       {errors.eventDate && <p className="text-sm text-destructive mt-1">{errors.eventDate.message}</p>}
                     </div>
 
-                    {/* Event Type */}
                      <div>
                         <Label htmlFor="eventType" className={cn("label-styles", errors.eventType && "text-destructive")}>Event Type</Label>
                          <Controller
@@ -237,7 +226,7 @@ export default function BookingFormWidget() {
                             control={control}
                             render={({ field }) => (
                                <Select onValueChange={field.onChange} defaultValue={field.value}>
-                                    <SelectTrigger className={cn("select-styles mt-1", errors.eventType && "border-destructive")}>
+                                    <SelectTrigger className={cn("mt-1", errors.eventType && "border-destructive focus-visible:ring-destructive")}>
                                         <SelectValue placeholder="Select event type" />
                                     </SelectTrigger>
                                     <SelectContent>
@@ -253,20 +242,18 @@ export default function BookingFormWidget() {
                         {errors.eventType && <p className="text-sm text-destructive mt-1">{errors.eventType.message}</p>}
                     </div>
 
-                    {/* Your Name */}
                     <div>
                       <Label htmlFor="name" className={cn("label-styles", errors.name && "text-destructive")}>Your Name</Label>
                       <Input
                         id="name"
                         {...register("name")}
                         placeholder="Enter your full name"
-                        className={cn("input-styles mt-1", errors.name && "border-destructive focus:ring-destructive")}
+                        className={cn("mt-1", errors.name && "border-destructive focus:ring-destructive")}
                         aria-invalid={errors.name ? "true" : "false"}
                       />
                       {errors.name && <p className="text-sm text-destructive mt-1">{errors.name.message}</p>}
                     </div>
 
-                    {/* Email Address */}
                     <div>
                       <Label htmlFor="email" className={cn("label-styles", errors.email && "text-destructive")}>Email Address</Label>
                       <Input
@@ -274,24 +261,22 @@ export default function BookingFormWidget() {
                         type="email"
                         {...register("email")}
                         placeholder="your@email.com"
-                        className={cn("input-styles mt-1", errors.email && "border-destructive focus:ring-destructive")}
+                        className={cn("mt-1", errors.email && "border-destructive focus:ring-destructive")}
                         aria-invalid={errors.email ? "true" : "false"}
                       />
                       {errors.email && <p className="text-sm text-destructive mt-1">{errors.email.message}</p>}
                     </div>
 
-                    {/* Additional Details */}
                     <div>
                       <Label htmlFor="message" className="label-styles">Additional Details (Optional)</Label>
                       <Textarea
                         id="message"
                         {...register("message")}
                         placeholder="Tell us more about your event (optional)"
-                        className="input-styles mt-1 min-h-[100px]"
+                        className="mt-1 min-h-[100px]"
                       />
                     </div>
 
-                     {/* Submit Button - Sticky Footer */}
                     <div className="sticky bottom-0 bg-white dark:bg-gray-900 p-4 -mx-6 -mb-6 border-t dark:border-gray-700">
                         <Button type="submit" className="w-full button-primary-styles py-3" disabled={viewState === VIEW_STATE.SUBMITTING}>
                             {viewState === VIEW_STATE.SUBMITTING ? (
@@ -368,3 +353,4 @@ export default function BookingFormWidget() {
     </AnimatePresence>
   );
 }
+
