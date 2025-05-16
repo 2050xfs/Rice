@@ -4,7 +4,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import type { ElementType } from 'react';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { Menu, X, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
@@ -13,12 +13,13 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/sheet"; // Added SheetClose
 import { cn } from '@/lib/utils';
 import { useBookingModal } from '@/context/BookingModalContext';
 import { brandLogoUrl } from '@/lib/image-urls';
 import { navItems, type NavItem } from '@/config/nav';
 import ViboBadge from '@/components/common/ViboBadge';
+import { usePathname, useRouter } from 'next/navigation';
 
 const SiteLogo = () => (
   <Link href="/" className="flex items-center shrink-0 mr-auto">
@@ -39,6 +40,8 @@ export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const { openModal } = useBookingModal();
+  const pathname = usePathname();
+  const router = useRouter();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -47,6 +50,27 @@ export default function Header() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+  
+  const scrollToViboSection = useCallback(() => {
+    try {
+      const targetId = 'vibo-app-highlight-section';
+      if (pathname === '/') {
+        const viboSection = document.getElementById(targetId);
+        if (viboSection) {
+          viboSection.scrollIntoView({ behavior: 'smooth' });
+        } else {
+          console.warn(`${targetId} section not found for scrolling.`);
+        }
+      } else {
+        // Redirect to home page with hash to trigger scroll on home page
+        router.push(`/#${targetId}`);
+      }
+      if (isMobileMenuOpen) setIsMobileMenuOpen(false); // Close mobile menu
+    } catch (error) {
+      console.error('Error scrolling to VIBO section:', error);
+    }
+  }, [pathname, router, isMobileMenuOpen]);
+
 
   const NavLink = ({ item }: { item: NavItem }) => {
     if (item.subItems) {
@@ -55,12 +79,10 @@ export default function Header() {
           <DropdownMenuTrigger asChild>
             <Button 
               variant="ghost" 
-              className="text-base font-medium text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-primary px-3 py-2 shadow-none focus:ring-0 focus:ring-offset-0"
+              className="text-base font-medium text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-primary px-3 py-2 flex items-center gap-1 whitespace-nowrap shadow-none focus:ring-0 focus:ring-offset-0"
             >
-              <span className="flex items-center gap-1.5">
-                {item.name}
-                <ChevronDown className="h-4 w-4 shrink-0" />
-              </span>
+              {item.name}
+              <ChevronDown className="h-4 w-4 shrink-0" />
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent className="w-56 ring-1 ring-black/5">
@@ -83,7 +105,7 @@ export default function Header() {
     );
   };
 
-  const MobileNavLink = ({ item, closeMenu }: { item: NavItem, closeMenu: () => void }) => {
+  const MobileNavLink = ({ item }: { item: NavItem }) => {
     const [isSubMenuOpen, setIsSubMenuOpen] = useState(false);
 
     if (item.subItems) {
@@ -105,7 +127,7 @@ export default function Header() {
                 <Link
                   key={subItem.name}
                   href={subItem.href || '#'}
-                  onClick={closeMenu}
+                  onClick={() => setIsMobileMenuOpen(false)}
                   className="flex items-center py-2 px-4 text-base font-medium text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-md"
                 >
                   {subItem.icon && <subItem.icon className="h-4 w-4 mr-2 text-gray-500" />}
@@ -120,7 +142,7 @@ export default function Header() {
     return (
       <Link
         href={item.href || '#'}
-        onClick={closeMenu}
+        onClick={() => setIsMobileMenuOpen(false)}
         className="flex items-center py-3 px-4 text-base font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-md"
       >
         {item.icon && <item.icon className="h-5 w-5 mr-3 text-primary" />}
@@ -138,15 +160,15 @@ export default function Header() {
         <div className="flex items-center justify-between h-24">
           <SiteLogo />
 
-          <nav className="hidden lg:flex items-center space-x-4 mx-auto">
+          <nav className="hidden lg:flex items-center space-x-1 mx-auto"> {/* Reduced space-x-4 to space-x-1 or space-x-2 */}
             {navItems.map((item) => (
               <NavLink key={item.name} item={item} />
             ))}
           </nav>
 
           <div className="flex items-center gap-3 ml-auto">
-            <div className="hidden lg:flex items-center gap-3">
-              <ViboBadge />
+            <div className="hidden lg:flex items-center gap-2"> {/* Reduced gap-3 to gap-2 */}
+               <ViboBadge onClick={scrollToViboSection} />
               <Button onClick={openModal} className="button-primary-styles shrink-0">
                 Book Now
               </Button>
@@ -163,18 +185,15 @@ export default function Header() {
                   <div className="flex flex-col h-full">
                     <div className="flex items-center justify-between p-4 border-b dark:border-gray-700">
                       <SiteLogo />
-                      <SheetTrigger asChild>
-                         <Button variant="ghost" size="icon" aria-label="Close menu">
-                           <X className="h-6 w-6 text-gray-800 dark:text-white" />
-                         </Button>
-                      </SheetTrigger>
+                      {/* The SheetContent component from ShadCN UI already provides a close button.
+                          No need for an additional SheetTrigger or Button here to close the sheet. */}
                     </div>
                     <nav className="flex-grow p-4 space-y-1 overflow-y-auto">
                       {navItems.map((item) => (
-                        <MobileNavLink key={item.name} item={item} closeMenu={() => setIsMobileMenuOpen(false)} />
+                        <MobileNavLink key={item.name} item={item} />
                       ))}
                       <div className="pt-4 flex flex-col items-center gap-2">
-                        <ViboBadge />
+                         <ViboBadge onClick={scrollToViboSection} />
                         <Button onClick={() => { openModal(); setIsMobileMenuOpen(false); }} className="button-primary-styles w-full">
                           Book Now
                         </Button>
@@ -190,3 +209,4 @@ export default function Header() {
     </header>
   );
 }
+
