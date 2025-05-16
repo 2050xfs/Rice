@@ -1,9 +1,9 @@
 // src/content/testimonials-page-content.ts
 import {
   testimonialsHeroBg,
-  testimonialMountainHouse, testimonialOceanHotel, testimonialMadreya, testimonialEmily1,
-  testimonialJackieG, testimonialAyaD, testimonialEmily2, testimonialPlaceholder8,
-  testimonialSarahNew, testimonialCheriM, testimonialMichaelNew, testimonialJasonW,
+  testimonialMountainHouse, testimonialOceanHotel, testimonialMadreya,
+  testimonialJackieG, testimonialAyaD, testimonialPlaceholder8,
+  testimonialCheriM, testimonialMichaelNew, testimonialJasonW,
   testimonialSarahOld, testimonialMichaelOld
 } from '@/lib/image-urls';
 import type { TestimonialItem as BaseTestimonialItem } from './testimonials-section-content'; // Reuse the type
@@ -23,23 +23,10 @@ export const testimonialsPageContent = {
   },
   filters: {
     title: "Filter Testimonials:",
-    serviceOptions: ['All', 'DJ', 'Photo Booth', 'Both', 'Event Planning'], // Added Event Planning back if needed
+    serviceOptions: ['All', 'DJ', 'Photo Booth', 'Both', 'Event Planning'],
     eventTypeOptions: ['All', 'Wedding', 'Corporate', 'Private Party', 'School Event'],
   },
   testimonials: [
-     {
-      id: '1',
-      name: 'Jessica & Michael P.',
-      eventDate: 'November 12, 2023',
-      eventType: 'Wedding',
-      serviceUsed: 'Both',
-      rating: 5,
-      quote: "Rice Entertainment was the BEST decision for our wedding! DJ RICE kept the dance floor packed, and the Luxx Photo Booth was a huge hit. The VIBO app made music planning so easy!",
-      fullStory: "From our first consultation to the last song of the night, Rice Entertainment exceeded all our expectations. DJ RICE was incredibly intuitive, playing the perfect mix of songs that catered to all our guests. The VIBO app was a fantastic tool that allowed us to meticulously plan our music and make special requests. The Luxx Photo Booth added such a fun and glamorous element; our guests are still talking about their photos! Professional, responsive, and truly talented – we can't recommend them enough.",
-      image: testimonialMichaelOld,
-      imageHint: "wedding couple",
-      isFeatured: true,
-    },
     {
       id: '2',
       name: 'Innovate Solutions Ltd.',
@@ -52,18 +39,6 @@ export const testimonialsPageContent = {
       imageHint: "corporate team event",
     },
     {
-      id: '3',
-      name: 'Sophia K.', // Changed name back from Emily R.
-      eventDate: 'August 5, 2023',
-      eventType: 'Private Party',
-      serviceUsed: 'Photo Booth',
-      rating: 4,
-      quote: "The 360 Photo Booth was the highlight of my 30th birthday! So much fun and the videos look amazing. Setup was quick and the attendant was super helpful.",
-      fullStory: "I booked the 360 Photo Booth for my 30th birthday bash, and it was an absolute blast! My friends and I had so much fun creating dynamic videos. The setup was efficient, and the on-site attendant was friendly and guided everyone through the process. The quality of the videos was excellent, and sharing them was super easy. My only minor feedback would be to have a slightly wider selection of props, but overall, it was a fantastic experience and definitely worth it!",
-       image: testimonialEmily1,
-      imageHint: "client birthday portrait",
-    },
-     {
       id: '4',
       name: 'Mark & Chen W.',
       eventDate: 'July 1, 2023',
@@ -133,17 +108,6 @@ export const testimonialsPageContent = {
        isFeatured: true,
     },
     {
-      id: '10',
-      name: 'Sarah K.',
-      eventDate: 'March 25, 2023',
-      eventType: 'Corporate',
-      serviceUsed: 'Photo Booth',
-      rating: 4,
-      quote: "The Luxx booth added a touch of class to our corporate gala. Photos looked great, though the line got long at times.",
-      image: testimonialSarahOld,
-      imageHint: "corporate guest posing",
-    },
-    {
       id: '11',
       name: 'Michael B.',
       eventDate: 'February 14, 2024',
@@ -165,29 +129,6 @@ export const testimonialsPageContent = {
       fullStory: "We opted for the Social Booth for our wedding reception, and it was a fantastic choice! Our younger guests especially loved the GIFs and Boomerangs. The interface was intuitive, and sharing photos directly to social media was seamless. Jackie was great to work with during the planning process. A very fun and modern addition to our celebration.",
       image: testimonialJackieG,
       imageHint: "wedding guest smiling portrait",
-    },
-     {
-      id: '13',
-      name: 'Corporate Planner Emily', // More specific name
-      eventDate: 'December 1, 2023',
-      eventType: 'Corporate',
-      serviceUsed: 'DJ',
-      rating: 5,
-      quote: "DJ Rice was fantastic for our company holiday party. Very professional, arrived early, and kept the energy up appropriately for a corporate crowd.",
-      image: testimonialEmily2,
-      imageHint: "event planner portrait",
-       isFeatured: true,
-    },
-    {
-      id: '14',
-      name: 'Bride Sarah', // More specific name
-      eventDate: 'October 28, 2023',
-      eventType: 'Wedding',
-      serviceUsed: 'Both',
-      rating: 5,
-      quote: "Couldn't be happier with Rice Entertainment! DJ and photo booth were both exceptional. Made planning stress-free.",
-      image: testimonialSarahNew,
-      imageHint: "bride posing",
     },
   ] as TestimonialPageItem[],
   noMatchMessage: "No testimonials match your current filters. Try adjusting your filters or check back later for more client stories.",

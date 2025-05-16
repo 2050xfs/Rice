@@ -1,9 +1,9 @@
 // src/content/testimonials-section-content.ts
 import {
-  testimonialMountainHouse, testimonialOceanHotel, testimonialMadreya, testimonialEmily1,
-  testimonialJackieG, testimonialAyaD, testimonialEmily2, testimonialPlaceholder8,
-  testimonialSarahNew, testimonialCheriM, testimonialMichaelNew, testimonialJasonW,
-  testimonialSarahOld, testimonialMichaelOld
+  testimonialMountainHouse, testimonialOceanHotel, testimonialMadreya,
+  testimonialJackieG, testimonialAyaD, testimonialPlaceholder8,
+  testimonialCheriM, testimonialMichaelNew, testimonialJasonW,
+  testimonialMichaelOld
 } from '@/lib/image-urls';
 
 export interface TestimonialItem {
@@ -25,18 +25,6 @@ export const testimonialsSectionContent = {
   description: "We pride ourselves on delivering exceptional experiences. See what our clients have to say about Rice Entertainment.",
   testimonials: [
     {
-      id: '1',
-      name: 'Jessica M.', // Updated name
-      eventDate: 'November 12, 2023',
-      eventType: 'Wedding',
-      serviceUsed: 'Both',
-      rating: 5,
-      quote: "Rice Entertainment was the BEST decision! DJ RICE kept the dance floor packed, and the Luxx Photo Booth was a huge hit. VIBO app made planning easy!",
-      image: testimonialMichaelOld, // Using michael.jpg
-      imageHint: "wedding couple",
-      isFeatured: true,
-    },
-    {
       id: '2',
       name: 'Innovate Solutions',
       eventDate: 'December 8, 2023',
@@ -46,17 +34,6 @@ export const testimonialsSectionContent = {
       quote: "Our annual holiday party was a massive success, largely thanks to the fantastic DJ services from Rice Entertainment. Professional and engaging.",
       image: testimonialOceanHotel,
       imageHint: "corporate event setup",
-    },
-     {
-      id: '3',
-      name: 'Emily R.',
-      eventDate: 'August 5, 2023',
-      eventType: 'Private Party',
-      serviceUsed: 'Photo Booth',
-      rating: 4,
-      quote: "The 360 Photo Booth was the highlight of my 30th birthday! So much fun and the videos look amazing. Setup was quick.",
-      image: testimonialEmily1, // Using emily.jpg
-      imageHint: "client portrait",
     },
      {
       id: '4',
@@ -127,17 +104,6 @@ export const testimonialsSectionContent = {
        isFeatured: true,
     },
     {
-      id: '10',
-      name: 'Sarah K.',
-      eventDate: 'March 25, 2023',
-      eventType: 'Corporate',
-      serviceUsed: 'Photo Booth',
-      rating: 4,
-      quote: "The Luxx booth added a touch of class to our corporate gala. Photos looked great, though the line got long at times.",
-      image: testimonialSarahOld, // Using sarah.jpg
-      imageHint: "corporate guest portrait",
-    },
-    {
       id: '11',
       name: 'Michael B.',
       eventDate: 'February 14, 2024',
@@ -158,29 +124,6 @@ export const testimonialsSectionContent = {
       quote: "The social booth was perfect for our wedding guests who love sharing online. Easy to use and fun filters!",
       image: testimonialJackieG,
       imageHint: "wedding guest happy",
-    },
-     {
-      id: '13',
-      name: 'Another Emily', // Placeholder Name
-      eventDate: 'December 1, 2023',
-      eventType: 'Corporate',
-      serviceUsed: 'DJ',
-      rating: 5,
-      quote: "DJ Rice was fantastic for our company holiday party. Very professional and kept the energy up.",
-      image: testimonialEmily2, // Using emily-new.png
-      imageHint: "client portrait",
-       isFeatured: true,
-    },
-    {
-      id: '14',
-      name: 'Another Sarah', // Placeholder Name
-      eventDate: 'October 28, 2023',
-      eventType: 'Wedding',
-      serviceUsed: 'Both',
-      rating: 5,
-      quote: "Couldn't be happier with Rice Entertainment for our wedding! DJ and photo booth were both exceptional.",
-      image: testimonialSarahNew, // Using sarah-new.jpg
-      imageHint: "bride portrait",
     },
   ] as TestimonialItem[],
   filterOptions: {
