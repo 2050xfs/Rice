@@ -25,13 +25,13 @@ export const contactPageContent = {
     description: "Reach out to us for a quick response. We're here to help plan your perfect event.",
     phone: {
       icon: Phone,
-      number: "(123) 456-7890",
-      href: "tel:+1234567890",
+      number: "(510) 730-1147",
+      href: "tel:+15107301147",
     },
     email: {
       icon: Mail,
-      address: "info@riceentertainment.com",
-      href: "mailto:info@riceentertainment.com",
+      address: "booking@ricentertainment.com",
+      href: "mailto:booking@ricentertainment.com",
     },
   },
   eventGallery: {
