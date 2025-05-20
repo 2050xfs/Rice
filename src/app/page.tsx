@@ -45,7 +45,11 @@ export default function Home() {
       <ServicesOverview />
       <PartnersSection />
       <ViboAppHighlight />
-      <ImageGallerySection />
+      <ImageGallerySection 
+        title="Creating Unforgettable Moments"
+        subtitle="Event Gallery"
+        description="Experience the energy and excitement of our events through our gallery. From elegant weddings to dynamic corporate gatherings, we bring the perfect atmosphere to every celebration."
+      />
       <TestimonialsSection />
       <CallToAction />
     </>

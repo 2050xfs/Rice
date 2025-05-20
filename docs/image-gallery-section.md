@@ -12,6 +12,7 @@ A cascading style image gallery component with advanced features including click
 - **Responsive Design**: Adapts to different screen sizes
 - **Keyboard Navigation**: Use arrow keys to navigate in lightbox mode
 - **Caption Support**: Display captions on hover and in lightbox mode
+- **Customizable Props**: Configure title, subtitle, description, and more
 
 ## Usage
 
@@ -23,22 +24,44 @@ import ImageGallerySection from '@/components/sections/ImageGallerySection';
 export default function YourPage() {
   return (
     <main>
-      {/* Other components */}
+      {/* Basic usage with default settings */}
       <ImageGallerySection />
-      {/* Other components */}
+      
+      {/* Customized usage with props */}
+      <ImageGallerySection 
+        title="Creating Unforgettable Moments"
+        subtitle="Event Gallery"
+        description="Experience the energy and excitement of our events through our gallery."
+        showControls={false}
+        maxHeight="900px"
+      />
     </main>
   );
 }
 ```
 
+## Component Props
+
+The component accepts the following props:
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `title` | string | From content file | The main title displayed in the gallery header |
+| `subtitle` | string | "Event Gallery" | The subtitle/label displayed above the title |
+| `description` | string | From content file | The descriptive text below the title |
+| `showControls` | boolean | true | Whether to show category filter and auto-scroll controls |
+| `customImages` | GalleryImage[] | undefined | Optional custom images array to override the default images |
+| `maxHeight` | string | "800px" | Maximum height of the gallery container |
+| `className` | string | "" | Additional CSS classes to apply to the gallery grid |
+
 ## Component Structure
 
 The component is structured as follows:
 
-1. **Header Section**: Title and description
-2. **Controls**: Category filter and auto-scroll controls
-3. **Gallery Grid**: Masonry layout of images
-4. **Lightbox**: Modal for enlarged image view
+1. **Header Section**: Customizable title, subtitle, and description
+2. **Controls**: Optional category filter and auto-scroll controls (can be hidden)
+3. **Gallery Grid**: Masonry layout of images with configurable sizing
+4. **Lightbox**: Modal for enlarged image view with navigation
 
 ## Implementation Details
 
@@ -48,14 +71,28 @@ The gallery uses CSS Grid with auto-placement and varying spans for the masonry 
 
 ```tsx
 <div 
-  className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 auto-rows-[minmax(100px,auto)]"
+  ref={galleryRef}
+  className={cn(
+    "grid gap-4",
+    "grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5",
+    "auto-rows-[minmax(200px,auto)]",
+    "overflow-y-auto scrollbar-thin",
+    "scrollbar-thumb-gray-300 dark:scrollbar-thumb-gray-700 scrollbar-track-transparent overscroll-y-contain",
+    className
+  )}
+  style={{ maxHeight }}
 >
-  {filteredImages.map((image) => (
+  {filteredImages.map((image, index) => (
     <div 
       key={image.id}
+      className="relative cursor-pointer overflow-hidden rounded-lg shadow-sm hover:shadow-md transition-all duration-300"
       style={{
         gridColumn: `span ${image.span?.col || 1}`,
         gridRow: `span ${image.span?.row || 1}`,
+      }}
+      onClick={() => {
+        setCurrentImageIndex(index);
+        setLightboxOpen(true);
       }}
     >
       {/* Image content */}
@@ -201,16 +238,55 @@ export const imageGalleryContent = {
 
 To customize the gallery:
 
-1. **Content**: Modify the `image-gallery-content.ts` file to change images, titles, and descriptions
-2. **Styling**: Update the component's Tailwind classes to match your design system
-3. **Behavior**: Adjust the component's state and effects to change its behavior
+1. **Props**: Use the component props to customize the appearance and behavior
+2. **Content**: Modify the `image-gallery-content.ts` file to change images, titles, and descriptions
+3. **Styling**: Update the component's Tailwind classes to match your design system
+4. **Behavior**: Adjust the component's state and effects to change its behavior
+
+### Example: Customizing Image Layout
+
+To create a layout similar to the one in the screenshot, configure your images with appropriate spans:
+
+```typescript
+// First row - Wedding feature image
+{
+  id: "img1",
+  src: weddingsGalleryImage1,
+  alt: "Wedding celebration",
+  width: 800,
+  height: 600,
+  span: { col: 2, row: 2 }, // Large feature image
+  caption: "Magical wedding moments",
+  category: "Wedding"
+},
+// Corporate event images
+{
+  id: "img2",
+  src: corporateGalleryImage1,
+  alt: "Corporate event",
+  width: 600,
+  height: 400,
+  span: { col: 1, row: 1 }, // Standard image
+  caption: "Professional corporate gathering",
+  category: "Corporate"
+}
+```
 
 ## Integration Examples
 
 The ImageGallerySection component is integrated in the following pages:
 
 - **Home Page**: As a standalone section showcasing event highlights
-- **Event Type Pages**: Replacing the standard gallery with an enhanced version
+- **Event Type Pages**: With customized props and controls hidden:
+
+```tsx
+<ImageGallerySection 
+  title="Creating Unforgettable Moments"
+  subtitle="Event Gallery"
+  description="Experience the energy and excitement of our events through our gallery. From elegant weddings to dynamic corporate gatherings, we bring the perfect atmosphere to every celebration."
+  showControls={false}
+/>
+```
 
 ## Accessibility
 

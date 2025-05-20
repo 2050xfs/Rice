@@ -8,7 +8,25 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { imageGalleryContent, type GalleryImage } from '@/content/image-gallery-content';
 import { cn } from '@/lib/utils';
 
-export default function ImageGallerySection() {
+interface ImageGallerySectionProps {
+  title?: string;
+  subtitle?: string; 
+  description?: string;
+  showControls?: boolean;
+  customImages?: GalleryImage[];
+  maxHeight?: string;
+  className?: string;
+}
+
+export default function ImageGallerySection({
+  title = imageGalleryContent.title,
+  subtitle = "Event Gallery",
+  description = imageGalleryContent.description,
+  showControls = true,
+  customImages,
+  maxHeight = "800px",
+  className = "",
+}: ImageGallerySectionProps) {
   // State for lightbox and touch handling
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -27,14 +45,16 @@ export default function ImageGallerySection() {
   const galleryRef = useRef<HTMLDivElement>(null);
   const touchThreshold = 50; // minimum distance for swipe
   
-  // Filter images when category changes
+  // Filter images when category changes or when customImages changes
   useEffect(() => {
+    const imagesToFilter = customImages || imageGalleryContent.images;
+    
     if (selectedCategory === "All") {
-      setFilteredImages(imageGalleryContent.images);
+      setFilteredImages(imagesToFilter);
     } else {
-      setFilteredImages(imageGalleryContent.images.filter(img => img.category === selectedCategory));
+      setFilteredImages(imagesToFilter.filter(img => img.category === selectedCategory));
     }
-  }, [selectedCategory]);
+  }, [selectedCategory, customImages]);
   
   // Auto scroll effect
   useEffect(() => {
@@ -146,72 +166,81 @@ export default function ImageGallerySection() {
   return (
     <section className="section-spacing bg-white dark:bg-gray-950">
       <div className="max-w-7xl mx-auto">
-        {/* Header with mobile-optimized spacing */}
-        <div className="max-w-2xl mx-auto lg:text-center mb-8 sm:mb-12 lg:mb-16">
-          <p className="section-label-style">Gallery</p>
-          <h2 className="mt-2 h2-style text-gray-900 dark:text-white">
-            {imageGalleryContent.title}
+        {/* Header with updated styling */}
+        <div className="max-w-2xl mx-auto text-center mb-12">
+          <p className="text-sm font-semibold tracking-wider text-indigo-600 uppercase">{subtitle}</p>
+          <h2 className="mt-2 text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
+            {title}
           </h2>
-          <p className="mt-6 body-text-large text-gray-600 dark:text-gray-300">
-            {imageGalleryContent.description}
+          <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
+            {description}
           </p>
           
-          {/* Mobile-optimized Category Filter and Auto Scroll Controls */}
-          <div className="mt-6 sm:mt-8 lg:mt-10 mb-6 flex flex-col sm:flex-row gap-4 items-stretch sm:items-center justify-center">
-            <div className="flex items-center gap-2">
-              <Filter className="h-5 w-5 text-gray-600 dark:text-gray-400" />
-              <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Filter by:</span>
-            </div>
-            <Select value={selectedCategory} onValueChange={setSelectedCategory}>
-              <SelectTrigger className="w-full sm:w-[180px] input-styles dark:bg-gray-800 dark:text-white">
-                <SelectValue placeholder="Category" />
-              </SelectTrigger>
-              <SelectContent>
-                {imageGalleryContent.categories.map(category => (
-                  <SelectItem key={category} value={category}>{category}</SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-            
-            <div className="flex items-center gap-2 ml-4">
-              <Button 
-                onClick={toggleAutoScroll}
-                variant="outline"
-                size="sm"
-                className={cn(
-                  "flex items-center gap-1",
-                  autoScrollActive ? "bg-indigo-100 text-indigo-700 border-indigo-300 dark:bg-indigo-900 dark:text-indigo-300 dark:border-indigo-700" : ""
-                )}
-              >
-                {autoScrollActive ? <Pause className="h-4 w-4" /> : <Play className="h-4 w-4" />}
-                {autoScrollActive ? 'Pause' : 'Auto Scroll'}
-              </Button>
+          {/* Optional controls with minimal aesthetic - can be toggled with a prop */}
+          {showControls && (
+            <div className="flex items-center justify-center gap-3 mt-4 mb-6">
+              {/* Pill-Style Filter */}
+              <Select value={selectedCategory} onValueChange={setSelectedCategory}>
+                <SelectTrigger className="min-h-0 h-8 bg-gray-50 dark:bg-gray-800/30 hover:bg-gray-100 dark:hover:bg-gray-800/50 border-0 rounded-full px-3 text-sm font-medium text-gray-700 dark:text-gray-300 focus:ring-1 focus:ring-gray-200 dark:focus:ring-gray-700 focus:ring-offset-0 shadow-sm">
+                  <Filter className="h-3.5 w-3.5 mr-1.5 text-gray-500" />
+                  <SelectValue placeholder="All" />
+                </SelectTrigger>
+                <SelectContent className="rounded-lg border-0 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm">
+                  {imageGalleryContent.categories.map(category => (
+                    <SelectItem key={category} value={category} className="rounded-md text-sm">{category}</SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
               
+              {/* Divider */}
+              <div className="w-px h-5 bg-gray-200 dark:bg-gray-700"></div>
+              
+              {/* Icon-Only Toggle for Auto Scroll */}
+              <button
+                onClick={toggleAutoScroll}
+                className={cn(
+                  "h-8 w-8 rounded-full flex items-center justify-center text-gray-500 hover:text-indigo-600 dark:text-gray-400 dark:hover:text-indigo-400 transition-all duration-200 focus:outline-none focus:ring-1 focus:ring-gray-200 dark:focus:ring-gray-700",
+                  autoScrollActive ? "bg-indigo-50 text-indigo-600 dark:bg-indigo-900/30 dark:text-indigo-400" : "bg-gray-50 dark:bg-gray-800/30 hover:bg-gray-100 dark:hover:bg-gray-800/50"
+                )}
+                aria-label={autoScrollActive ? "Pause auto scroll" : "Start auto scroll"}
+              >
+                {autoScrollActive ? <Pause className="h-3.5 w-3.5" /> : <Play className="h-3.5 w-3.5" />}
+              </button>
+              
+              {/* Speed Control - Only visible when auto-scroll is active */}
               {autoScrollActive && (
                 <Select value={scrollSpeed.toString()} onValueChange={(value) => setScrollSpeed(Number(value))}>
-                  <SelectTrigger className="w-[100px] input-styles dark:bg-gray-800 dark:text-white">
+                  <SelectTrigger className="min-h-0 h-8 w-20 bg-gray-50 dark:bg-gray-800/30 border-0 rounded-full px-3 text-xs font-medium text-gray-700 dark:text-gray-300 focus:ring-1 focus:ring-gray-200 dark:focus:ring-gray-700 focus:ring-offset-0 shadow-sm">
                     <SelectValue placeholder="Speed" />
                   </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="0.5">Slow</SelectItem>
-                    <SelectItem value="1">Normal</SelectItem>
-                    <SelectItem value="2">Fast</SelectItem>
+                  <SelectContent className="rounded-lg border-0 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm">
+                    <SelectItem value="0.5" className="text-sm">Slow</SelectItem>
+                    <SelectItem value="1" className="text-sm">Normal</SelectItem>
+                    <SelectItem value="2" className="text-sm">Fast</SelectItem>
                   </SelectContent>
                 </Select>
               )}
             </div>
-          </div>
+          )}
         </div>
         
-        {/* Mobile-optimized Gallery Grid with Touch Scroll */}
+        {/* Updated grid layout with improved sizing */}
         <div 
           ref={galleryRef}
-          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 auto-rows-[minmax(250px,auto)] sm:auto-rows-[minmax(200px,auto)] max-h-[600px] sm:max-h-[800px] overflow-y-auto scrollbar-thin scrollbar-thumb-gray-300 dark:scrollbar-thumb-gray-700 scrollbar-track-transparent overscroll-y-contain"
+          className={cn(
+            "grid gap-4",
+            "grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5",
+            "auto-rows-[minmax(200px,auto)]",
+            "overflow-y-auto scrollbar-thin",
+            "scrollbar-thumb-gray-300 dark:scrollbar-thumb-gray-700 scrollbar-track-transparent overscroll-y-contain",
+            className
+          )}
+          style={{ maxHeight }}
         >
           {filteredImages.map((image, index) => (
             <div 
               key={image.id}
-              className={`relative cursor-pointer overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-all duration-300 hover:scale-[1.02]`}
+              className="relative cursor-pointer overflow-hidden rounded-lg shadow-sm hover:shadow-md transition-all duration-300"
               style={{
                 gridColumn: `span ${image.span?.col || 1}`,
                 gridRow: `span ${image.span?.row || 1}`,
@@ -236,10 +265,10 @@ export default function ImageGallerySection() {
                 blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNzAwIiBoZWlnaHQ9IjQ3NSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2ZXJzaW9uPSIxLjEiPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNmMWYxZjEiLz48L3N2Zz4="
               />
               
-              {/* Caption overlay */}
+              {/* Simplified caption overlay */}
               {image.caption && (
-                <div className="absolute inset-0 bg-black/40 opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end">
-                  <p className="text-white p-4 text-sm">{image.caption}</p>
+                <div className="absolute inset-0 bg-black/30 opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end">
+                  <p className="text-white p-3 text-sm">{image.caption}</p>
                 </div>
               )}
             </div>

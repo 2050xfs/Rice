@@ -77,36 +77,36 @@ export default function Header() {
     
     if (item.subItems) {
       return (
-        <DropdownMenu onOpenChange={setIsOpen}>
-          <DropdownMenuTrigger asChild>
-            <Button
-              variant="ghost"
-              className="text-base font-medium text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-primary px-3 py-2 flex items-center gap-1 whitespace-nowrap shadow-none focus:ring-0 focus:ring-offset-0"
-            >
-              {item.name}
-              <ChevronDown className={cn(
-                "h-4 w-4 shrink-0 transition-transform duration-200",
-                isOpen && "rotate-180"
-              )} />
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent className="w-56 ring-1 ring-black/5">
-            {item.subItems.map((subItem) => (
-              <DropdownMenuItem key={subItem.name} asChild>
-                <Link href={subItem.href || '#'} className="flex items-center gap-2">
-                  {subItem.icon && <subItem.icon className="h-4 w-4 text-gray-500" />}
-                  {subItem.name}
-                </Link>
-              </DropdownMenuItem>
-            ))}
-          </DropdownMenuContent>
-        </DropdownMenu>
+        <div className="relative group">
+          <div className="relative">
+            <DropdownMenu onOpenChange={setIsOpen}>
+              <DropdownMenuTrigger asChild>
+                <a className="inline-flex items-center text-base font-medium text-gray-900 hover:text-indigo-600 transition-colors duration-200" href={item.href || '#'}>
+                  {item.name}
+                  <ChevronDown className="ml-1.5 h-4 w-4 transition-transform duration-200" />
+                </a>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent className="w-56 ring-1 ring-black/5">
+                {item.subItems.map((subItem) => (
+                  <DropdownMenuItem key={subItem.name} asChild>
+                    <Link href={subItem.href || '#'} className="flex items-center gap-2">
+                      {subItem.icon && <subItem.icon className="h-4 w-4 text-gray-500" />}
+                      {subItem.name}
+                    </Link>
+                  </DropdownMenuItem>
+                ))}
+              </DropdownMenuContent>
+            </DropdownMenu>
+          </div>
+        </div>
       );
     }
     return (
-      <Link href={item.href || '#'} className="flex items-center gap-1 text-base font-medium text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-primary px-3 py-2 whitespace-nowrap">
-        {item.name}
-      </Link>
+      <div className="relative group">
+        <Link href={item.href || '#'} className="text-base font-medium text-gray-900 hover:text-indigo-600 transition-colors duration-200">
+          {item.name}
+        </Link>
+      </div>
     );
   };
 
@@ -168,10 +168,12 @@ export default function Header() {
         <div className="flex items-center justify-between h-24">
           <SiteLogo />
 
-          <nav className="hidden lg:flex items-center space-x-2 mx-auto">
-            {navItems.map((item) => (
-              <NavLink key={item.name} item={item} />
-            ))}
+          <nav className="hidden lg:flex mx-auto">
+            <div className="flex space-x-8">
+              {navItems.map((item) => (
+                <NavLink key={item.name} item={item} />
+              ))}
+            </div>
           </nav>
 
           <div className="flex items-center gap-2 ml-auto">

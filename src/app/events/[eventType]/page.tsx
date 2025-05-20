@@ -65,7 +65,14 @@ export default function EventTypePage() {
       </div>
 
       {/* Enhanced Gallery Section - Conditionally render if event type has gallery images */}
-      {details.gallery && details.gallery.length > 0 && <ImageGallerySection />}
+      {details.gallery && details.gallery.length > 0 && (
+        <ImageGallerySection 
+          title="Creating Unforgettable Moments"
+          subtitle="Event Gallery"
+          description="Experience the energy and excitement of our events through our gallery. From elegant weddings to dynamic corporate gatherings, we bring the perfect atmosphere to every celebration."
+          showControls={false}
+        />
+      )}
 
       {/* Why Choose Us Section */}
       <div className="py-24 sm:py-32">

@@ -56,15 +56,48 @@ export interface GalleryImage {
 }
 
 export const imageGalleryContent = {
-  title: "Moments That Define Excellence",
-  subtitle: "Our work speaks for itself",
-  description: "Browse through our collection of memorable events and experiences",
+  title: "Creating Unforgettable Moments",
+  subtitle: "Event Gallery",
+  description: "Experience the energy and excitement of our events through our gallery. From elegant weddings to dynamic corporate gatherings, we bring the perfect atmosphere to every celebration.",
   
   // Gallery images with size information for layout
   images: [
-    // Featured photo booth image - large cell (2x2)
+    // First row - Wedding feature image
     {
       id: "img1",
+      src: weddingsGalleryImage1,
+      alt: "Wedding celebration",
+      width: 800,
+      height: 600,
+      span: { col: 2, row: 2 },
+      caption: "Magical wedding moments",
+      category: "Wedding"
+    },
+    // Corporate event images
+    // Removed: { id: "img2", src: corporateGalleryImage1, alt: "Corporate event", width: 600, height: 400, span: { col: 1, row: 1 }, caption: "Professional corporate gathering", category: "Corporate" },
+    {
+      id: "img3",
+      src: corporateGalleryImage2,
+      alt: "Business presentation",
+      width: 600,
+      height: 400,
+      span: { col: 1, row: 1 },
+      caption: "Business networking event",
+      category: "Corporate"
+    },
+    {
+      id: "img4",
+      src: corporateGalleryImage3,
+      alt: "Corporate celebration",
+      width: 600,
+      height: 400,
+      span: { col: 1, row: 1 },
+      caption: "Corporate celebration event",
+      category: "Corporate"
+    },
+    // Second row - Photo booth feature
+    {
+      id: "img5",
       src: booth360MainImg,
       alt: "360 Photo Booth",
       width: 800,
@@ -73,221 +106,131 @@ export const imageGalleryContent = {
       caption: "Dynamic 360 photo booth experience",
       category: "Photo Booth"
     },
-    // Lighting images - mix of cell sizes
-    {
-      id: "img2",
-      src: lightingGalleryImg1,
-      alt: "Premium Lighting Setup",
-      width: 600,
-      height: 300,
-      span: { col: 1, row: 1 },
-      caption: "Custom lighting design for corporate event",
-      category: "Corporate"
-    },
-    {
-      id: "img3",
-      src: lightingGalleryImg2,
-      alt: "Wedding Venue Lighting",
-      width: 400,
-      height: 600,
-      span: { col: 1, row: 2 },
-      caption: "Atmospheric lighting for wedding reception",
-      category: "Wedding"
-    },
-    {
-      id: "img4",
-      src: lightingGalleryImg3,
-      alt: "Party Lighting Effects",
-      width: 600,
-      height: 300,
-      span: { col: 1, row: 1 },
-      caption: "Dynamic lighting for dance floor",
-      category: "Party"
-    },
-    {
-      id: "img5",
-      src: lightingGalleryImg4,
-      alt: "Outdoor Event Lighting",
-      width: 800,
-      height: 300,
-      span: { col: 2, row: 1 },
-      caption: "Outdoor evening event illumination",
-      category: "Corporate"
-    },
-    // DJ images - mix of cell sizes
+    // Party images
     {
       id: "img6",
-      src: djPackageEssentialBeatsImg,
-      alt: "DJ Performance",
+      src: privatePartiesGalleryImage1,
+      alt: "Private party",
       width: 600,
-      height: 300,
+      height: 400,
       span: { col: 1, row: 1 },
-      caption: "DJ creating the perfect atmosphere",
+      caption: "Fun private celebration",
       category: "Party"
     },
     {
       id: "img7",
-      src: serviceOverviewDjImg,
-      alt: "Professional DJ Service",
-      width: 400,
-      height: 600,
-      span: { col: 1, row: 2 },
-      caption: "Our professional DJ in action",
+      src: privatePartiesGalleryImage2,
+      alt: "Party lighting",
+      width: 600,
+      height: 400,
+      span: { col: 1, row: 1 },
+      caption: "Colorful lighting for private event",
       category: "Party"
     },
     {
       id: "img8",
-      src: djPackagePremiumSoundImg,
-      alt: "Premium Sound System",
+      src: privatePartiesGalleryImage3,
+      alt: "Party atmosphere",
       width: 600,
-      height: 300,
+      height: 400,
       span: { col: 1, row: 1 },
-      caption: "Premium sound system setup",
-      category: "Corporate"
+      caption: "Energetic party atmosphere",
+      category: "Party"
     },
-    {
-      id: "img9",
-      src: djPackageUltimateExperienceImg,
-      alt: "Ultimate DJ Experience",
-      width: 800,
-      height: 300,
-      span: { col: 2, row: 1 },
-      caption: "The ultimate DJ experience for weddings",
-      category: "Wedding"
-    },
-    // Photo booth images - mix of cell sizes
-    {
-      id: "img10",
-      src: booth360Gallery1Img,
-      alt: "360 Booth Output Example",
-      width: 600,
-      height: 300,
-      span: { col: 1, row: 1 },
-      caption: "Stunning 360 video booth spin effect",
-      category: "Photo Booth"
-    },
+    // Third row - Wedding feature
+    // Removed: { id: "img9", src: weddingsGalleryImage2, alt: "Wedding guests dancing", width: 800, height: 400, span: { col: 3, row: 1 }, caption: "Guests enjoying the dance floor", category: "Wedding" },
+    // Removed: { id: "img10", src: weddingsGalleryImage3, alt: "Wedding celebration", width: 600, height: 400, span: { col: 2, row: 1 }, caption: "Beautiful wedding celebration", category: "Wedding" },
+    // Fourth row - Photo booth experiences
     {
       id: "img11",
-      src: booth360Gallery2Img,
-      alt: "360 Booth Setup",
-      width: 400,
-      height: 600,
-      span: { col: 1, row: 2 },
-      caption: "Professional 360 booth event setup",
-      category: "Photo Booth"
-    },
-    {
-      id: "img12",
       src: boothLuxxGallery1Img,
       alt: "Luxx Booth Glam Shot",
       width: 600,
-      height: 300,
+      height: 400,
       span: { col: 1, row: 1 },
       caption: "Elegant glamour portrait from Luxx Booth",
       category: "Photo Booth"
     },
     {
-      id: "img13",
-      src: boothLuxxGallery2Img,
-      alt: "Luxx Booth Print Example",
+      id: "img12",
+      src: booth360Gallery1Img,
+      alt: "360 Booth Output",
       width: 600,
-      height: 300,
+      height: 400,
       span: { col: 1, row: 1 },
-      caption: "High-quality photo strip from Luxx Booth",
+      caption: "Stunning 360 video booth spin effect",
       category: "Photo Booth"
     },
     {
-      id: "img14",
-      src: boothSocialMainImg,
-      alt: "Social Booth Setup",
-      width: 800,
-      height: 300,
-      span: { col: 2, row: 1 },
-      caption: "Engaging Social Booth for maximum fun",
-      category: "Photo Booth"
-    },
-    {
-      id: "img15",
+      id: "img13",
       src: boothSocialGallery1Img,
-      alt: "Social Booth GIF Example",
+      alt: "Social Booth GIF",
       width: 600,
-      height: 300,
+      height: 400,
       span: { col: 1, row: 1 },
       caption: "Animated GIF from our Social Booth",
       category: "Photo Booth"
     },
-    // Wedding images - mix of cell sizes
     {
-      id: "img16",
-      src: weddingsGalleryImage1,
-      alt: "Wedding First Dance",
-      width: 800,
-      height: 300,
-      span: { col: 2, row: 1 },
-      caption: "Magical first dance moment",
-      category: "Wedding"
-    },
-    {
-      id: "img17",
-      src: weddingsGalleryImage2,
-      alt: "Wedding Guests Dancing",
-      width: 600,
-      height: 300,
-      span: { col: 1, row: 1 },
-      caption: "Guests enjoying the dance floor",
-      category: "Wedding"
-    },
-    {
-      id: "img18",
+      id: "img14",
       src: serviceOverviewPhotoBoothImg,
       alt: "Photo Booth Experience",
       width: 800,
-      height: 300,
+      height: 400,
       span: { col: 2, row: 1 },
       caption: "Guests enjoying our photo booth experience",
       category: "Photo Booth"
     },
-    // Corporate images - mix of cell sizes
+    // Fifth row - DJ and lighting
+    {
+      id: "img15",
+      src: djPackageEssentialBeatsImg,
+      alt: "DJ Performance",
+      width: 600,
+      height: 400,
+      span: { col: 1, row: 1 },
+      caption: "DJ creating the perfect atmosphere",
+      category: "Party"
+    },
+    {
+      id: "img16",
+      src: serviceOverviewDjImg,
+      alt: "Professional DJ Service",
+      width: 600,
+      height: 400,
+      span: { col: 1, row: 1 },
+      caption: "Our professional DJ in action",
+      category: "Party"
+    },
+    {
+      id: "img17",
+      src: lightingGalleryImg1,
+      alt: "Premium Lighting Setup",
+      width: 600,
+      height: 400,
+      span: { col: 1, row: 1 },
+      caption: "Custom lighting design for events",
+      category: "Corporate"
+    },
+    {
+      id: "img18",
+      src: lightingGalleryImg3,
+      alt: "Party Lighting Effects",
+      width: 600,
+      height: 400,
+      span: { col: 1, row: 1 },
+      caption: "Dynamic lighting for dance floor",
+      category: "Party"
+    },
     {
       id: "img19",
-      src: corporateGalleryImage1,
-      alt: "Corporate Presentation",
-      width: 400,
-      height: 600,
-      span: { col: 1, row: 2 },
-      caption: "Professional business presentation",
-      category: "Corporate"
-    },
-    {
-      id: "img20",
-      src: corporateGalleryImage2,
-      alt: "Corporate Networking",
+      src: lightingGalleryImg4,
+      alt: "Outdoor Event Lighting",
       width: 600,
-      height: 300,
+      height: 400,
       span: { col: 1, row: 1 },
-      caption: "Business networking event",
+      caption: "Outdoor evening event illumination",
       category: "Corporate"
-    },
-    // Party images - mix of cell sizes
-    {
-      id: "img21",
-      src: privatePartiesGalleryImage1,
-      alt: "Private Party Fun",
-      width: 800,
-      height: 300,
-      span: { col: 2, row: 1 },
-      caption: "Friends enjoying a private celebration",
-      category: "Party"
-    },
-    {
-      id: "img22",
-      src: privatePartiesGalleryImage2,
-      alt: "Party Lighting Design",
-      width: 600,
-      height: 300,
-      span: { col: 1, row: 1 },
-      caption: "Colorful lighting design for private event",
-      category: "Party"
     },
     // About images - mix of cell sizes
     {
@@ -331,16 +274,7 @@ export const imageGalleryContent = {
       caption: "Guests enjoying the Luxx Photobooth with props",
       category: "Photo Booth"
     },
-    {
-      id: "img27",
-      src: boothLuxxGallery10Img,
-      alt: "Luxx Photobooth Countdown",
-      width: 400,
-      height: 600,
-      span: { col: 1, row: 2 },
-      caption: "Luxx Photobooth countdown display",
-      category: "Photo Booth"
-    },
+    // Removed: { id: "img27", src: boothLuxxGallery10Img, alt: "Luxx Photobooth Countdown", width: 400, height: 600, span: { col: 1, row: 2 }, caption: "Luxx Photobooth countdown display", category: "Photo Booth" },
     {
       id: "img28",
       src: boothLuxxGallery13Img,
