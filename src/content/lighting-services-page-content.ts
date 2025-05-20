@@ -62,6 +62,13 @@ export const lightingPageContent = {
     backgroundImageAlt: "Outdoor event with cold sparkler effects",
     backgroundImageHint: "cold sparklers fireworks",
   },
+  videoDemo: {
+    linkText: "See Our Lighting in Action",
+    title: "Professional Wash Lighting Demo",
+    description: "Watch how our wash lighting transforms venues and creates stunning visual effects for any event.",
+    videoUrl: "https://youtu.be/SCqM9P31l5c",
+    caption: "Experience the versatility and impact of our professional wash lighting systems. Perfect for venues of any size."
+  },
   demoForm: {
     title: "Request a Lighting Demo",
     eventTypes: ["Wedding", "Corporate Event", "Private Party", "Concert/Performance", "Other"],
@@ -249,4 +256,3 @@ export const lightingPageContent = {
     buttonText: "Get a Lighting Quote",
   }
 };
-

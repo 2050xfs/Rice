@@ -14,6 +14,8 @@ import { useBookingModal } from '@/context/BookingModalContext';
 import { lightingPageContent } from '@/content/lighting-services-page-content';
 import { CheckCircle } from 'lucide-react';
 import PageHero from '@/components/sections/PageHero'; // Import the new hero
+import YouTubeEmbed from '@/components/common/YouTubeEmbed'; // Import the YouTube embed component
+import { extractYouTubeId } from '@/lib/utils'; // Import the YouTube ID extraction function
 
 // Demo Request Form Component
 const LightingDemoForm = ({ onOpenChange }: { onOpenChange: (open: boolean) => void }) => {
@@ -101,7 +103,7 @@ const LightingDemoForm = ({ onOpenChange }: { onOpenChange: (open: boolean) => v
 
 
 export default function LightingServicesPage() {
-    const { hero, offerings, packages, techSpecs, benefits, gallery, cta } = lightingPageContent;
+    const { hero, offerings, packages, techSpecs, benefits, gallery, cta, videoDemo } = lightingPageContent;
     const { openModal: openBookingModal } = useBookingModal();
     const galleryRef = useRef<HTMLDivElement>(null);
     const [isDemoFormOpen, setIsDemoFormOpen] = useState(false);
@@ -129,69 +131,114 @@ export default function LightingServicesPage() {
 
 
             {/* Lighting Services Offerings Section */}
-            <div className="py-24 sm:py-32">
-                <div className="max-w-7xl mx-auto px-6 lg:px-8">
-                    <div className="max-w-2xl mx-auto lg:text-center mb-16">
-                        <p className="section-label-style">{offerings.label}</p>
+            <div className="py-24 sm:py-32 bg-gradient-to-b from-gray-50 to-white dark:from-gray-950 dark:to-gray-900">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="max-w-2xl mx-auto text-center mb-12 md:mb-16">
+                        <p className="section-label-style text-white !text-white font-bold tracking-wider drop-shadow-sm">{offerings.label}</p>
                         <h2 className="mt-2 h2-style text-gray-900 dark:text-white">
                             {offerings.title}
                         </h2>
                     </div>
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        {offerings.items.map((item) => (
-                            <Card key={item.title} className="card-feature-styles bg-white dark:bg-gray-800/50 shadow-lg hover:shadow-xl flex flex-col">
-                                <div className="relative h-48 w-full mb-4 rounded-t-lg overflow-hidden">
-                                  <Image src={item.image} alt={item.title} data-ai-hint={item.imageHint} layout="fill" objectFit="cover" />
-                                </div>
-                                <CardHeader>
-                                    <div className="flex items-center gap-3">
-                                        <item.icon className="h-8 w-8 text-primary" />
-                                        <CardTitle className="h3-style text-gray-900 dark:text-white">{item.title}</CardTitle>
+                    
+                    {/* Mobile Tab Navigation (visible on small screens only) */}
+                    <div className="md:hidden mb-8 overflow-x-auto scrollbar-hide">
+                        <div className="flex space-x-2 pb-2">
+                            {offerings.items.map((item, index) => (
+                                <button
+                                    key={`tab-${item.title}`}
+                                    onClick={() => {
+                                        const element = document.getElementById(`service-${index}`);
+                                        if (element) {
+                                            element.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+                                        }
+                                    }}
+                                    className="flex items-center gap-2 whitespace-nowrap px-4 py-2 rounded-full bg-white dark:bg-gray-800 shadow-sm border border-gray-200 dark:border-gray-700 text-sm font-medium"
+                                >
+                                    <item.icon className="h-4 w-4 text-primary" />
+                                    <span>{item.title}</span>
+                                </button>
+                            ))}
+                        </div>
+                    </div>
+                    
+                    {/* Main Grid Layout */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                        {offerings.items.map((item, index) => (
+                            <div 
+                                id={`service-${index}`}
+                                key={item.title} 
+                                className="group relative flex flex-col bg-white dark:bg-gray-800/30 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 border border-gray-100 dark:border-gray-800"
+                            >
+                                {/* Image with Overlay */}
+                                <div className="relative aspect-[16/9] w-full overflow-hidden">
+                                    <Image 
+                                        src={item.image} 
+                                        alt={item.title} 
+                                        data-ai-hint={item.imageHint} 
+                                        layout="fill" 
+                                        objectFit="cover" 
+                                        className="transition-transform duration-500 group-hover:scale-105"
+                                    />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-70"></div>
+                                    <div className="absolute bottom-0 left-0 right-0 p-4">
+                                        <div className="flex items-center gap-2">
+                                            <div className="p-2 rounded-full bg-primary/90 backdrop-blur-sm">
+                                                <item.icon className="h-5 w-5 text-white" />
+                                            </div>
+                                            <h3 className="text-xl font-bold text-white">{item.title}</h3>
+                                        </div>
                                     </div>
-                                </CardHeader>
-                                <CardContent className="flex-grow flex flex-col">
-                                    <CardDescription className="body-text-default text-gray-600 dark:text-gray-400 mb-4">{item.description}</CardDescription>
-                                    <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-300 flex-grow">
-                                        {item.features.map((feature, idx) => (
-                                            <li key={idx} className="flex items-start">
-                                                <CheckCircle className="h-4 w-4 text-green-500 mr-2 mt-0.5 shrink-0" />
-                                                {feature}
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </CardContent>
-                            </Card>
+                                </div>
+                                
+                                {/* Content */}
+                                <div className="p-5 flex-grow flex flex-col">
+                                    <p className="text-sm text-gray-600 dark:text-gray-300 mb-4">{item.description}</p>
+                                    
+                                    {/* Features */}
+                                    <div className="mt-auto">
+                                        <h4 className="text-sm font-semibold text-gray-900 dark:text-gray-100 mb-2">Features:</h4>
+                                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-2">
+                                            {item.features.map((feature, idx) => (
+                                                <div key={idx} className="flex items-start">
+                                                    <CheckCircle className="h-4 w-4 text-green-500 mr-2 mt-0.5 shrink-0" />
+                                                    <span className="text-xs text-gray-600 dark:text-gray-300">{feature}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         ))}
                     </div>
                 </div>
             </div>
 
              {/* Packages Section */}
-             <div className="bg-gradient-to-r from-indigo-600 to-indigo-500 py-24 sm:py-32">
+             <div className="bg-gradient-to-r from-indigo-800 to-indigo-600 py-24 sm:py-32">
                 <div className="max-w-7xl mx-auto px-6 lg:px-8">
                     <div className="max-w-2xl mx-auto lg:text-center mb-16">
-                        <p className="section-label-style text-indigo-200">{packages.label}</p>
-                        <h2 className="mt-2 h2-style text-white">
+                        <p className="section-label-style text-white !text-white font-bold tracking-wider drop-shadow-sm">{packages.label}</p>
+                        <h2 className="mt-2 h2-style text-white font-bold drop-shadow-md">
                             {packages.title}
                         </h2>
                     </div>
                      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                         {packages.items.map((pkg) => (
-                             <Card key={pkg.name} className="bg-white/10 dark:bg-white/5 backdrop-blur-sm border border-white/20 shadow-lg flex flex-col">
-                                <CardHeader>
-                                    <CardTitle className="text-xl font-semibold text-white">{pkg.name}</CardTitle>
-                                    <CardDescription className="text-indigo-200 text-sm">{pkg.perfectFor}</CardDescription>
+                             <Card key={pkg.name} className="bg-white/15 dark:bg-white/10 backdrop-blur-sm border border-white/30 shadow-xl flex flex-col">
+                                <CardHeader className="pb-2">
+                                    <CardTitle className="text-xl font-bold text-white drop-shadow-sm">{pkg.name}</CardTitle>
+                                    <CardDescription className="text-white/90 text-sm font-medium">{pkg.perfectFor}</CardDescription>
                                 </CardHeader>
                                 <CardContent className="flex-grow flex flex-col">
-                                    <ul className="space-y-2 text-sm text-gray-200 flex-grow mb-6">
+                                    <ul className="space-y-3 text-sm text-white flex-grow mb-6">
                                         {pkg.includes.map((item, idx) => (
                                             <li key={idx} className="flex items-start">
-                                                <CheckCircle className="h-4 w-4 text-green-300 mr-2 mt-0.5 shrink-0" />
-                                                {item}
+                                                <CheckCircle className="h-4 w-4 text-green-300 drop-shadow-sm mr-2 mt-0.5 shrink-0" />
+                                                <span className="drop-shadow-sm">{item}</span>
                                             </li>
                                         ))}
                                     </ul>
-                                     <Button onClick={openBookingModal} variant="transparent" className="w-full mt-auto button-transparent-styles" hasShimmer>
+                                     <Button onClick={openBookingModal} variant="transparent" className="w-full mt-auto bg-white/20 hover:bg-white/30 text-white font-medium border-white/30 shadow-md" hasShimmer>
                                         {packages.ctaButtonText}
                                     </Button>
                                 </CardContent>
@@ -205,7 +252,7 @@ export default function LightingServicesPage() {
             <div className="py-24 sm:py-32">
                  <div className="max-w-7xl mx-auto px-6 lg:px-8">
                      <div className="max-w-2xl mx-auto lg:text-center mb-16">
-                        <p className="section-label-style">{techSpecs.label}</p>
+                        <p className="section-label-style text-white !text-white font-bold tracking-wider drop-shadow-sm">{techSpecs.label}</p>
                         <h2 className="mt-2 h2-style text-gray-900 dark:text-white">
                             {techSpecs.title}
                         </h2>
@@ -230,7 +277,34 @@ export default function LightingServicesPage() {
                 </div>
             </div>
 
-             {/* Gallery Section */}
+            {/* Video Demo Section */}
+            <div className="py-24 sm:py-32 bg-white dark:bg-gray-950">
+                <div className="max-w-7xl mx-auto px-6 lg:px-8">
+                    <div className="max-w-3xl mx-auto text-center">
+                        <a href="#video-demo" className="text-sm font-semibold text-blue-600 hover:text-blue-500">
+                            {videoDemo.linkText}
+                        </a>
+                        <h2 className="mt-2 h2-style text-gray-900 dark:text-white">
+                            {videoDemo.title}
+                        </h2>
+                        <p className="mt-4 mb-8 body-text-large text-gray-600 dark:text-gray-300">
+                            {videoDemo.description}
+                        </p>
+                    </div>
+                    
+                    <div id="video-demo" className="max-w-3xl mx-auto">
+                        <YouTubeEmbed 
+                            videoId={extractYouTubeId(videoDemo.videoUrl)} 
+                            title="Professional Wash Lighting Demo"
+                        />
+                        <p className="mt-6 text-center text-base text-gray-600 dark:text-gray-400">
+                            {videoDemo.caption}
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            {/* Gallery Section */}
             <div ref={galleryRef} id="lighting-gallery" className="bg-gray-100 dark:bg-gray-900 py-24 sm:py-32">
                 <div className="max-w-7xl mx-auto px-6 lg:px-8">
                     <div className="max-w-2xl mx-auto lg:text-center mb-16">
@@ -265,7 +339,7 @@ export default function LightingServicesPage() {
             <div className="py-24 sm:py-32">
                 <div className="max-w-7xl mx-auto px-6 lg:px-8">
                     <div className="max-w-2xl mx-auto lg:text-center mb-16">
-                        <p className="section-label-style">{benefits.label}</p>
+                        <p className="section-label-style text-white !text-white font-bold tracking-wider drop-shadow-sm">{benefits.label}</p>
                         <h2 className="mt-2 h2-style text-gray-900 dark:text-white">
                             {benefits.title}
                         </h2>
