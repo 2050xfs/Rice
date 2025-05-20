@@ -6,6 +6,7 @@ import { useEffect } from 'react';
 import HeroSection from '@/components/sections/HeroSection';
 import DealsBar from '@/components/sections/DealsBar';
 import ServicesOverview from '@/components/sections/ServicesOverview';
+import PartnersSection from '@/components/sections/PartnersSection';
 import TestimonialsSection from '@/components/sections/TestimonialsSection';
 import CallToAction from '@/components/sections/CallToAction';
 import ViboAppHighlight from '@/components/sections/ViboAppHighlight';
@@ -42,6 +43,7 @@ export default function Home() {
       <HeroSection />
       <DealsBar />
       <ServicesOverview />
+      <PartnersSection />
       <ViboAppHighlight />
       <ImageGallerySection />
       <TestimonialsSection />

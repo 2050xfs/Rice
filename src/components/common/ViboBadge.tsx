@@ -10,9 +10,10 @@ import * as LottieAssets from '@/assets/lottie';
 
 interface ViboBadgeProps {
   className?: string;
+  onClick?: () => void;
 }
 
-export default function ViboBadge({ className }: ViboBadgeProps) {
+export default function ViboBadge({ className, onClick }: ViboBadgeProps) {
   const pathname = usePathname();
   const router = useRouter();
   const [isPressed, setIsPressed] = useState(false);
@@ -81,7 +82,7 @@ export default function ViboBadge({ className }: ViboBadgeProps) {
         isPressed ? "scale-95" : "",
         className
       )}
-      onClick={scrollToViboSection}
+      onClick={onClick || scrollToViboSection}
       onTouchStart={handlePressStart}
       onTouchEnd={handlePressEnd}
       onMouseDown={handlePressStart}

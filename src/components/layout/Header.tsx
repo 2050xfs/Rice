@@ -73,16 +73,21 @@ export default function Header() {
 
 
   const NavLink = ({ item }: { item: NavItem }) => {
+    const [isOpen, setIsOpen] = useState(false);
+    
     if (item.subItems) {
       return (
-        <DropdownMenu>
+        <DropdownMenu onOpenChange={setIsOpen}>
           <DropdownMenuTrigger asChild>
-            <Button 
-              variant="ghost" 
-              className="text-base font-medium text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-primary px-3 py-2 flex items-center gap-2 whitespace-nowrap shadow-none focus:ring-0 focus:ring-offset-0"
+            <Button
+              variant="ghost"
+              className="text-base font-medium text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-primary px-3 py-2 flex items-center gap-1 whitespace-nowrap shadow-none focus:ring-0 focus:ring-offset-0"
             >
               {item.name}
-              {/* <ChevronDown className="h-4 w-4 shrink-0" /> Removed ChevronDown */}
+              <ChevronDown className={cn(
+                "h-4 w-4 shrink-0 transition-transform duration-200",
+                isOpen && "rotate-180"
+              )} />
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent className="w-56 ring-1 ring-black/5">
@@ -187,7 +192,14 @@ export default function Header() {
                 <SheetContent side="right" className="w-full max-w-xs bg-white dark:bg-gray-900 p-0">
                   <div className="flex flex-col h-full">
                     <div className="flex items-center justify-between p-4 border-b dark:border-gray-700">
-                      <SiteLogo />
+                       {/* Removed the SiteLogo from here to avoid double logo on mobile */}
+                      <div className="w-[200px] sm:w-[280px] h-[66px] sm:h-[93px] invisible"> {/* Placeholder to balance space if needed */}</div>
+                       <SheetClose asChild>
+                        <Button variant="ghost" size="icon" className="text-gray-700 dark:text-gray-200">
+                          <X className="h-6 w-6" />
+                          <span className="sr-only">Close</span>
+                        </Button>
+                      </SheetClose>
                     </div>
                     <nav className="flex-grow p-4 space-y-1 overflow-y-auto">
                       {navItems.map((item) => (
