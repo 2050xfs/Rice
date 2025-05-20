@@ -79,7 +79,7 @@ export default function Header() {
           <DropdownMenuTrigger asChild>
             <Button 
               variant="ghost" 
-              className="text-base font-medium text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-primary px-3 py-2 flex items-center gap-1 whitespace-nowrap shadow-none focus:ring-0 focus:ring-offset-0"
+              className="text-base font-medium text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-primary px-2 py-2 flex items-center gap-1 whitespace-nowrap shadow-none focus:ring-0 focus:ring-offset-0" // Changed px-3 to px-2
             >
               {item.name}
               <ChevronDown className="h-4 w-4 shrink-0" />
@@ -163,7 +163,7 @@ export default function Header() {
         <div className="flex items-center justify-between h-24">
           <SiteLogo />
 
-          <nav className="hidden lg:flex items-center space-x-2 mx-auto"> {/* Changed space-x-1 to space-x-2 */}
+          <nav className="hidden lg:flex items-center space-x-2 mx-auto"> {/* Adjusted space-x-1 to space-x-2 */}
             {navItems.map((item) => (
               <NavLink key={item.name} item={item} />
             ))}
@@ -188,7 +188,7 @@ export default function Header() {
                   <div className="flex flex-col h-full">
                     <div className="flex items-center justify-between p-4 border-b dark:border-gray-700">
                       <SiteLogo />
-                      {/* SheetClose is part of SheetContent, no need for explicit button here */}
+                      {/* SheetClose is now part of SheetContent, removed explicit button */}
                     </div>
                     <nav className="flex-grow p-4 space-y-1 overflow-y-auto">
                       {navItems.map((item) => (
@@ -211,3 +211,4 @@ export default function Header() {
     </header>
   );
 }
+
