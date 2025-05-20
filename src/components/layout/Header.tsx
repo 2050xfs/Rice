@@ -62,6 +62,7 @@ export default function Header() {
           console.warn(`${targetId} section not found for scrolling.`);
         }
       } else {
+        // Redirect to home page with hash to trigger scroll on home page
         router.push(`/#${targetId}`);
       }
       if (isMobileMenuOpen) setIsMobileMenuOpen(false);
@@ -78,10 +79,10 @@ export default function Header() {
           <DropdownMenuTrigger asChild>
             <Button 
               variant="ghost" 
-              className="text-base font-medium text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-primary px-3 py-2 flex items-center gap-2 whitespace-nowrap shadow-none focus:ring-0 focus:ring-offset-0" // Changed px-2 to px-3 and gap-1 to gap-2
+              className="text-base font-medium text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-primary px-3 py-2 flex items-center gap-2 whitespace-nowrap shadow-none focus:ring-0 focus:ring-offset-0"
             >
               {item.name}
-              <ChevronDown className="h-4 w-4 shrink-0" />
+              {/* <ChevronDown className="h-4 w-4 shrink-0" /> Removed ChevronDown */}
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent className="w-56 ring-1 ring-black/5">
