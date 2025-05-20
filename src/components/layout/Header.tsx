@@ -13,7 +13,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/sheet"; // Added SheetClose
+import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/sheet";
 import { cn } from '@/lib/utils';
 import { useBookingModal } from '@/context/BookingModalContext';
 import { brandLogoUrl } from '@/lib/image-urls';
@@ -62,10 +62,9 @@ export default function Header() {
           console.warn(`${targetId} section not found for scrolling.`);
         }
       } else {
-        // Redirect to home page with hash to trigger scroll on home page
         router.push(`/#${targetId}`);
       }
-      if (isMobileMenuOpen) setIsMobileMenuOpen(false); // Close mobile menu
+      if (isMobileMenuOpen) setIsMobileMenuOpen(false);
     } catch (error) {
       console.error('Error scrolling to VIBO section:', error);
     }
@@ -79,7 +78,7 @@ export default function Header() {
           <DropdownMenuTrigger asChild>
             <Button 
               variant="ghost" 
-              className="text-base font-medium text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-primary px-2 py-2 flex items-center gap-1 whitespace-nowrap shadow-none focus:ring-0 focus:ring-offset-0" // Changed px-3 to px-2
+              className="text-base font-medium text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-primary px-3 py-2 flex items-center gap-2 whitespace-nowrap shadow-none focus:ring-0 focus:ring-offset-0" // Changed px-2 to px-3 and gap-1 to gap-2
             >
               {item.name}
               <ChevronDown className="h-4 w-4 shrink-0" />
@@ -127,7 +126,7 @@ export default function Header() {
                 <SheetClose asChild key={subItem.name}>
                   <Link
                     href={subItem.href || '#'}
-                    onClick={() => setIsMobileMenuOpen(false)} // Ensure menu closes on direct link click too
+                    onClick={() => setIsMobileMenuOpen(false)}
                     className="flex items-center py-2 px-4 text-base font-medium text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-md"
                   >
                     {subItem.icon && <subItem.icon className="h-4 w-4 mr-2 text-gray-500" />}
@@ -163,13 +162,13 @@ export default function Header() {
         <div className="flex items-center justify-between h-24">
           <SiteLogo />
 
-          <nav className="hidden lg:flex items-center space-x-2 mx-auto"> {/* Adjusted space-x-1 to space-x-2 */}
+          <nav className="hidden lg:flex items-center space-x-2 mx-auto">
             {navItems.map((item) => (
               <NavLink key={item.name} item={item} />
             ))}
           </nav>
 
-          <div className="flex items-center gap-2 ml-auto"> {/* Reduced gap-3 to gap-2 */}
+          <div className="flex items-center gap-2 ml-auto">
             <div className="hidden lg:flex items-center gap-2">
                <ViboBadge onClick={scrollToViboSection} />
               <Button onClick={openModal} className="button-primary-styles shrink-0">
@@ -188,7 +187,6 @@ export default function Header() {
                   <div className="flex flex-col h-full">
                     <div className="flex items-center justify-between p-4 border-b dark:border-gray-700">
                       <SiteLogo />
-                      {/* SheetClose is now part of SheetContent, removed explicit button */}
                     </div>
                     <nav className="flex-grow p-4 space-y-1 overflow-y-auto">
                       {navItems.map((item) => (
@@ -211,4 +209,3 @@ export default function Header() {
     </header>
   );
 }
-
