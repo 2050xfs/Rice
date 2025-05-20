@@ -124,15 +124,16 @@ export default function Header() {
           {isSubMenuOpen && (
             <div className="pl-8">
               {item.subItems.map((subItem) => (
-                <Link
-                  key={subItem.name}
-                  href={subItem.href || '#'}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="flex items-center py-2 px-4 text-base font-medium text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-md"
-                >
-                  {subItem.icon && <subItem.icon className="h-4 w-4 mr-2 text-gray-500" />}
-                  {subItem.name}
-                </Link>
+                <SheetClose asChild key={subItem.name}>
+                  <Link
+                    href={subItem.href || '#'}
+                    onClick={() => setIsMobileMenuOpen(false)} // Ensure menu closes on direct link click too
+                    className="flex items-center py-2 px-4 text-base font-medium text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-md"
+                  >
+                    {subItem.icon && <subItem.icon className="h-4 w-4 mr-2 text-gray-500" />}
+                    {subItem.name}
+                  </Link>
+                </SheetClose>
               ))}
             </div>
           )}
@@ -140,14 +141,16 @@ export default function Header() {
       );
     }
     return (
-      <Link
-        href={item.href || '#'}
-        onClick={() => setIsMobileMenuOpen(false)}
-        className="flex items-center py-3 px-4 text-base font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-md"
-      >
-        {item.icon && <item.icon className="h-5 w-5 mr-3 text-primary" />}
-        {item.name}
-      </Link>
+      <SheetClose asChild>
+        <Link
+          href={item.href || '#'}
+          onClick={() => setIsMobileMenuOpen(false)}
+          className="flex items-center py-3 px-4 text-base font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-md"
+        >
+          {item.icon && <item.icon className="h-5 w-5 mr-3 text-primary" />}
+          {item.name}
+        </Link>
+      </SheetClose>
     );
   };
 
@@ -160,14 +163,14 @@ export default function Header() {
         <div className="flex items-center justify-between h-24">
           <SiteLogo />
 
-          <nav className="hidden lg:flex items-center space-x-1 mx-auto"> {/* Reduced space-x-4 to space-x-1 or space-x-2 */}
+          <nav className="hidden lg:flex items-center space-x-2 mx-auto"> {/* Changed space-x-1 to space-x-2 */}
             {navItems.map((item) => (
               <NavLink key={item.name} item={item} />
             ))}
           </nav>
 
-          <div className="flex items-center gap-3 ml-auto">
-            <div className="hidden lg:flex items-center gap-2"> {/* Reduced gap-3 to gap-2 */}
+          <div className="flex items-center gap-2 ml-auto"> {/* Reduced gap-3 to gap-2 */}
+            <div className="hidden lg:flex items-center gap-2">
                <ViboBadge onClick={scrollToViboSection} />
               <Button onClick={openModal} className="button-primary-styles shrink-0">
                 Book Now
@@ -185,8 +188,7 @@ export default function Header() {
                   <div className="flex flex-col h-full">
                     <div className="flex items-center justify-between p-4 border-b dark:border-gray-700">
                       <SiteLogo />
-                      {/* The SheetContent component from ShadCN UI already provides a close button.
-                          No need for an additional SheetTrigger or Button here to close the sheet. */}
+                      {/* SheetClose is part of SheetContent, no need for explicit button here */}
                     </div>
                     <nav className="flex-grow p-4 space-y-1 overflow-y-auto">
                       {navItems.map((item) => (
@@ -209,4 +211,3 @@ export default function Header() {
     </header>
   );
 }
-
