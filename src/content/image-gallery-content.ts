@@ -17,7 +17,6 @@ import {
   boothLuxxGallery3Img,
   boothLuxxGallery5Img,
   boothLuxxGallery7Img,
-  boothLuxxGallery10Img,
   boothLuxxGallery13Img,
   boothSocialMainImg,
   boothSocialGallery1Img,
@@ -74,7 +73,6 @@ export const imageGalleryContent = {
       category: "Wedding"
     },
     // Corporate event images
-    // Removed: { id: "img2", src: corporateGalleryImage1, alt: "Corporate event", width: 600, height: 400, span: { col: 1, row: 1 }, caption: "Professional corporate gathering", category: "Corporate" },
     {
       id: "img3",
       src: corporateGalleryImage2,
@@ -137,9 +135,6 @@ export const imageGalleryContent = {
       caption: "Energetic party atmosphere",
       category: "Party"
     },
-    // Third row - Wedding feature
-    // Removed: { id: "img9", src: weddingsGalleryImage2, alt: "Wedding guests dancing", width: 800, height: 400, span: { col: 3, row: 1 }, caption: "Guests enjoying the dance floor", category: "Wedding" },
-    // Removed: { id: "img10", src: weddingsGalleryImage3, alt: "Wedding celebration", width: 600, height: 400, span: { col: 2, row: 1 }, caption: "Beautiful wedding celebration", category: "Wedding" },
     // Fourth row - Photo booth experiences
     {
       id: "img11",
@@ -274,7 +269,6 @@ export const imageGalleryContent = {
       caption: "Guests enjoying the Luxx Photobooth with props",
       category: "Photo Booth"
     },
-    // Removed: { id: "img27", src: boothLuxxGallery10Img, alt: "Luxx Photobooth Countdown", width: 400, height: 600, span: { col: 1, row: 2 }, caption: "Luxx Photobooth countdown display", category: "Photo Booth" },
     {
       id: "img28",
       src: boothLuxxGallery13Img,
@@ -360,16 +354,6 @@ export const imageGalleryContent = {
     },
     // Additional Corporate Events
     {
-      id: "img36",
-      src: "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/66ce6bad8f5bec22e9a6b4d7.png",
-      alt: "USTA Corporate Event",
-      width: 800,
-      height: 300,
-      span: { col: 2, row: 1 },
-      caption: "USTA corporate celebration",
-      category: "Corporate"
-    },
-    {
       id: "img37",
       src: "https://storage.googleapis.com/msgsndr/iAR0shcsJ7fDRLUy9mAx/media/66ce6bae654dde1e2d835c32.jpeg",
       alt: "DCAC 15 Year Celebration",
@@ -384,3 +368,6 @@ export const imageGalleryContent = {
   // Filter categories
   categories: ["All", "Wedding", "Corporate", "Party", "Photo Booth"]
 };
+
+
+    
